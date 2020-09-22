@@ -57,8 +57,8 @@ public class Sql2oBookDao implements BookDao {
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(query, true)
                     .addParameter("year", bo.getYear())
-                    .addParameter("publisher", au.getPublisher())
-                    .addParameter("isbn", au.getIsbn())
+                    .addParameter("publisher", bo.getPublisher())
+                    .addParameter("isbn", bo.getIsbn())
                     .executeUpdate().getResult();
 
 
