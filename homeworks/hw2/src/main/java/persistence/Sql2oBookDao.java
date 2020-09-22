@@ -34,3 +34,34 @@ public class Sql2oBookDao implements BookDao {
             return con.createQuery(sql).executeAndFetch(Book.class);
         }
     }
+
+
+    //Would be great if someone can test this!
+    @Override
+    public boolean delete(Book bo) throws DaoException {
+        String isbn = bo.getIsbn();
+        String query = "DELETE FROM Books WHERE isbn = '" + isbn + "'";
+        try (Connection con = sql2o.open()) {
+            int id = (int) con.createQuery(query, true)
+                    .executeUpdate().getResult();
+            
+            return true;
+        }
+    }
+
+
+    //test needed
+    @Override
+    public boolean update(Book bo) throws DaoException {
+        String query = "UPDATE Books SET year = :year, publisher = :publisher WHERE isbn = :isbn";
+        try (Connection con = sql2o.open()) {
+            int id = (int) con.createQuery(query, true)
+                    .addParameter("year", bo.getYear())
+                    .addParameter("publisher", au.getPublisher())
+                    .addParameter("isbn", au.getIsbn())
+                    .executeUpdate().getResult();
+            
+            
+            return true;
+    }
+}

@@ -36,4 +36,35 @@ public class Sql2oAuthorDao implements AuthorDao {
     }
 
 
+    //would be great if someone can test this!
+    @Override
+    public boolean delete(Author au) throws DaoException {
+        String query = "DELETE FROM Authors WHERE name = :name";
+        try (Connection con = sql2o.open()) {
+            int id = (int) con.createQuery(query, true)
+                    .addParameter("name", au.getName())
+                    .executeUpdate().getResult();
+            
+            //Just testing out sql2o - can use the query method in delete(book)
+            //if this doesn't work
+            return true;
+        }
+    }
+
+    //test needed
+    @Override
+    public boolean update(Author au) throws DaoException {
+        String query = "UPDATE Authors SET nationality = :nationality, numOfBooks = :numOfBooks WHERE name = :name";
+        try (Connection con = sql2o.open()) {
+            //not sure if we even need id for these methods
+            int id = (int) con.createQuery(query, true)
+                    .addParameter("nationality", au.getNationality())
+                    .addParameter("numOfBooks", au.getNumOfBooks())
+                    .addParameter("name", au.getName())
+                    .executeUpdate().getResult();
+            
+            
+            return true;
+    }
+
 }
