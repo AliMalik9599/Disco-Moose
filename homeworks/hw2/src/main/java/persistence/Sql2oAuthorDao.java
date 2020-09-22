@@ -62,9 +62,10 @@ public class Sql2oAuthorDao implements AuthorDao {
                     .addParameter("numOfBooks", au.getNumOfBooks())
                     .addParameter("name", au.getName())
                     .executeUpdate().getResult();
-            
-            
+
+
             return true;
+        }
     }
 
 }

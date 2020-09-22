@@ -60,8 +60,9 @@ public class Sql2oBookDao implements BookDao {
                     .addParameter("publisher", au.getPublisher())
                     .addParameter("isbn", au.getIsbn())
                     .executeUpdate().getResult();
-            
-            
+
+
             return true;
+        }
     }
 }

@@ -3,6 +3,7 @@ package model;
 import java.util.Objects;
 
 public class Book {
+    private int id;
     private String title;
     private String isbn;
     private String publisher;
@@ -67,5 +68,14 @@ public class Book {
     @Override
     public int hashCode() {
         return Objects.hash(title, isbn, publisher, year, author);
+    }
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 }
