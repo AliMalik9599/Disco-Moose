@@ -17,8 +17,8 @@ public class Sql2oBookDao implements BookDao {
     @Override
     public int add(Book book) throws DaoException {
         try (Connection con = sql2o.open()) {
-            String query = "INSERT INTO Books (title, isbn, author)" +
-                    "VALUES (:title, :isbn, :author)";
+            String query = "INSERT INTO Books (title, isbn, authorId)" +
+                    "VALUES (:title, :isbn, :authorId)";
             int id = (int) con.createQuery(query, true)
                     .bind(book)
                     .executeUpdate().getKey();
