@@ -34,8 +34,8 @@ public class Book {
         return year;
     }
 
-    public Author getAuthor() {
-        return author;
+    public int getAuthor() {
+        return authorId;
     }
 
     public void setTitle(String title) {
