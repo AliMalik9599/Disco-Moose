@@ -51,7 +51,7 @@ public class DBDaoCRUDTest {
             query.executeUpdate();
         }
         sql = "CREATE TABLE IF NOT EXISTS Books (id INTEGER PRIMARY KEY, title VARCHAR(200) NOT NULL," +
-                " isbn VARCHAR(14) NOT NULL UNIQUE, publisher VARCHAR(14), year INTEGER, authorId INTEGER," +
+                " isbn VARCHAR(14) NOT NULL UNIQUE, publisher VARCHAR(14), year INTEGER, authorId INTEGER NOT NULL," +
                 " FOREIGN KEY(authorId) REFERENCES Authors(id) ON UPDATE CASCADE ON DELETE CASCADE);";
         try (Connection con = sql2o.open()) {
             Query query = con.createQuery(sql);
@@ -78,7 +78,7 @@ public class DBDaoCRUDTest {
         assertEquals("12345", resultList.get(0).getIsbn());
 	    assertEquals("Penguin", resultList.get(0).getPublisher());
 	    assertEquals(1920, resultList.get(0).getYear());
-	    assertEquals((int) authorId, (int) resultList.get(0).getAuthor());
+	    assertEquals((int) authorId, (int) resultList.get(0).getAuthorId());
     }
 
     @Test
@@ -107,9 +107,8 @@ public class DBDaoCRUDTest {
         int book2_id = bookDao.add(book2);
         Book book3 = new Book("The Bible", "99999", "Random House", 1910, 9);
         int book3_id = bookDao.add(book3);
-        String list_all = "[Book{title='1984', isbn='12345', publisher='Penguin', year=1920, authorId=0}, " +
-                "Book{title='Metamorphasis', isbn='67891', publisher='Avon Books', year=1900, authorId=0}, " +
-                "Book{title='The Bible', isbn='99999', publisher='Random House', year=1910, authorId=0}]";
+
+        String list_all = "[Book{title='1984', isbn='12345', publisher='Penguin', year=1920, authorId=3}, Book{title='Metamorphasis', isbn='67891', publisher='Avon Books', year=1900, authorId=6}, Book{title='The Bible', isbn='99999', publisher='Random House', year=1910, authorId=9}]";
         assertEquals(bookDao.listAll().toString(), list_all );
     }
 
