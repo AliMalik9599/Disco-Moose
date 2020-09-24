@@ -38,6 +38,10 @@ public class Book {
         return authorId;
     }
 
+    public int getAuthorId() {
+        return authorId;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
