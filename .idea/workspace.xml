@@ -4,7 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65df8ef3-7de1-44d0-be58-02063c31f55d" name="Default Changelist" comment="" />
+    <list default="true" id="65df8ef3-7de1-44d0-be58-02063c31f55d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/.gradle/6.3/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/Author_p.txt" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/Author_p.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/build/classes/java/main/model/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/build/classes/java/main/model/Book.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/build/classes/java/main/persistence/Sql2oAuthorDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/build/classes/java/main/persistence/Sql2oAuthorDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/build/classes/java/main/persistence/Sql2oBookDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/build/classes/java/main/persistence/Sql2oBookDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/build/reports/tests/test/classes/BasicPersistenceTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/build/reports/tests/test/classes/BasicPersistenceTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/build/reports/tests/test/packages/default-package.html" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/build/reports/tests/test/packages/default-package.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/build/test-results/test/TEST-BasicPersistenceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/build/test-results/test/TEST-BasicPersistenceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw2/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw2/build/test-results/test/binary/results.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw3/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw3/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw3/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw3/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw3/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw3/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw3/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw3/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw3/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw3/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw3/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw3/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homeworks/hw3/src/main/java/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/homeworks/hw3/src/main/java/Server.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +75,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/homeworks/hw3" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -76,22 +104,24 @@
     <configuration name="BasicPersistenceTest.testPropertyAuthorPersistence" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/homeworks/hw2" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/homeworks/hw3" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;BasicPersistenceTest.testPropertyAuthorPersistence&quot;" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
+          <list />
         </option>
-        <option name="vmOptions" />
+        <option name="vmOptions" value="" />
       </ExternalSystemSettings>
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Gradle.BasicPersistenceTest" />
+      <item itemvalue="Gradle.BasicPersistenceTest.testPropertyAuthorPersistence" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.BasicPersistenceTest.testPropertyAuthorPersistence" />
@@ -111,30 +141,30 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="206" y="135" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600789934764">
+    <state x="206" y="135" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601407448903">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state x="206" y="135" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1500.960@0.0.1500.960" timestamp="1600789934764" />
-    <state x="553" y="291" key="FileChooserDialogImpl" timestamp="1600738899799">
+    <state x="206" y="135" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1500.960@0.0.1500.960" timestamp="1601407448903" />
+    <state x="553" y="291" key="FileChooserDialogImpl" timestamp="1601407528785">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state x="553" y="291" key="FileChooserDialogImpl/0.0.1500.960@0.0.1500.960" timestamp="1600738899799" />
-    <state width="1458" height="256" key="GridCell.Tab.0.bottom" timestamp="1600790124686">
+    <state x="553" y="291" key="FileChooserDialogImpl/0.0.1500.960@0.0.1500.960" timestamp="1601407528785" />
+    <state width="1458" height="256" key="GridCell.Tab.0.bottom" timestamp="1601407533495">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state width="1458" height="256" key="GridCell.Tab.0.bottom/0.0.1500.960@0.0.1500.960" timestamp="1600790124686" />
-    <state width="1458" height="256" key="GridCell.Tab.0.center" timestamp="1600790124685">
+    <state width="1458" height="256" key="GridCell.Tab.0.bottom/0.0.1500.960@0.0.1500.960" timestamp="1601407533495" />
+    <state width="1458" height="256" key="GridCell.Tab.0.center" timestamp="1601407533495">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state width="1458" height="256" key="GridCell.Tab.0.center/0.0.1500.960@0.0.1500.960" timestamp="1600790124685" />
-    <state width="1458" height="256" key="GridCell.Tab.0.left" timestamp="1600790124685">
+    <state width="1458" height="256" key="GridCell.Tab.0.center/0.0.1500.960@0.0.1500.960" timestamp="1601407533495" />
+    <state width="1458" height="256" key="GridCell.Tab.0.left" timestamp="1601407533494">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state width="1458" height="256" key="GridCell.Tab.0.left/0.0.1500.960@0.0.1500.960" timestamp="1600790124685" />
-    <state width="1458" height="256" key="GridCell.Tab.0.right" timestamp="1600790124685">
+    <state width="1458" height="256" key="GridCell.Tab.0.left/0.0.1500.960@0.0.1500.960" timestamp="1601407533494" />
+    <state width="1458" height="256" key="GridCell.Tab.0.right" timestamp="1601407533495">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state width="1458" height="256" key="GridCell.Tab.0.right/0.0.1500.960@0.0.1500.960" timestamp="1600790124685" />
+    <state width="1458" height="256" key="GridCell.Tab.0.right/0.0.1500.960@0.0.1500.960" timestamp="1601407533495" />
     <state x="253" y="111" key="SettingsEditor" timestamp="1600739004315">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
