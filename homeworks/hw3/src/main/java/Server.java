@@ -1,10 +1,12 @@
 import com.google.gson.Gson;
 import model.Author;
+import model.Book;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sqlite.SQLiteConfig;
 import org.sqlite.SQLiteDataSource;
 import persistence.Sql2oAuthorDao;
+import persistence.Sql2oBookDao;
 import static spark.Spark.*;
 
 public class Server {
