@@ -53,6 +53,19 @@ public class Server {
             return new Gson().toJson(a.toString());
         });
 
+         //delauthor route; delete an author
+         post("/delauthor", (req, res) -> {
+            String name = req.queryParams("name");
+            //post request may only contain name so we will set numOfBooks and nationality to 0/null
+            int numOfBooks = 0;
+            String nationality = null;
+            Author a = new Author(name, numOfBooks, nationality);
+            new Sql2oAuthorDao(getSql2o()).delete(a);
+            res.status(201);
+            res.type("application/json");
+            return new Gson().toJson(a.toString());
+        });
+
         // TODO: add your new endpoints here
         // book route; return list of books as JSON
         get("/books", (req, res) -> {
@@ -72,6 +85,21 @@ public class Server {
             int authorId = Integer.parseInt(req.queryParams("authorId"));
             Book b = new Book(title, isbn, publisher, year, authorId);
             new Sql2oBookDao(getSql2o()).add(b);
+            res.status(203);
+            res.type("application/json");
+            return new Gson().toJson(b.toString());
+        });
+
+        //delbook route; delete a book
+        post("/addbook", (req, res) -> {
+            String isbn = req.queryParams("isbn");
+            //give title, publisher, year, and authorId null values
+            String title = null;
+            String publisher = null;
+            int year = 0;
+            int authorId = 0;
+            Book b = new Book(title, isbn, publisher, year, authorId);
+            new Sql2oBookDao(getSql2o()).delete(b);
             res.status(203);
             res.type("application/json");
             return new Gson().toJson(b.toString());
