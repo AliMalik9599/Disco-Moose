@@ -11,4 +11,5 @@ public interface BookDao {
     List<Book> listAll() throws DaoException;
     boolean delete(Book bo) throws DaoException;
     boolean update(Book bo) throws DaoException;
+    public boolean clear() throws DaoException;
 }

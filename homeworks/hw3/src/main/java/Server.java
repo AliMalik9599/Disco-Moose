@@ -38,6 +38,7 @@ public class Server {
             String results = new Gson().toJson(sql2oAuthor.listAll());
             res.type("application/json");
             res.status(200);
+            res.body(results);
             return results;
         });
 
@@ -72,7 +73,8 @@ public class Server {
             Sql2oBookDao sql2oBook = new Sql2oBookDao(getSql2o());
             String results = new Gson().toJson(sql2oBook.listAll());
             res.type("application/json");
-            res.status(202);
+            res.status(200);
+            res.body(results);
             return results;
         });
 
@@ -85,13 +87,13 @@ public class Server {
             int authorId = Integer.parseInt(req.queryParams("authorId"));
             Book b = new Book(title, isbn, publisher, year, authorId);
             new Sql2oBookDao(getSql2o()).add(b);
-            res.status(203);
+            res.status(201);
             res.type("application/json");
             return new Gson().toJson(b.toString());
         });
 
         //delbook route; delete a book
-        post("/addbook", (req, res) -> {
+        post("/delbook", (req, res) -> {
             String isbn = req.queryParams("isbn");
             //give title, publisher, year, and authorId null values
             String title = null;
@@ -103,6 +105,14 @@ public class Server {
             res.status(203);
             res.type("application/json");
             return new Gson().toJson(b.toString());
+        });
+
+        get("/newTables", (req, res) -> {
+            new Sql2oBookDao(getSql2o()).clear();
+            new Sql2oAuthorDao(getSql2o()).clear();
+            res.type("application/json");
+            res.status(200);
+            return 0;
         });
     }
 }
