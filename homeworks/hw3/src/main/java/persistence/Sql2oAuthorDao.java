@@ -60,4 +60,21 @@ public class Sql2oAuthorDao implements AuthorDao {
         }
     }
 
+    @Override
+    public boolean clear() throws DaoException {
+        String sql = "DROP TABLE IF EXISTS Authors;";
+        try (Connection con = sql2o.open()) {
+            Query query = con.createQuery(sql);
+            query.executeUpdate();
+        }
+
+        sql = "CREATE TABLE IF NOT EXISTS Authors (id INTEGER PRIMARY KEY, name VARCHAR(100) NOT NULL UNIQUE," +
+                " numOfBooks INTEGER, nationality VARCHAR(30));";
+        try (Connection con = sql2o.open()) {
+            Query query = con.createQuery(sql);
+            query.executeUpdate();
+            return true;
+        }
+    }
+
 }

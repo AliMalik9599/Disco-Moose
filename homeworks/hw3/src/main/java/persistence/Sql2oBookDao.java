@@ -5,7 +5,7 @@ import model.Book;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
-
+import org.sql2o.*;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -60,4 +60,22 @@ public class Sql2oBookDao implements BookDao {
         }
     }
 
+    @Override
+    public boolean clear() throws DaoException {
+        String sql = "DROP TABLE IF EXISTS Books;";
+        try (Connection con = sql2o.open()) {
+            Query query = con.createQuery(sql);
+            query.executeUpdate();
+        }
+
+        sql = "CREATE TABLE IF NOT EXISTS Books (id INTEGER PRIMARY KEY, title VARCHAR(200) NOT NULL," +
+                " isbn VARCHAR(14) NOT NULL UNIQUE, publisher VARCHAR(14), year INTEGER, authorId INTEGER NOT NULL," +
+                " FOREIGN KEY(authorId) REFERENCES Authors(id) ON UPDATE CASCADE ON DELETE CASCADE);";
+        try (Connection con = sql2o.open()) {
+            Query query = con.createQuery(sql);
+            query.executeUpdate();
+            return true;
+        }
+        
+    }
 }

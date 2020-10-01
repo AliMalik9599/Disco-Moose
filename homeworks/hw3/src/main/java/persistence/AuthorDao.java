@@ -11,4 +11,5 @@ public interface AuthorDao {
     List<Author> listAll() throws DaoException;
     boolean delete(Author au) throws DaoException;
     boolean update(Author au) throws DaoException;
+    public boolean clear() throws DaoException; 
 }
