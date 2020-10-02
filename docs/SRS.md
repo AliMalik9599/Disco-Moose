@@ -36,12 +36,5 @@ Front end: React
 
 Back end: Django
 
-
-## User Stories
-List major user stories here
-
-
-
-
 ## Wireframes
 ![](wireframe.png)
