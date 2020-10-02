@@ -186,6 +186,83 @@ public class RESTAPITest {
         System.out.println(text);
         assert (text.contains("Screwtape Letters"));
     }
+    @Test
+    public void testBooks() throws IOException {
+
+        RequestBody postBody = new FormBody.Builder()
+                .add("name", "C.S Lewis")
+                .add("numOfBooks", "1")
+                .add("nationality", "British")
+                .build();
+        Request request1 = new Request.Builder()
+                .url("http://localhost:7000/addauthor")
+                .post(postBody)
+                .build();
+        Response response1 = client.newCall(request1).execute();
+        assertEquals(201, response1.code());
+
+        //query database for author id
+        RequestBody addBookPost = new FormBody.Builder()
+                .add("title","Screwtape Letters")
+                .add("isbn","978-3-16-148410-0")
+                .add("publisher","DevinThePublisher")
+                .add("year", "1999")
+                .add("authorId","1")
+                .build();
+        Request request = new Request.Builder()
+                .url("http://localhost:7000/addbook")
+                .post(addBookPost)
+                .build();
+        Response response = client.newCall(request).execute();
+        assertEquals(201, response.code());
+        String text = response.body().string();
+        System.out.println(text);
+        assert (text.contains("Screwtape Letters"));
+
+        Request books = new Request.Builder()
+                .url("http://localhost:7000/books")
+                .build();
+        Response bookResponse = client.newCall(books).execute();
+        assertEquals(200, bookResponse.code());
+        String textBook = bookResponse.body().string();
+        System.out.println(textBook);
+        assert (textBook.contains("Screwtape Letters"));
+
+    }
+
+    @Test
+    public void testDelBook() throws IOException {
+
+        RequestBody postBody = new FormBody.Builder()
+                .add("name", "C.S Lewis")
+                .add("numOfBooks", "1")
+                .add("nationality", "British")
+                .build();
+        Request request1 = new Request.Builder()
+                .url("http://localhost:7000/addauthor")
+                .post(postBody)
+                .build();
+        Response response1 = client.newCall(request1).execute();
+        assertEquals(201, response1.code());
+
+        //query database for author id
+        RequestBody addBookPost = new FormBody.Builder()
+                .add("title","Screwtape Letters")
+                .add("isbn","978-3-16-148410-0")
+                .add("publisher","DevinThePublisher")
+                .add("year", "1999")
+                .add("authorId","1")
+                .build();
+        Request request = new Request.Builder()
+                .url("http://localhost:7000/addbook")
+                .post(addBookPost)
+                .build();
+        Response response = client.newCall(request).execute();
+        assertEquals(201, response.code());
+        String text = response.body().string();
+        System.out.println(text);
+        assert (text.contains("Screwtape Letters"));
+    }
 
 }
 

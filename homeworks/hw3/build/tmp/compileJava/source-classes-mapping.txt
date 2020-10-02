@@ -4,13 +4,13 @@ persistence/AuthorDao.java
  persistence.AuthorDao
 persistence/Sql2oAuthorDao.java
  persistence.Sql2oAuthorDao
-Server.java
- Server
+model/Author.java
+ model.Author
 persistence/Sql2oBookDao.java
  persistence.Sql2oBookDao
 persistence/BookDao.java
  persistence.BookDao
 model/Book.java
  model.Book
-model/Author.java
- model.Author
+Server.java
+ Server

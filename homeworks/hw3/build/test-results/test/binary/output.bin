@@ -1,6 +1,8 @@
 ¨"Book{title\u003d\u0027Screwtape Letters\u0027, isbn\u003d\u0027978-3-16-148410-0\u0027, publisher\u003d\u0027DevinThePublisher\u0027, year\u003d1999, author\u003d1}"
-I[{"id":1,"name":"Ali Hedayat","numOfBooks":26,"nationality":"Iranian"}]
-’[{"id":1,"name":"Ali Hedayat","numOfBooks":26,"nationality":"Iranian"},{"id":2,"name":"Sadegh Hedayat","numOfBooks":26,"nationality":"Iranian"}]
-n"Author{id\u003d0, name\u003d\u0027Ali Hedayat\u0027, numOfBooks\u003d0, nationality\u003d\u0027null\u0027}"
-L[{"id":2,"name":"Sadegh Hedayat","numOfBooks":26,"nationality":"Iranian"}]
+¨"Book{title\u003d\u0027Screwtape Letters\u0027, isbn\u003d\u0027978-3-16-148410-0\u0027, publisher\u003d\u0027DevinThePublisher\u0027, year\u003d1999, author\u003d1}"
+|[{"id":1,"title":"Screwtape Letters","isbn":"978-3-16-148410-0","publisher":"DevinThePublisher","year":1999,"authorId":1}]
+I[{"id":1,"name":"Ali Hedayat","numOfBooks":26,"nationality":"Iranian"}]
 ’[{"id":1,"name":"Ali Hedayat","numOfBooks":26,"nationality":"Iranian"},{"id":2,"name":"Sadegh Hedayat","numOfBooks":26,"nationality":"Iranian"}]
+n"Author{id\u003d0, name\u003d\u0027Ali Hedayat\u0027, numOfBooks\u003d0, nationality\u003d\u0027null\u0027}"
+L[{"id":2,"name":"Sadegh Hedayat","numOfBooks":26,"nationality":"Iranian"}]
+’[{"id":1,"name":"Ali Hedayat","numOfBooks":26,"nationality":"Iranian"},{"id":2,"name":"Sadegh Hedayat","numOfBooks":26,"nationality":"Iranian"}]
