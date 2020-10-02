@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+.idea/
+.idea/workspace.xml
+.idea/misc.xml
+build/
+.DS_Store
+homeworks/hw2/.idea
+homeworks/hw2/build
+homeworks/hw3/.idea
+homeworks/hw3/build
