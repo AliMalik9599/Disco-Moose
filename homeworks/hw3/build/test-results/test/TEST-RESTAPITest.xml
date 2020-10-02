@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="RESTAPITest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-09-25T01:31:52" hostname="DESKTOP-K9BLV0I" time="0.087">
+<testsuite name="RESTAPITest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-10-02T21:17:41" hostname="DESKTOP-0HJ5SGM" time="0.135">
   <properties/>
-  <testcase name="testListAuthors" classname="RESTAPITest" time="0.061"/>
-  <testcase name="testAddAuthor" classname="RESTAPITest" time="0.025"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="testListAuthors" classname="RESTAPITest" time="0.065"/>
+  <testcase name="testDelAuthor" classname="RESTAPITest" time="0.04"/>
+  <testcase name="testAddAuthor_and_ListAuthors" classname="RESTAPITest" time="0.029"/>
+  <system-out><![CDATA[[{"id":1,"name":"Ali Hedayat","numOfBooks":26,"nationality":"Iranian"}]
+[{"id":1,"name":"Ali Hedayat","numOfBooks":26,"nationality":"Iranian"},{"id":2,"name":"Sadegh Hedayat","numOfBooks":26,"nationality":"Iranian"}]
+"Author{id\u003d0, name\u003d\u0027Ali Hedayat\u0027, numOfBooks\u003d0, nationality\u003d\u0027null\u0027}"
+[{"id":2,"name":"Sadegh Hedayat","numOfBooks":26,"nationality":"Iranian"}]
+[{"id":1,"name":"Ali Hedayat","numOfBooks":26,"nationality":"Iranian"},{"id":2,"name":"Sadegh Hedayat","numOfBooks":26,"nationality":"Iranian"}]
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

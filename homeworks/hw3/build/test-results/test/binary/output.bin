@@ -1,0 +1,5 @@
+I[{"id":1,"name":"Ali Hedayat","numOfBooks":26,"nationality":"Iranian"}]
+’[{"id":1,"name":"Ali Hedayat","numOfBooks":26,"nationality":"Iranian"},{"id":2,"name":"Sadegh Hedayat","numOfBooks":26,"nationality":"Iranian"}]
+n"Author{id\u003d0, name\u003d\u0027Ali Hedayat\u0027, numOfBooks\u003d0, nationality\u003d\u0027null\u0027}"
+L[{"id":2,"name":"Sadegh Hedayat","numOfBooks":26,"nationality":"Iranian"}]
+’[{"id":1,"name":"Ali Hedayat","numOfBooks":26,"nationality":"Iranian"},{"id":2,"name":"Sadegh Hedayat","numOfBooks":26,"nationality":"Iranian"}]

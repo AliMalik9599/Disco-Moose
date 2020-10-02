@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
 public class RESTAPITest {
 
     static OkHttpClient client;
+
     @BeforeClass
     public static void beforeClassTests() throws SQLException {
         client = new OkHttpClient();
@@ -17,8 +18,8 @@ public class RESTAPITest {
     @Before
     public void beforeEach() throws IOException {
         Request request = new Request.Builder()
-        .url("http://localhost:7000/newTables")
-        .build();
+                .url("http://localhost:7000/newTables")
+                .build();
         Response response = client.newCall(request).execute();
         assertEquals(200, response.code());
     }
@@ -45,7 +46,7 @@ public class RESTAPITest {
         assertEquals(200, response.code());
         String text = response.body().string();
         System.out.println(text);
-        assert(text.contains("Ali"));
+        assert (text.contains("Ali"));
     }
 
     @Test
@@ -74,8 +75,7 @@ public class RESTAPITest {
         Response response2 = client.newCall(request2).execute();
         assertEquals(201, response2.code());
 
-        
-        
+
         Request request = new Request.Builder()
                 .url("http://localhost:7000/authors")
                 .build();
@@ -83,15 +83,27 @@ public class RESTAPITest {
         assertEquals(200, response.code());
         String text = response.body().string();
         System.out.println(text);
-        assert(text.contains("Ali"));
-        assert(text.contains("Sadegh"));
+        assert (text.contains("Ali"));
+        assert (text.contains("Sadegh"));
 
     }
 
     @Test
-    public void testAddBook_and_ListBooks() throws IOException {
-        RequestBody postBody1 = new FormBody.Builder()
+    public void testDelAuthor() throws IOException {
+        RequestBody postBody = new FormBody.Builder()
                 .add("name", "Ali Hedayat")
+                .add("numOfBooks", "26")
+                .add("nationality", "Iranian")
+                .build();
+        Request request1 = new Request.Builder()
+                .url("http://localhost:7000/addauthor")
+                .post(postBody)
+                .build();
+        Response response1 = client.newCall(request1).execute();
+        assertEquals(201, response1.code());
+
+        RequestBody postBody1 = new FormBody.Builder()
+                .add("name", "Sadegh Hedayat")
                 .add("numOfBooks", "26")
                 .add("nationality", "Iranian")
                 .build();
@@ -103,46 +115,44 @@ public class RESTAPITest {
         assertEquals(201, response2.code());
 
 
-
-        RequestBody postBody = new FormBody.Builder()
-                .add("title", "This is a book")
-                .add("isbn", "2635671")
-                .add("publisher", "penguin")
-                .add("year", "2020")
-                .add("authorId", "1")
-                .build();
-        Request request1 = new Request.Builder()
-                .url("http://localhost:7000/addbook")
-                .post(postBody)
-                .build();
-        Response response1 = client.newCall(request1).execute();
-        assertEquals(201, response1.code());
-
-        /* RequestBody postBody1 = new FormBody.Builder()
-                .add("title", "Another Book")
-                .add("isbn", "1234567")
-                .add("publisher", "penguin")
-                .add("year", "2020")
-                .add("authorId", "2")
-                .build();
-        Request request2 = new Request.Builder()
-                .url("http://localhost:7000/addbook")
-                .post(postBody1)
-                .build();
-        Response response2 = client.newCall(request2).execute();
-        assertEquals(201, response2.code()); */
-
-
-
         Request request = new Request.Builder()
-                .url("http://localhost:7000/books")
+                .url("http://localhost:7000/authors")
                 .build();
         Response response = client.newCall(request).execute();
         assertEquals(200, response.code());
         String text = response.body().string();
         System.out.println(text);
-        assert(text.contains("2635671"));
-        
+        assert (text.contains("Ali"));
+        assert (text.contains("Sadegh"));
 
+        //where the delete part starts
+
+        RequestBody delPostBody = new FormBody.Builder()
+                .add("name", "Ali Hedayat")
+                .build();
+        Request request3 = new Request.Builder()
+                .url("http://localhost:7000/delauthor")
+                .post(delPostBody)
+                .build();
+        Response response3 = client.newCall(request3).execute();
+        assertEquals(201, response3.code());
+        String text3 = response3.body().string();
+        System.out.println(text3);
+        assert (text.contains("Ali"));
+
+        //check its deleted
+        Request request4 = new Request.Builder()
+                .url("http://localhost:7000/authors")
+                .build();
+        Response response4 = client.newCall(request4).execute();
+        assertEquals(200, response4.code());
+        String text4 = response4.body().string();
+        System.out.println(text4);
+
+
+        assert (!text4.contains("Ali"));
     }
+
 }
+
+    
