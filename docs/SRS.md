@@ -30,9 +30,10 @@ We propose a card-based app which creates a regimented, deliberate practice sche
 
 
 ## Software Architecture
-> The software would be a web application. It would conform to the Client-Sever software architecture.
+The software would be a web application. It would conform to the Client-Sever software architecture.
 
 Front end: React 
+
 Back end: Django
 
 
