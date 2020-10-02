@@ -1,4 +1,4 @@
-# Software Requirements Specificatins
+# Software Requirements Specifications
 
 ## Problem Statement 
 
