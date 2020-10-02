@@ -262,6 +262,29 @@ public class RESTAPITest {
         String text = response.body().string();
         System.out.println(text);
         assert (text.contains("Screwtape Letters"));
+
+        //delete begins here
+        RequestBody delBookPost = new FormBody.Builder()
+                .add("isbn","978-3-16-148410-0")
+                .build();
+        Request request2 = new Request.Builder()
+                .url("http://localhost:7000/delbook")
+                .post(delBookPost)
+                .build();
+        Response response2 = client.newCall(request2).execute();
+        assertEquals(203, response2.code());
+        String text2 = response2.body().string();
+
+        //make sure it deleted
+
+        Request books = new Request.Builder()
+                .url("http://localhost:7000/books")
+                .build();
+        Response bookResponse = client.newCall(books).execute();
+        assertEquals(200, bookResponse.code());
+        String textBook = bookResponse.body().string();
+        System.out.println(textBook);
+        assert (!textBook.contains("Screwtape Letters"));
     }
 
 }

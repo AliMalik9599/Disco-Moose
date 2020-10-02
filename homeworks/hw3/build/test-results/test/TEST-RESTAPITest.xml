@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="RESTAPITest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-10-02T21:59:48" hostname="DESKTOP-0HJ5SGM" time="0.173">
+<testsuite name="RESTAPITest" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-10-02T22:07:16" hostname="DESKTOP-0HJ5SGM" time="0.198">
   <properties/>
   <testcase name="testAddBook" classname="RESTAPITest" time="0.066"/>
   <testcase name="testBooks" classname="RESTAPITest" time="0.025"/>
-  <testcase name="testListAuthors" classname="RESTAPITest" time="0.024"/>
-  <testcase name="testDelAuthor" classname="RESTAPITest" time="0.033"/>
-  <testcase name="testAddAuthor_and_ListAuthors" classname="RESTAPITest" time="0.025"/>
+  <testcase name="testListAuthors" classname="RESTAPITest" time="0.021"/>
+  <testcase name="testDelAuthor" classname="RESTAPITest" time="0.03"/>
+  <testcase name="testAddAuthor_and_ListAuthors" classname="RESTAPITest" time="0.026"/>
+  <testcase name="testDelBook" classname="RESTAPITest" time="0.03"/>
   <system-out><![CDATA["Book{title\u003d\u0027Screwtape Letters\u0027, isbn\u003d\u0027978-3-16-148410-0\u0027, publisher\u003d\u0027DevinThePublisher\u0027, year\u003d1999, author\u003d1}"
 "Book{title\u003d\u0027Screwtape Letters\u0027, isbn\u003d\u0027978-3-16-148410-0\u0027, publisher\u003d\u0027DevinThePublisher\u0027, year\u003d1999, author\u003d1}"
 [{"id":1,"title":"Screwtape Letters","isbn":"978-3-16-148410-0","publisher":"DevinThePublisher","year":1999,"authorId":1}]
@@ -14,6 +15,8 @@
 "Author{id\u003d0, name\u003d\u0027Ali Hedayat\u0027, numOfBooks\u003d0, nationality\u003d\u0027null\u0027}"
 [{"id":2,"name":"Sadegh Hedayat","numOfBooks":26,"nationality":"Iranian"}]
 [{"id":1,"name":"Ali Hedayat","numOfBooks":26,"nationality":"Iranian"},{"id":2,"name":"Sadegh Hedayat","numOfBooks":26,"nationality":"Iranian"}]
+"Book{title\u003d\u0027Screwtape Letters\u0027, isbn\u003d\u0027978-3-16-148410-0\u0027, publisher\u003d\u0027DevinThePublisher\u0027, year\u003d1999, author\u003d1}"
+[]
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
