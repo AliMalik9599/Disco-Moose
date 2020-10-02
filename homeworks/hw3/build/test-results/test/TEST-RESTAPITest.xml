@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="RESTAPITest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-10-02T21:17:41" hostname="DESKTOP-0HJ5SGM" time="0.135">
+<testsuite name="RESTAPITest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-10-02T21:49:58" hostname="DESKTOP-0HJ5SGM" time="0.152">
   <properties/>
-  <testcase name="testListAuthors" classname="RESTAPITest" time="0.065"/>
-  <testcase name="testDelAuthor" classname="RESTAPITest" time="0.04"/>
-  <testcase name="testAddAuthor_and_ListAuthors" classname="RESTAPITest" time="0.029"/>
-  <system-out><![CDATA[[{"id":1,"name":"Ali Hedayat","numOfBooks":26,"nationality":"Iranian"}]
+  <testcase name="testAddBook" classname="RESTAPITest" time="0.067"/>
+  <testcase name="testListAuthors" classname="RESTAPITest" time="0.023"/>
+  <testcase name="testDelAuthor" classname="RESTAPITest" time="0.036"/>
+  <testcase name="testAddAuthor_and_ListAuthors" classname="RESTAPITest" time="0.026"/>
+  <system-out><![CDATA["Book{title\u003d\u0027Screwtape Letters\u0027, isbn\u003d\u0027978-3-16-148410-0\u0027, publisher\u003d\u0027DevinThePublisher\u0027, year\u003d1999, author\u003d1}"
+[{"id":1,"name":"Ali Hedayat","numOfBooks":26,"nationality":"Iranian"}]
 [{"id":1,"name":"Ali Hedayat","numOfBooks":26,"nationality":"Iranian"},{"id":2,"name":"Sadegh Hedayat","numOfBooks":26,"nationality":"Iranian"}]
 "Author{id\u003d0, name\u003d\u0027Ali Hedayat\u0027, numOfBooks\u003d0, nationality\u003d\u0027null\u0027}"
 [{"id":2,"name":"Sadegh Hedayat","numOfBooks":26,"nationality":"Iranian"}]
