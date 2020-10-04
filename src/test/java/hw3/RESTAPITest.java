@@ -1,3 +1,5 @@
+package hw3;
+
 import okhttp3.*;
 import org.junit.BeforeClass;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package test.java.hw3;
+package hw3;
 
 import hw3.model.Author;
 import org.junit.Before;
