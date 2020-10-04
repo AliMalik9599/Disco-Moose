@@ -1,12 +1,14 @@
+package main.java.hw3;
+
 import com.google.gson.Gson;
-import model.Author;
-import model.Book;
+import main.java.hw3.model.Author;
+import main.java.hw3.model.Book;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sqlite.SQLiteConfig;
 import org.sqlite.SQLiteDataSource;
-import persistence.Sql2oAuthorDao;
-import persistence.Sql2oBookDao;
+import main.java.hw3.persistence.Sql2oAuthorDao;
+import main.java.hw3.persistence.Sql2oBookDao;
 import static spark.Spark.*;
 
 public class Server {

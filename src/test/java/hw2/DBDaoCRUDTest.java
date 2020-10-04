@@ -1,20 +1,20 @@
-import model.Author;
-import model.Book;
+package test.java.hw2;
+
+import main.java.hw2.model.Author;
+import main.java.hw2.model.Book;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import java.util.List;
-import persistence.Persister;
-import persistence.BookDao;
-import persistence.AuthorDao;
-import persistence.Sql2oAuthorDao;
-import persistence.Sql2oBookDao;
+import main.java.hw2.persistence.Persister;
+import main.java.hw2.persistence.BookDao;
+import main.java.hw2.persistence.AuthorDao;
+import main.java.hw2.persistence.Sql2oAuthorDao;
+import main.java.hw2.persistence.Sql2oBookDao;
 import org.sql2o.Connection;
 import org.sql2o.*;
-
 import java.io.IOException;
 import java.sql.SQLException;
-
 import static org.junit.Assert.*;
 
 public class DBDaoCRUDTest {

@@ -1,10 +1,10 @@
-import model.Author;
+package test.java.hw3;
+
+import main.java.hw3.model.Author;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import java.sql.*;
-
 import static org.junit.Assert.*;
 
 

@@ -1,6 +1,5 @@
-package model;
+package main.java.hw2.model;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Author {

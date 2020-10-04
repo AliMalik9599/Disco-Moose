@@ -1,6 +1,6 @@
-package persistence;
+package main.java.hw2.persistence;
 
-import model.Author;
+import main.java.hw2.model.Author;
 import com.google.gson.*;
 
 import java.io.FileReader;
@@ -15,8 +15,6 @@ public class GsonAuthorPersister implements Persister<Author> {
     public GsonAuthorPersister() {
         gson = new Gson();
     }
-
-
 
     @Override
     public void serialize(Author author) throws IOException {

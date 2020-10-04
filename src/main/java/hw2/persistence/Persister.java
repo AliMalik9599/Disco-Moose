@@ -1,4 +1,4 @@
-package persistence;
+package main.java.hw2.persistence;
 
 import java.io.IOException;
 

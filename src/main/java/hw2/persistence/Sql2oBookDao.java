@@ -1,7 +1,7 @@
-package persistence;
+package main.java.hw2.persistence;
 
-import exception.DaoException;
-import model.Book;
+import main.java.hw2.exception.DaoException;
+import main.java.hw2.model.Book;
 import java.util.List;
 import org.sql2o.*;
 

@@ -1,8 +1,7 @@
-package persistence;
+package main.java.hw2.persistence;
 
-import exception.DaoException;
-import model.Author;
-import model.Book;
+import main.java.hw2.exception.DaoException;
+import main.java.hw2.model.Author;
 
 import java.util.List;
 

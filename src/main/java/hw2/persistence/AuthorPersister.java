@@ -1,15 +1,11 @@
-package persistence;
+package main.java.hw2.persistence;
 
-import model.Author;
-
-import model.Author;
-
+import main.java.hw2.model.Author;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
-
 
 public class AuthorPersister implements Persister<Author> {
 

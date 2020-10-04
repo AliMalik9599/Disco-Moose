@@ -1,13 +1,13 @@
-import model.Author;
+package test.java.hw2;
+
+import main.java.hw2.model.Author;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import persistence.AuthorPersister;
-import persistence.GsonAuthorPersister;
-import persistence.Persister;
-import persistence.PropertyAuthorPersister;
-
+import main.java.hw2.persistence.AuthorPersister;
+import main.java.hw2.persistence.GsonAuthorPersister;
+import main.java.hw2.persistence.Persister;
+import main.java.hw2.persistence.PropertyAuthorPersister;
 import java.io.IOException;
-
 import static org.junit.Assert.assertEquals;
 
 public class BasicPersistenceTest {
