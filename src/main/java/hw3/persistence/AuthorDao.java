@@ -1,8 +1,8 @@
-package main.java.hw3.persistence;
+package hw3.persistence;
 
-import main.java.hw3.exception.DaoException;
-import main.java.hw3.model.Author;
-import main.java.hw3.model.Book;
+import hw3.exception.DaoException;
+import hw3.model.Author;
+import hw3.model.Book;
 
 import java.util.List;
 

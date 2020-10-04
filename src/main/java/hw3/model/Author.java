@@ -1,4 +1,4 @@
-package main.java.hw3.model;
+package hw3.model;
 
 import java.util.Objects;
 

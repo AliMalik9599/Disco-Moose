@@ -1,4 +1,4 @@
-package main.java.hw2.model;
+package hw2.model;
 
 import java.util.Objects;
 

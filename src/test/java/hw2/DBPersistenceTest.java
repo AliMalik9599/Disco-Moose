@@ -1,6 +1,6 @@
-package test.java.hw2;
+package hw2;
 
-import main.java.hw2.model.Author;
+import hw2.model.Author;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;

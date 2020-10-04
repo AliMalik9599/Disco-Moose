@@ -1,12 +1,12 @@
-package test.java.hw2;
+package hw2;
 
-import main.java.hw2.model.Author;
+import hw2.model.Author;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import main.java.hw2.persistence.AuthorPersister;
-import main.java.hw2.persistence.GsonAuthorPersister;
-import main.java.hw2.persistence.Persister;
-import main.java.hw2.persistence.PropertyAuthorPersister;
+import hw2.persistence.AuthorPersister;
+import hw2.persistence.GsonAuthorPersister;
+import hw2.persistence.Persister;
+import hw2.persistence.PropertyAuthorPersister;
 import java.io.IOException;
 import static org.junit.Assert.assertEquals;
 

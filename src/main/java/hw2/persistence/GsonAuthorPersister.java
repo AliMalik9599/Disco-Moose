@@ -1,6 +1,6 @@
-package main.java.hw2.persistence;
+package hw2.persistence;
 
-import main.java.hw2.model.Author;
+import hw2.model.Author;
 import com.google.gson.*;
 
 import java.io.FileReader;

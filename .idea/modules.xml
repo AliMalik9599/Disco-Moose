@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/2020-fall-group-big-mOOSE.iml" filepath="$PROJECT_DIR$/.idea/2020-fall-group-big-mOOSE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/main.2020-fall-group-big-mOOSE.iml" filepath="$PROJECT_DIR$/.idea/modules/main.2020-fall-group-big-mOOSE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/main.2020-fall-group-big-mOOSE.main.iml" filepath="$PROJECT_DIR$/.idea/modules/main.2020-fall-group-big-mOOSE.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/main.2020-fall-group-big-mOOSE.test.iml" filepath="$PROJECT_DIR$/.idea/modules/main.2020-fall-group-big-mOOSE.test.iml" />
     </modules>
   </component>
 </project>

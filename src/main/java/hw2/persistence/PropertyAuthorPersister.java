@@ -1,6 +1,6 @@
-package main.java.hw2.persistence;
+package hw2.persistence;
 
-import main.java.hw2.model.Author;
+import hw2.model.Author;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;

@@ -1,16 +1,16 @@
-package test.java.hw2;
+package hw2;
 
-import main.java.hw2.model.Author;
-import main.java.hw2.model.Book;
+import hw2.model.Author;
+import hw2.model.Book;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import java.util.List;
-import main.java.hw2.persistence.Persister;
-import main.java.hw2.persistence.BookDao;
-import main.java.hw2.persistence.AuthorDao;
-import main.java.hw2.persistence.Sql2oAuthorDao;
-import main.java.hw2.persistence.Sql2oBookDao;
+import hw2.persistence.Persister;
+import hw2.persistence.BookDao;
+import hw2.persistence.AuthorDao;
+import hw2.persistence.Sql2oAuthorDao;
+import hw2.persistence.Sql2oBookDao;
 import org.sql2o.Connection;
 import org.sql2o.*;
 import java.io.IOException;
