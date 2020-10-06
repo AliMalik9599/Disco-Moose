@@ -3,40 +3,17 @@ import './App.css';
 
 class Deck extends React.Component {
     state = {
-        cards: [
-            {
-                id: 1,
-                title: 'C major',
-                topic: 'Scales',
-                category: 'Music Theory',
-                difficulty: 1,
-                duration: 15,
-                view_count: 0,
-                content: 'Lorem ipsum'
-            },
-            {
-                id: 2,
-                title: 'G minor',
-                topic: 'Scales',
-                category: 'Music Theory',
-                difficulty: 1,
-                duration: 15,
-                view_count: 0,
-                content: 'Lorem ipsum'
-            },
-            {
-                id: 3,
-                title: 'A minor',
-                topic: 'Scales',
-                category: 'Music Theory',
-                difficulty: 1,
-                duration: 15,
-                view_count: 0,
-                content: 'Lorem ipsum'
-            }
-
-        ]
+        cards: []
     }
+
+    componentDidMount() {
+        fetch('http://localhost:8000/cards/')
+            .then(response => response.json())
+            .then(data => {
+                this.setState({cards: data});
+            });
+    }
+
     render() {
         return (
             <main className="d-flex justify-content-center my-4">
