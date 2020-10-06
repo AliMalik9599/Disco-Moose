@@ -10,4 +10,5 @@
 .gradle
 out/
 *.iml
+*.pyc
 /local.properties
