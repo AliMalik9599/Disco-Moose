@@ -23,18 +23,7 @@ class Deck extends React.Component {
                 duration: 15,
                 view_count: 0,
                 content: 'Lorem ipsum'
-            },
-            {
-                id: 3,
-                title: 'A minor',
-                topic: 'Scales',
-                category: 'Music Theory',
-                difficulty: 1,
-                duration: 15,
-                view_count: 0,
-                content: 'Lorem ipsum'
             }
-
         ]
     }
     render() {

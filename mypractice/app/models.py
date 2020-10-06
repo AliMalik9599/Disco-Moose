@@ -1,9 +1,12 @@
 from django.db import models
 
 
-class Topic(models.Model):
+class Deck(models.Model):
 	name = models.CharField(max_length=10, default='', null=False)
-	category = models.CharField(max_length=10, default='', null=False)
+	#category = models.CharField(max_length=10, default='', null=False)
+
+	def __str__(self):
+		return '%s' % (self.name)
 
 
 class Goal(models.Model):
@@ -14,14 +17,14 @@ class Goal(models.Model):
 
 
 class Calendar(models.Model):
-	list_of_topics = models.ManyToManyField(Topic)
+	list_of_topics = models.ManyToManyField(Deck)
 
 
 class User(models.Model):
 	name = models.CharField(max_length=50, default='', null=False)
-	topic_list = models.ManyToManyField(Topic)
-	goal_list = models.ManyToManyField(Goal)
-	calendar = models.ForeignKey(Calendar, on_delete=models.CASCADE)
+	deck_list = models.ManyToManyField(Deck)
+	#goal_list = models.ManyToManyField(Goal)
+	#calendar = models.ForeignKey(Calendar, on_delete=models.CASCADE)
 
 
 class MyPractice(models.Model):
@@ -31,16 +34,19 @@ class MyPractice(models.Model):
 
 class Card(models.Model):
 	title = models.CharField(max_length=50, default='', null=False)
-	topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+	deck = models.ForeignKey(Deck, on_delete=models.CASCADE, null=True)
 	category = models.CharField(max_length=10, default='', null=False)
 	difficulty = models.IntegerField(default=0)
 	duration = models.IntegerField(default=0)
 	view_count = models.IntegerField(default=0)
 	content = models.CharField(max_length=50, default='', null=False)
 
+	def __str__(self):
+		return '%s in deck %s' % (self.title, self.deck)
+
 
 class DailySchedule(models.Model):
-	card_list = models.ManyToManyField(Topic)
+	card_list = models.ManyToManyField(Deck)
 
 
 class Settings(models.Model):
