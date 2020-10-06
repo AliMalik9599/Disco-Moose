@@ -28,218 +28,292 @@
 import React from 'react';
 import './App.css';
 
-
-class App extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            todoList:[],
-            activeItem:{
-                id:null,
-                title:'',
-                completed:false,
+class Deck extends React.Component {
+    state = {
+        cards: [
+            {
+                id: 1,
+                title: 'C major',
+                topic: 'Scales',
+                category: 'Music Theory',
+                difficulty: 1,
+                duration: 15,
+                view_count: 0,
+                content: 'Lorem ipsum'
             },
-            editing:false,
-        };
-        this.fetchTasks = this.fetchTasks.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.getCookie = this.getCookie.bind(this);
-
-
-        this.startEdit = this.startEdit.bind(this);
-        this.deleteItem = this.deleteItem.bind(this);
-        this.strikeUnstrike = this.strikeUnstrike.bind(this)
-    };
-
-    getCookie(name) {
-        var cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = cookies[i].trim();
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
+            {
+                id: 2,
+                title: 'G minor',
+                topic: 'Scales',
+                category: 'Music Theory',
+                difficulty: 1,
+                duration: 15,
+                view_count: 0,
+                content: 'Lorem ipsum'
             }
-        }
-        return cookieValue;
+        ]
     }
 
-    componentWillMount(){
-        this.fetchTasks()
+    createNewCard = (card) => {
+        card.id = Math.floor(Math.random() * 1000);
+        this.setState({cards: this.state.cards.concat([card])});
     }
 
-    fetchTasks(){
-        console.log('Fetching...');
-
-        fetch('http://127.0.0.1:8000/api/task-list/')
-            .then(response => response.json())
-            .then(data =>
-                this.setState({
-                    todoList:data
-                })
-            )
-    }
-
-    handleChange(e){
-        var name = e.target.name;
-        var value = e.target.value;
-        console.log('Name:', name);
-        console.log('Value:', value);
-
-        this.setState({
-            activeItem:{
-                ...this.state.activeItem,
-                title:value
+    updateCard = (newCard) => {
+        const newCards = this.state.cards.map(card => {
+            if (card.id === newCard.id) {
+                return Object.assign({}, newCard)
+            } else {
+                return card;
             }
-        })
-    }
-
-    handleSubmit(e){
-        e.preventDefault();
-        console.log('ITEM:', this.state.activeItem);
-
-        var csrftoken = this.getCookie('csrftoken');
-
-        var url = 'http://127.0.0.1:8000/api/task-create/';
-
-        if(this.state.editing == true){
-            url = `http://127.0.0.1:8000/api/task-update/${ this.state.activeItem.id}/`;
-            this.setState({
-                editing:false
-            })
-        }
-
-
-
-        fetch(url, {
-            method:'POST',
-            headers:{
-                'Content-type':'application/json',
-                'X-CSRFToken':csrftoken,
-            },
-            body:JSON.stringify(this.state.activeItem)
-        }).then((response)  => {
-            this.fetchTasks();
-            this.setState({
-                activeItem:{
-                    id:null,
-                    title:'',
-                    completed:false,
-                }
-            })
-        }).catch(function(error){
-            console.log('ERROR:', error)
-        })
-
-    }
-
-    startEdit(task){
-        this.setState({
-            activeItem:task,
-            editing:true,
-        })
-    }
-
-
-    deleteItem(task){
-        var csrftoken = this.getCookie('csrftoken');
-
-        fetch(`http://127.0.0.1:8000/api/task-delete/${task.id}/`, {
-            method:'DELETE',
-            headers:{
-                'Content-type':'application/json',
-                'X-CSRFToken':csrftoken,
-            },
-        }).then((response) =>{
-
-            this.fetchTasks()
-        })
-    }
-
-
-    strikeUnstrike(task){
-
-        task.completed = !task.completed;
-        var csrftoken = this.getCookie('csrftoken');
-        var url = `http://127.0.0.1:8000/api/task-update/${task.id}/`;
-
-        fetch(url, {
-            method:'POST',
-            headers:{
-                'Content-type':'application/json',
-                'X-CSRFToken':csrftoken,
-            },
-            body:JSON.stringify({'completed': task.completed, 'title':task.title})
-        }).then(() => {
-            this.fetchTasks()
         });
-
-        console.log('TASK:', task.completed)
+        this.setState({cards: newCards});
     }
 
-
-    render(){
-        var tasks = this.state.todoList;
-        var self = this;
-        return(
-            <div className="container">
-
-                <div id="task-container">
-                    <div  id="form-wrapper">
-                        <form onSubmit={this.handleSubmit}  id="form">
-                            <div className="flex-wrapper">
-                                <div style={{flex: 6}}>
-                                    <input onChange={this.handleChange} className="form-control" id="title" value={this.state.activeItem.title} type="text" name="title" placeholder="Add task.." />
-                                </div>
-
-                                <div style={{flex: 1}}>
-                                    <input id="submit" className="btn btn-warning" type="submit" name="Add" />
-                                </div>
-                            </div>
-                        </form>
-
-                    </div>
-
-                    <div  id="list-wrapper">
-                        {tasks.map(function(task, index){
-                            return(
-                                <div key={index} className="task-wrapper flex-wrapper">
-
-                                    <div onClick={() => self.strikeUnstrike(task)} style={{flex:7}}>
-
-                                        {task.completed == false ? (
-                                            <span>{task.title}</span>
-
-                                        ) : (
-
-                                            <strike>{task.title}</strike>
-                                        )}
-
-                                    </div>
-
-                                    <div style={{flex:1}}>
-                                        <button onClick={() => self.startEdit(task)} className="btn btn-sm btn-outline-info">Edit</button>
-                                    </div>
-
-                                    <div style={{flex:1}}>
-                                        <button onClick={() => self.deleteItem(task)} className="btn btn-sm btn-outline-dark delete">-</button>
-                                    </div>
-
-                                </div>
-                            )
-                        })}
-                    </div>
+    deleteCard = (cardId) => {
+        this.setState({cards: this.state.cards.filter(card => card.id !== cardId)})
+    }
+    render() {
+        return (
+            <main className="d-flex justify-content-center my-4">
+                <div  className="col-5">
+                    <CardList
+                        cards={this.state.cards}
+                        onDeleteClick={this.deleteCard}
+                        onUpdateClick={this.updateCard}
+                    />
+                    <ToggleableCardForm
+                        onCardCreate={this.createNewCard}
+                    />
                 </div>
+            </main>
+        )
+    }
+}
 
+class CardList extends React.Component {
+    render() {
+        const cards = this.props.cards.map(card => (
+            <EditableCard
+                key={card.id}
+                id={card.id}
+                title={card.title}
+                topic={card.topic}
+                category={card.category}
+                difficulty={card.difficulty}
+                duration={card.duration}
+                view_count={card.view_count}
+                content={card.content}
+            ></EditableCard>
+        ));
+        return (
+            <div>
+                {cards}
+            </div>
+        );
+    }
+}
+
+class EditableCard extends React.Component {
+    state = {
+        inEditMode: false
+    };
+    enterEditMode = () => {
+        this.setState({inEditMode: true});
+    }
+    leaveEditMode = () => {
+        this.setState({inEditMode: false});
+    }
+    handleDelete = () => {
+        this.props.onDeleteClick(this.props.id);
+    }
+    handleUpdate = (card) => {
+        this.leaveEditMode()
+        card.id = this.props.id;
+        this.props.onUpdateClick(card);
+    }
+    render() {
+        const component = () => {
+            if(this.state.inEditMode) {
+                return (
+                    <CardForm
+                        key={this.props.id}
+                        id={this.props.id}
+                        title={this.props.title}
+                        topic={this.props.topic}
+                        category={this.props.category}
+                        difficulty={this.props.difficulty}
+                        duration={this.props.duration}
+                        view_count={this.props.view_count}
+                        content={this.props.content}
+                        onCancelClick={this.leaveEditMode}
+                        onFormSubmit={this.handleUpdate}
+                    />
+                );
+            }
+            return (
+                <Card
+                    title={this.props.title}
+                    topic={this.props.topic}
+                    category={this.props.category}
+                    difficulty={this.props.difficulty}
+                    duration={this.props.duration}
+                    view_count={this.props.view_count}
+                    content={this.props.content}
+                    onEditClick={this.enterEditMode}
+                    onDeleteClick={this.handleDelete}
+                />
+            )
+        }
+        return (
+            <div className="mb-3 p-4" style={{boxShadow: '0 0 10px #ccc'}} >
+                {component()}
             </div>
         )
     }
 }
 
+class Card extends React.Component {
+    render() {
+        return (
+            <div className="card" /* style="width: 18rem;" */>
+                <div className="card-header d-flex justify-content-between">
+          <span>
+            <strong>Title: </strong>{this.props.title}
+          </span>
+                    <div>
+                        <span onClick={this.props.onEditClick} className="mr-2"><i className="far fa-edit"></i></span>
+                        <span onClick={this.props.onDeleteClick}><i className="fas fa-trash"></i></span>
+                    </div>
+                </div>
+                <div className="card-body">
+                    {this.props.content}
+                </div>
+                <div className="card-footer">
+                    <strong>Topic:</strong>  {this.props.topic}
+                </div>
+            </div>
+        );
+    }
+}
 
+class CardForm extends React.Component {
+    state = {
+        title: this.props.title || '',
+        topic: this.props.topic || '',
+        category: this.props.category || '',
+        difficulty: this.props.difficulty || '',
+        duration: this.props.duration || '',
+        view_count: this.props.view_count || '',
+        content: this.props.content || ''
+    }
+    handleFormSubmit = (evt) => {
+        evt.preventDefault();
+        this.props.onFormSubmit({...this.state});
+    }
+    handleTitleUpdate = (evt) => {
+        this.setState({title: evt.target.value});
+    }
+    handleTopicUpdate = (evt) => {
+        this.setState({topic: evt.target.value});
+    }
+    handleCategoryUpdate = (evt) => {
+        this.setState({category: evt.target.value});
+    }
+    handleDifficultyUpdate = (evt) => {
+        this.setState({difficulty: evt.target.value});
+    }
+    handleDurationUpdate = (evt) => {
+        this.setState({duration: evt.target.value});
+    }
+    handleViewCountUpdate = (evt) => {
+        this.setState({view_count: evt.target.value});
+    }
+    handleContentUpdate = (evt) => {
+        this.setState({content: evt.target.value});
+    }
+    render() {
+        const buttonText = this.props.id ? 'Update Card': 'Create Card';
+        return (
+            <form onSubmit={this.handleFormSubmit}>
+                <div className="form-group">
+                    <label>
+                        Title
+                    </label>
+                    <input type="text" placeholder="Enter a title"
+                           value={this.state.title} onChange={this.handleTitleUpdate}
+                           className="form-control"
+                    />
+                </div>
 
-export default App;
+                <div className="form-group">
+                    <label>
+                        Topic
+                    </label>
+                    <input type="text" placeholder="Topic name"
+                           value={this.state.topic} onChange={this.handleTopicUpdate}
+                           className="form-control"
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label>
+                        Content
+                    </label>
+                    <textarea className="form-control" placeholder="Card Content"
+                              rows="5" value={this.state.content}
+                              onChange={this.handleContentUpdate}
+                    >
+            {this.state.content}
+          </textarea>
+                </div>
+                <div className="form-group d-flex justify-content-between">
+                    <button type="submit" className="btn btn-md btn-primary">
+                        {buttonText}
+                    </button>
+                    <button type="button" className="btn btn-md btn-secondary" onClick={this.props.onCancelClick}>
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        )
+    }
+}
+
+class ToggleableCardForm extends React.Component {
+    state = {
+        inCreateMode: false
+    }
+    handleCreateClick = () => {
+        this.setState({inCreateMode: true});
+    }
+    leaveCreateMode = () => {
+        this.setState({inCreateMode: false});
+    }
+    handleCancleClick = () => {
+        this.leaveCreateMode();
+    }
+    handleFormSubmit = (card) => {
+        this.leaveCreateMode();
+        this.props.onCardCreate(card);
+    }
+    render() {
+        if (this.state.inCreateMode) {
+            return (
+                <div className="mb-3 p-4" style={{boxShadow: '0 0 10px #ccc'}} >
+                    <CardForm
+                        onFormSubmit={this.handleFormSubmit}
+                        onCancelClick={this.handleCancleClick}></CardForm>
+                </div>
+
+            )
+        }
+        return (
+            <button onClick={this.handleCreateClick} className="btn btn-secondary">
+                <i className="fas fa-plus"></i>
+            </button>
+        );
+    }
+}
+
+export default Deck;
