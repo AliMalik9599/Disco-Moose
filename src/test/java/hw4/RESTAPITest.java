@@ -1,6 +1,8 @@
+package hw4;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import model.Author;
+import hw4.model.Author;
 import okhttp3.*;
 import org.junit.BeforeClass;
 import org.junit.Test;

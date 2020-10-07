@@ -1,4 +1,6 @@
-import model.Author;
+package hw4;
+
+import hw4.model.Author;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
