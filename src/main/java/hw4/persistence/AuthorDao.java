@@ -1,7 +1,7 @@
-package persistence;
+package hw4.persistence;
 
-import exception.DaoException;
-import model.Author;
+import hw4.exception.DaoException;
+import hw4.model.Author;
 
 import java.util.List;
 

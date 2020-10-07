@@ -1,7 +1,7 @@
-package persistence;
+package hw4.persistence;
 
-import exception.DaoException;
-import model.Book;
+import hw4.exception.DaoException;
+import hw4.model.Book;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;

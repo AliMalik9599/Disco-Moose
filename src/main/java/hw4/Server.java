@@ -1,7 +1,9 @@
-import exception.DaoException;
-import model.Author;
+package hw4;
+
+import hw4.exception.DaoException;
+import hw4.model.Author;
 import org.sql2o.Sql2o;
-import persistence.Sql2oAuthorDao;
+import hw4.persistence.Sql2oAuthorDao;
 import spark.ModelAndView;
 import java.util.HashMap;
 import java.util.Map;

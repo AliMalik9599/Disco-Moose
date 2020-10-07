@@ -1,4 +1,4 @@
-package model;
+package hw4.model;
 
 import java.util.Objects;
 
