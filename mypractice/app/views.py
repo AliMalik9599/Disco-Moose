@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Card
-from .serializer import CardSerializer
+from .serializer import CardSerializer, DeckSerializer
 from rest_framework import generics
 
 

@@ -6,7 +6,7 @@ class Deck(models.Model):
 	#category = models.CharField(max_length=10, default='', null=False)
 
 	def __str__(self):
-		return '%s' % (self.name)
+		return '%s' % self.name
 
 
 class Goal(models.Model):
@@ -42,7 +42,7 @@ class Card(models.Model):
 	content = models.CharField(max_length=50, default='', null=False)
 
 	def __str__(self):
-		return '%s in deck %s' % (self.title, self.deck)
+		return '%s in deck %s' % (self.title, self.deck.name)
 
 
 class DailySchedule(models.Model):
