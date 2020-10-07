@@ -93,3 +93,31 @@ h1, h2, h3, h4, h5, p, span, strike{
 .task-wrapper:hover{
   background-color: #F0F0F0;
 }
+
+.topnav {
+  background: rgb(54,217,182);
+  background: linear-gradient(90deg, rgba(54,217,182,1) 0%, rgba(32,152,126,1) 43%, rgba(0,212,255,1) 100%);
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: white;
+  color: darkgrey;
+}

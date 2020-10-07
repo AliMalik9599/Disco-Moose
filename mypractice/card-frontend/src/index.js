@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Deck from './App';
 import * as serviceWorker from './serviceWorker';
-import BookDashboard from "./App";
 
 ReactDOM.render(<Deck />, document.getElementById('root'));
 

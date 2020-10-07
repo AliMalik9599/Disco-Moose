@@ -4,7 +4,7 @@ import './App.css';
 class Deck extends React.Component {
     state = {
         cards: []
-    }
+    };
 
     componentDidMount() {
         fetch('http://localhost:8000/cards/')
@@ -16,8 +16,14 @@ class Deck extends React.Component {
 
     render() {
         return (
-            <main className="d-flex justify-content-center my-4">
-                <div  className="col-5">
+            <main>
+                <div className="topnav">
+                    <a className="active" href="/cards">Home</a>
+                    <a href="/cards">My Decks</a>
+                    <a href="">Account</a>
+                    <a href="">Settings</a>
+                </div>
+                <div  className="d-flex justify-content-center">
                     <CardList
                         cards={this.state.cards}
                     />
@@ -34,7 +40,7 @@ class CardList extends React.Component {
                 key={card.id}
                 id={card.id}
                 title={card.title}
-                topic={card.topic}
+                deck={card.deck}
                 category={card.category}
                 difficulty={card.difficulty}
                 duration={card.duration}
@@ -53,17 +59,21 @@ class CardList extends React.Component {
 class Card extends React.Component {
     render() {
         return (
-            <div className="card" /* style="width: 18rem;" */>
+            <div className="card task-wrapper" /* style="width: 18rem;" */>
                 <div className="card-header d-flex justify-content-between">
-          <span>
-            <strong>Title: </strong>{this.props.title}
-          </span>
+                  <span>
+                    <strong>Title: </strong>{this.props.title}<br></br>
+                    <strong>Category: </strong>{this.props.category}<br></br>
+                    <strong>Difficulty: </strong>{this.props.difficulty}<br></br>
+                    <strong>Duration: </strong>{this.props.duration}<br></br>
+                    <strong>View_count: </strong>{this.props.view_count}<br></br>
+                  </span>
                 </div>
                 <div className="card-body">
                     {this.props.content}
                 </div>
                 <div className="card-footer">
-                    <strong>Topic:</strong>  {this.props.topic}
+                    <strong>Deck:</strong>  {this.props.deck}
                 </div>
             </div>
         );
