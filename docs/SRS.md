@@ -41,4 +41,4 @@ Database: Sqlite3
 Build-tools: Yarn
 
 ## Wireframes
-![](Renaissance wireframe 10.1 v2.png)
+![](wireframe2.png)
