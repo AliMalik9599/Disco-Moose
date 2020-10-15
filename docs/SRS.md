@@ -16,7 +16,6 @@ We propose a card-based app which creates a regimented, deliberate practice sche
 
 
 ### Must have
-- As a user of the app, I want to be able to create new practice “decks” so that I can learn new skills
 - As a user of the app, I want to be able to store my “decks” and “cards” for later use so that I can come back to them in future sessions.
 - As a user of the app, I want to be able to view all of my created “decks” and all of my created “cards” so I know what “decks” and “cards” are available to practice with.
 - As a user of the app, I want to be able to create a daily practice schedule with a specific “deck” so that I can learn a new skill.
@@ -27,14 +26,19 @@ We propose a card-based app which creates a regimented, deliberate practice sche
 - As a user of the app, I want to be able to keep track of my previous, current, and future daily practice schedules so that I can map my learning.
 - As a user of the app, I want to be able to make notes on “cards” so I can refer back to previous challenges and thoughts.
 - As a user of the app, I want to be able to view and download other peoples “decks” so that I can learn from others.
+- As a user of the app, I want to be able to create new practice “decks” so that I can learn new skills
 
 
 ## Software Architecture
 The software would be a web application. It would conform to the Client-Sever software architecture.
 
-Front end: React 
+Front end: React
 
-Back end: Django
+Back end: Django, Django REST framework
+
+Database: Sqlite3
+
+Build-tools: Yarn
 
 ## Wireframes
-![](wireframe.png)
+![](Renaissance wireframe 10.1 v2.png)
