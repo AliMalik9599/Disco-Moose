@@ -4,13 +4,29 @@ import classes from './Login.module.css'
 class Login extends Component {
     state = {
         name: '',
-        email: '',
-        password: ''
+        username: '',
+        password: '',
+        user: {
+            id: '',
+            name: '',
+            username: '',
+            password: ''
+        }
     };
+    str_url;
 
     handleChange = event => {
-        // when the user clicks submit, load Deck component
-        // might have to send that info back to the Layout component but idk how
+        event.preventDefault();
+        this.str_url = 'user/' + this.state.name.toString() + '/' + this.state.username.toString() + '/' + this.state.password.toString() + '/';
+        fetch(this.str_url)
+            .then(response => {
+                // This is where I am stuck -- is it getting the right JSON??
+                // Go to http://127.0.0.1:8000/user/Admin/admin/admin/ to see the JSON that should be populated in the  User section of the state
+            });
+
+        if (this.state.name === this.state.user.name && this.state.username === this.state.user.username && this.state.password === this.state.user.password) {
+            console.log('Password/username is correct');
+        }
     }
 
     handleNameChange = event => {
@@ -20,7 +36,7 @@ class Login extends Component {
 
     handleEmailChange = event => {
         const value = event.target.value;
-        this.setState({email: value});
+        this.setState({username: value});
     }
 
     handlePasswordChange = event => {
@@ -32,12 +48,12 @@ class Login extends Component {
         return (
             <main>
                 <div className={classes.Login}>
-                    <form onSubmit={this.props.changeLayoutState}>
+                    <form onSubmit={this.handleChange}>
                         <label htmlFor="name">Name:
-                            <input type="text" name="name" value={this.state.name} onChange={this.handleNameChange}/>
+                            <input type="text" name="name" value={this.state.value} onChange={this.handleNameChange}/>
                         </label>
-                        <label htmlFor="email">E-mail:
-                            <input type="email" name="email" value={this.state.value} onChange={this.handleEmailChange}/>
+                        <label htmlFor="username">E-mail:
+                            <input type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
                         </label>
                         <label htmlFor="password">Password:
                             <input type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
