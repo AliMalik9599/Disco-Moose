@@ -16,7 +16,10 @@ class CardList(generics.ListCreateAPIView):
 
 
 def get_user_login(request, name, username, password):
-	user = model_to_dict(User.objects.get(name=name, username=username, password=password))
+	try:
+		user = model_to_dict(User.objects.get(name=name, username=username, password=password))
+	except Exception as e:
+		user = {}
 	response = JsonResponse(user, safe=False)
 	return response
 

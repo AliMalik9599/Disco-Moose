@@ -6,27 +6,21 @@ class Login extends Component {
         name: '',
         username: '',
         password: '',
-        user: {
-            id: '',
-            name: '',
-            username: '',
-            password: ''
-        }
     };
     str_url;
 
     handleChange = event => {
         event.preventDefault();
-        this.str_url = 'user/' + this.state.name.toString() + '/' + this.state.username.toString() + '/' + this.state.password.toString() + '/';
+        this.str_url = 'http://127.0.0.1:8000/user/' + this.state.name.toString() + '/' + this.state.username.toString() + '/' + this.state.password.toString() + '/';
         fetch(this.str_url)
-            .then(response => {
-                // This is where I am stuck -- is it getting the right JSON??
-                // Go to http://127.0.0.1:8000/user/Admin/admin/admin/ to see the JSON that should be populated in the  User section of the state
+            .then(response => response.json())
+            .then(data => {
+                if (this.state.name === data.name && this.state.username === data.username && this.state.password === data.password) {
+                    console.log('Password/username is correct');
+                } else {
+                    console.log('Password/username is incorrect');
+                }
             });
-
-        if (this.state.name === this.state.user.name && this.state.username === this.state.user.username && this.state.password === this.state.user.password) {
-            console.log('Password/username is correct');
-        }
     }
 
     handleNameChange = event => {
