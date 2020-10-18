@@ -4,13 +4,25 @@ import classes from './Login.module.css'
 class Login extends Component {
     state = {
         name: '',
-        email: '',
-        password: ''
+        username: '',
+        password: '',
     };
+    str_url;
 
     handleChange = event => {
-        // when the user clicks submit, load Deck component
-        // might have to send that info back to the Layout component but idk how
+        event.preventDefault();
+        this.str_url = 'http://127.0.0.1:8000/user/' + this.state.name.toString() + '/' + this.state.username.toString() + '/' + this.state.password.toString() + '/';
+        fetch(this.str_url)
+            .then(response => response.json())
+            .then(data => {
+                // TODO(Issue #16): Write to screen if login was successful.
+                if (this.state.name === data.name && this.state.username === data.username && this.state.password === data.password) {
+                    console.log('Password/username is correct');
+                    // TODO(Issue #17): Change page / render new component (should be the categories page).
+                } else {
+                    console.log('Password/username is incorrect');
+                }
+            });
     }
 
     handleNameChange = event => {
@@ -20,7 +32,7 @@ class Login extends Component {
 
     handleEmailChange = event => {
         const value = event.target.value;
-        this.setState({email: value});
+        this.setState({username: value});
     }
 
     handlePasswordChange = event => {
@@ -32,12 +44,12 @@ class Login extends Component {
         return (
             <main>
                 <div className={classes.Login}>
-                    <form onSubmit={this.props.changeLayoutState}>
+                    <form onSubmit={this.handleChange}>
                         <label htmlFor="name">Name:
-                            <input type="text" name="name" value={this.state.name} onChange={this.handleNameChange}/>
+                            <input type="text" name="name" value={this.state.value} onChange={this.handleNameChange}/>
                         </label>
-                        <label htmlFor="email">E-mail:
-                            <input type="email" name="email" value={this.state.value} onChange={this.handleEmailChange}/>
+                        <label htmlFor="username">E-mail:
+                            <input type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
                         </label>
                         <label htmlFor="password">Password:
                             <input type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>

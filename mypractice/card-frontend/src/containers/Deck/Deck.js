@@ -7,11 +7,12 @@ class Deck extends Component {
     };
 
     componentDidMount() {
-        fetch('http://localhost:8000/cards/')
+        fetch('cards/')
             .then(response => response.json())
             .then(data => {
                 this.setState({cards: data});
             });
+        console.log("HERE IS DECK");
     }
 
     render() {

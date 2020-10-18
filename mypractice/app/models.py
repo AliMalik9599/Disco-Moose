@@ -22,7 +22,9 @@ class Calendar(models.Model):
 
 class User(models.Model):
 	name = models.CharField(max_length=50, default='', null=False)
-	deck_list = models.ManyToManyField(Deck)
+	username = models.CharField(max_length=50, default='', null=False)
+	password = models.CharField(max_length=50, default='', null=False)
+	#deck_list = models.ManyToManyField(Deck)
 	#goal_list = models.ManyToManyField(Goal)
 	#calendar = models.ForeignKey(Calendar, on_delete=models.CASCADE)
 

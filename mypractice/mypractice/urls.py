@@ -21,4 +21,6 @@ from app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cards/', views.CardList.as_view()),
+    path('user/<str:name>/<str:username>/<str:password>/', views.get_user_login),
+    path('user/<path:name>/<path:username>/<path:password>/', views.get_user_login),
 ]
