@@ -15,6 +15,7 @@ class Login extends Component {
         fetch(this.str_url)
             .then(response => response.json())
             .then(data => {
+                // TODO(Issue #16): Write to screen if login was successful.
                 if (this.state.name === data.name && this.state.username === data.username && this.state.password === data.password) {
                     console.log('Password/username is correct');
                 } else {
