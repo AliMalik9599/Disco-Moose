@@ -18,6 +18,7 @@ class Login extends Component {
                 // TODO(Issue #16): Write to screen if login was successful.
                 if (this.state.name === data.name && this.state.username === data.username && this.state.password === data.password) {
                     console.log('Password/username is correct');
+                    // TODO(Issue #17): Change page / render new component (should be the categories page).
                 } else {
                     console.log('Password/username is incorrect');
                 }
