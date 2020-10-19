@@ -7,7 +7,7 @@ class Deck extends Component {
     };
 
     componentDidMount() {
-        fetch('cards/')
+        fetch('http://127.0.0.1:8000/cards/')
             .then(response => response.json())
             .then(data => {
                 this.setState({cards: data});

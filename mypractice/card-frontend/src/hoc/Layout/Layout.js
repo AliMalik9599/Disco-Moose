@@ -7,8 +7,8 @@ import Deck from "../../containers/Deck/Deck";
 
 class Layout extends Component {
     state = {
-        showSideDrawer: true,
-        showDeck: false
+        showSideDrawer: false,
+        showDeck: true
     }
 
     sideDrawerClosedHandler = () => {
