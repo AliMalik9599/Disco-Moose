@@ -8,7 +8,7 @@ import Deck from "../../containers/Deck/Deck";
 class Layout extends Component {
     state = {
         showSideDrawer: true,
-        showDeck: true
+        showDeck: false
     }
 
     sideDrawerClosedHandler = () => {
@@ -47,7 +47,7 @@ class Layout extends Component {
                         open={this.state.showSideDrawer}
                         closed={this.sideDrawerClosedHandler}/>
                     <main className={classes.Content}>
-                        {/*{this.props.children}*/}
+
                         <Login formClick={this.changeLayoutState.bind(this)}/>
                     </main>
                 </div>

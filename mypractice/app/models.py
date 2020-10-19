@@ -36,12 +36,8 @@ class Calendar(models.Model):
 
 class User(models.Model):
 	name = models.CharField(max_length=20, default='', null=False)
-	username = models.CharField(max_length=20, default='', null=False)
-	password = models.CharField(max_length=20, default='', null=False)
-	course_list = models.ManyToManyField(Course)
-	goal_list = models.ManyToManyField(Goal)
-
-	calendar = models.ForeignKey(Calendar, on_delete=models.CASCADE)
+	username = models.CharField(max_length=50, default='', null=False)
+	password = models.CharField(max_length=50, default='', null=False)
 
 
 class MyPractice(models.Model):
