@@ -8,7 +8,7 @@ import Deck from "../../containers/Deck/Deck";
 class Layout extends Component {
     state = {
         showSideDrawer: false,
-        showDeck: true
+        showDeck: false
     }
 
     sideDrawerClosedHandler = () => {
@@ -22,7 +22,9 @@ class Layout extends Component {
     }
 
     changeLayoutState = () => {
-        this.setState({showDeck: !this.state.showDeck})
+        this.setState((prevState) => {
+            return {showDeck: !this.state.showDeck}
+        });
     }
 
     render () {
