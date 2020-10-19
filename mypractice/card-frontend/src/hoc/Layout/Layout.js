@@ -4,11 +4,13 @@ import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import Login from "../../containers/Login/Login";
 import Deck from "../../containers/Deck/Deck";
+import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
+import CourseList from "../../components/CourseList/CourseList";
 
 class Layout extends Component {
     state = {
         showSideDrawer: false,
-        showDeck: true
+        showDeck: false
     }
 
     sideDrawerClosedHandler = () => {
@@ -49,6 +51,9 @@ class Layout extends Component {
                     <main className={classes.Content}>
 
                         <Login formClick={this.changeLayoutState.bind(this)}/>
+                        {/* Uncomment to see Course Cards Displayed
+                            <CardWrapper/>
+                        */}
                     </main>
                 </div>
             );

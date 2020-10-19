@@ -20,4 +20,4 @@ class Course extends Component {
     }
 }
 
-export default Card;
+export default Course;

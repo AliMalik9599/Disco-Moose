@@ -6,7 +6,7 @@ from .models import Card, Course, User
 class CourseSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Course
-		fields = ('id', 'name')
+		fields = ('id', 'name', 'description', 'num_skills', 'num_cards')
 
 
 class CardSerializer(serializers.ModelSerializer):

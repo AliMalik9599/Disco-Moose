@@ -4,9 +4,9 @@ import Course from  '../Course/Course'
 class CourseList extends Component {
     render() {
         const courses = this.props.courses.map(course => (
-            <Card
-                key={card.id}
-                id={card.id}
+            <Course
+                key={course.id}
+                id={course.id}
                 name={course.name}
                 description={course.description}
                 num_skills={course.num_skills}
