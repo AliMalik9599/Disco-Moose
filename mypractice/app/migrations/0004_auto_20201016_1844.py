@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app', '0003_add_mock_data'),
+        ('app', '0002_auto_20201006_2101'),
     ]
 
     operations = [
