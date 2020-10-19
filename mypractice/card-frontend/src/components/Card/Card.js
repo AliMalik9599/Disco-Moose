@@ -7,17 +7,18 @@ class Card extends Component {
                 <div className="card-header d-flex justify-content-between">
                   <span>
                     <strong>Title: </strong>{this.props.title}<br/>
-                    <strong>Category: </strong>{this.props.category}<br/>
-                    <strong>Difficulty: </strong>{this.props.difficulty}<br/>
+                    <strong>Course: </strong>{this.props.course}<br/>
+                    <strong>Skill: </strong>{this.props.skill}<br/>
+                    <strong>Level: </strong>{this.props.level}<br/>
                     <strong>Duration: </strong>{this.props.duration}<br/>
-                    <strong>View_count: </strong>{this.props.view_count}<br/>
+                    <strong>View Count: </strong>{this.props.view_count}<br/>
                   </span>
                 </div>
                 <div className="card-body">
                     {this.props.content}
                 </div>
                 <div className="card-footer">
-                    <strong>Deck:</strong>  {this.props.deck}
+                    <strong>Completed?</strong> {this.props.complete.toString()}
                 </div>
             </div>
         );

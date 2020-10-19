@@ -8,12 +8,13 @@ class CardList extends Component {
                 key={card.id}
                 id={card.id}
                 title={card.title}
-                deck={card.deck}
-                category={card.category}
-                difficulty={card.difficulty}
+                course={card.course}
+                skill={card.skill}
+                level={card.level}
                 duration={card.duration}
                 view_count={card.view_count}
                 content={card.content}
+                complete={card.complete}
             />
         ));
         return (
