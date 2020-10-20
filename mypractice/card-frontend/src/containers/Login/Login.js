@@ -13,12 +13,6 @@ class Login extends Component {
         };
         this.str_url = "";
     }
-    // state = {
-    //     name: '',
-    //     username: '',
-    //     password: '',
-    // };
-    // str_url;
 
     handleChange = event => {
         event.preventDefault();
@@ -30,7 +24,6 @@ class Login extends Component {
                 if (this.state.name === data.name && this.state.username === data.username && this.state.password === data.password) {
                     console.log('Password/username is correct');
                     alert("Login Successful");
-                    // TODO(Issue #17): Change page / render new component (should be the categories page).
                 } else {
                     console.log('Password/username is incorrect');
                     alert("Incorrect Username or Password");

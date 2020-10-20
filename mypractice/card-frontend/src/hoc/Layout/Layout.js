@@ -3,18 +3,14 @@ import classes from './Layout.module.css';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import Login from "../../containers/Login/Login";
-import Deck from "../../containers/Deck/Deck";
-
 import Animation from "../../containers/Login/Animation"
-
 import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
-import CourseList from "../../components/CourseList/CourseList";
 
 
 const viewEnum = {
     ANIMATION: 0,
     LOGIN: 1,
-    DECK: 2,
+    COURSE: 2,
 }
 
 class Layout extends Component {
@@ -26,23 +22,8 @@ class Layout extends Component {
         }
     }
 
-    // state = {
-    //     showSideDrawer: false,
-    //     showDeck: false
-    // }
-
-    // sideDrawerClosedHandler = () => {
-    //     this.setState({showSideDrawer: false});
-    // }
-    //
-    // sideDrawerToggleHandler = () => {
-    //     this.setState((prevState) => {
-    //         return {showSideDrawer: !this.state.showSideDrawer}
-    //     });
-    // }
-
     changeLayoutState = () => {
-        this.setState({view: viewEnum.DECK})
+        this.setState({view: viewEnum.COURSE})
     }
 
     stopAnimation = () => {
@@ -60,8 +41,8 @@ class Layout extends Component {
             case viewEnum.LOGIN:
                 view = <Login formClick={this.changeLayoutState.bind(this)}/>
                 break;
-            case viewEnum.DECK:
-                view = <Deck />
+            case viewEnum.COURSE:
+                view = <CourseWrapper />
                 break;
 
         }
@@ -76,33 +57,6 @@ class Layout extends Component {
                 </main>
             </div>
         );
-        // if (this.state.showDeck) {
-        //     return (
-        //         <div>
-        //             <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler}/>
-        //             <SideDrawer
-        //                 open={this.state.showSideDrawer}
-        //                 closed={this.sideDrawerClosedHandler}/>
-        //             <main className={classes.Content}>
-        //                 {/*{this.props.children}*/}
-        //                 <Deck/>
-        //             </main>
-        //         </div>
-        //     );
-        // } else {
-        //     return (
-        //         <div>
-        //             <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler}/>
-        //             <SideDrawer
-        //                 open={this.state.showSideDrawer}
-        //                 closed={this.sideDrawerClosedHandler}/>
-        //             <main className={classes.Content}>
-        //
-        //                 <Login formClick={this.changeLayoutState.bind(this)}/>
-        //             </main>
-        //         </div>
-        //     );
-        // }
     }
 }
 
