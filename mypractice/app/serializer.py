@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User, Group, Skill
+from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 from .models import Card, Course, User, Skill
 
