@@ -12,8 +12,7 @@ const viewEnum = {
     ANIMATION: 0,
     LOGIN: 1,
     COURSE: 2,
-    SKILL: 3,
-    SELECTION: 4
+    SELECTION: 3
 }
 
 class Layout extends Component {
@@ -21,17 +20,12 @@ class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            view: viewEnum.COURSE
+            view: viewEnum.ANIMATION
         }
     }
 
     changeLayoutState = () => {
         this.setState({view: viewEnum.COURSE})
-    }
-
-    changeCourseState = () => {
-        console.log("hello")
-        this.setState({view: viewEnum.SKILL})
     }
 
     stopAnimation = () => {
