@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Card, User, Course
-from .serializer import CardSerializer, CourseSerializer
+from .models import Card, User, Course, Skill
+from .serializer import CardSerializer, CourseSerializer, SkillSerializer
 from rest_framework import generics
 from django.shortcuts import get_object_or_404
 from django.views.generic.detail import DetailView
@@ -19,6 +19,9 @@ class CourseList(generics.ListCreateAPIView):
 	queryset = Course.objects.all()
 	serializer_class = CourseSerializer
 
+class SkillList(generics.ListCreateAPIView):
+	queryset = Skill.objects.all()
+	serializer_class = SkillSerializer
 
 def get_user_login(request, name, username, password):
 	try:
