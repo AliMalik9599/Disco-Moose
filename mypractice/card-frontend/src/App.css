@@ -38,8 +38,7 @@
 /*}*/
 
 body{
-  background: rgb(54,217,182);
-  background: linear-gradient(90deg, rgba(54,217,182,1) 0%, rgba(32,152,126,1) 43%, rgba(0,212,255,1) 100%);
+  background-color: #c7fcdc;
 }
 
 h1, h2, h3, h4, h5, p, span, strike{
@@ -71,12 +70,34 @@ h1, h2, h3, h4, h5, p, span, strike{
   padding:40px;
 }
 
+/* reformat this code later */
+/* login code */
 #submit{
-  background-color: #36d9b6;
-  border-radius: 0;
+  background-color: #172557;
+  border-radius: 5px;
   border:0;
   color: #fff;
+  width: 100%;
+  font-size: 20pt;
+  position: relative;
+  bottom: 50%;
+
 }
+
+#name {
+  font-size: 12pt;
+  padding: 7%;
+
+}
+#username {
+  font-size: 12pt;
+  padding: 7%;
+}
+#password {
+  font-size: 12pt;
+  padding: 7%;
+}
+
 
 .flex-wrapper{
   display: flex;
@@ -95,8 +116,7 @@ h1, h2, h3, h4, h5, p, span, strike{
 }
 
 .topnav {
-  background: rgb(54,217,182);
-  background: linear-gradient(90deg, rgba(54,217,182,1) 0%, rgba(32,152,126,1) 43%, rgba(0,212,255,1) 100%);
+  background-color: #172557;
   overflow: hidden;
 }
 
