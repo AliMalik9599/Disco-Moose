@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Skill from './Skill/Skill'
 
 class SkillList extends Component {
     state = {
@@ -14,7 +15,9 @@ class SkillList extends Component {
             <form onSubmit={this.handleSubmit}>
                 <label>Select the skills you want to work on:
                 <select value={this.state.title}>
-                    <option value={skill.title}>{skill.title}</option>
+                    <option value={skill.title}>
+                        <Skill title={skill.title}/>
+                    </option>
                 </select>
                 </label>
                 <input type="submit" value="Submit"/>
