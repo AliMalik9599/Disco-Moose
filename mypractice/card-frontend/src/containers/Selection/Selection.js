@@ -12,6 +12,7 @@ class Selection extends Component {
             .then(data => {
                 this.setState({skills: data});
             });
+        console.log("Selection reached");
     }
 
     render() {
