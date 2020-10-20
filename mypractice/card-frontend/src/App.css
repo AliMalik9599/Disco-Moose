@@ -38,7 +38,7 @@
 /*}*/
 
 body{
-  background-color: #B5FFD3;
+  background-color: #c7fcdc;
 }
 
 h1, h2, h3, h4, h5, p, span, strike{
@@ -70,7 +70,8 @@ h1, h2, h3, h4, h5, p, span, strike{
   padding:40px;
 }
 
-
+/* reformat this code later */
+/* login code */
 #submit{
   background-color: #172557;
   border-radius: 5px;
@@ -78,7 +79,25 @@ h1, h2, h3, h4, h5, p, span, strike{
   color: #fff;
   width: 100%;
   font-size: 20pt;
+  position: relative;
+  bottom: 50%;
+
 }
+
+#name {
+  font-size: 12pt;
+  padding: 7%;
+
+}
+#username {
+  font-size: 12pt;
+  padding: 7%;
+}
+#password {
+  font-size: 12pt;
+  padding: 7%;
+}
+
 
 .flex-wrapper{
   display: flex;
