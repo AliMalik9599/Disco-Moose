@@ -12,7 +12,6 @@ class CourseWrapper extends Component {
             .then(data => {
                 this.setState({courses: data});
             });
-        console.log("HERE IS CourseWrapper");
     }
 
     render() {
