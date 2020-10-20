@@ -30,7 +30,7 @@ class CourseList extends Component {
                 description={course.description}
                 num_skills={course.num_skills}
                 num_cards={course.num_cards}
-                onClick={this.props.clickHandler}
+                clickHandler={this.props.clickHandler}
             />
         ));
         return (

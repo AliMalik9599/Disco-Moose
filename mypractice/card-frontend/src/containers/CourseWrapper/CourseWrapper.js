@@ -38,9 +38,9 @@ class CourseWrapper extends Component {
             case courseViewEnum.COURSESELECT:
                 view = (<div>
                             <p>What would you like to work on today?</p>
-                            <div className="d-flex justify-content-center" onClick={this.handleCourseClick}>
+                            <div className="d-flex justify-content-center">
                                 <CourseList courses={this.state.courses}
-
+                                            clickHandler={this.handleCourseClick.bind(this)}
                                 />
                             </div>
                         </div>)
