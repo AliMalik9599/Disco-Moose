@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import classes from './Login.module.css'
 
+
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -27,9 +29,11 @@ class Login extends Component {
                 // TODO(Issue #16): Write to screen if login was successful.
                 if (this.state.name === data.name && this.state.username === data.username && this.state.password === data.password) {
                     console.log('Password/username is correct');
+                    alert("Login Successful");
                     // TODO(Issue #17): Change page / render new component (should be the categories page).
                 } else {
                     console.log('Password/username is incorrect');
+                    alert("Incorrect Username or Password");
                 }
             });
         this.props.formClick();
