@@ -18,6 +18,7 @@ class Selection extends Component {
     render() {
         return (
             <main>
+                <p>ON SELECTION PAGE</p>
                 <div  className="d-flex justify-content-center">
                     <SkillList
                         skills={this.state.skills}

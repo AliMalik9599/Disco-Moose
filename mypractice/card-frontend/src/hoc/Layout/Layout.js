@@ -5,12 +5,15 @@ import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import Login from "../../containers/Login/Login";
 import Animation from "../../containers/Login/Animation"
 import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
+import Selection from "../../containers/Selection/Selection";
 
 
 const viewEnum = {
     ANIMATION: 0,
     LOGIN: 1,
     COURSE: 2,
+    SKILL: 3,
+    SELECTION: 4
 }
 
 class Layout extends Component {
@@ -18,12 +21,17 @@ class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            view: viewEnum.ANIMATION
+            view: viewEnum.COURSE
         }
     }
 
     changeLayoutState = () => {
         this.setState({view: viewEnum.COURSE})
+    }
+
+    changeCourseState = () => {
+        console.log("hello")
+        this.setState({view: viewEnum.SKILL})
     }
 
     stopAnimation = () => {
@@ -44,7 +52,6 @@ class Layout extends Component {
             case viewEnum.COURSE:
                 view = <CourseWrapper />
                 break;
-
         }
         return (
             <div>
