@@ -7,7 +7,7 @@ class SkillList extends Component {
     }
 
     handleSubmit() {
-        //do nothing for now bc
+        //TODO: send necessary information to backend
     }
 
     render() {

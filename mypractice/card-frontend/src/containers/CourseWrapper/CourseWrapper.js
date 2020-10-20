@@ -18,7 +18,8 @@ class CourseWrapper extends Component {
     render() {
         return (
             <main>
-                <div  className="d-flex justify-content-center">
+                <p>What would you like to work on today?</p>
+                <div className="d-flex justify-content-center">
                     <CourseList
                         courses={this.state.courses}
                     />
