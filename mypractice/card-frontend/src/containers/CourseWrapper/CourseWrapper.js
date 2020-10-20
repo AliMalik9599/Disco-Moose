@@ -20,7 +20,7 @@ class CourseWrapper extends Component {
             <main>
                 <div  className="d-flex justify-content-center">
                     <CourseList
-                        cards={this.state.courses}
+                        courses={this.state.courses}
                     />
                 </div>
             </main>
