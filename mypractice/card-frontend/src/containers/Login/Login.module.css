@@ -1,9 +1,10 @@
 @media all and (min-width: 480px) {
     .Login {
-        padding: 60px 0;
+        padding-left: 40%;
         display: inline-block;
         margin: auto;
         width: 100%;
+
     }
 
     .button {
@@ -13,7 +14,12 @@
 
     .Login form {
         margin: auto;
-        max-width: 320px;
+        width: 30%;
+        height: 60%;
+        padding: 5%;
+        position: absolute;
+        border-radius: 5px;
+        background-color: #FDC149;
         animation: fadeIn ease 10s;
         -webkit-animation: fadeIn ease 6s;
         -moz-animation: fadeIn ease 6s;

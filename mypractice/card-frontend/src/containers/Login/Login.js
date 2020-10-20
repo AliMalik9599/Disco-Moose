@@ -52,17 +52,14 @@ class Login extends Component {
             <main>
                 <div className={classes.Login}>
                     <form onSubmit={this.handleChange}>
-                        <label htmlFor="name">Name:
-                            <input type="text" name="name" value={this.state.value} onChange={this.handleNameChange}/>
-                        </label>
-                        <label htmlFor="username">E-mail:
-                            <input type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
-                        </label>
-                        <label htmlFor="password">Password:
-                            <input type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
-                        </label>
+                        <input placeholder="name" type="text" name="name" value={this.state.value} onChange={this.handleNameChange}/>
+
+                        <input placeholder="username or email" type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
+
+                        <input placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
+
                         <div className={classes.button}>
-                            <input type="submit" value="Submit"/>
+                            <input id="submit" type="submit" value="Submit"/>
                         </div>
                     </form>
                 </div>
