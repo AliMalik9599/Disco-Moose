@@ -2,12 +2,21 @@ import React, {Component} from "react";
 import classes from './Login.module.css'
 
 class Login extends Component {
-    state = {
-        name: '',
-        username: '',
-        password: '',
-    };
-    str_url;
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            username: '',
+            password: '',
+        };
+        this.str_url = "";
+    }
+    // state = {
+    //     name: '',
+    //     username: '',
+    //     password: '',
+    // };
+    // str_url;
 
     handleChange = event => {
         event.preventDefault();
@@ -23,6 +32,7 @@ class Login extends Component {
                     console.log('Password/username is incorrect');
                 }
             });
+        this.props.formClick();
     }
 
     handleNameChange = event => {
