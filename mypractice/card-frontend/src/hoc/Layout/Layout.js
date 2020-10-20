@@ -4,8 +4,12 @@ import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import Login from "../../containers/Login/Login";
 import Deck from "../../containers/Deck/Deck";
+
+import Animation from "../../containers/Login/Animation"
+
 import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
 import CourseList from "../../components/CourseList/CourseList";
+
 
 const viewEnum = {
     ANIMATION: 0,
@@ -18,7 +22,7 @@ class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            view: viewEnum.LOGIN
+            view: viewEnum.ANIMATION
         }
     }
 
@@ -50,9 +54,9 @@ class Layout extends Component {
 
         let view = null;
         switch (this.state.view) {
-            // case viewEnum.ANIMATION:
-            //     view = <Animation />;
-            //     break;
+            case viewEnum.ANIMATION:
+                view = <Animation stopAnimation={this.stopAnimation.bind(this)}/>
+                break;
             case viewEnum.LOGIN:
                 view = <Login formClick={this.changeLayoutState.bind(this)}/>
                 break;
