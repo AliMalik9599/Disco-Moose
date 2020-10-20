@@ -12,7 +12,8 @@ const viewEnum = {
     ANIMATION: 0,
     LOGIN: 1,
     COURSE: 2,
-    SKILL: 3
+    SKILL: 3,
+    SELECTION: 4
 }
 
 class Layout extends Component {
@@ -49,12 +50,8 @@ class Layout extends Component {
                 view = <Login formClick={this.changeLayoutState.bind(this)}/>
                 break;
             case viewEnum.COURSE:
-                view = <CourseWrapper onClick={this.changeCourseState.bind(this)}/>
+                view = <CourseWrapper />
                 break;
-            case viewEnum.SKILL:
-                view = <Selection />
-                break;
-
         }
         return (
             <div>
