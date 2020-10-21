@@ -23,6 +23,12 @@ Go into the directory root/mypractice
 
 You should then see our web app in action! 
 
+Login Info
+
+Name: Admin
+Username: admin
+Password: admin
+
 
 ## Iteration 1 Summary
 
