@@ -24,12 +24,12 @@ class Login extends Component {
                 if (this.state.name === data.name && this.state.username === data.username && this.state.password === data.password) {
                     console.log('Password/username is correct');
                     alert("Login Successful");
+                    this.props.formClick();
                 } else {
                     console.log('Password/username is incorrect');
                     alert("Incorrect Username or Password");
                 }
             });
-        this.props.formClick();
     }
 
     handleNameChange = event => {
