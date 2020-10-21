@@ -9,8 +9,17 @@
     }
 
     .button {
-        margin: auto;
+        position: relative;
+        bottom: 10%;
+    }
+    .submit {
+        background-color: #172557 !important;
+        border-radius: 5px;
+        border:0;
+        color: #fff;
         width: 100%;
+        font-size: 20pt;
+        position: relative;
     }
 
     .Login form {
@@ -29,7 +38,21 @@
     }
 
 
-    input {
+    .name {
+        font-size: 12pt;
+        padding: 7%;
+
+    }
+    .username {
+        font-size: 12pt;
+        padding: 7%;
+    }
+    .password {
+        font-size: 12pt;
+        padding: 7%;
+    }
+
+    .Login input {
         background-color: #FFF7D9;
         font-family: 'Montserrat', sans-serif;
         width: 100%;
@@ -42,8 +65,7 @@
         bottom: 10%;
 
     }
-
-    h1 {
+    .Login h1 {
         font-family: 'Montserrat', sans-serif;
         font-size: 40pt;
         color: #172557;
@@ -51,15 +73,15 @@
         left: 1%;
 
     }
-    h2 {
+    .Login h2 {
         font-family: 'Montserrat', sans-serif;
         font-size: 30pt;
         color: #172557;
         position: relative;
         text-align: center;
         bottom: 10%;
-
     }
+
     @keyframes fadeIn {
         0% {
             opacity:0;
