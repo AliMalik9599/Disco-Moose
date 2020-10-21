@@ -12,11 +12,13 @@ class Selection extends Component {
             .then(data => {
                 this.setState({skills: data});
             });
+        console.log("Selection reached");
     }
 
     render() {
         return (
             <main>
+                <p>ON SELECTION PAGE</p>
                 <div  className="d-flex justify-content-center">
                     <SkillList
                         skills={this.state.skills}

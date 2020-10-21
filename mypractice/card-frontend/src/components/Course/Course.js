@@ -1,9 +1,12 @@
 import React, {Component} from "react";
 
 class Course extends Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
-            <div className="course task-wrapper" /* style="width: 18rem;" */>
+            <div className="course task-wrapper" onClick={this.props.clickHandler}>
                 <div className="course-header d-flex justify-content-between">
                   <span>
                     <strong>Name: </strong>{this.props.name}<br/>

@@ -5,12 +5,14 @@ import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import Login from "../../containers/Login/Login";
 import Animation from "../../containers/Login/Animation"
 import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
+import Selection from "../../containers/Selection/Selection";
 
 
 const viewEnum = {
     ANIMATION: 0,
     LOGIN: 1,
     COURSE: 2,
+    SELECTION: 3
 }
 
 class Layout extends Component {
@@ -44,7 +46,6 @@ class Layout extends Component {
             case viewEnum.COURSE:
                 view = <CourseWrapper />
                 break;
-
         }
         return (
             <div>
