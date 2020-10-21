@@ -24,11 +24,20 @@ Go into the directory root/mypractice
 You should then see our web app in action! 
 
 
-## Interation 1 Summary
+## Iteration 1 Summary
 
 1) Created models for django database
 2) Created the frontend that renders cards with data pulled from the database
 3) Everyone is learning React and Django!
+
+## Iteration 2 Summary
+
+1) Added animation to home page
+2) Added temp "admin" user to simulate a "login"
+3) Added a "course list" component that displays a list of all available courses (currently only Guitar)
+4) After selecting a course, a skill selection page is rendered. The user can select the skills they want to work on.
+5) Added backend routes for /courses and /skills to send data to frontend
+6) Added styling to CSS files for various componnents
 
 
 
