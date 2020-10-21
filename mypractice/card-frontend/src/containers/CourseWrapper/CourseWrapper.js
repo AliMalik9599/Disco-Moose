@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import CourseList from "../../components/CourseList/CourseList";
+import classes from './CourseWrapper.css'
 
 class CourseWrapper extends Component {
     state = {
@@ -18,7 +19,7 @@ class CourseWrapper extends Component {
     render() {
         return (
             <main>
-                <p>What would you like to work on today?</p>
+                <h1>What would you like to work on today?</h1>
                 <div className="d-flex justify-content-center">
                     <CourseList
                         courses={this.state.courses}
