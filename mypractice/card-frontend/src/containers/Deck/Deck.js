@@ -2,12 +2,17 @@ import React, {Component} from "react";
 import CardList from "../../components/CardList/CardList";
 
 class Deck extends Component {
-    state = {
-        cards: []
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            cards: []
+        };
+    }
 
     componentDidMount() {
-        fetch('http://127.0.0.1:8000/cards/')
+        this.str_url = 'http://127.0.0.1:8000/cards/' + this.props.courseid.toString() + '/' + this.props.skills.toString();
+        console.log(this.str_url)
+            fetch(this.str_url)
             .then(response => response.json())
             .then(data => {
                 this.setState({cards: data});
