@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import CourseList from "../../components/CourseList/CourseList";
+
+import classes from './CourseWrapper.css'
 import Selection from "../Selection/Selection";
 import Deck from "../Deck/Deck";
 
@@ -8,6 +10,7 @@ const courseViewEnum = {
     SKILLSELECT: 1,
     DECK: 2
 }
+
 
 class CourseWrapper extends Component {
     constructor(props) {
@@ -52,8 +55,8 @@ class CourseWrapper extends Component {
         let view = null;
         switch(this.state.view) {
             case courseViewEnum.COURSESELECT:
-                view = (<div>
-                            <p>What would you like to work on today?</p>
+                view = (<div className="div">
+                            <h1 className="h1">What would you like to work on today?</h1>
                             <div className="d-flex justify-content-center">
                                 <CourseList courses={this.state.courses}
                                             clickHandler={this.handleCourseClick.bind(this)}

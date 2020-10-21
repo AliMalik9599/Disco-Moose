@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import classes from './Login.module.css'
+import './Login.css'
 
 
 
@@ -55,14 +56,14 @@ class Login extends Component {
 
                     <form onSubmit={this.handleChange}>
                         <h2>Login</h2>
-                        <input id="name" placeholder="name" type="text" name="name" value={this.state.value} onChange={this.handleNameChange}/>
+                        <input className={classes.name} placeholder="name" type="text" name="name" value={this.state.value} onChange={this.handleNameChange}/>
 
-                        <input id="username" placeholder="username or email" type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
+                        <input className={classes.username} placeholder="username or email" type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
 
-                        <input id="password" placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
+                        <input className={classes.username} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
 
                         <div className={classes.button}>
-                            <input id="submit" type="submit" value="Submit"/>
+                            <input className={classes.submit} type="submit" value="Submit"/>
                         </div>
                     </form>
                 </div>
