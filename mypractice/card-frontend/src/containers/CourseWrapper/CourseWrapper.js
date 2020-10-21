@@ -71,7 +71,9 @@ class CourseWrapper extends Component {
                 />
                 break;
             case courseViewEnum.DECK:
-                view = <Deck />
+                view = <Deck courseid={this.state.selectedCourse}
+                             skills={this.state.skills}
+                />
         }
         return (
             <main>
