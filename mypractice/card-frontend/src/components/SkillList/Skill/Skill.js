@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class Skill extends Component {
     render() {
         return(
-            <div className="skill task-wrapper">
+            <div className="skill task-wrapper" onClick={(e) => this.props.skillUpdate(e, this.props.id)}>
                 <div className="skill-header d-flex justify-content-between">
                     <span>
                         <strong>Name:</strong>{this.props.name} <br/>

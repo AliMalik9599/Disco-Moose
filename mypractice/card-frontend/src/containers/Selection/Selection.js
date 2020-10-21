@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import SkillList from "../../components/SkillList/SkillList";
+import CourseWrapper from "../CourseWrapper/CourseWrapper";
 
 class Selection extends Component {
     state = {
@@ -12,7 +13,6 @@ class Selection extends Component {
             .then(data => {
                 this.setState({skills: data});
             });
-        console.log("Selection reached");
     }
 
     render() {
@@ -22,8 +22,12 @@ class Selection extends Component {
                 <div  className="d-flex justify-content-center">
                     <SkillList
                         skills={this.state.skills}
+                        skillUpdate={this.props.skillUpdate}
                     />
                 </div>
+                <button onClick={this.props.doneClick}>
+                    Done
+                </button>
             </main>
         )
     }

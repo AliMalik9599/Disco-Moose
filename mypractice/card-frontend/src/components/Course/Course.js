@@ -6,7 +6,7 @@ class Course extends Component {
     }
     render() {
         return (
-            <div className="course task-wrapper" onClick={this.props.clickHandler}>
+            <div className="course task-wrapper" onClick={(e) => this.props.clickHandler(e, this.props.id)}>
                 <div className="course-header d-flex justify-content-between">
                   <span>
                     <strong>Name: </strong>{this.props.name}<br/>

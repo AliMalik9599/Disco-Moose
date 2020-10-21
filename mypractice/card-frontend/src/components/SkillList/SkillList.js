@@ -21,6 +21,7 @@ class SkillList extends Component {
                 num_levels={skill.num_levels}
                 num_cards={skill.num_cards}
                 course={skill.course}
+                skillUpdate={this.props.skillUpdate}
             />
         ));
         return (
