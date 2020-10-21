@@ -25,6 +25,9 @@ class Selection extends Component {
                         skillUpdate={this.props.skillUpdate}
                     />
                 </div>
+                <button onClick={this.props.doneClick}>
+                    Done
+                </button>
             </main>
         )
     }

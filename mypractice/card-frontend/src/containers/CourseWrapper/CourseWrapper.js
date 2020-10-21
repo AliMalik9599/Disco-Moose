@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import CourseList from "../../components/CourseList/CourseList";
 import Selection from "../Selection/Selection";
+import Deck from "../Deck/Deck";
 
 const courseViewEnum = {
     COURSESELECT: 0,
@@ -29,7 +30,6 @@ class CourseWrapper extends Component {
     }
 
     addSkill(e, skill) {
-        console.log(skill);
         this.selectedSkills.push(skill); //does not trigger a re-render
     }
 
@@ -64,8 +64,11 @@ class CourseWrapper extends Component {
             case courseViewEnum.SKILLSELECT:
                 view = <Selection skills={this.state.skills}
                                   skillUpdate={this.addSkill.bind(this)}
+                                  doneClick={this.handleDonePress.bind(this)}
                 />
                 break;
+            case courseViewEnum.DECK:
+                view = <Deck />
         }
         return (
             <main>
