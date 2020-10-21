@@ -4,24 +4,40 @@ import Selection from "../Selection/Selection";
 
 const courseViewEnum = {
     COURSESELECT: 0,
-    SKILLSELECT: 1
+    SKILLSELECT: 1,
+    DECK: 2
 }
 
 class CourseWrapper extends Component {
+    constructor(props) {
+        super(props);
+        this.selectedSkills = [];
+    }
 
     state = {
         courses: [],
-        selectedSkills: [],
+        skills: [],
+        selectedCourse: 0,
         view: courseViewEnum.COURSESELECT
     }
 
-    handleCourseClick(e) {
-        console.log("helloooo");
-        this.setState({view: courseViewEnum.SKILLSELECT});
+    handleCourseClick(e, value) {
+        this.setState({
+            view: courseViewEnum.SKILLSELECT,
+            selectedCourse: value
+        });
     }
 
-    addSkill(skill) {
+    addSkill(e, skill) {
+        console.log(skill);
+        this.selectedSkills.push(skill); //does not trigger a re-render
+    }
 
+    handleDonePress() {
+        this.setState({
+            skills: this.selectedSkills,
+            view: courseViewEnum.DECK
+        });
     }
 
     componentDidMount() {
@@ -46,7 +62,9 @@ class CourseWrapper extends Component {
                         </div>)
                 break;
             case courseViewEnum.SKILLSELECT:
-                view = <Selection />
+                view = <Selection skills={this.state.skills}
+                                  skillUpdate={this.addSkill.bind(this)}
+                />
                 break;
         }
         return (
