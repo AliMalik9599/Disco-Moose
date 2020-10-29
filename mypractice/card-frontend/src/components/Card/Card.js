@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import classes from './Card.css'
 
 class Card extends Component {
+    //add state for completed or not
+
     render() {
         return (
             <div className="card task-wrapper" /* style="width: 18rem;" */>

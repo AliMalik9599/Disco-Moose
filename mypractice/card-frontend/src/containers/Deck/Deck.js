@@ -2,12 +2,16 @@ import React, {Component} from "react";
 import CardList from "../../components/CardList/CardList";
 
 class Deck extends Component {
+    //deck should know what cards are completed
     constructor(props) {
         super(props);
         this.state = {
             cards: []
         };
     }
+
+    //deck needs to have function that tracks if user has clicked card
+    //update backend every time the user "completes" a card
 
     componentDidMount() {
         this.str_url = 'http://127.0.0.1:8000/cards/' + this.props.courseid.toString() + '/' + this.props.skills.toString();

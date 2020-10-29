@@ -2,6 +2,10 @@ import React, {Component} from "react";
 import Card from  '../Card/Card'
 
 class CardList extends Component {
+    //add a constructor that calls super(props)
+    //need a function that acts as an intermediate between Deck and Card
+    //to know if a card has been completed or not
+
     render() {
         const cards = this.props.cards.map(card => (
             <Card
