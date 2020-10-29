@@ -3,6 +3,12 @@ import classes from './Card.css'
 
 class Card extends Component {
     //add state for completed or not
+    constructor(props) {
+        super(props);
+        this.state = {
+            complete: false
+        };
+    }
 
     render() {
         return (
@@ -21,7 +27,10 @@ class Card extends Component {
                     {this.props.content}
                 </div>
                 <div className="card-footer">
-                    <strong>Completed?</strong> {this.props.complete.toString()}
+                    <label className="switch">Complete
+                        <input type="checkbox" onClick={(e) => this.props.pressComplete(e, this.props.id)}/>
+                               {/*onClick={this.props.pressComplete}/>*/}
+                    </label>
                 </div>
             </div>
         );

@@ -13,6 +13,11 @@ class Deck extends Component {
     //deck needs to have function that tracks if user has clicked card
     //update backend every time the user "completes" a card
 
+    handleComplete(e, cardId) {
+        console.log(cardId)
+        // something to send the card info to the backend
+    }
+
     componentDidMount() {
         this.str_url = 'http://127.0.0.1:8000/cards/' + this.props.courseid.toString() + '/' + this.props.skills.toString();
         console.log(this.str_url)
@@ -21,7 +26,6 @@ class Deck extends Component {
             .then(data => {
                 this.setState({cards: data});
             });
-        console.log("HERE IS DECK");
     }
 
     render() {
@@ -30,6 +34,7 @@ class Deck extends Component {
                 <div  className="d-flex justify-content-center">
                     <CardList
                         cards={this.state.cards}
+                        completed={this.handleComplete.bind(this)}
                     />
                 </div>
             </main>
