@@ -15,7 +15,7 @@ class Login extends Component {
         this.str_url = "";
     }
 
-    handleChange = event => {
+   /* handleChange = event => {
         event.preventDefault();
         this.str_url = 'http://127.0.0.1:8000/user/' + this.state.name.toString() + '/' + this.state.username.toString() + '/' + this.state.password.toString() + '/';
         fetch(this.str_url)
@@ -31,7 +31,34 @@ class Login extends Component {
                     alert("Incorrect Username or Password");
                 }
             });
+    }*/
+
+    handleChange = event => {
+        event.preventDefault();
+        this.str_url = 'http://127.0.0.1:8000/user/'; //+ this.state.name.toString() + '/' + this.state.username.toString() + '/' + this.state.password.toString() + '/';
+        fetch(this.str_url, {
+            method: 'POST',
+            body: JSON.stringify({
+                name: this.state.name.toString(),
+                username: this.state.username.toString(),
+                password: this.state.password.toString()
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+        }).then(response => response.json())
+            .then(data => {
+                if (data === "success") {
+                    console.log('Password/username is correct');
+                    alert("Login Successful");
+                    this.props.formClick();
+                } else {
+                    console.log('Password/username is incorrect');
+                    alert("Incorrect Username or Password");
+                }
+            });
     }
+
 
     handleNameChange = event => {
         const value = event.target.value;
