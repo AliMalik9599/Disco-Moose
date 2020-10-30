@@ -1,7 +1,7 @@
 # General Thoughts/Ideas
 - Trello Cards (smaller version of card is shown on home screen but can be clicked for more information)
+  - use the material-ui card component to initially start styling the cards
 - adjust skill selection through a side drawer instead of having to go through a "back" button
-
 
 ## Style Guide
 
@@ -25,3 +25,6 @@ Helpful file: https://material.io/resources/color/#!/?view.left=0&view.right=0
 Material UI is a lightweight, CSS only framework. It is component based and so we only need to store in the app what we will actually use.
 
 ## Navbar/Side Drawer
+Nav Bar: Not going to have one. Instead, all information will be contained in the side drawer that the user can open/close.
+
+Side Drawer: First seen once you get to Deck, and is open by default. In the side drawer you can change your skill selection, view all cards in the deck, see the calendar for the specific course, and at the bottom of the screen, go back to the home page, see account settings, and logout. 
