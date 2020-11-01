@@ -44,34 +44,24 @@ class SkillList(generics.ListCreateAPIView):
 	serializer_class = SkillSerializer
 
 
-def get_user_login(request):
-	print("here")
-	message = "fail"
-	if request.method == 'POST':
-		data = json.loads(request.body)
-		name = data['name']
-		username = data['username']
-		password = data['password']
-
-		user = authenticate(request, name=name, username=username, password=password)
+def get_user_login(request, name, username, password):
+	#print(request.method)
+	message = "start"
+	if request.method == 'GET':
+		user = authenticate(username=username, password=password)
 
 		if user is not None:
-			login(request, username)
+			#login(request, user)
 			message = "success"
 		else:
-			message = "Failed"
+			message = "failed"
 
 
-	response = JsonResponse(message, safe=False)
+	response = JsonResponse({'next': message}, safe=False)
 	return response
 
 
-	'''try:
-		user = model_to_dict(User.objects.get(name=name, username=username, password=password))
-	except Exception as e:
-		user = {}
-	response = JsonResponse(user, safe=False)
-	return response'''
+
 
 
 
