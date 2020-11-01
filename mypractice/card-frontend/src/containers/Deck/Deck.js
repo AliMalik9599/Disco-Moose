@@ -15,11 +15,14 @@ class Deck extends Component {
 
     handleComplete(e, cardId) {
         console.log(cardId)
+        //cardid -> the id of the card checked
+        //need access to current user
         // something to send the card info to the backend
     }
 
     componentDidMount() {
-        this.str_url = 'http://127.0.0.1:8000/cards/' + this.props.courseid.toString() + '/' + this.props.skills.toString();
+        this.str_url = 'http://127.0.0.1:8000/cards/cardprogress/' + this.props.courseid.toString() + '/'
+            + this.props.skills.toString() + '/' + '1';
         console.log(this.str_url)
             fetch(this.str_url)
             .then(response => response.json())
