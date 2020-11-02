@@ -69,6 +69,15 @@ class Card(models.Model):
 		return '%s in deck %s' % (self.title, self.deck.name)
 
 
+# CardProgress helps us keep track of a user's relationship with a certain card. This includes whether the user has
+# marked a card as completed or if a user has favorited this card.
+class CardProgress(models.Model):
+	card = models.ForeignKey(Card, on_delete=models.CASCADE)
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	is_completed = models.BooleanField(blank=False, default=False)
+	is_favorited = models.BooleanField(blank=False, default=False)
+
+
 # Settings represents a certain user's preferences when it comes to notifications and other things.
 class Settings(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
