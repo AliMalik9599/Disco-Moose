@@ -90,7 +90,7 @@ export default function CourseCard(props) {
                 {/*    <ShareIcon />*/}
                 {/*</IconButton>*/}
                 <IconButton>
-                    <CheckBoxIcon onClick={(e) => props.pressComplete(e, props.id)}/>
+                    <CheckBoxIcon onClick={(e) => props.pressComplete(e, props.id)} checked={(props.is_complete === 'True')}/>
                 </IconButton>
                 <IconButton
                     className={clsx(classes.expand, {
