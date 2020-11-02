@@ -11,27 +11,62 @@ class Login extends Component {
             name: '',
             username: '',
             password: '',
+            token: ''
         };
         this.str_url = "";
     }
 
     handleChange = event => {
+        // event.preventDefault();
+        // this.str_url = 'http://127.0.0.1:8000/user/' + this.state.name.toString() + '/' + this.state.username.toString() + '/' + this.state.password.toString() + '/';
+        // fetch(this.str_url).then(response => response.json())
+        //     .then(data => {
+        //         //console.log(response.content);
+        //         if (data.next === "success") {
+        //             console.log('Password/username is correct');
+        //             alert("Login Successful");
+        //             this.props.formClick();
+        //         } else {
+        //             console.log('Password/username is incorrect');
+        //             alert("Incorrect Username or Password");
+        //         }
+        //     });
         event.preventDefault();
-        this.str_url = 'http://127.0.0.1:8000/user/' + this.state.name.toString() + '/' + this.state.username.toString() + '/' + this.state.password.toString() + '/';
-        fetch(this.str_url)
-            .then(response => response.json())
+        this.str_url = 'http://127.0.0.1:8000/rest-auth/login/';
+        fetch(this.str_url, {
+            method: 'POST',
+            body: JSON.stringify({
+                username: this.state.username.toString(),
+                password: this.state.password.toString()
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+        }).then(response => response.json())
             .then(data => {
-                // TODO(Issue #16): Write to screen if login was successful.
-                if (this.state.name === data.name && this.state.username === data.username && this.state.password === data.password) {
-                    console.log('Password/username is correct');
-                    alert("Login Successful");
-                    this.props.formClick();
-                } else {
-                    console.log('Password/username is incorrect');
+
+                if(!data.key) {
                     alert("Incorrect Username or Password");
+                } else {
+                    alert("Correct Username or Password");
+                    this.props.formClick();
                 }
             });
     }
+
+/*{
+    method: 'POST',
+    body: JSON.stringify({
+    name: this.state.name.toString(),
+    username: this.state.username.toString(),
+    password: this.state.password.toString()
+}),
+headers: {
+    'Content-type': 'application/json; charset=UTF-8'
+}
+}*/
+
+
 
     handleNameChange = event => {
         const value = event.target.value;

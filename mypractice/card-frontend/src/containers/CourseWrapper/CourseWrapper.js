@@ -44,7 +44,13 @@ class CourseWrapper extends Component {
     }
 
     componentDidMount() {
-        fetch('http://127.0.0.1:8000/courses/')
+        fetch('http://127.0.0.1:8000/courses/', {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+                'Authorization': 'Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b9836F45E23A345'
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 this.setState({courses: data});

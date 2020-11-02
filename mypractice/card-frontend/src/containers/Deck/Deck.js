@@ -22,7 +22,7 @@ class Deck extends Component {
 
     componentDidMount() {
         this.str_url = 'http://127.0.0.1:8000/cards/cardprogress/' + this.props.courseid.toString() + '/'
-            + this.props.skills.toString() + '/' + '1';
+            + this.props.skills.toString();
         console.log(this.str_url)
             fetch(this.str_url)
             .then(response => response.json())

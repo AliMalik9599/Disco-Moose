@@ -1,11 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Objects representing the users of our web app
-class User(models.Model):
-	name = models.CharField(max_length=20, default='', null=False)
-	username = models.CharField(max_length=50, default='', null=False)
-	password = models.CharField(max_length=50, default='', null=False)
+# class User(models.Model):
+# 	name = models.CharField(max_length=20, default='', null=False)
+# 	username = models.CharField(max_length=50, default='', null=False)
+# 	password = models.CharField(max_length=50, default='', null=False)
 
 
 # Courses represent broad subjects a user wants to master, like "Guitar". Each course has a set of skills and each skill
