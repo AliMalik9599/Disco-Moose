@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Skill from './Skill/Skill'
+import Skill from './Skill/Skill';
 
 class SkillList extends Component {
     state = {
@@ -9,7 +9,6 @@ class SkillList extends Component {
     handleSubmit() {
         //TODO: send necessary information to backend
     }
-
 
     render() {
         const skills = this.props.skills.map(skill => (

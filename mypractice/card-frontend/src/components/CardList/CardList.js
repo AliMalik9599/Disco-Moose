@@ -1,15 +1,14 @@
 import React, {Component} from "react";
-import Card from  '../Card/Card'
+import CourseCard from  '../Card/Card'
 
 class CardList extends Component {
     constructor(props) {
         super(props);
-
     }
 
     render() {
         const cards = this.props.cards.map(card => (
-            <Card
+            <CourseCard
                 key={card.id}
                 id={card.id}
                 title={card.title}
