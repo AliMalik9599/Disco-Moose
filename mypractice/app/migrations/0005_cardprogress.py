@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('app', '0003_add_mock_users'),
+        ('app', '0004_add_mock_users'),
     ]
 
     operations = [

@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
 export default function CourseCard(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
@@ -120,7 +121,6 @@ export default function CourseCard(props) {
     );
 }
 
-
 // class Card extends Component {
 //     //add state for completed or not
 //     constructor(props) {
@@ -148,7 +148,7 @@ export default function CourseCard(props) {
 //                 </div>
 //                 <div className="card-footer">
 //                     <label className="switch">Complete
-//                         <input type="checkbox" onClick={(e) => this.props.pressComplete(e, this.props.id)}/>
+//                         <input type="checkbox" onClick={(e) => this.props.pressComplete(e, this.props.id)} checked={(this.props.is_complete === 'True')}/>
 //                                {/*onClick={this.props.pressComplete}/>*/}
 //                     </label>
 //                 </div>

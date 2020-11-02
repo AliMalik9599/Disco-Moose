@@ -18,7 +18,8 @@ class CardList extends Component {
                 duration={card.duration}
                 view_count={card.view_count}
                 content={card.content}
-                complete={card.complete}
+                is_complete={card.is_complete}
+                is_favorited={card.is_favorited}
                 pressComplete={this.props.completed}
             />
         ));

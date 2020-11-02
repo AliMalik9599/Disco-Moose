@@ -15,6 +15,8 @@ const courseViewEnum = {
 class CourseWrapper extends Component {
     constructor(props) {
         super(props);
+        console.log("TOKEN IN WRAPPER");
+        console.log(this.props.token);
         this.selectedSkills = [];
     }
 
@@ -44,7 +46,13 @@ class CourseWrapper extends Component {
     }
 
     componentDidMount() {
-        fetch('http://127.0.0.1:8000/courses/')
+        fetch('http://127.0.0.1:8000/courses/', {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+                'Authorization': 'Token ' + this.props.token
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 this.setState({courses: data});
@@ -60,6 +68,7 @@ class CourseWrapper extends Component {
                             <div className="d-flex justify-content-center">
                                 <CourseList courses={this.state.courses}
                                             clickHandler={this.handleCourseClick.bind(this)}
+                                            token={this.props.token}
                                 />
                             </div>
                         </div>)
@@ -68,11 +77,14 @@ class CourseWrapper extends Component {
                 view = <Selection skills={this.state.skills}
                                   skillUpdate={this.addSkill.bind(this)}
                                   doneClick={this.handleDonePress.bind(this)}
+                                  course={this.state.selectedCourse}
+                                  token={this.props.token}
                 />
                 break;
             case courseViewEnum.DECK:
                 view = <Deck courseid={this.state.selectedCourse}
                              skills={this.state.skills}
+                             token={this.props.token}
                 />
         }
         return (

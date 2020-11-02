@@ -20,11 +20,16 @@ class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            view: viewEnum.ANIMATION
+            view: viewEnum.ANIMATION,
+            token: ''
         }
     }
 
-    changeLayoutState = () => {
+    changeLayoutState = (token) => {
+        console.log("changeLayoutState")
+        console.log(token)
+        this.setState({token: token})
+        console.log("Set token: " + this.state.token)
         this.setState({view: viewEnum.COURSE})
     }
 
@@ -44,7 +49,7 @@ class Layout extends Component {
                 view = <Login formClick={this.changeLayoutState.bind(this)}/>
                 break;
             case viewEnum.COURSE:
-                view = <CourseWrapper />
+                view = <CourseWrapper token={this.state.token}/>
                 break;
         }
         return (

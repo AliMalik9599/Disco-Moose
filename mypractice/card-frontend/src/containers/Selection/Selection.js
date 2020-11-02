@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import SkillList from "../../components/SkillList/SkillList";
-import CourseWrapper from "../CourseWrapper/CourseWrapper";
 
 class Selection extends Component {
     state = {
@@ -8,7 +7,13 @@ class Selection extends Component {
     };
 
     componentDidMount() {
-        fetch('http://localhost:8000/skills/')
+        fetch(`http://127.0.0.1:8000/skills/${this.props.course}`, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+                'Authorization': 'Token ' + this.props.token
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 this.setState({skills: data});
@@ -22,6 +27,7 @@ class Selection extends Component {
                     <SkillList
                         skills={this.state.skills}
                         skillUpdate={this.props.skillUpdate}
+                        token={this.props.token}
                     />
                 </div>
                 <button onClick={this.props.doneClick}>
