@@ -21,6 +21,8 @@ class Card extends Component {
                     <strong>Level: </strong>{this.props.level}<br/>
                     <strong>Duration: </strong>{this.props.duration}<br/>
                     <strong>View Count: </strong>{this.props.view_count}<br/>
+                    <strong>Is complete: </strong>{this.props.is_complete}<br/>
+                    <strong>Is favorite: </strong>{this.props.is_favorited}<br/>
                   </span>
                 </div>
                 <div className="card-body">
@@ -28,7 +30,7 @@ class Card extends Component {
                 </div>
                 <div className="card-footer">
                     <label className="switch">Complete
-                        <input type="checkbox" onClick={(e) => this.props.pressComplete(e, this.props.id)}/>
+                        <input type="checkbox" onClick={(e) => this.props.pressComplete(e, this.props.id)} checked={(this.props.is_complete === 'True')}/>
                                {/*onClick={this.props.pressComplete}/>*/}
                     </label>
                 </div>

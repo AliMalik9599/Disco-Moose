@@ -1,30 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="MyBooksApp" uuid="797049d6-5130-4ccd-b3a6-751f9fe8d186">
+    <data-source name="db.sqlite3" uuid="5fe3ad9c-638f-4632-b05b-d230dd2f9dd9">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
-      <auth-provider>no-auth</auth-provider>
-      <schema-mapping>
-        <introspection-scope>
-          <node kind="schema" qname="" />
-        </introspection-scope>
-      </schema-mapping>
-    </data-source>
-    <data-source name="MyBooksApp [2]" uuid="e291327b-6002-43ab-b040-7fb9e26133e6">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
-      <auth-provider>no-auth</auth-provider>
       <schema-mapping />
-    </data-source>
-    <data-source name="mypractice_db" uuid="385f71cd-f8dd-4b89-a916-c00ba787bfa7">
-      <database-info product="SQLite" version="3.31.1" jdbc-version="2.1" driver-name="SQLite JDBC" driver-version="3.31.1" dbms="SQLITE" exact-version="3.31.1" exact-driver-version="3.31">
-        <identifier-quote-string>&quot;</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
-      <schema-mapping>
-        <introspection-scope>
-          <node kind="schema" qname="@" />
-        </introspection-scope>
-      </schema-mapping>
     </data-source>
   </component>
 </project>

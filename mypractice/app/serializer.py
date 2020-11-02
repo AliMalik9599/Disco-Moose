@@ -20,10 +20,12 @@ class SkillSerializer(serializers.ModelSerializer):
 class CardSerializer(serializers.ModelSerializer):
 	course = serializers.StringRelatedField(many=False)
 	skill = serializers.StringRelatedField(many=False)
+	is_complete = serializers.StringRelatedField(many=False)
+	is_favorited = serializers.StringRelatedField(many=False)
 
 	class Meta:
 		model = Card
-		fields = ('id', 'title', 'course', 'skill', 'level', 'duration', 'view_count', 'content', 'complete')
+		fields = ('id', 'title', 'course', 'skill', 'level', 'duration', 'view_count', 'content', 'is_complete', 'is_favorited')
 
 
 class UserSerializer(serializers.ModelSerializer):

@@ -31,6 +31,7 @@ class CourseList extends Component {
                 num_skills={course.num_skills}
                 num_cards={course.num_cards}
                 clickHandler={this.props.clickHandler}
+                token={this.props.token}
             />
         ));
         return (

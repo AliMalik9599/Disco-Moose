@@ -12,7 +12,7 @@ def add_mock_user1(apps, schema_editor):
 class Migration(migrations.Migration):
 
 	dependencies = [
-		('app', '0002_add_mock_guitar_course'),  # the name of the migration before this migration
+		('app', '0003_add_mock_guitar_course'),  # the name of the migration before this migration
 	]
 
 	operations = [

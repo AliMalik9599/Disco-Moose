@@ -74,7 +74,7 @@ def add_mock_guitar_course(apps, schema_editor): #declare a function to add this
 class Migration(migrations.Migration):
 
 	dependencies = [
-		('app', '0001_initial'),  # the name of the migration before this migration
+		('app', '0002_remove_card_complete'),  # the name of the migration before this migration
 	]
 
 	operations = [
