@@ -10,7 +10,6 @@ class SkillList extends Component {
         //TODO: send necessary information to backend
     }
 
-
     render() {
         const skills = this.props.skills.map(skill => (
             <Skill
@@ -22,6 +21,7 @@ class SkillList extends Component {
                 num_cards={skill.num_cards}
                 course={skill.course}
                 skillUpdate={this.props.skillUpdate}
+                token={this.props.token}
             />
         ));
         return (
@@ -33,26 +33,3 @@ class SkillList extends Component {
 }
 
 export default SkillList;
-
-    /*render() {
-        const skills = this.props.skills.map(skill => (
-            <form onSubmit={this.handleSubmit}>
-                <label>Select the skills you want to work on:
-                <select value={this.state.title}>
-                    <option value={skill.title}>
-                        <Skill title={skill.title}/>
-                    </option>
-                </select>
-                </label>
-                <input type="submit" value="Submit"/>
-            </form>
-        ));
-        return (
-            <div>
-                {skills}
-            </div>
-        );
-    }
-}
-
-export default SkillList;*/

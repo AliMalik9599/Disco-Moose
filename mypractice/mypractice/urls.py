@@ -20,11 +20,8 @@ from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cards/<int:courseid>/<str:skills>', views.CardList.as_view()),
-    path('cards/cardprogress/<int:courseid>/<str:skills>/', views.get_cards_with_progress),
-    path('user/<str:name>/<str:username>/<str:password>/', views.get_user_login),
-    #path('user/', views.get_user_login),
+    path('cards/cardprogress/<str:courseid>/<str:skills>', views.CardList.as_view()),
     path('courses/', views.CourseList.as_view()),
-    path('skills/', views.get_skills),
+    path('skills/<str:courseid>', views.SkillList.as_view()),
     path('rest-auth/', include('rest_auth.urls')),
 ]

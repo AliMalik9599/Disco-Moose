@@ -3,7 +3,6 @@ import classes from './Login.module.css'
 import './Login.css'
 
 
-
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -17,20 +16,6 @@ class Login extends Component {
     }
 
     handleChange = event => {
-        // event.preventDefault();
-        // this.str_url = 'http://127.0.0.1:8000/user/' + this.state.name.toString() + '/' + this.state.username.toString() + '/' + this.state.password.toString() + '/';
-        // fetch(this.str_url).then(response => response.json())
-        //     .then(data => {
-        //         //console.log(response.content);
-        //         if (data.next === "success") {
-        //             console.log('Password/username is correct');
-        //             alert("Login Successful");
-        //             this.props.formClick();
-        //         } else {
-        //             console.log('Password/username is incorrect');
-        //             alert("Incorrect Username or Password");
-        //         }
-        //     });
         event.preventDefault();
         this.str_url = 'http://127.0.0.1:8000/rest-auth/login/';
         fetch(this.str_url, {
@@ -44,29 +29,15 @@ class Login extends Component {
             }
         }).then(response => response.json())
             .then(data => {
-
                 if(!data.key) {
                     alert("Incorrect Username or Password");
                 } else {
+                    this.setState({token: data.key})
                     alert("Correct Username or Password");
-                    this.props.formClick();
+                    this.props.formClick(this.state.token);
                 }
             });
     }
-
-/*{
-    method: 'POST',
-    body: JSON.stringify({
-    name: this.state.name.toString(),
-    username: this.state.username.toString(),
-    password: this.state.password.toString()
-}),
-headers: {
-    'Content-type': 'application/json; charset=UTF-8'
-}
-}*/
-
-
 
     handleNameChange = event => {
         const value = event.target.value;

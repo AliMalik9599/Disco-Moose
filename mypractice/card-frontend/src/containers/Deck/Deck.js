@@ -23,8 +23,13 @@ class Deck extends Component {
     componentDidMount() {
         this.str_url = 'http://127.0.0.1:8000/cards/cardprogress/' + this.props.courseid.toString() + '/'
             + this.props.skills.toString();
-        console.log(this.str_url)
-            fetch(this.str_url)
+            fetch(this.str_url, {
+                method: 'GET',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                    'Authorization': 'Token ' + this.props.token
+                }
+            })
             .then(response => response.json())
             .then(data => {
                 this.setState({cards: data});
@@ -38,6 +43,7 @@ class Deck extends Component {
                     <CardList
                         cards={this.state.cards}
                         completed={this.handleComplete.bind(this)}
+                        token={this.props.token}
                     />
                 </div>
             </main>
