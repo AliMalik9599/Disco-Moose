@@ -57,4 +57,4 @@ class CardList(generics.ListCreateAPIView):
 			print(card_dict)
 			card_list.append(card_dict)
 
-		return card_list
+		return list(card_list)

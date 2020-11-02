@@ -21,6 +21,9 @@ class Card extends Component {
                     <strong>Level: </strong>{this.props.level}<br/>
                     <strong>Duration: </strong>{this.props.duration}<br/>
                     <strong>View Count: </strong>{this.props.view_count}<br/>
+                    <strong>Is complete: </strong>{this.props.is_complete}<br/>
+                    <strong>Is favorite: </strong>{this.props.is_favorited}<br/>
+                    <strong>pressComplete=</strong>{this.props.completed}<br/>
                   </span>
                 </div>
                 <div className="card-body">
