@@ -5,6 +5,11 @@ from django.forms.models import model_to_dict
 from django.contrib.auth.models import User
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from django.http import Http404
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
 
 
 class CourseList(generics.ListCreateAPIView):
@@ -58,3 +63,42 @@ class CardList(generics.ListCreateAPIView):
 			card_list.append(card_dict)
 
 		return list(card_list)
+
+
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication,])
+@permission_classes([IsAuthenticated])
+def complete_card(request, cardid):
+	card = Card.objects.get(id=cardid)
+	user = request.user
+	card_progress = CardProgress.objects.get(card=card, user=user)
+	current_completion_status = card_progress.is_completed
+	card_progress.is_completed = not current_completion_status
+	card_progress.save()
+	if card_progress.is_completed == current_completion_status:
+		return Response(status=status.HTTP_404_NOT_FOUND)
+	return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# class CardProgressDetail(APIView):
+# 	authentication_classes = (TokenAuthentication,)
+# 	permission_classes = (IsAuthenticated,)
+#
+# 	def get_object(self, pk):
+# 		try:
+# 			return CardProgress.objects.get(pk=pk)
+# 		except CardProgress.DoesNotExist:
+# 			raise Http404
+#
+# 	def get(self, request, pk, format=None):
+# 		card_progress = self.get_object(pk)
+# 		serializer = CardProgressSerializer(card_progress)
+# 		return Response(serializer.data)
+#
+# 	def put(self, request, pk, format=None):
+# 		card_progress = self.get_object(pk)
+# 		serializer =  CardProgressSerializer(card_progress, data=request.data)
+# 		card_progress = CardProgress.objects.get(card=card, user=self.request.user)
+# 		card_progress.is_completed = True
+# 		card_progress.save()
+# 		return Response(status=status.HTTP_204_NO_CONTENT)

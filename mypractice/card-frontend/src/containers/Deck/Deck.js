@@ -18,6 +18,21 @@ class Deck extends Component {
         //cardid -> the id of the card checked
         //need access to current user
         // something to send the card info to the backend
+        fetch(`http://127.0.0.1:8000/cardprogress/${cardId}`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+                'Authorization': 'Token ' + this.props.token
+            }
+        }).then(response => response.status)
+            .then(data => {
+                console.log("I AM HERE")
+                if (data === 404) {
+                    alert("Something went wrong, try again!");
+                } else {
+                    this.componentDidMount()
+                }
+            });
     }
 
     componentDidMount() {
