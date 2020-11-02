@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app', '0005_add_mock_user'),
+        ('app', '0004_auto_20201016_1844'),
     ]
 
     operations = [

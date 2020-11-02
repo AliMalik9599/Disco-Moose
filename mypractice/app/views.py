@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Card, User, Course, Skill
 from .serializer import CardSerializer, CourseSerializer, SkillSerializer
 from rest_framework import generics
@@ -7,6 +7,9 @@ from django.views.generic.detail import DetailView
 from http import HTTPStatus
 from django.http import HttpResponse, JsonResponse
 from django.forms.models import model_to_dict
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+import json
 
 
 # Create your views here.
@@ -42,12 +45,23 @@ class SkillList(generics.ListCreateAPIView):
 
 
 def get_user_login(request, name, username, password):
-	try:
-		user = model_to_dict(User.objects.get(name=name, username=username, password=password))
-	except Exception as e:
-		user = {}
-	response = JsonResponse(user, safe=False)
+	#print(request.method)
+	message = "start"
+	if request.method == 'GET':
+		user = authenticate(username=username, password=password)
+
+		if user is not None:
+			#login(request, user)
+			message = "success"
+		else:
+			message = "failed"
+
+
+	response = JsonResponse({'next': message}, safe=False)
 	return response
+
+
+
 
 
 

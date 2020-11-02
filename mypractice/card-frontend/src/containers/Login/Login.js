@@ -18,11 +18,10 @@ class Login extends Component {
     handleChange = event => {
         event.preventDefault();
         this.str_url = 'http://127.0.0.1:8000/user/' + this.state.name.toString() + '/' + this.state.username.toString() + '/' + this.state.password.toString() + '/';
-        fetch(this.str_url)
-            .then(response => response.json())
+        fetch(this.str_url).then(response => response.json())
             .then(data => {
-                // TODO(Issue #16): Write to screen if login was successful.
-                if (this.state.name === data.name && this.state.username === data.username && this.state.password === data.password) {
+                //console.log(response.content);
+                if (data.next === "success") {
                     console.log('Password/username is correct');
                     alert("Login Successful");
                     this.props.formClick();
@@ -32,6 +31,20 @@ class Login extends Component {
                 }
             });
     }
+
+/*{
+    method: 'POST',
+    body: JSON.stringify({
+    name: this.state.name.toString(),
+    username: this.state.username.toString(),
+    password: this.state.password.toString()
+}),
+headers: {
+    'Content-type': 'application/json; charset=UTF-8'
+}
+}*/
+
+
 
     handleNameChange = event => {
         const value = event.target.value;

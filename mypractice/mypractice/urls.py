@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('cards/<int:courseid>/<str:skills>', views.CardList.as_view()),
     path('user/<str:name>/<str:username>/<str:password>/', views.get_user_login),
+    #path('user/', views.get_user_login),
     path('courses/', views.CourseList.as_view()),
     path('skills/', views.SkillList.as_view()),
 ]
