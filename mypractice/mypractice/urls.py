@@ -24,5 +24,6 @@ urlpatterns = [
     path('courses/', views.CourseList.as_view()),
     path('skills/<str:courseid>', views.SkillList.as_view()),
     path('cardprogress/<str:cardid>', views.complete_card),
+    path('cardprogress/favorite/<str:cardid>', views.favorite_card),
     path('rest-auth/', include('rest_auth.urls')),
 ]
