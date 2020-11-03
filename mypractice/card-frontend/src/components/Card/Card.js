@@ -69,7 +69,7 @@ export default function CourseCard(props) {
             update = true;
         }
         setState({ ...state, [event.target.name]: update });
-        props.pressComplete(props.id);
+        props.pressComplete(event, props.id);
         console.log(update);
         console.log(props.id);
         // props.is_complete === 'True';
@@ -127,7 +127,7 @@ export default function CourseCard(props) {
                 {/*    <FavoriteIcon checked={state.favorited} onClick={handleFavorite} name="favorited" />*/}
                 {/*</IconButton>*/}
                 <FormControlLabel
-                    control={<Checkbox checked={state.completed} onChange={handleCompleteClick} name="completed" />}
+                    control={<Checkbox checked={props.is_complete === 'True'} onChange={handleCompleteClick} name="completed" />}
                     label="Completed"
                 />
                 <IconButton
