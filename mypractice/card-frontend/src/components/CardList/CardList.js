@@ -22,6 +22,7 @@ class CardList extends Component {
                 is_complete={card.is_complete}
                 is_favorited={card.is_favorited}
                 pressComplete={this.props.completed}
+                addToFavorites={this.props.favorited}
             />
         ));
         return (

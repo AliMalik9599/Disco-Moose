@@ -12,7 +12,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
@@ -46,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 export default function CourseCard(props) {
     const [state, setState] = React.useState({
             showMore: false,
-            favorited: false
+            favorited: props.is_favorited !== 'False',
         });
     const classes = useStyles();
 
@@ -65,13 +64,14 @@ export default function CourseCard(props) {
     }
 
     const handleFavorite = (event) => {
-        let update = false;
-        if (!state.favorited) {
-            update = true;
-        }
-        setState({ ...state, [event.target.name]: update });
-        console.log(update);
-        console.log('favorited');
+        // let update = false;
+        console.log(state.favorited);
+        props.addToFavorites(event, props.id);
+        // if (!state.favorited) {
+        //     update = true;
+        // }
+        // setState({ ...state, [event.target.name]: update });
+        // console.log(update);
     };
 
     return (
@@ -108,12 +108,13 @@ export default function CourseCard(props) {
             <CardActions disableSpacing>
                 <IconButton>
                     <FormControlLabel
-                        control={<FavoriteIcon checked={state.favorited} onClick={handleFavorite} name="favorited" color="secondary"/>}
+                        control={<FavoriteIcon
+                                    checked={props.is_favorited === 'True'}
+                                    onClick={handleFavorite}
+                                    name="favorited"
+                                    color={state.favorited ? 'secondary ' : 'disabled' } />}
                     />
                 </IconButton>
-                {/*<IconButton aria-label="add to favorites">*/}
-                {/*    <FavoriteIcon checked={state.favorited} onClick={handleFavorite} name="favorited" />*/}
-                {/*</IconButton>*/}
                 <FormControlLabel
                     control={<Checkbox checked={props.is_complete === 'True'} onChange={handleCompleteClick} name="completed" />}
                     label="Completed"
