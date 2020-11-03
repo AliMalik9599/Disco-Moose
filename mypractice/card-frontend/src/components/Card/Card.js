@@ -46,14 +46,11 @@ const useStyles = makeStyles((theme) => ({
 export default function CourseCard(props) {
     const [state, setState] = React.useState({
             showMore: false,
-            completed: false,
             favorited: false
         });
     const classes = useStyles();
-    // const [expanded, setExpanded, completed, setCompleted] = React.useState(false);
 
     const handleExpandClick = (event) => {
-        // console.log(event.target.name);
         console.log(state.showMore);
         let update = false;
         if (!state.showMore) {
@@ -64,15 +61,7 @@ export default function CourseCard(props) {
     };
     
     const handleCompleteClick = (event) => {
-        let update = false;
-        if (!state.completed) {
-            update = true;
-        }
-        setState({ ...state, [event.target.name]: update });
         props.pressComplete(event, props.id);
-        console.log(update);
-        console.log(props.id);
-        // props.is_complete === 'True';
     }
 
     const handleFavorite = (event) => {
@@ -99,7 +88,6 @@ export default function CourseCard(props) {
                     </IconButton>
                 }
                 title={props.title}
-                // subheader="September 14, 2016"
             />
             {/*<CardMedia*/}
             {/*    className={classes.media}*/}
