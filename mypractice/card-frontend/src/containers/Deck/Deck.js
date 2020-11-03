@@ -35,6 +35,10 @@ class Deck extends Component {
             });
     }
 
+    handleFavorite(e, cardId) {
+        console.log(cardId);
+    }
+
     componentDidMount() {
         this.str_url = 'http://127.0.0.1:8000/cards/cardprogress/' + this.props.courseid.toString() + '/'
             + this.props.skills.toString();
@@ -58,6 +62,7 @@ class Deck extends Component {
                     <CardList
                         cards={this.state.cards}
                         completed={this.handleComplete.bind(this)}
+                        favorited={this.handleFavorite.bind(this)}
                         token={this.props.token}
                     />
                 </div>

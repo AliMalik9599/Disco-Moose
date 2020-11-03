@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Card from  '../Card/Card'
+import CourseCard from  '../Card/Card'
 
 class CardList extends Component {
     constructor(props) {
@@ -9,7 +9,7 @@ class CardList extends Component {
 
     render() {
         const cards = this.props.cards.map(card => (
-            <Card
+            <CourseCard
                 key={card.id}
                 id={card.id}
                 title={card.title}
@@ -22,6 +22,7 @@ class CardList extends Component {
                 is_complete={card.is_complete}
                 is_favorited={card.is_favorited}
                 pressComplete={this.props.completed}
+                addToFavorites={this.props.favorited}
             />
         ));
         return (
