@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Skill from './Skill/Skill';
+import Skill from './Skill/Skill'
 
 class SkillList extends Component {
     state = {
