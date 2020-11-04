@@ -34,9 +34,16 @@ class CourseWrapper extends Component {
         });
     }
 
-    addSkill(e, skill) {
-        this.selectedSkills.push(skill); //does not trigger a re-render
+    skillSelection(e, skill) {
+        console.log(this.selectedSkills.indexOf(skill))
+        if (this.selectedSkills.indexOf(skill)!==-1) {
+            this.selectedSkills.splice(this.selectedSkills.indexOf(skill), 1);
+        } else {
+            this.selectedSkills.push(skill); //does not trigger a re-render
+        }
+        console.log("Array = " + this.selectedSkills);
     }
+
 
     handleDonePress() {
         this.setState({
@@ -75,7 +82,7 @@ class CourseWrapper extends Component {
                 break;
             case courseViewEnum.SKILLSELECT:
                 view = <Selection skills={this.state.skills}
-                                  skillUpdate={this.addSkill.bind(this)}
+                                  skillUpdate={this.skillSelection.bind(this)}
                                   doneClick={this.handleDonePress.bind(this)}
                                   course={this.state.selectedCourse}
                                   token={this.props.token}
