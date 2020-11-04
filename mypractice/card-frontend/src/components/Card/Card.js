@@ -65,8 +65,9 @@ export default function CourseCard(props) {
 
     const handleFavorite = (event) => {
         // let update = false;
-        console.log(state.favorited);
+        //console.log(state.favorited);
         props.addToFavorites(event, props.id);
+        state.favorited = !state.favorited;
         // if (!state.favorited) {
         //     update = true;
         // }
@@ -112,7 +113,7 @@ export default function CourseCard(props) {
                                     checked={props.is_favorited === 'True'}
                                     onClick={handleFavorite}
                                     name="favorited"
-                                    color={state.favorited ? 'secondary ' : 'disabled' } />}
+                                    color={state.favorited ? 'secondary' : 'disabled' } />}
                     />
                 </IconButton>
                 <FormControlLabel

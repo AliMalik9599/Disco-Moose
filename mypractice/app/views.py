@@ -80,6 +80,22 @@ def complete_card(request, cardid):
 	return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication,])
+@permission_classes([IsAuthenticated])
+def favorite_card(request, cardid):
+	#print("IN FAVORITE FUNCTION")
+	card = Card.objects.get(id=cardid)
+	user = request.user
+	card_progress = CardProgress.objects.get(card=card, user=user)
+	current_favorite_status = card_progress.is_favorited
+	card_progress.is_favorited = not current_favorite_status
+	card_progress.save()
+	if card_progress.is_favorited == current_favorite_status:
+		return Response(status=status.HTTP_404_NOT_FOUND)
+	return Response(status=status.HTTP_204_NO_CONTENT)
+
+
 # class CardProgressDetail(APIView):
 # 	authentication_classes = (TokenAuthentication,)
 # 	permission_classes = (IsAuthenticated,)

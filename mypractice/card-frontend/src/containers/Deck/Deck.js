@@ -36,7 +36,23 @@ class Deck extends Component {
     }
 
     handleFavorite(e, cardId) {
-        console.log(cardId);
+        //console.log(cardId);
+        //console.log("IN HANDLER");
+        fetch(`http://127.0.0.1:8000/cardprogress/favorite/${cardId}`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+                'Authorization': 'Token ' + this.props.token
+            }
+        }).then(response => response.status)
+            .then(data => {
+                //console.log("I AM HERE 1")
+                if (data === 404) {
+                    alert("Something went wrong, try again!");
+                } else {
+                    this.componentDidMount()
+                }
+            });
     }
 
     componentDidMount() {
