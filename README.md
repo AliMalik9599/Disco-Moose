@@ -46,7 +46,7 @@ You should then see our web app in action!
 
 ## Iteration 3 Summary
 
-In order to use @material-ui/core you need to run the following commands:
+In order to use material-ui you need to run the following commands:
 
 yarn add @material-ui/core
 yarn add @material-ui/icons
