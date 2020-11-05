@@ -49,7 +49,9 @@ You should then see our web app in action!
 In order to use material-ui you need to run the following commands:
 
 yarn add @material-ui/core
+
 yarn add @material-ui/icons
+
 pip install django-rest-with
 
 1) Added styling to the Login Page (Reformatted using material-ui)
