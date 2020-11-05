@@ -1,9 +1,51 @@
 import React, {Component} from "react";
-import classes from './Login.module.css'
-import './Login.css'
+//import classes from './Login.module.css'
+import classes from './Login2.module.css'
+//import './Login.css'
+//import { makeStyles } from '@material-ui/core/styles';
+import {Box,withStyles, Button,TextField,Grid,Paper,AppBar,Typography,Toolbar,Link,Input,Container} from "@material-ui/core";
+import { useForm } from 'react-hook-form';
 
+const styles = theme => ({
+    Main:  {
+
+    },
+    container: {
+        //background: '#B4BED0'
+    },
+    Form: {
+        color: '#98C1D9',
+        //margin
+    },
+
+    name: {
+        color: 'red',
+    },
+
+    username: {
+
+    },
+
+    password: {
+
+    },
+
+    button: {
+
+    },
+
+    submit: {
+        color: '#293241',
+        backgroundColor: '#EE6C4D',
+        borderRadius: '5px',
+        positionX: '100px',
+    },
+
+
+});
 
 class Login extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -14,6 +56,7 @@ class Login extends Component {
         };
         this.str_url = "";
     }
+    //classes = useStyles();
 
     handleChange = event => {
         event.preventDefault();
@@ -55,27 +98,131 @@ class Login extends Component {
     }
 
     render() {
+        const { classes } = this.props;
+        return (
+
+            <Box className={classes.Main}>
+                <div className={classes.Login}>
+                    <Typography align="center">My Practice</Typography>
+                    <Grid container spacing={0}
+                          direction="column"
+                          alignItems="center"
+                          justify="center"
+                         >
+                        <Grid item xs={3}>
+                            <form className={classes.Form} onSubmit={this.handleChange}>
+                                <Typography>Login</Typography>
+                                <Input className={classes.name} placeholder="name" type="text" name="name" value={this.state.value} onChange={this.handleNameChange}/>
+
+                                <Input className={classes.username} placeholder="username or email" type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
+
+                                <Input className={classes.username} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
+
+                                <div className={classes.button}>
+                                    <Input className={classes.submit} type="submit" value="Submit" disableUnderLine={true}/>
+                                </div>
+                            </form>
+                        </Grid>
+                    </Grid>
+                </div>
+            </Box>
+        );
+
+
+
+    }
+}
+
+export default withStyles(styles)(Login);
+
+/*
+export default function Login(props) {
+
+    const [state, setState] = React.useState({
+        name: '',
+        username: '',
+        password: '',
+        token: ''
+    });
+
+    const [url, setUrl] = React.useState({
+        str_url: "",
+    });
+
+    const classes = useStyles();
+    /*
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            username: '',
+            password: '',
+            token: ''
+        };
+        this.str_url = "";
+    }
+
+    //classes = useStyles();
+
+    const handleChange = event => {
+        event.preventDefault();
+        url.str_url = 'http://127.0.0.1:8000/rest-auth/login/';
+        fetch(url.str_url, {
+            method: 'POST',
+            body: JSON.stringify({
+                username: state.username.toString(),
+                password: state.password.toString()
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+        }).then(response => response.json())
+            .then(data => {
+                if(!data.key) {
+                    alert("Incorrect Username or Password");
+                } else {
+                    setState({token: data.key})
+                    alert("Correct Username or Password");
+                    props.formClick(state.token);
+                }
+            });
+    }
+
+    const handleNameChange = event => {
+        const value = event.target.value;
+        setState({name: value});
+    }
+
+    const handleEmailChange = event => {
+        const value = event.target.value;
+        setState({username: value});
+    }
+
+    const handlePasswordChange = event => {
+        const value = event.target.value;
+        setState({password: value});
+    }
+
         return (
             <main>
                 <div className={classes.Login}>
                     <h1>My Practice</h1>
 
-                    <form onSubmit={this.handleChange}>
+                    <form onSubmit={handleChange}>
                         <h2>Login</h2>
-                        <input className={classes.name} placeholder="name" type="text" name="name" value={this.state.value} onChange={this.handleNameChange}/>
+                        <Input className={classes.name} placeholder="name" type="text" name="name" value={state.name} onChange={handleNameChange}/>
 
-                        <input className={classes.username} placeholder="username or email" type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
+                        <Input className={classes.username} placeholder="username or email" type="text" name="username" value={state.username}onChange={handleEmailChange}/>
 
-                        <input className={classes.username} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
+                        <Input className={classes.password} placeholder="password" id="password" type="text" name="password" value={state.password} onChange={handlePasswordChange}/>
 
                         <div className={classes.button}>
-                            <input className={classes.submit} type="submit" value="Submit"/>
+                            <button className={classes.submit} type="submit" value="Submit"/>
                         </div>
                     </form>
                 </div>
             </main>
         );
-    }
-}
 
-export default Login;
+}
+*/
