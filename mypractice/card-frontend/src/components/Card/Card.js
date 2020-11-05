@@ -18,10 +18,12 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import {Icon} from "@material-ui/core";
+import Theme from '../../theme';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
+        backgroundColor: '#D2E4EE',
     },
     media: {
         height: 0,
@@ -38,8 +40,11 @@ const useStyles = makeStyles((theme) => ({
         transform: 'rotate(180deg)',
     },
     avatar: {
-        backgroundColor: red[500],
+        backgroundColor: Theme.palette.primary.main,
     },
+    favorite: {
+        textAlign: 'center',
+    }
 }));
 
 export default function CourseCard(props) {
@@ -64,15 +69,8 @@ export default function CourseCard(props) {
     }
 
     const handleFavorite = (event) => {
-        // let update = false;
-        //console.log(state.favorited);
         props.addToFavorites(event, props.id);
         state.favorited = !state.favorited;
-        // if (!state.favorited) {
-        //     update = true;
-        // }
-        // setState({ ...state, [event.target.name]: update });
-        // console.log(update);
     };
 
     return (
@@ -102,14 +100,15 @@ export default function CourseCard(props) {
             </CardContent>
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    Course: {props.course}
+                    Course: {props.course} <br/>
                     Level: {props.level}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton>
+                <IconButton className={classes.favorite}>
                     <FormControlLabel
                         control={<FavoriteIcon
+                                    // className={classes.favorite}
                                     checked={props.is_favorited === 'True'}
                                     onClick={handleFavorite}
                                     name="favorited"
@@ -149,43 +148,3 @@ export default function CourseCard(props) {
         </Card>
     );
 }
-
-// class Card extends Component {
-//     //add state for completed or not
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             complete: false
-//         };
-//     }
-//
-//     render() {
-//         return (
-//             <div className="card task-wrapper" /* style="width: 18rem;" */>
-//                 <div className="card-header d-flex justify-content-between">
-//                   <span>
-//                     <strong>Title: </strong>{this.props.title}<br/>
-//                     <strong>Course: </strong>{this.props.course}<br/>
-//                     <strong>Skill: </strong>{this.props.skill}<br/>
-//                     <strong>Level: </strong>{this.props.level}<br/>
-//                     <strong>Duration: </strong>{this.props.duration}<br/>
-//                     <strong>View Count: </strong>{this.props.view_count}<br/>
-//                     <strong>Is complete: </strong>{this.props.is_complete}<br/>
-//                     <strong>Is favorite: </strong>{this.props.is_favorited}<br/>
-//                   </span>
-//                 </div>
-//                 <div className="card-body">
-//                     {this.props.content}
-//                 </div>
-//                 <div className="card-footer">
-//                     <label className="switch">Complete
-//                         <input type="checkbox" onClick={(e) => this.props.pressComplete(e, this.props.id)} checked={(this.props.is_complete === 'True')}/>
-//                                {/*onClick={this.props.pressComplete}/>*/}
-//                     </label>
-//                 </div>
-//             </div>
-//         );
-//     }
-// }
-//
-// export default Card;
