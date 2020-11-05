@@ -56,7 +56,7 @@ pip install django-rest-with
 2) Converted the Card, Card List Course, CourseList and Deck Components into material ui components
 3) Added global material-ui themes
 3) Added login authentication 
-4) Did the backend for the complete button cards
+4) Completed the backend for the complete button cards
 5) Added a favorite button for cards
 6) Started functionality for an opening and closing sidebar
 
