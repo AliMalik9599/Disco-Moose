@@ -7,38 +7,53 @@ import {Box,withStyles, Button,TextField,Grid,Paper,AppBar,Typography,Toolbar,Li
 import { useForm } from 'react-hook-form';
 
 const styles = theme => ({
-    Main:  {
 
-    },
-    container: {
-        //background: '#B4BED0'
-    },
-    Form: {
-        color: '#98C1D9',
-        //margin
-    },
 
-    name: {
-        color: 'red',
-    },
-
-    username: {
-
-    },
-
-    password: {
-
+    main: {
+        fontFamily: 'Montserrat',
     },
 
     button: {
-
-    },
-
-    submit: {
         color: '#293241',
         backgroundColor: '#EE6C4D',
         borderRadius: '5px',
-        positionX: '100px',
+        margin: '10px',
+        maxWidth: '70px',
+        position: 'relative',
+        left: '35%',
+        //bottom: '10%',
+        //padding: '5px',
+    },
+
+    input: {
+        //textAlign: 'center',
+        margin: '10px',
+        color: 'red',
+        fontSize: '20px',
+        padding: '5px',
+        width: '90%',
+    },
+
+    formName: {
+        textAlign: 'center',
+        fontFamily: 'Montserrat',
+        fontSize: '35pt',
+    },
+
+    form: {
+        sizeX: '500px',
+    },
+    title: {
+        fontFamily: 'Montserrat',
+        fontSize: '50pt',
+    },
+
+    container: {
+        backgroundColor: '#98C1D9',
+        //topmargin: '20%',
+        marginTop: '20%',
+        borderRadius: '5px',
+
     },
 
 
@@ -101,27 +116,31 @@ class Login extends Component {
         const { classes } = this.props;
         return (
 
-            <Box className={classes.Main}>
+            <Box className={classes.main}>
                 <div className={classes.Login}>
-                    <Typography align="center">My Practice</Typography>
+                    <Typography className={classes.title} align="center">My Practice</Typography>
                     <Grid container spacing={0}
                           direction="column"
                           alignItems="center"
                           justify="center"
                          >
                         <Grid item xs={3}>
-                            <form className={classes.Form} onSubmit={this.handleChange}>
-                                <Typography>Login</Typography>
-                                <Input className={classes.name} placeholder="name" type="text" name="name" value={this.state.value} onChange={this.handleNameChange}/>
+                            <Container className={classes.container}>
+                            <form className={classes.form} onSubmit={this.handleChange}>
+                                <div className={classes.banner}>
+                                <Typography className={classes.formName}>Login</Typography>
+                                </div>
+                                <Input className={classes.input} placeholder="name" type="text" name="name" value={this.state.value} onChange={this.handleNameChange}/>
 
-                                <Input className={classes.username} placeholder="username or email" type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
+                                <Input className={classes.input} placeholder="username or email" type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
 
-                                <Input className={classes.username} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
+                                <Input className={classes.input} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
 
                                 <div className={classes.button}>
-                                    <Input className={classes.submit} type="submit" value="Submit" disableUnderLine={true}/>
+                                    <Button type="submit" value="Submit" disableUnderLine={true}>Submit</Button>
                                 </div>
                             </form>
+                            </Container>
                         </Grid>
                     </Grid>
                 </div>
