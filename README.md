@@ -46,11 +46,18 @@ You should then see our web app in action!
 
 ## Iteration 3 Summary
 
+In order to use @material-ui/core you need to run the following commands:
+
+yarn add @material-ui/core
+yarn add @material-ui/icons
+pip install django-rest-with
+
 1) Added styling to the Login Page (Reformatted using material-ui)
 2) Converted the Card, Card List Course, CourseList and Deck Components into material ui components
 3) Added global material-ui themes
 3) Added login authentication 
 4) Did the backend for the complete button cards
 5) Added a favorite button for cards
+6) Started functionality for an opening and closing sidebar
 
 
