@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import CourseList from "../../components/CourseList/CourseList";
-
 import classes from './CourseWrapper.css'
 import Selection from "../Selection/Selection";
 import Deck from "../Deck/Deck";
