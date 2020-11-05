@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import Course from  '../Course/Course'
-import Deck from '../../containers/Deck/Deck'
+import Course from  '../Course/Course';
+import Deck from '../../containers/Deck/Deck';
+import {Box} from '@material-ui/core'
 
 class CourseList extends Component {
     constructor(props) {
@@ -35,9 +36,9 @@ class CourseList extends Component {
             />
         ));
         return (
-            <div>
+            <Box>
                 {courses}
-            </div>
+            </Box>
         );
     }
 }

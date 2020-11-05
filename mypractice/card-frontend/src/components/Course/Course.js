@@ -1,26 +1,46 @@
 import React, {Component} from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Theme from '../../theme'
 
-class Course extends Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (
-            <div className="course task-wrapper" onClick={(e) => this.props.clickHandler(e, this.props.id)}>
-                <div className="course-header d-flex justify-content-between">
-                  <span>
-                    <strong>Name: </strong>{this.props.name}<br/>
-                    <strong>Description: </strong>{this.props.description}<br/>
-                    <strong>Number of Skills: </strong>{this.props.num_skills}<br/>
-                    <strong>Number of Cards: </strong>{this.props.num_cards}<br/>
-                  </span>
-                </div>
-                <div className="course-body">
-                    {this.props.description}
-                </div>
-            </div>
-        );
-    }
+const useStyles = makeStyles({
+    root: {
+        minWidth: 275,
+    },
+    title: {
+        fontSize: 14,
+    },
+    pos: {
+        marginBottom: 12,
+    },
+});
+
+export default function Course(props) {
+    const classes = useStyles();
+
+    return (
+        <Card className={classes.root} variant="outlined">
+            <CardContent>
+                <Typography className={classes.title} color="textSecondary" gutterBottom>
+                    {props.name}
+                </Typography>
+                <Typography variant="body2" component="p">
+                    {props.description}
+                </Typography>
+                <Typography className={classes.pos} color="textSecondary">
+                    Number of skills in course: {props.num_skills}
+                </Typography>
+                <Typography className={classes.pos} color="textSecondary">
+                    Number of cards in course: {props.num_cards}
+                </Typography>
+            </CardContent>
+            <CardActions>
+                <Button className={classes.button} variant="contained" color="secondary" size="small" onClick={(e) => props.clickHandler(e, props.id)}>Let's Learn</Button>
+            </CardActions>
+        </Card>
+    );
 }
-
-export default Course;
