@@ -22,8 +22,9 @@ class Selection extends Component {
 
     render() {
         return (
-            <main>
-                <div className="d-flex justify-content-center">
+            <main className="d-flex flex-column align-items-center">
+                <div className="d-flex flex-column align-items-center">
+                    <h1>Select which skills you would like to practice.</h1>
                     <SkillList
                         skills={this.state.skills}
                         skillUpdate={this.props.skillUpdate}
