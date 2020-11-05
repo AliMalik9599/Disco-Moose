@@ -13,14 +13,20 @@ const styles = theme => ({
         fontFamily: 'Montserrat',
     },
 
-    button: {
+    buttonDiv: {
         color: '#293241',
         backgroundColor: '#EE6C4D',
         borderRadius: '5px',
         margin: '10px',
-        maxWidth: '70px',
+        //maxWidth: '70px',
         position: 'relative',
-        left: '35%',
+        //left: '35%',
+        textAlign: 'center',
+        //fontSize: '20pt',
+
+        marginTop: '10%',
+        width: '290px',
+        height: '50px',
         //bottom: '10%',
         //padding: '5px',
     },
@@ -28,7 +34,7 @@ const styles = theme => ({
     input: {
         //textAlign: 'center',
         margin: '10px',
-        color: 'red',
+        color: '#0e1428',
         fontSize: '20px',
         padding: '5px',
         width: '90%',
@@ -38,6 +44,7 @@ const styles = theme => ({
         textAlign: 'center',
         fontFamily: 'Montserrat',
         fontSize: '35pt',
+        color: '#0e1428',
     },
 
     form: {
@@ -46,6 +53,7 @@ const styles = theme => ({
     title: {
         fontFamily: 'Montserrat',
         fontSize: '50pt',
+        color: '#0e1428',
     },
 
     container: {
@@ -53,9 +61,15 @@ const styles = theme => ({
         //topmargin: '20%',
         marginTop: '20%',
         borderRadius: '5px',
+        height: '400px',
 
     },
 
+    button: {
+        fontSize: '17pt',
+        fontFamily: 'Montserrat',
+
+    },
 
 });
 
@@ -136,8 +150,8 @@ class Login extends Component {
 
                                 <Input className={classes.input} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
 
-                                <div className={classes.button}>
-                                    <Button type="submit" value="Submit" disableUnderLine={true}>Submit</Button>
+                                <div className={classes.buttonDiv}>
+                                    <Button className={classes.button} type="submit" value="Submit" disableUnderLine={true}>Submit</Button>
                                 </div>
                             </form>
                             </Container>
