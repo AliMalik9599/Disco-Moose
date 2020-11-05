@@ -44,7 +44,7 @@ You should then see our web app in action!
 5) Added backend routes for /courses and /skills to send data to frontend
 6) Added styling to CSS files for various componnents
 
-##Iteration 3 Summary
+## Iteration 3 Summary
 
 1) Added styling to the Login Page (Reformatted using material-ui)
 2) Converted the Card, Card List Course, CourseList and Deck Components into material ui components
