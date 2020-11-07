@@ -8,14 +8,13 @@ import { useForm } from 'react-hook-form';
 
 const styles = theme => ({
 
-
     main: {
         fontFamily: 'Montserrat',
     },
 
     buttonDiv: {
         color: '#293241',
-        backgroundColor: '#EE6C4D',
+
         borderRadius: '5px',
         margin: '10px',
         //maxWidth: '70px',
@@ -25,8 +24,8 @@ const styles = theme => ({
         //fontSize: '20pt',
 
         marginTop: '10%',
-        width: '290px',
-        height: '50px',
+        //width: '290px',
+        //height: '50px',
         //bottom: '10%',
         //padding: '5px',
     },
@@ -48,7 +47,7 @@ const styles = theme => ({
     },
 
     form: {
-        sizeX: '500px',
+        //sizeX: '500px',
     },
     title: {
         fontFamily: 'Montserrat',
@@ -59,15 +58,19 @@ const styles = theme => ({
     container: {
         backgroundColor: '#98C1D9',
         //topmargin: '20%',
-        marginTop: '20%',
+        marginTop: '10%',
         borderRadius: '5px',
-        height: '400px',
+        //height: '200%',
+       //width: '140%',
+        //align: 'center',
+        //position: 'absolute',
 
     },
 
     button: {
         fontSize: '17pt',
         fontFamily: 'Montserrat',
+        backgroundColor: '#EE6C4D',
 
     },
 
