@@ -17,12 +17,14 @@ class CourseWrapper extends Component {
         console.log("TOKEN IN WRAPPER");
         console.log(this.props.token);
         this.selectedSkills = [];
+        this.selectedTime = 0;
     }
 
     state = {
         courses: [],
         skills: [],
         selectedCourse: 0,
+        time: 0,
         view: courseViewEnum.COURSESELECT
     }
 
@@ -47,8 +49,13 @@ class CourseWrapper extends Component {
     handleDonePress() {
         this.setState({
             skills: this.selectedSkills,
-            view: courseViewEnum.DECK
+            view: courseViewEnum.DECK,
+            time: this.selectedTime
         });
+    }
+
+    timeSelection(e, time) {
+        this.selectedTime = time;
     }
 
     componentDidMount() {
@@ -85,6 +92,7 @@ class CourseWrapper extends Component {
                                   doneClick={this.handleDonePress.bind(this)}
                                   course={this.state.selectedCourse}
                                   token={this.props.token}
+                                  time={this.timeSelection.bind(this)}
                 />
                 break;
             case courseViewEnum.DECK:
