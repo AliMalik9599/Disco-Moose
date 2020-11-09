@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import classes from './Login2.module.css'
 //import './Login.css'
 //import { makeStyles } from '@material-ui/core/styles';
-import {Box,withStyles, Button,TextField,Grid,Paper,AppBar,Typography,Toolbar,Link,Input,Container} from "@material-ui/core";
+import {Avatar, Box,withStyles, Button,TextField,Grid,Paper,AppBar,Typography,Toolbar,Link,Input,Container} from "@material-ui/core";
 import { useForm } from 'react-hook-form';
 
 const styles = theme => ({
@@ -12,22 +12,15 @@ const styles = theme => ({
         fontFamily: 'Montserrat',
     },
 
-    buttonDiv: {
-        color: '#293241',
-
-        borderRadius: '5px',
-        margin: '10px',
-        //maxWidth: '70px',
-        position: 'relative',
-        //left: '35%',
+    center: {
+        //color: '#293241',
+        //borderRadius: '5px',
+        //margin: '10px',
+        //position: 'relative',
+        //textAlign: 'center',
+        //marginTop: '10%',
         textAlign: 'center',
-        //fontSize: '20pt',
 
-        marginTop: '10%',
-        //width: '290px',
-        //height: '50px',
-        //bottom: '10%',
-        //padding: '5px',
     },
 
     input: {
@@ -46,33 +39,44 @@ const styles = theme => ({
         color: '#0e1428',
     },
 
-    form: {
-        //sizeX: '500px',
+    logo: {
+        justify: 'center',
+        width: '15%',
+        height: '15%',
     },
     title: {
         fontFamily: 'Montserrat',
-        fontSize: '50pt',
+        fontSize: '40pt',
         color: '#0e1428',
+        //marginTop: '15%'
     },
 
     container: {
-        backgroundColor: '#98C1D9',
-        //topmargin: '20%',
+        borderColor: '#98C1D9',
+        borderWidth: '3px',
+        borderStyle: 'solid',
+        minWidth: '100%',
         marginTop: '10%',
         borderRadius: '5px',
-        //height: '200%',
-       //width: '140%',
-        //align: 'center',
-        //position: 'absolute',
-
+        //height: '',
     },
 
     button: {
         fontSize: '17pt',
         fontFamily: 'Montserrat',
         backgroundColor: '#EE6C4D',
+        //justifySelf: 'center',
+        margin: '5%',
+        //display: 'flex',
+        //justifyContent: 'center',
+        textAlign: 'center',
+        //borderStyle: 'solid',
+        //borderRadius: '5px',
+        //borderColor: 'blue',
 
     },
+
+
 
 });
 
@@ -135,7 +139,10 @@ class Login extends Component {
 
             <Box className={classes.main}>
                 <div className={classes.Login}>
-                    <Typography className={classes.title} align="center">My Practice</Typography>
+                    <div className={classes.center}>
+                    <img className={classes.logo} src={require("./bulb-logo.png")} alt="disco logo"/>
+                    </div>
+                    <Typography className={classes.title} align="center">Sign in to Disco</Typography>
                     <Grid container spacing={0}
                           direction="column"
                           alignItems="center"
@@ -144,17 +151,15 @@ class Login extends Component {
                         <Grid item xs={3}>
                             <Container className={classes.container}>
                             <form className={classes.form} onSubmit={this.handleChange}>
-                                <div className={classes.banner}>
-                                <Typography className={classes.formName}>Login</Typography>
-                                </div>
+
                                 <Input className={classes.input} placeholder="name" type="text" name="name" value={this.state.value} onChange={this.handleNameChange}/>
 
                                 <Input className={classes.input} placeholder="username or email" type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
 
                                 <Input className={classes.input} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
 
-                                <div className={classes.buttonDiv}>
-                                    <Button className={classes.button} type="submit" value="Submit" disableUnderLine={true}>Submit</Button>
+                                <div className={classes.center}>
+                                    <Button className={classes.button} type="submit" value="Submit">Sign in</Button>
                                 </div>
                             </form>
                             </Container>
@@ -163,8 +168,6 @@ class Login extends Component {
                 </div>
             </Box>
         );
-
-
 
     }
 }
