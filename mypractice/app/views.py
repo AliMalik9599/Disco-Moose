@@ -59,10 +59,16 @@ class CardList(generics.ListCreateAPIView):
 			card_dict = model_to_dict(card)
 			card_dict["is_complete"] = card_progress.is_completed
 			card_dict["is_favorited"] = card_progress.is_favorited
-			print(card_dict)
 			card_list.append(card_dict)
 
-		return list(card_list)
+		#sort: card_list.sort(key=lambda x: x.date_completed)
+
+		time = int(self.kwargs.get('time'))
+		num_cards = int(time / 5)
+		final_list = card_list[:num_cards]
+
+		print(final_list)
+		return list(final_list)
 
 
 @api_view(['POST'])

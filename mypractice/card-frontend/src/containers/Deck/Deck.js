@@ -56,8 +56,8 @@ class Deck extends Component {
     }
 
     componentDidMount() {
-        this.str_url = 'http://127.0.0.1:8000/cards/cardprogress/' + this.props.courseid.toString() + '/'
-            + this.props.skills.toString();
+        console.log("TIME = " + this.props.time.toString());
+        this.str_url = 'http://127.0.0.1:8000/cards/cardprogress/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
             fetch(this.str_url, {
                 method: 'GET',
                 headers: {

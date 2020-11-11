@@ -20,7 +20,7 @@ from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cards/cardprogress/<str:courseid>/<str:skills>', views.CardList.as_view()),
+    path('cards/cardprogress/<str:courseid>/<str:skills>/<str:time>', views.CardList.as_view()),
     path('courses/', views.CourseList.as_view()),
     path('skills/<str:courseid>', views.SkillList.as_view()),
     path('cardprogress/<str:cardid>', views.complete_card),
