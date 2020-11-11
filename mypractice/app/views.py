@@ -1,3 +1,5 @@
+import datetime
+
 from .models import Card, Course, Skill, CardProgress
 from .serializer import CardSerializer, CourseSerializer, SkillSerializer
 from rest_framework import generics
@@ -59,7 +61,9 @@ class CardList(generics.ListCreateAPIView):
 			card_dict = model_to_dict(card)
 			card_dict["is_complete"] = card_progress.is_completed
 			card_dict["is_favorited"] = card_progress.is_favorited
+			card_dict["last_completed"] = card_progress.last_completed
 			card_list.append(card_dict)
+			print(card_dict)
 
 		#sort: card_list.sort(key=lambda x: x.date_completed)
 
@@ -79,8 +83,15 @@ def complete_card(request, cardid):
 	user = request.user
 	card_progress = CardProgress.objects.get(card=card, user=user)
 	current_completion_status = card_progress.is_completed
+	current_date = card_progress.last_completed
+
 	card_progress.is_completed = not current_completion_status
 	card_progress.save()
+
+	if card_progress.is_completed:
+		card_progress.last_completed = datetime.date.today()
+		card_progress.save()
+
 	if card_progress.is_completed == current_completion_status:
 		return Response(status=status.HTTP_404_NOT_FOUND)
 	return Response(status=status.HTTP_204_NO_CONTENT)
@@ -90,7 +101,6 @@ def complete_card(request, cardid):
 @authentication_classes([TokenAuthentication,])
 @permission_classes([IsAuthenticated])
 def favorite_card(request, cardid):
-	#print("IN FAVORITE FUNCTION")
 	card = Card.objects.get(id=cardid)
 	user = request.user
 	card_progress = CardProgress.objects.get(card=card, user=user)
