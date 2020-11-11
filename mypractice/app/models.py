@@ -75,6 +75,7 @@ class CardProgress(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	is_completed = models.BooleanField(blank=False, default=False)
 	is_favorited = models.BooleanField(blank=False, default=False)
+	last_completed = models.DateField(blank=True, null=True)
 
 
 # Settings represents a certain user's preferences when it comes to notifications and other things.
