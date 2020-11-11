@@ -6,6 +6,7 @@ import Login from "../../containers/Login/Login";
 import Animation from "../../containers/Login/Animation"
 import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
 import Selection from "../../containers/Selection/Selection";
+import SideBar from "../../containers/SideBar/SideBar";
 
 
 const viewEnum = {
@@ -21,7 +22,9 @@ class Layout extends Component {
         super(props);
         this.state = {
             view: viewEnum.ANIMATION,
-            token: ''
+            token: '',
+            resetToCourse: false,
+            courseView: 0
         }
     }
 
@@ -37,6 +40,21 @@ class Layout extends Component {
         this.setState({view: viewEnum.LOGIN});
     }
 
+    toCourse = () => {
+        this.setState({resetToCourse: !this.state.resetToCourse});
+    }
+
+    goCalender = () => {
+        this.setState({view: viewEnum.ANIMATION});
+    }
+
+    goSettings = () => {
+        this.setState({view: viewEnum.ANIMATION});
+    }
+
+    goLogout = () => {
+        this.setState({view: viewEnum.ANIMATION});
+    }
 
     render () {
 
@@ -61,6 +79,13 @@ class Layout extends Component {
                 <main className={classes.Content}>
                     {view}
                 </main>
+                <SideBar parentCourse={this.toCourse.bind(this)}
+                         parentCalender={this.goCalender.bind(this)}
+                         parentSettings={this.goSettings.bind(this)}
+                         parentLogout={this.goLogout.bind(this)}
+                         parentView={this.state.view}
+                         parentCourseView={this.state.courseView}
+                />
             </div>
         );
     }
