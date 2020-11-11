@@ -30,15 +30,15 @@ We propose a card-based app which creates a regimented, deliberate practice sche
 
 
 ## Software Architecture
-The software would be a web application. It would conform to the Client-Sever software architecture.
+The software would be a web application. It would conform to the Client-Server software architecture.
 
-Front end: React
+**Front end:** React, Material UI
 
-Back end: Django, Django REST framework
+**Back end:** Django, Django REST framework
 
-Database: Sqlite3
+**Database:** Sqlite3
 
-Build-tools: Yarn
+**Build-tools:** Yarn
 
 ## Wireframes
 ![](wireframe2.png)
