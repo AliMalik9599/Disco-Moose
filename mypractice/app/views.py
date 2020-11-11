@@ -65,13 +65,20 @@ class CardList(generics.ListCreateAPIView):
 			card_list.append(card_dict)
 			print(card_dict)
 
-		#sort: card_list.sort(key=lambda x: x.date_completed)
+		card_list = list(card_list)
+		today = datetime.date.today()
 
+		# Sorts cards by last_completed.
+		# If last_completed is None (has never been complted) it is given a temp date
+		# (today - 300 days) so that it can be compared to other dates but still come
+		# first in sorted order
+		card_list.sort(key=lambda x: x["last_completed"] if x["last_completed"] is not None else today + datetime.timedelta(days=300), reverse=True)
+
+		# Only grab necessary amount of cards.
 		time = int(self.kwargs.get('time'))
 		num_cards = int(time / 5)
 		final_list = card_list[:num_cards]
 
-		print(final_list)
 		return list(final_list)
 
 
