@@ -33,6 +33,7 @@ class CourseWrapper extends Component {
             view: courseViewEnum.SKILLSELECT,
             selectedCourse: value
         });
+        this.props.viewToSkills();
     }
 
     skillSelection(e, skill) {
@@ -52,6 +53,7 @@ class CourseWrapper extends Component {
             view: courseViewEnum.DECK,
             time: this.selectedTime
         });
+        this.props.viewToDeck();
     }
 
     timeSelection(e, time) {
@@ -74,6 +76,9 @@ class CourseWrapper extends Component {
 
     render() {
         let view = null;
+        if (this.props.courseReset) {
+            this.state.view = courseViewEnum.COURSESELECT;
+        }
         switch(this.state.view) {
             case courseViewEnum.COURSESELECT:
                 view = (<div className="div">
