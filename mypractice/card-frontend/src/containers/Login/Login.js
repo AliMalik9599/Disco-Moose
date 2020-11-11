@@ -133,6 +133,12 @@ class Login extends Component {
         this.setState({password: value});
     }
 
+    handleRegister = event => {
+        this.setState({token: '0'});
+        event.preventDefault();
+        this.props.formClick(this.state.token);
+    }
+
     render() {
         const { classes } = this.props;
         return (
@@ -160,6 +166,7 @@ class Login extends Component {
 
                                 <div className={classes.center}>
                                     <Button className={classes.button} type="submit" value="Submit">Sign in</Button>
+                                    <Button className={classes.button} onClick={this.handleRegister}>Register Here!</Button>
                                 </div>
                             </form>
                             </Container>

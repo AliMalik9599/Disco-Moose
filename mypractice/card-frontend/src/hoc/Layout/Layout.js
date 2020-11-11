@@ -6,13 +6,15 @@ import Login from "../../containers/Login/Login";
 import Animation from "../../containers/Login/Animation"
 import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
 import Selection from "../../containers/Selection/Selection";
+import Registration from "../../containers/Registration/Registration";
 
 
 const viewEnum = {
     ANIMATION: 0,
     LOGIN: 1,
     COURSE: 2,
-    SELECTION: 3
+    SELECTION: 3,
+    REGISTRATION: 4
 }
 
 class Layout extends Component {
@@ -28,9 +30,15 @@ class Layout extends Component {
     changeLayoutState = (token) => {
         console.log("changeLayoutState")
         console.log(token)
-        this.setState({token: token})
-        console.log("Set token: " + this.state.token)
-        this.setState({view: viewEnum.COURSE})
+        if (token.toString() === '0') {
+            this.setState({view: viewEnum.REGISTRATION})
+        } else if (token.toString() === '1') {
+            this.setState({view: viewEnum.LOGIN})
+        } else {
+            this.setState({token: token})
+            console.log("Set token: " + this.state.token)
+            this.setState({view: viewEnum.COURSE})
+        }
     }
 
     stopAnimation = () => {
@@ -47,6 +55,9 @@ class Layout extends Component {
                 break;
             case viewEnum.LOGIN:
                 view = <Login formClick={this.changeLayoutState.bind(this)}/>
+                break;
+            case viewEnum.REGISTRATION:
+                view = <Registration formClick={this.changeLayoutState.bind(this)}/>
                 break;
             case viewEnum.COURSE:
                 view = <CourseWrapper token={this.state.token}/>
