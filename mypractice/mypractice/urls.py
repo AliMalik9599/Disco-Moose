@@ -26,4 +26,6 @@ urlpatterns = [
     path('cardprogress/<str:cardid>', views.complete_card),
     path('cardprogress/favorite/<str:cardid>', views.favorite_card),
     path('rest-auth/', include('rest_auth.urls')),
+    path('register/<str:username>', views.create_user)
+    #path('rest-auth/registration/', include('rest_auth.registration.urls'))
 ]

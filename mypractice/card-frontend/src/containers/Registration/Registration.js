@@ -100,30 +100,30 @@ class Registration extends Component {
         if (this.state.password.toString() !== this.state.confirm.toString()) {
             alert("Passwords do not match");
         } else {
-            this.setState({token: '1'});
-            //event.preventDefault();
-            this.props.formClick(this.state.token);
-            this.props.toLogin();
-            /*this.str_url = 'http://127.0.0.1:8000/rest-auth/login/';
+            console.log("position 1");
+            console.log(this.state.username);
+            this.str_url = 'http://127.0.0.1:8000/register/' + this.state.username;
             fetch(this.str_url, {
                 method: 'POST',
                 body: JSON.stringify({
+                    name: this.state.name.toString(),
                     username: this.state.username.toString(),
                     password: this.state.password.toString()
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8'
                 }
-            }).then(response => response.json())
+            }).then(response => response.status)
                 .then(data => {
-                    if (!data.key) {
-                        alert("Incorrect Username or Password");
+                    console.log(data)
+                    if (data === 400) {
+                        alert("Username already exists");
                     } else {
-                        this.setState({token: data.key})
-                        alert("Correct Username or Password");
+                        console.log("position 2")
                         this.props.formClick(this.state.token);
+                        this.props.toLogin();
                     }
-                });*/
+                });
         }
     }
 
