@@ -28,17 +28,11 @@ class Layout extends Component {
     }
 
     changeLayoutState = (token) => {
-        console.log("changeLayoutState")
-        console.log(token)
-        if (token.toString() === '0') {
-            this.setState({view: viewEnum.REGISTRATION})
-        } else if (token.toString() === '1') {
-            this.setState({view: viewEnum.LOGIN})
-        } else {
-            this.setState({token: token})
-            console.log("Set token: " + this.state.token)
-            this.setState({view: viewEnum.COURSE})
-        }
+        console.log("changeLayoutState");
+        console.log(token);
+        this.setState({token: token})
+        console.log("Set token: " + this.state.token)
+        this.setState({view: viewEnum.COURSE})
     }
 
     stopAnimation = () => {
