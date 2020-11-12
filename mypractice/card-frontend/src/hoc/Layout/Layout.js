@@ -6,6 +6,7 @@ import Login from "../../containers/Login/Login";
 import Animation from "../../containers/Login/Animation"
 import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
 import Selection from "../../containers/Selection/Selection";
+import SideBar from "../../containers/SideBar/SideBar";
 
 
 const viewEnum = {
@@ -21,7 +22,10 @@ class Layout extends Component {
         super(props);
         this.state = {
             view: viewEnum.ANIMATION,
-            token: ''
+            token: '',
+            courseReset: false,
+            skillReset: false,
+            courseView: 0
         }
     }
 
@@ -37,6 +41,36 @@ class Layout extends Component {
         this.setState({view: viewEnum.LOGIN});
     }
 
+    resetToCourse = () => {
+        this.setState({courseReset: !this.state.courseReset});
+    }
+
+    resetToSkill = () => {
+        this.setState({skillReset: !this.state.skillReset});
+    }
+    goCalender = () => {
+        this.setState({view: viewEnum.ANIMATION});
+    }
+
+    goSettings = () => {
+        this.setState({view: viewEnum.ANIMATION});
+    }
+
+    goLogout = () => {
+        this.setState({view: viewEnum.ANIMATION});
+    }
+
+    viewToCourse = () => {
+        this.setState({courseView: 0});
+    }
+
+    viewToSkills = () => {
+        this.setState({courseView: 1});
+    }
+
+    viewToDeck = () => {
+        this.setState({courseView: 2});
+    }
 
     render () {
 
@@ -49,7 +83,16 @@ class Layout extends Component {
                 view = <Login formClick={this.changeLayoutState.bind(this)}/>
                 break;
             case viewEnum.COURSE:
-                view = <CourseWrapper token={this.state.token}/>
+                view = <CourseWrapper token={this.state.token}
+                                      courseReset={this.state.courseReset}
+                                      skillReset={this.state.skillReset}
+                                      viewToCourse={this.viewToCourse.bind(this)}
+                                      viewToSkills={this.viewToSkills.bind(this)}
+                                      viewToDeck={this.viewToDeck.bind(this)}
+                                      resetToCourse={this.resetToCourse.bind(this)}
+                                      resetToSkill={this.resetToSkill.bind(this)}
+
+                />
                 break;
         }
         return (
@@ -61,6 +104,14 @@ class Layout extends Component {
                 <main className={classes.Content}>
                     {view}
                 </main>
+                <SideBar parentCourse={this.resetToCourse.bind(this)}
+                         parentCalender={this.goCalender.bind(this)}
+                         parentSettings={this.goSettings.bind(this)}
+                         parentLogout={this.goLogout.bind(this)}
+                         parentView={this.state.view}
+                         parentSkill={this.resetToSkill.bind(this)}
+                         parentCourseView={this.state.courseView}
+                />
             </div>
         );
     }
