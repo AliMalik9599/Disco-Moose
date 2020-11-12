@@ -127,6 +127,9 @@ class Registration extends Component {
         }
     }
 
+
+
+
     handleNameChange = event => {
         const value = event.target.value;
         this.setState({name: value});
