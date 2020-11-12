@@ -137,6 +137,7 @@ class Login extends Component {
         this.setState({token: '0'});
         event.preventDefault();
         this.props.formClick(this.state.token);
+        this.props.toRegistration();
     }
 
     render() {

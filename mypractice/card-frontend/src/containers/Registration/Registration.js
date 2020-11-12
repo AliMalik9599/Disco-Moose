@@ -80,7 +80,7 @@ const styles = theme => ({
 
 });
 
-class Login extends Component {
+class Registration extends Component {
 
     constructor(props) {
         super(props);
@@ -187,7 +187,7 @@ class Login extends Component {
     }
 }
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(Registration);
 
 /*
 export default function Login(props) {

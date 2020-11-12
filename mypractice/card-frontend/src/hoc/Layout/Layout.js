@@ -45,18 +45,24 @@ class Layout extends Component {
         this.setState({view: viewEnum.LOGIN});
     }
 
+    toRegistration = () => {
+        this.setState({view: viewEnum.REGISTRATION});
+    }
+
 
     render () {
 
         let view = null;
+        console.log(this.state.view + "viewwww");
         switch (this.state.view) {
             case viewEnum.ANIMATION:
                 view = <Animation stopAnimation={this.stopAnimation.bind(this)}/>
                 break;
             case viewEnum.LOGIN:
-                view = <Login formClick={this.changeLayoutState.bind(this)}/>
+                view = <Login formClick={this.changeLayoutState.bind(this)} toRegistration={this.toRegistration.bind(this)}/>
                 break;
             case viewEnum.REGISTRATION:
+                console.log("DOUGETHERE");
                 view = <Registration formClick={this.changeLayoutState.bind(this)}/>
                 break;
             case viewEnum.COURSE:
