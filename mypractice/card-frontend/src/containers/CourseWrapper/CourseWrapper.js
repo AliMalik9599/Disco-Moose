@@ -99,6 +99,7 @@ class CourseWrapper extends Component {
                 view = <Deck courseid={this.state.selectedCourse}
                              skills={this.state.skills}
                              token={this.props.token}
+                             time={this.selectedTime}
                 />
         }
         return (
