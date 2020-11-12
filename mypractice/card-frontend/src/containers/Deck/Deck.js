@@ -1,17 +1,14 @@
 import React, {Component} from "react";
 import CardList from "../../components/CardList/CardList";
+import checkCookie from '../../hoc/Layout/LoginPersistence';
 
 class Deck extends Component {
-    //deck should know what cards are completed
     constructor(props) {
         super(props);
         this.state = {
             cards: []
         };
     }
-
-    //deck needs to have function that tracks if user has clicked card
-    //update backend every time the user "completes" a card
 
     handleComplete(e, cardId) {
         console.log(cardId)
@@ -36,8 +33,6 @@ class Deck extends Component {
     }
 
     handleFavorite(e, cardId) {
-        //console.log(cardId);
-        //console.log("IN HANDLER");
         fetch(`http://127.0.0.1:8000/cardprogress/favorite/${cardId}`, {
             method: 'POST',
             headers: {
@@ -72,18 +67,20 @@ class Deck extends Component {
     }
 
     render() {
-        return (
-            <main>
-                <div  className="d-flex justify-content-center">
-                    <CardList
-                        cards={this.state.cards}
-                        completed={this.handleComplete.bind(this)}
-                        favorited={this.handleFavorite.bind(this)}
-                        token={this.props.token}
-                    />
-                </div>
-            </main>
-        )
+        if (window.localStorage.getItem('login')) {
+            return (
+                <main>
+                    <div  className="d-flex justify-content-center">
+                        <CardList
+                            cards={this.state.cards}
+                            completed={this.handleComplete.bind(this)}
+                            favorited={this.handleFavorite.bind(this)}
+                            token={this.props.token}
+                        />
+                    </div>
+                </main>
+            )
+        }
     }
 }
 

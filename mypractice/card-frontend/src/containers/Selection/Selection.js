@@ -19,10 +19,6 @@ export default function Selection(props) {
     const anchorRef = React.useRef(null);
     const [selectedIndex, setSelectedIndex] = useState(0);
 
-    // const handleClick = () => {
-    //     console.log(`You clicked ${options[selectedIndex]}`);
-    // };
-
     const handleMenuItemClick = (event, index) => {
         setSelectedIndex(index);
         setOpen(false);
@@ -46,6 +42,8 @@ export default function Selection(props) {
                 break;
             case 5:
                 props.time(event, 60);
+                break;
+            default:
                 break;
         }
     };
@@ -76,65 +74,67 @@ export default function Selection(props) {
             });
     }, [props]);
 
-    return (
-        <main className="d-flex flex-column align-items-center">
-            <div className="d-flex flex-column align-items-center">
-                <h1>Select which skills you would like to practice.</h1>
-                <SkillList
-                    skills={skills}
-                    skillUpdate={props.skillUpdate}
-                    token={props.token}
-                />
-            </div>
-            <Grid container direction="column" alignItems="center">
-                <Grid item xs={12}>
-                    <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
-                        <Button /*onClick={handleClick}*/>{options[selectedIndex]}</Button>
-                        <Button
-                            color="primary"
-                            size="small"
-                            aria-controls={open ? 'split-button-menu' : undefined}
-                            aria-expanded={open ? 'true' : undefined}
-                            aria-label="select merge strategy"
-                            aria-haspopup="menu"
-                            onClick={handleToggle}
-                        >
-                            <ArrowDropDownIcon />
-                        </Button>
-                    </ButtonGroup>
-                    <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-                        {({ TransitionProps, placement }) => (
-                            <Grow
-                                {...TransitionProps}
-                                style={{
-                                    transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
-                                }}
+    if (window.localStorage.getItem('login') === props.token) {
+        return (
+            <main className="d-flex flex-column align-items-center">
+                <div className="d-flex flex-column align-items-center">
+                    <h1>Select which skills you would like to practice.</h1>
+                    <SkillList
+                        skills={skills}
+                        skillUpdate={props.skillUpdate}
+                        token={props.token}
+                    />
+                </div>
+                <Grid container direction="column" alignItems="center">
+                    <Grid item xs={12}>
+                        <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
+                            <Button /*onClick={handleClick}*/>{options[selectedIndex]}</Button>
+                            <Button
+                                color="primary"
+                                size="small"
+                                aria-controls={open ? 'split-button-menu' : undefined}
+                                aria-expanded={open ? 'true' : undefined}
+                                aria-label="select merge strategy"
+                                aria-haspopup="menu"
+                                onClick={handleToggle}
                             >
-                                <Paper>
-                                    <ClickAwayListener onClickAway={handleClose}>
-                                        <MenuList id="split-button-menu">
-                                            {options.map((option, index) => (
-                                                <MenuItem
-                                                    key={option}
-                                                    selected={index === selectedIndex}
-                                                    onClick={(event) => handleMenuItemClick(event, index)}
-                                                >
-                                                    {option}
-                                                </MenuItem>
-                                            ))}
-                                        </MenuList>
-                                    </ClickAwayListener>
-                                </Paper>
-                            </Grow>
-                        )}
-                    </Popper>
+                                <ArrowDropDownIcon />
+                            </Button>
+                        </ButtonGroup>
+                        <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+                            {({ TransitionProps, placement }) => (
+                                <Grow
+                                    {...TransitionProps}
+                                    style={{
+                                        transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
+                                    }}
+                                >
+                                    <Paper>
+                                        <ClickAwayListener onClickAway={handleClose}>
+                                            <MenuList id="split-button-menu">
+                                                {options.map((option, index) => (
+                                                    <MenuItem
+                                                        key={option}
+                                                        selected={index === selectedIndex}
+                                                        onClick={(event) => handleMenuItemClick(event, index)}
+                                                    >
+                                                        {option}
+                                                    </MenuItem>
+                                                ))}
+                                            </MenuList>
+                                        </ClickAwayListener>
+                                    </Paper>
+                                </Grow>
+                            )}
+                        </Popper>
+                    </Grid>
                 </Grid>
-            </Grid>
-            <button onClick={props.doneClick}>
-                Done
-            </button>
-        </main>
-    );
+                <button onClick={props.doneClick}>
+                    Done
+                </button>
+            </main>
+        );
+    }
 }
 
 // class Selection extends Component {

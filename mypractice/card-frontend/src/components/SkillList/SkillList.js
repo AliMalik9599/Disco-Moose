@@ -1,8 +1,8 @@
-import React, {Component} from "react";
+import React from "react";
 import Skill from './Skill/Skill';
 import { makeStyles } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
-
+import checkCookie from '../../hoc/Layout/LoginPersistence';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,10 +40,12 @@ export default function SkillList(props) {
         />
     ));
 
-    return (
-        <FormGroup>
-            {skills}
-        </FormGroup>
-    );
+    // if (window.localStorage.getItem('login')) {
+        return (
+            <FormGroup>
+                {skills}
+            </FormGroup>
+        );
+    // }
 }
 

@@ -1,23 +1,20 @@
-import React, {Component} from "react";
+import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+// import CardMedia from "@material-ui/core/CardMedia";
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import {Icon} from "@material-ui/core";
 import Theme from '../../theme';
 
 const useStyles = makeStyles((theme) => ({
@@ -73,78 +70,80 @@ export default function CourseCard(props) {
         state.favorited = !state.favorited;
     };
 
-    return (
-        <Card className={classes.root}>
-            <CardHeader
-                avatar={
-                    <Avatar aria-label="card" className={classes.avatar}>
-                        C
-                    </Avatar>
-                }
-                action={
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon/>
-                    </IconButton>
-                }
-                title={props.title}
-            />
-            {/*<CardMedia*/}
-            {/*    className={classes.media}*/}
-            {/*    image="/static/images/cards/paella.jpg"*/}
-            {/*    title="Paella dish"*/}
-            {/*/>*/}
-            <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    {props.content}
-                </Typography>
-            </CardContent>
-            <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    Course: {props.course} <br/>
-                    Level: {props.level}
-                </Typography>
-            </CardContent>
-            <CardActions disableSpacing>
-                <IconButton className={classes.favorite}>
-                    <FormControlLabel
-                        control={<FavoriteIcon
-                                    // className={classes.favorite}
-                                    checked={props.is_favorited === 'True'}
-                                    onClick={handleFavorite}
-                                    name="favorited"
-                                    color={state.favorited ? 'secondary' : 'disabled' } />}
-                    />
-                </IconButton>
-                <FormControlLabel
-                    control={<Checkbox checked={props.is_complete === 'True'} onChange={handleCompleteClick} name="completed" />}
-                    label="Completed"
+    if (window.localStorage.getItem('login')) {
+        return (
+            <Card className={classes.root}>
+                <CardHeader
+                    avatar={
+                        <Avatar aria-label="card" className={classes.avatar}>
+                            C
+                        </Avatar>
+                    }
+                    action={
+                        <IconButton aria-label="settings">
+                            <MoreVertIcon/>
+                        </IconButton>
+                    }
+                    title={props.title}
                 />
-                <IconButton
-                    className={clsx(classes.expand, {
-                        [classes.expandOpen]: state.showMore,
-                    })}
-                    onClick={handleExpandClick}
-                    aria-expanded={state.showMore}
-                    aria-label="show more"
-                    name="showMore"
-                >
-                    <ExpandMoreIcon/>
-                </IconButton>
-            </CardActions>
-            <Collapse in={state.showMore} timeout="auto" unmountOnExit>
+                {/*<CardMedia*/}
+                {/*    className={classes.media}*/}
+                {/*    image="/static/images/cards/paella.jpg"*/}
+                {/*    title="Paella dish"*/}
+                {/*/>*/}
                 <CardContent>
-                    <Typography paragraph>
-                        Nothing here for now but eventually we will want to add this.props.description or something
-                        like that if it exists (will require a more robust dataset)
-                    </Typography>
-                    <Typography paragraph>
-                        We can add another paragraph here if we want! Even more instructions
-                    </Typography>
-                    <Typography paragraph>
-                        Room for yet ANOTHER paragraph! Material UI is really doing the most.
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        {props.content}
                     </Typography>
                 </CardContent>
-            </Collapse>
-        </Card>
-    );
+                <CardContent>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        Course: {props.course} <br/>
+                        Level: {props.level}
+                    </Typography>
+                </CardContent>
+                <CardActions disableSpacing>
+                    <IconButton className={classes.favorite}>
+                        <FormControlLabel
+                            control={<FavoriteIcon
+                                // className={classes.favorite}
+                                checked={props.is_favorited === 'True'}
+                                onClick={handleFavorite}
+                                name="favorited"
+                                color={state.favorited ? 'secondary' : 'disabled' } />}
+                        />
+                    </IconButton>
+                    <FormControlLabel
+                        control={<Checkbox checked={props.is_complete === 'True'} onChange={handleCompleteClick} name="completed" />}
+                        label="Completed"
+                    />
+                    <IconButton
+                        className={clsx(classes.expand, {
+                            [classes.expandOpen]: state.showMore,
+                        })}
+                        onClick={handleExpandClick}
+                        aria-expanded={state.showMore}
+                        aria-label="show more"
+                        name="showMore"
+                    >
+                        <ExpandMoreIcon/>
+                    </IconButton>
+                </CardActions>
+                <Collapse in={state.showMore} timeout="auto" unmountOnExit>
+                    <CardContent>
+                        <Typography paragraph>
+                            Nothing here for now but eventually we will want to add this.props.description or something
+                            like that if it exists (will require a more robust dataset)
+                        </Typography>
+                        <Typography paragraph>
+                            We can add another paragraph here if we want! Even more instructions
+                        </Typography>
+                        <Typography paragraph>
+                            Room for yet ANOTHER paragraph! Material UI is really doing the most.
+                        </Typography>
+                    </CardContent>
+                </Collapse>
+            </Card>
+        );
+    }
 }

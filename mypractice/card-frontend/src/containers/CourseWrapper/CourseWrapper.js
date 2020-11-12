@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import CourseList from "../../components/CourseList/CourseList";
-import classes from './CourseWrapper.css'
 import Selection from "../Selection/Selection";
 import Deck from "../Deck/Deck";
+import checkCookie from '../../hoc/Layout/LoginPersistence';
 
 const courseViewEnum = {
     COURSESELECT: 0,
@@ -37,7 +37,7 @@ class CourseWrapper extends Component {
 
     skillSelection(e, skill) {
         console.log(this.selectedSkills.indexOf(skill))
-        if (this.selectedSkills.indexOf(skill)!==-1) {
+        if (this.selectedSkills.indexOf(skill) !== -1) {
             this.selectedSkills.splice(this.selectedSkills.indexOf(skill), 1);
         } else {
             this.selectedSkills.push(skill); //does not trigger a re-render
@@ -74,17 +74,17 @@ class CourseWrapper extends Component {
 
     render() {
         let view = null;
-        switch(this.state.view) {
+        switch (this.state.view) {
             case courseViewEnum.COURSESELECT:
                 view = (<div className="div">
-                            <h1 className="h1">What would you like to work on today?</h1>
-                            <div className="d-flex justify-content-center">
-                                <CourseList courses={this.state.courses}
-                                            clickHandler={this.handleCourseClick.bind(this)}
-                                            token={this.props.token}
-                                />
-                            </div>
-                        </div>)
+                    <h1 className="h1">What would you like to work on today?</h1>
+                    <div className="d-flex justify-content-center">
+                        <CourseList courses={this.state.courses}
+                                    clickHandler={this.handleCourseClick.bind(this)}
+                                    token={this.props.token}
+                        />
+                    </div>
+                </div>)
                 break;
             case courseViewEnum.SKILLSELECT:
                 view = <Selection skills={this.state.skills}
@@ -101,11 +101,13 @@ class CourseWrapper extends Component {
                              token={this.props.token}
                 />
         }
-        return (
-            <main>
-                {view}
-            </main>
-        )
+        // if (window.localStorage.getItem('login')) {
+            return (
+                <main>
+                    {view}
+                </main>
+            )
+        // }
     }
 }
 
