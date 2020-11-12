@@ -43,6 +43,9 @@ class Layout extends Component {
         this.setState({view: viewEnum.REGISTRATION});
     }
 
+    toLogin = () => {
+        this.setState({view: viewEnum.LOGIN});
+    }
 
     render () {
 
@@ -53,11 +56,12 @@ class Layout extends Component {
                 view = <Animation stopAnimation={this.stopAnimation.bind(this)}/>
                 break;
             case viewEnum.LOGIN:
+                console.log(this.state.token);
                 view = <Login formClick={this.changeLayoutState.bind(this)} toRegistration={this.toRegistration.bind(this)}/>
                 break;
             case viewEnum.REGISTRATION:
-                console.log("DOUGETHERE");
-                view = <Registration formClick={this.changeLayoutState.bind(this)}/>
+                console.log(this.state.token);
+                view = <Registration formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>
                 break;
             case viewEnum.COURSE:
                 view = <CourseWrapper token={this.state.token}/>

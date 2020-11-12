@@ -101,7 +101,9 @@ class Registration extends Component {
             alert("Passwords do not match");
         } else {
             this.setState({token: '1'});
+            //event.preventDefault();
             this.props.formClick(this.state.token);
+            this.props.toLogin();
             /*this.str_url = 'http://127.0.0.1:8000/rest-auth/login/';
             fetch(this.str_url, {
                 method: 'POST',
