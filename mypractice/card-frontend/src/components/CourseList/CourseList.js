@@ -34,13 +34,13 @@ class CourseList extends Component {
                 token={this.props.token}
             />
         ));
-        // if (window.localStorage.getItem('login')) {
+        if (window.localStorage.getItem('login')) {
             return (
                 <Box>
                     {courses}
                 </Box>
             );
-        // }
+        }
     }
 }
 

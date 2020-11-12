@@ -1,12 +1,10 @@
 import React, {Component} from "react";
 import CourseCard from  '../Card/Card';
-import checkCookie from '../../hoc/Layout/LoginPersistence';
 
 
 class CardList extends Component {
     constructor(props) {
         super(props);
-
     }
 
     render() {

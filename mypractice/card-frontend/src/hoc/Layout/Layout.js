@@ -18,67 +18,56 @@ class Layout extends Component {
         super(props);
         this.state = {
             view: viewEnum.ANIMATION,
-            token: ''
+            token: window.localStorage.getItem('login')
         }
     }
 
     changeLayoutState = (token) => {
-        console.log("changeLayoutState");
-        console.log('token: ' + token);
-        console.log('token toStirng: ' + token.toString());
         window.localStorage.setItem('login', token);
-        console.log('localStorage: ' + window.localStorage.getItem('login'));
         this.setState({token: token});
-        console.log("Set token: " + this.state.token);
         this.setState({view: viewEnum.COURSE});
     }
 
     stopAnimation = () => {
         this.setState({view: viewEnum.LOGIN});
     }
+
+    logout = () => {
+        this.setState({token: ''});
+        window.localStorage.clear();
+    }
     
     render () {
         let view = null;
         if (window.localStorage.getItem('login')) {
+            let page_view = {
+                'main': 'CourseWrapper',
+                'subpage': 'CourseSelect'
+            }
+            window.localStorage.setItem('view', JSON.stringify(page_view));
             view = <CourseWrapper token={this.state.token}/>;
-        } else {
-            // console.log('token:' + this.state.token);
-            // console.log(window.localStorage.getItem('login'));
+        } else {;
             switch (this.state.view) {
                 case viewEnum.ANIMATION:
                     view = <Animation stopAnimation={this.stopAnimation.bind(this)}/>;
                     break;
                 case viewEnum.LOGIN:
                     view = <Login formClick={this.changeLayoutState.bind(this)}/>;
+                    const page_view = {
+                        'main': 'Login',
+                        'subpage': null
+                    }
+                    window.localStorage.setItem('view', JSON.stringify(page_view));
                     break;
             }
         }
 
-        // switch (this.state.view) {
-        //     case viewEnum.ANIMATION:
-        //         if (!checkCookie('login')) {
-        //             view = <Animation stopAnimation={this.stopAnimation.bind(this)}/>;
-        //         }
-        //         break;
-        //     case viewEnum.LOGIN:
-        //         if (!checkCookie('login')) {
-        //             view = <Login formClick={this.changeLayoutState.bind(this)}/>;
-        //         }
-        //         break;
-        //     case viewEnum.COURSE:
-        //         if (checkCookie('login')) {
-        //             view = <CourseWrapper token={this.state.token}/>;
-        //         } else {
-        //             view = <Login formClick={this.changeLayoutState.bind(this)}/>;
-        //         }
-        //         break;
-        // }
         return (
             <div>
-                <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler}/>
-                <SideDrawer
-                    open={this.state.showSideDrawer}
-                    closed={this.sideDrawerClosedHandler}/>
+                <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} logout={this.logout.bind(this)}/>
+                {/*<SideDrawer*/}
+                {/*    open={this.state.showSideDrawer}*/}
+                {/*    closed={this.sideDrawerClosedHandler}/>*/}
                 <main className={classes.Content}>
                     {view}
                 </main>

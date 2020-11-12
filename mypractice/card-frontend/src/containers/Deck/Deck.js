@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import CardList from "../../components/CardList/CardList";
-import checkCookie from '../../hoc/Layout/LoginPersistence';
 
 class Deck extends Component {
     constructor(props) {

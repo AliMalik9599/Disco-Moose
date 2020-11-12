@@ -5,7 +5,6 @@ import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import Box from '@material-ui/core/Box';
-import checkCookie from '../../../hoc/Layout/LoginPersistence';
 
 const useStyles = makeStyles((theme) => ({
     root: {

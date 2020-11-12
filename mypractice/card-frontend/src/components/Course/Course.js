@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 export default function Course(props) {
     const classes = useStyles();
 
-    // if (window.localStorage.getItem('login')) {
+    if (window.localStorage.getItem('login')) {
         return (
             <Card className={classes.root} variant="outlined">
                 <CardContent>
@@ -43,5 +43,5 @@ export default function Course(props) {
                 </CardActions>
             </Card>
         );
-    // }
+    }
 }
