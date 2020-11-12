@@ -24,6 +24,7 @@ class Layout extends Component {
             view: viewEnum.ANIMATION,
             token: '',
             courseReset: false,
+            skillReset: false,
             courseView: 0
         }
     }
@@ -44,6 +45,9 @@ class Layout extends Component {
         this.setState({courseReset: !this.state.courseReset});
     }
 
+    resetToSkill = () => {
+        this.setState({skillReset: !this.state.skillReset});
+    }
     goCalender = () => {
         this.setState({view: viewEnum.ANIMATION});
     }
@@ -81,11 +85,12 @@ class Layout extends Component {
             case viewEnum.COURSE:
                 view = <CourseWrapper token={this.state.token}
                                       courseReset={this.state.courseReset}
+                                      skillReset={this.state.skillReset}
                                       viewToCourse={this.viewToCourse.bind(this)}
                                       viewToSkills={this.viewToSkills.bind(this)}
                                       viewToDeck={this.viewToDeck.bind(this)}
                                       resetToCourse={this.resetToCourse.bind(this)}
-
+                                      resetToSkill={this.resetToSkill.bind(this)}
 
                 />
                 break;
@@ -104,6 +109,7 @@ class Layout extends Component {
                          parentSettings={this.goSettings.bind(this)}
                          parentLogout={this.goLogout.bind(this)}
                          parentView={this.state.view}
+                         parentSkill={this.resetToSkill.bind(this)}
                          parentCourseView={this.state.courseView}
                 />
             </div>

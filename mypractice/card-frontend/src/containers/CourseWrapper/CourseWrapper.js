@@ -81,6 +81,11 @@ class CourseWrapper extends Component {
             this.props.resetToCourse();
             this.props.viewToCourse();
         }
+        else if (this.props.skillReset) {
+            this.state.view = courseViewEnum.SKILLSELECT;
+            this.props.resetToSkill();
+            this.props.viewToSkills();
+        }
         switch(this.state.view) {
             case courseViewEnum.COURSESELECT:
                 view = (<div className="div">
