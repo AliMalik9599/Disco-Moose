@@ -22,6 +22,7 @@ import SportsHandball from '@material-ui/icons/SportsHandball';
 import Today from '@material-ui/icons/Today';
 import Settings from '@material-ui/icons/Settings';
 import Input from '@material-ui/icons/Input';
+import Palette from '@material-ui/icons/Palette';
 
 
 
@@ -138,7 +139,7 @@ const SideBar = ({parentCourse, parentCalender, parentSettings, parentLogout, pa
         //shouldnt add skill selection or deck
         {
             text: "Course Select",
-            icon: <SportsHandball/>,
+            icon: <Palette/>,
             onClick: () => parentCourse()
         },
         {
@@ -162,7 +163,7 @@ const SideBar = ({parentCourse, parentCalender, parentSettings, parentLogout, pa
 
         {
             text: "Course Select",
-            icon: <SportsHandball/>,
+            icon: <Palette/>,
             onClick: () => parentCourse()
         },
 
@@ -194,8 +195,8 @@ const SideBar = ({parentCourse, parentCalender, parentSettings, parentLogout, pa
     const OnCalender = [
 
         {
-            text: "Course",
-            icon: <SportsHandball/>,
+            text: "Course Select",
+            icon: <Palette/>,
             onClick: () => parentCourse()
         },
 
@@ -214,8 +215,8 @@ const SideBar = ({parentCourse, parentCalender, parentSettings, parentLogout, pa
     const AccountSettings = [
 
         {
-            text: "Course",
-            icon: <SportsHandball/>,
+            text: "Course Select",
+            icon: <Palette/>,
             onClick: () => parentCourse()
         },
 
