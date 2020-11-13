@@ -3,11 +3,11 @@ import CourseList from "../../components/CourseList/CourseList";
 import Selection from "../Selection/Selection";
 import Deck from "../Deck/Deck";
 
-const courseViewEnum = {
-    COURSESELECT: 0 | null,
-    SKILLSELECT: 1,
-    DECK: 2
-}
+// const courseViewEnum = {
+//     COURSESELECT: 0 | null,
+//     SKILLSELECT: 1,
+//     DECK: 2
+// }
 
 const course_view = {
     'main': 'CourseWrapper',
@@ -33,16 +33,21 @@ class CourseWrapper extends Component {
     }
 
     state = {
-        courses: [],
-        skills: [],
-        selectedCourse: 0,
-        time: 0,
+        // courses: [],
+        // skills: [],
+        // selectedCourse: 0,
+        // time: 0,
         // view: courseViewEnum.COURSESELECT
+        courses: JSON.parse(window.localStorage.getItem('courses')),
+        skills: JSON.parse(window.localStorage.getItem('skills')),
+        selectedCourse: JSON.parse(window.localStorage.getItem('selectedCourse')),
+        time: JSON.parse(window.localStorage.getItem('time')),
         view: JSON.parse(window.localStorage.getItem('view'))['subpage']
     }
 
     handleCourseClick(e, value) {
         window.localStorage.setItem('view', JSON.stringify(skill_view));
+        window.localStorage.setItem('selectedCourse', value);
         this.setState({
             view: JSON.parse(window.localStorage.getItem('view'))['subpage'],
             selectedCourse: value
@@ -59,6 +64,8 @@ class CourseWrapper extends Component {
 
     handleDonePress() {
         window.localStorage.setItem('view', JSON.stringify(deck_view));
+        window.localStorage.setItem('skills', JSON.stringify(this.selectedSkills));
+        window.localStorage.setItem('time', this.selectedTime)
         this.setState({
             skills: this.selectedSkills,
             view: JSON.parse(window.localStorage.getItem('view'))['subpage'],
@@ -80,6 +87,7 @@ class CourseWrapper extends Component {
         })
             .then(response => response.json())
             .then(data => {
+                window.localStorage.setItem('courses', JSON.stringify(data));
                 this.setState({courses: data});
             });
     }
@@ -88,7 +96,6 @@ class CourseWrapper extends Component {
         let view = null;
         console.log(JSON.parse(window.localStorage.getItem('view')));
         switch (this.state.view) {
-            // case courseViewEnum.COURSESELECT:
             case 'CourseSelect':
                 window.localStorage.setItem('view', JSON.stringify(course_view));
                 view = (<div className="div">
@@ -101,9 +108,7 @@ class CourseWrapper extends Component {
                     </div>
                 </div>)
                 break;
-            // case courseViewEnum.SKILLSELECT:
             case 'SkillSelect':
-                // window.localStorage.setItem('view', JSON.stringify(skill_view));
                 console.log('local storage : ' + window.localStorage.getItem('view'));
                 console.log('state view: ' + this.state.view);
                 view = <Selection skills={this.state.skills}
@@ -114,9 +119,8 @@ class CourseWrapper extends Component {
                                   time={this.timeSelection.bind(this)}
                 />
                 break;
-            // case courseViewEnum.DECK:
             case 'Deck':
-                // window.localStorage.setItem('view', JSON.stringify(deck_view));
+                window.localStorage.setItem('cards', JSON.stringify([]));
                 console.log('local storage : ' + window.localStorage.getItem('view'));
                 console.log('state view: ' + this.state.view);
                 view = <Deck courseid={this.state.selectedCourse}

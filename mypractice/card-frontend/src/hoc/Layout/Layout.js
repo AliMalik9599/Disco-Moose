@@ -40,13 +40,21 @@ class Layout extends Component {
     render () {
         let view = null;
         if (window.localStorage.getItem('login')) {
-            let page_view = {
-                'main': 'CourseWrapper',
-                'subpage': 'CourseSelect'
+            if (JSON.parse(window.localStorage.getItem('view'))['main'] !== 'CourseWrapper') {
+                // set local storage if it's not already set for course wrapper
+                let page_view = {
+                    'main': 'CourseWrapper',
+                    'subpage': 'CourseSelect'
+                }
+                window.localStorage.setItem('view', JSON.stringify(page_view));
+                window.localStorage.setItem('courses', JSON.stringify([]));
+                window.localStorage.setItem('skills', JSON.stringify([]));
+                view = <CourseWrapper token={this.state.token}/>;
+            } else {
+                // do not reset local storage
+                view = <CourseWrapper token={this.state.token}/>;
             }
-            window.localStorage.setItem('view', JSON.stringify(page_view));
-            view = <CourseWrapper token={this.state.token}/>;
-        } else {;
+        } else {
             switch (this.state.view) {
                 case viewEnum.ANIMATION:
                     view = <Animation stopAnimation={this.stopAnimation.bind(this)}/>;
@@ -77,3 +85,12 @@ class Layout extends Component {
 }
 
 export default Layout;
+
+// if (window.localStorage.getItem('login') && JSON.parse(window.localStorage.getItem('view'))['page'] !== 'CourseWrapper') {
+//     let page_view = {
+//         'main': 'CourseWrapper',
+//         'subpage': 'CourseSelect'
+//     }
+//     window.localStorage.setItem('view', JSON.stringify(page_view));
+//     view = <CourseWrapper token={this.state.token}/>;
+// }
