@@ -1,4 +1,6 @@
-from .models import Card, Course, Skill, CardProgress
+import datetime
+
+from .models import Card, Course, Skill, CardProgress, Deck
 from .serializer import CardSerializer, CourseSerializer, SkillSerializer
 from rest_framework import generics
 from django.forms.models import model_to_dict
@@ -59,10 +61,43 @@ class CardList(generics.ListCreateAPIView):
 			card_dict = model_to_dict(card)
 			card_dict["is_complete"] = card_progress.is_completed
 			card_dict["is_favorited"] = card_progress.is_favorited
-			print(card_dict)
+			card_dict["last_completed"] = card_progress.last_completed
 			card_list.append(card_dict)
+			print(card_dict)
 
-		return list(card_list)
+		card_list = list(card_list)
+		today = datetime.date.today()
+
+		# Sorts cards by last_completed.
+		# If last_completed is None (has never been complted) it is given a temp date
+		# (today - 300 days) so that it can be compared to other dates but still come
+		# first in sorted order
+		card_list.sort(
+			key=lambda x: x["last_completed"] if x["last_completed"] is not None
+			else today + datetime.timedelta(days=300), reverse=True
+		)
+
+		# Only grab necessary amount of cards.
+		time = int(self.kwargs.get('time'))
+		num_cards = int(time / 5)
+		final_list = card_list[:num_cards]
+
+		card_ids = []
+		for card in final_list:
+			card_ids.append(card["id"])
+
+		deck, created = Deck.objects.get_or_create(
+			user=user,
+			course=course,
+			skills=skills,
+			date=datetime.date.today(),
+			num_cards=num_cards,
+			cards=str(card_ids)
+		)
+		if created:
+			deck.save()
+
+		return list(final_list)
 
 
 @api_view(['POST'])
@@ -73,8 +108,15 @@ def complete_card(request, cardid):
 	user = request.user
 	card_progress = CardProgress.objects.get(card=card, user=user)
 	current_completion_status = card_progress.is_completed
+	current_date = card_progress.last_completed
+
 	card_progress.is_completed = not current_completion_status
 	card_progress.save()
+
+	if card_progress.is_completed:
+		card_progress.last_completed = datetime.date.today()
+		card_progress.save()
+
 	if card_progress.is_completed == current_completion_status:
 		return Response(status=status.HTTP_404_NOT_FOUND)
 	return Response(status=status.HTTP_204_NO_CONTENT)
@@ -84,7 +126,6 @@ def complete_card(request, cardid):
 @authentication_classes([TokenAuthentication,])
 @permission_classes([IsAuthenticated])
 def favorite_card(request, cardid):
-	#print("IN FAVORITE FUNCTION")
 	card = Card.objects.get(id=cardid)
 	user = request.user
 	card_progress = CardProgress.objects.get(card=card, user=user)
@@ -96,25 +137,42 @@ def favorite_card(request, cardid):
 	return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-# class CardProgressDetail(APIView):
-# 	authentication_classes = (TokenAuthentication,)
-# 	permission_classes = (IsAuthenticated,)
-#
-# 	def get_object(self, pk):
-# 		try:
-# 			return CardProgress.objects.get(pk=pk)
-# 		except CardProgress.DoesNotExist:
-# 			raise Http404
-#
-# 	def get(self, request, pk, format=None):
-# 		card_progress = self.get_object(pk)
-# 		serializer = CardProgressSerializer(card_progress)
-# 		return Response(serializer.data)
-#
-# 	def put(self, request, pk, format=None):
-# 		card_progress = self.get_object(pk)
-# 		serializer =  CardProgressSerializer(card_progress, data=request.data)
-# 		card_progress = CardProgress.objects.get(card=card, user=self.request.user)
-# 		card_progress.is_completed = True
-# 		card_progress.save()
-# 		return Response(status=status.HTTP_204_NO_CONTENT)
+def refresh_cardlist(userid, courseid, skills, time):
+	user = User.objects.get(id=userid)
+	course = Course.objects.get(id=courseid)
+	num_cards = int(int(time) / 5)
+	deck = Deck.objects.get(user=user, course=course, skills=skills, date=datetime.date.today(), num_cards=num_cards)
+	card_ids = deck.cards[1:-1].split(', ')
+
+	card_list = []
+
+	for id in card_ids:
+		card = Card.objects.get(id=id)
+		card_progress, created = CardProgress.objects.get_or_create(
+			card=card,
+			user=user
+		)
+		card_dict = model_to_dict(card)
+		card_dict["is_complete"] = card_progress.is_completed
+		card_dict["is_favorited"] = card_progress.is_favorited
+		card_dict["last_completed"] = card_progress.last_completed
+		card_list.append(card_dict)
+		print(card_dict)
+
+	card_list = list(card_list)
+
+	return card_list
+
+
+class RefreshCardList(generics.ListCreateAPIView):
+	serializer_class = CardSerializer
+	authentication_classes = (TokenAuthentication,)
+	permission_classes = (IsAuthenticated,)
+
+	def get_queryset(self):
+		return refresh_cardlist(
+			self.request.user.id,
+			self.kwargs.get('courseid'),
+			self.kwargs.get('skills'),
+			self.kwargs.get('time')
+		)

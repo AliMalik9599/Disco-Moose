@@ -52,6 +52,7 @@ class CourseWrapper extends Component {
             view: JSON.parse(window.localStorage.getItem('view'))['subpage'],
             selectedCourse: value
         });
+        this.props.viewToSkills();
     }
 
     skillSelection(e, skill) {
@@ -71,6 +72,7 @@ class CourseWrapper extends Component {
             view: JSON.parse(window.localStorage.getItem('view'))['subpage'],
             time: this.selectedTime
         });
+        this.props.viewToDeck();
     }
 
     timeSelection(e, time) {
@@ -94,10 +96,21 @@ class CourseWrapper extends Component {
 
     render() {
         let view = null;
-        console.log(JSON.parse(window.localStorage.getItem('view')));
-        switch (this.state.view) {
+        if (this.props.courseReset) {
+            this.state.view = courseViewEnum.COURSESELECT;
+            this.setState({token: this.state.token})
+            this.props.resetToCourse();
+            this.props.viewToCourse();
+        }
+        else if (this.props.skillReset) {
+            this.state.view = courseViewEnum.SKILLSELECT;
+            this.setState({token: this.state.token})
+            this.props.resetToSkill();
+            this.props.viewToSkills();
+        }
+        switch(this.state.view) {
             case 'CourseSelect':
-                window.localStorage.setItem('view', JSON.stringify(course_view));
+            window.localStorage.setItem('view', JSON.stringify(course_view));
                 view = (<div className="div">
                     <h1 className="h1">What would you like to work on today?</h1>
                     <div className="d-flex justify-content-center">
@@ -126,6 +139,7 @@ class CourseWrapper extends Component {
                 view = <Deck courseid={this.state.selectedCourse}
                              skills={this.state.skills}
                              token={this.props.token}
+                             time={this.selectedTime}
                 />
         }
         if (window.localStorage.getItem('login')) {

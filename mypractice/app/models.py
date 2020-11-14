@@ -75,6 +75,7 @@ class CardProgress(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	is_completed = models.BooleanField(blank=False, default=False)
 	is_favorited = models.BooleanField(blank=False, default=False)
+	last_completed = models.DateField(blank=True, null=True)
 
 
 # Settings represents a certain user's preferences when it comes to notifications and other things.
@@ -83,6 +84,16 @@ class Settings(models.Model):
 	notifications = models.BooleanField(blank=True, default=True)
 	sounds = models.BooleanField(blank=True, default=True)
 	password = models.CharField(max_length=50, default='', null=False)
+
+
+# Deck represents the set of cards a user was given at any moment.
+class Deck(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	skills = models.CharField(max_length=50, default='', null=False)
+	course = models.ForeignKey(Course, on_delete=models.CASCADE)
+	date = models.DateField(blank=True, null=False)
+	num_cards = models.IntegerField(default=0)
+	cards = models.CharField(max_length=50, default='', null=False)
 
 
 # The models below are not being used yet / aren't developed well enough yet.

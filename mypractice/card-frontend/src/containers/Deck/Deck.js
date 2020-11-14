@@ -26,7 +26,7 @@ class Deck extends Component {
                 if (data === 404) {
                     alert("Something went wrong, try again!");
                 } else {
-                    this.componentDidMount()
+                    this.refresh()
                 }
             });
     }
@@ -44,14 +44,30 @@ class Deck extends Component {
                 if (data === 404) {
                     alert("Something went wrong, try again!");
                 } else {
-                    this.componentDidMount()
+                    this.refresh()
                 }
             });
     }
 
+    refresh() {
+        console.log("TIME = " + this.props.time.toString());
+        this.str_url = 'http://127.0.0.1:8000/cards/refresh/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
+        fetch(this.str_url, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+                'Authorization': 'Token ' + this.props.token
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                this.setState({cards: data});
+            });
+    }
+
     componentDidMount() {
-        this.str_url = 'http://127.0.0.1:8000/cards/cardprogress/' + this.props.courseid.toString() + '/'
-            + this.props.skills.toString();
+        console.log("TIME = " + this.props.time.toString());
+        this.str_url = 'http://127.0.0.1:8000/cards/cardprogress/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
             fetch(this.str_url, {
                 method: 'GET',
                 headers: {

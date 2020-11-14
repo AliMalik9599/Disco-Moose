@@ -5,6 +5,8 @@ import Login from "../../containers/Login/Login";
 import classes from './Layout.module.css'
 import Animation from "../../containers/Login/Animation"
 import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
+import Selection from "../../containers/Selection/Selection";
+import SideBar from "../../containers/SideBar/SideBar";
 
 const viewEnum = {
     ANIMATION: 0,
@@ -19,6 +21,9 @@ class Layout extends Component {
         this.state = {
             view: viewEnum.ANIMATION,
             token: window.localStorage.getItem('login')
+            courseReset: false,
+            skillReset: false,
+            courseView: 0
         }
     }
 
@@ -37,6 +42,37 @@ class Layout extends Component {
         window.localStorage.clear();
     }
     
+    resetToCourse = () => {
+        this.setState({courseReset: !this.state.courseReset});
+    }
+
+    resetToSkill = () => {
+        this.setState({skillReset: !this.state.skillReset});
+    }
+    goCalender = () => {
+        this.setState({view: viewEnum.ANIMATION});
+    }
+
+    goSettings = () => {
+        this.setState({view: viewEnum.ANIMATION});
+    }
+
+    goLogout = () => {
+        this.setState({view: viewEnum.ANIMATION});
+    }
+
+    viewToCourse = () => {
+        this.setState({courseView: 0});
+    }
+
+    viewToSkills = () => {
+        this.setState({courseView: 1});
+    }
+
+    viewToDeck = () => {
+        this.setState({courseView: 2});
+    }
+
     render () {
         let view = null;
         if (window.localStorage.getItem('login')) {
@@ -49,10 +85,27 @@ class Layout extends Component {
                 window.localStorage.setItem('view', JSON.stringify(page_view));
                 window.localStorage.setItem('courses', JSON.stringify([]));
                 window.localStorage.setItem('skills', JSON.stringify([]));
-                view = <CourseWrapper token={this.state.token}/>;
+                view = <CourseWrapper token={this.state.token}
+                            courseReset={this.state.courseReset}
+                            skillReset={this.state.skillReset}
+                            viewToCourse={this.viewToCourse.bind(this)}
+                            viewToSkills={this.viewToSkills.bind(this)}
+                            viewToDeck={this.viewToDeck.bind(this)}
+                            resetToCourse={this.resetToCourse.bind(this)}
+                            resetToSkill={this.resetToSkill.bind(this)}
+
+                        />
             } else {
                 // do not reset local storage
-                view = <CourseWrapper token={this.state.token}/>;
+                view = <CourseWrapper token={this.state.token}
+                            courseReset={this.state.courseReset}
+                            skillReset={this.state.skillReset}
+                            viewToCourse={this.viewToCourse.bind(this)}
+                            viewToSkills={this.viewToSkills.bind(this)}
+                            viewToDeck={this.viewToDeck.bind(this)}
+                            resetToCourse={this.resetToCourse.bind(this)}
+                            resetToSkill={this.resetToSkill.bind(this)}
+                        />;
             }
         } else {
             switch (this.state.view) {
@@ -79,6 +132,14 @@ class Layout extends Component {
                 <main className={classes.Content}>
                     {view}
                 </main>
+                <SideBar parentCourse={this.resetToCourse.bind(this)}
+                         parentCalender={this.goCalender.bind(this)}
+                         parentSettings={this.goSettings.bind(this)}
+                         parentLogout={this.goLogout.bind(this)}
+                         parentView={this.state.view}
+                         parentSkill={this.resetToSkill.bind(this)}
+                         parentCourseView={this.state.courseView}
+                />
             </div>
         );
     }
