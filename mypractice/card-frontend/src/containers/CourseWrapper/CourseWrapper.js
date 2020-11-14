@@ -97,14 +97,14 @@ class CourseWrapper extends Component {
     render() {
         let view = null;
         if (this.props.courseReset) {
-            this.state.view = courseViewEnum.COURSESELECT;
-            this.setState({token: this.state.token})
+            this.state.view = 'CourseSelect';
+            this.setState({token: this.state.token});
             this.props.resetToCourse();
             this.props.viewToCourse();
         }
         else if (this.props.skillReset) {
-            this.state.view = courseViewEnum.SKILLSELECT;
-            this.setState({token: this.state.token})
+            this.state.view = 'SkillSelect';
+            this.setState({token: this.state.token});
             this.props.resetToSkill();
             this.props.viewToSkills();
         }

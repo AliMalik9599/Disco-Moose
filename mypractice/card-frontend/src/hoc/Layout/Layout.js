@@ -20,7 +20,7 @@ class Layout extends Component {
         super(props);
         this.state = {
             view: viewEnum.ANIMATION,
-            token: window.localStorage.getItem('login')
+            token: window.localStorage.getItem('login'),
             courseReset: false,
             skillReset: false,
             courseView: 0
