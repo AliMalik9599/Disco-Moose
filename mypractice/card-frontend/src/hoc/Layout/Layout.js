@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
-import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import Login from "../../containers/Login/Login";
 import classes from './Layout.module.css'
 import Animation from "../../containers/Login/Animation"
 import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
-import Selection from "../../containers/Selection/Selection";
 import SideBar from "../../containers/SideBar/SideBar";
 
 const viewEnum = {
@@ -36,11 +33,6 @@ class Layout extends Component {
     stopAnimation = () => {
         this.setState({view: viewEnum.LOGIN});
     }
-
-    logout = () => {
-        this.setState({token: ''});
-        window.localStorage.clear();
-    }
     
     resetToCourse = () => {
         this.setState({courseReset: !this.state.courseReset});
@@ -49,7 +41,8 @@ class Layout extends Component {
     resetToSkill = () => {
         this.setState({skillReset: !this.state.skillReset});
     }
-    goCalender = () => {
+
+    goCalendar = () => {
         this.setState({view: viewEnum.ANIMATION});
     }
 
@@ -58,6 +51,8 @@ class Layout extends Component {
     }
 
     goLogout = () => {
+        window.localStorage.clear();
+        this.setState({token: ''});
         this.setState({view: viewEnum.ANIMATION});
     }
 
@@ -125,15 +120,11 @@ class Layout extends Component {
 
         return (
             <div>
-                <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} logout={this.logout.bind(this)}/>
-                {/*<SideDrawer*/}
-                {/*    open={this.state.showSideDrawer}*/}
-                {/*    closed={this.sideDrawerClosedHandler}/>*/}
                 <main className={classes.Content}>
                     {view}
                 </main>
                 <SideBar parentCourse={this.resetToCourse.bind(this)}
-                         parentCalender={this.goCalender.bind(this)}
+                         parentCalendar={this.goCalendar.bind(this)}
                          parentSettings={this.goSettings.bind(this)}
                          parentLogout={this.goLogout.bind(this)}
                          parentView={this.state.view}

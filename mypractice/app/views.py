@@ -45,6 +45,23 @@ class CardList(generics.ListCreateAPIView):
 		course = Course.objects.get(id=courseid)
 		skills = self.kwargs.get('skills')
 		skill_list = skills.split(',')
+		time = int(self.kwargs.get('time'))
+		num_cards = int(time / 5)
+
+		if Deck.objects.filter(
+			user=user,
+			course=course,
+			skills=skills,
+			date=datetime.date.today(),
+			num_cards=num_cards
+		).exists():
+			return refresh_cardlist(
+				user.id,
+				courseid,
+				skills,
+				time
+			)
+
 		skill1 = skill_list[0]
 		skill_obj1 = Skill.objects.get(id=skill1)
 		card_queryset = Card.objects.filter(course=course, skill=skill_obj1)
@@ -96,6 +113,13 @@ class CardList(generics.ListCreateAPIView):
 		)
 		if created:
 			deck.save()
+		else:
+			return refresh_cardlist(
+				self.request.user.id,
+				self.kwargs.get('courseid'),
+				self.kwargs.get('skills'),
+				self.kwargs.get('time')
+			)
 
 		return list(final_list)
 

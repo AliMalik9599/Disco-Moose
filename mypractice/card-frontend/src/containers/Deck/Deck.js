@@ -18,7 +18,7 @@ class Deck extends Component {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
-                'Authorization': 'Token ' + this.props.token
+                'Authorization': 'Token ' + window.localStorage.getItem('login')
             }
         }).then(response => response.status)
             .then(data => {
@@ -36,7 +36,7 @@ class Deck extends Component {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
-                'Authorization': 'Token ' + this.props.token
+                'Authorization': 'Token ' + window.localStorage.getItem('login')
             }
         }).then(response => response.status)
             .then(data => {
@@ -52,15 +52,18 @@ class Deck extends Component {
     refresh() {
         console.log("TIME = " + this.props.time.toString());
         this.str_url = 'http://127.0.0.1:8000/cards/refresh/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
+        console.log(window.localStorage.getItem('login'));
         fetch(this.str_url, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
-                'Authorization': 'Token ' + this.props.token
+                'Authorization': 'Token ' + window.localStorage.getItem('login')
             }
         })
             .then(response => response.json())
             .then(data => {
+                console.log('REFRESH:' + JSON.stringify(data));
+                window.localStorage.setItem('cards', JSON.stringify(data));
                 this.setState({cards: data});
             });
     }
@@ -72,16 +75,19 @@ class Deck extends Component {
                 method: 'GET',
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
-                    'Authorization': 'Token ' + this.props.token
+                    'Authorization': 'Token ' + window.localStorage.getItem('login')
                 }
             })
             .then(response => response.json())
             .then(data => {
+                console.log('COMPONENT DID MOUNT:' + data);
+                window.localStorage.setItem('cards', JSON.stringify(data));
                 this.setState({cards: data});
             });
     }
 
     render() {
+        // this.componentDidMount();
         if (window.localStorage.getItem('login')) {
             return (
                 <main>

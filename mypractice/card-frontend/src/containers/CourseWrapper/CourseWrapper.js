@@ -84,7 +84,7 @@ class CourseWrapper extends Component {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
-                'Authorization': 'Token ' + this.props.token
+                'Authorization': 'Token ' + window.localStorage.getItem('login')
             }
         })
             .then(response => response.json())
@@ -133,13 +133,16 @@ class CourseWrapper extends Component {
                 />
                 break;
             case 'Deck':
-                window.localStorage.setItem('cards', JSON.stringify([]));
+                if (JSON.parse(window.localStorage.getItem('cards')) === null) {
+                    console.log("SETTING CARDS");
+                    window.localStorage.setItem('cards', JSON.stringify([]));
+                }
                 console.log('local storage : ' + window.localStorage.getItem('view'));
                 console.log('state view: ' + this.state.view);
                 view = <Deck courseid={this.state.selectedCourse}
                              skills={this.state.skills}
-                             token={this.props.token}
-                             time={this.selectedTime}
+                             token={window.localStorage.getItem('login')}
+                             time={this.state.time}
                 />
         }
         if (window.localStorage.getItem('login')) {
