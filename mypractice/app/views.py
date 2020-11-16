@@ -12,6 +12,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
+from django.core.exceptions import ObjectDoesNotExist
+import json
 
 
 class CourseList(generics.ListCreateAPIView):
@@ -98,6 +100,29 @@ class CardList(generics.ListCreateAPIView):
 			deck.save()
 
 		return list(final_list)
+
+
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
+def create_user(request, username):
+	print("inside view")
+	try:
+		person = User.objects.get(username=username)
+		return Response(status=status.HTTP_400_BAD_REQUEST)
+	except ObjectDoesNotExist:
+		data = json.loads(request.body)
+		print(data)
+		name = data['name']
+		username = data['username']
+		password = data['password']
+		add_user = User.objects.create_user(first_name=name, username=username, password=password)
+		add_user.save()
+		print(add_user)
+		return Response(status=status.HTTP_201_CREATED)
+
+
+
 
 
 @api_view(['POST'])
