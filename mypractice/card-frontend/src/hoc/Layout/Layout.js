@@ -3,13 +3,16 @@ import Login from "../../containers/Login/Login";
 import classes from './Layout.module.css'
 import Animation from "../../containers/Login/Animation"
 import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
+import Selection from "../../containers/Selection/Selection";
+import Registration from "../../containers/Registration/Registration";
 import SideBar from "../../containers/SideBar/SideBar";
 
 const viewEnum = {
     ANIMATION: 0,
     LOGIN: 1,
     COURSE: 2,
-    SELECTION: 3
+    SELECTION: 3,
+    REGISTRATION: 4
 }
 
 class Layout extends Component {
@@ -28,12 +31,22 @@ class Layout extends Component {
         window.localStorage.setItem('login', token);
         this.setState({token: token});
         this.setState({view: viewEnum.COURSE});
+        console.log("Set token: " + this.state.token)
+        this.setState({view: viewEnum.COURSE})
     }
 
     stopAnimation = () => {
         this.setState({view: viewEnum.LOGIN});
     }
-    
+
+    toRegistration = () => {
+        this.setState({view: viewEnum.REGISTRATION});
+    }
+
+    toLogin = () => {
+        this.setState({view: viewEnum.LOGIN});
+    }
+
     resetToCourse = () => {
         this.setState({courseReset: !this.state.courseReset});
     }
@@ -115,6 +128,9 @@ class Layout extends Component {
                     }
                     window.localStorage.setItem('view', JSON.stringify(page_view));
                     break;
+                case viewEnum.REGISTRATION:
+                    view = <Registration formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>
+                    break;
             }
         }
 
@@ -137,12 +153,3 @@ class Layout extends Component {
 }
 
 export default Layout;
-
-// if (window.localStorage.getItem('login') && JSON.parse(window.localStorage.getItem('view'))['page'] !== 'CourseWrapper') {
-//     let page_view = {
-//         'main': 'CourseWrapper',
-//         'subpage': 'CourseSelect'
-//     }
-//     window.localStorage.setItem('view', JSON.stringify(page_view));
-//     view = <CourseWrapper token={this.state.token}/>;
-// }
