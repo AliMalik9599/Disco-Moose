@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
         backgroundColor: '#D2E4EE',
+        //fontColor: 'red',
     },
     media: {
         height: 0,
@@ -41,7 +42,15 @@ const useStyles = makeStyles((theme) => ({
     },
     favorite: {
         textAlign: 'center',
-    }
+    },
+    /*
+    header:  {
+        fontFamily: 'Montserrat',
+        fontSize: '18pt',
+        fontColor: 'red',
+    },
+
+     */
 }));
 
 export default function CourseCard(props) {
@@ -63,6 +72,11 @@ export default function CourseCard(props) {
     
     const handleCompleteClick = (event) => {
         props.pressComplete(event, props.id);
+
+        if(props.is_complete === 'True') {
+            {/* send time completed to database */}
+            {/* update time completed */}
+        }
     }
 
     const handleFavorite = (event) => {
@@ -75,9 +89,7 @@ export default function CourseCard(props) {
             <Card className={classes.root}>
                 <CardHeader
                     avatar={
-                        <Avatar aria-label="card" className={classes.avatar}>
-                            C
-                        </Avatar>
+                        <Avatar aria-label="card" className={classes.avatar} src={require("./guitar.png")}></Avatar>
                     }
                     action={
                         <IconButton aria-label="settings">
@@ -85,6 +97,7 @@ export default function CourseCard(props) {
                         </IconButton>
                     }
                     title={props.title}
+                    subheader={props.subheader}
                 />
                 {/*<CardMedia*/}
                 {/*    className={classes.media}*/}

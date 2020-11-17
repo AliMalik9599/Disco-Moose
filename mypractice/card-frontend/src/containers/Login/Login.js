@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { Box, withStyles, Button, Grid, Typography, Input, Container} from "@material-ui/core";
+import {Box, withStyles, Button, Grid, Typography, Input, Container} from "@material-ui/core";
 
 const styles = theme => ({
 
@@ -9,11 +9,10 @@ const styles = theme => ({
 
     center: {
         textAlign: 'center',
-
     },
 
     input: {
-        margin: '10px',
+        margin: '5%',
         color: '#0e1428',
         fontSize: '20px',
         padding: '5px',
@@ -45,6 +44,7 @@ const styles = theme => ({
         minWidth: '100%',
         marginTop: '10%',
         borderRadius: '5px',
+        padding: '5%',
     },
 
     button: {
@@ -52,6 +52,12 @@ const styles = theme => ({
         fontFamily: 'Montserrat',
         backgroundColor: '#EE6C4D',
         margin: '5%',
+        textAlign: 'center',
+        width: '90%',
+    },
+    inline: {
+        display: 'inline-block',
+        padding: '2%',
         textAlign: 'center',
     },
 });
@@ -64,7 +70,7 @@ class Login extends Component {
             name: '',
             username: '',
             password: '',
-            token: ''
+            token: '',
         };
         this.str_url = "";
     }
@@ -122,29 +128,32 @@ class Login extends Component {
             <Box className={classes.main}>
                 <div className={classes.Login}>
                     <div className={classes.center}>
-                    <img className={classes.logo} src={require("./bulb-logo.png")} alt="disco logo"/>
+                        <img className={classes.logo} src={require("./bulb-logo.png")} alt="disco logo"/>
                     </div>
                     <Typography className={classes.title} align="center">Sign in to Disco</Typography>
                     <Grid container spacing={0}
                           direction="column"
                           alignItems="center"
                           justify="center"
-                         >
+                    >
                         <Grid item xs={3}>
                             <Container className={classes.container}>
-                            <form className={classes.form} onSubmit={this.handleChange}>
+                                <form className={classes.form} onSubmit={this.handleChange}>
 
-                                <Input className={classes.input} placeholder="name" type="text" name="name" value={this.state.value} onChange={this.handleNameChange}/>
+                                    <Input className={classes.input} placeholder="name" type="text" name="name" value={this.state.value} onChange={this.handleNameChange}/>
 
-                                <Input className={classes.input} placeholder="username or email" type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
+                                    <Input className={classes.input} placeholder="username or email" type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
 
-                                <Input className={classes.input} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
+                                    <Input className={classes.input} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
 
-                                <div className={classes.center}>
-                                    <Button className={classes.button} type="submit" value="Submit">Sign in</Button>
-                                    <Button className={classes.button} onClick={this.handleRegister}>Register Here!</Button>
-                                </div>
-                            </form>
+                                    <div className={classes.center}>
+                                        <Button className={classes.button} type="submit" value="Submit">Sign in</Button>
+                                    </div>
+                                    <div className={classes.center}>
+                                        <Typography className={classes.inline}>Don't have an account? </Typography>
+                                        <Button style={{color:"#0e1428"}} className={classes.inline} onClick={this.handleRegister}>Sign up</Button>
+                                    </div>
+                                </form>
                             </Container>
                         </Grid>
                     </Grid>

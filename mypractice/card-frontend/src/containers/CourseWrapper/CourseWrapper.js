@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import CourseList from "../../components/CourseList/CourseList";
 import Selection from "../Selection/Selection";
 import Deck from "../Deck/Deck";
+import "./CourseWrapper.css";
 
 // const courseViewEnum = {
 //     COURSESELECT: 0 | null,
