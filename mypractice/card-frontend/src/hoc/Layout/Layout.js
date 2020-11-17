@@ -121,7 +121,7 @@ class Layout extends Component {
                     view = <Animation stopAnimation={this.stopAnimation.bind(this)}/>;
                     break;
                 case viewEnum.LOGIN:
-                    view = <Login formClick={this.changeLayoutState.bind(this)}/>;
+                    view = <Login formClick={this.changeLayoutState.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
                     const page_view = {
                         'main': 'Login',
                         'subpage': null
