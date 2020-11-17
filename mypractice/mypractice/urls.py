@@ -17,9 +17,10 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework.urlpatterns import format_suffix_patterns
 from app import views
+from app.views import index
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', index, name='index'),
     path('cards/cardprogress/<str:courseid>/<str:skills>/<str:time>', views.CardList.as_view()),
     path('cards/refresh/<str:courseid>/<str:skills>/<str:time>', views.RefreshCardList.as_view()),
     path('courses/', views.CourseList.as_view()),
