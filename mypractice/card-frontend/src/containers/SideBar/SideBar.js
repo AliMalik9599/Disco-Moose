@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 //export default function SideBar = ({parentSkill, parentCardsinDeck, parentCalender, parentHomePage, parentSettings, parentLogout}) => {
-const SideBar = ({parentCourse, parentCalender, parentSettings, parentLogout, parentView, parentCourseView, parentSkill}) => {
+const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, parentView, parentCourseView, parentSkill}) => {
 
     const viewEnum = {
         COURSE: 2,
@@ -120,7 +120,7 @@ const SideBar = ({parentCourse, parentCalender, parentSettings, parentLogout, pa
         {
             text: "See Calender",
             icon: <Today/>,
-            onClick: () => parentCalender()
+            onClick: () => parentCalendar()
         },
         {
             text: "Settings",
@@ -145,7 +145,7 @@ const SideBar = ({parentCourse, parentCalender, parentSettings, parentLogout, pa
         {
             text: "See Calender",
             icon: <Today/>,
-            onClick: () => parentCalender()
+            onClick: () => parentCalendar()
         },
         {
             text: "Settings",
@@ -176,7 +176,7 @@ const SideBar = ({parentCourse, parentCalender, parentSettings, parentLogout, pa
         {
             text: "See Calender",
             icon: <Today/>,
-            onClick: () => parentCalender()
+            onClick: () => parentCalendar()
         },
 
         {
@@ -223,7 +223,7 @@ const SideBar = ({parentCourse, parentCalender, parentSettings, parentLogout, pa
         {
             text: "See Calender",
             icon: <Today/>,
-            onClick: () => parentCalender()
+            onClick: () => parentCalendar()
         },
 
         {

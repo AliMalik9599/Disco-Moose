@@ -2,16 +2,12 @@ import React, {Component} from "react";
 import CardList from "../../components/CardList/CardList";
 
 class Deck extends Component {
-    //deck should know what cards are completed
     constructor(props) {
         super(props);
         this.state = {
-            cards: []
+            cards: JSON.parse(window.localStorage.getItem('cards'))
         };
     }
-
-    //deck needs to have function that tracks if user has clicked card
-    //update backend every time the user "completes" a card
 
     handleComplete(e, cardId) {
         console.log(cardId)
@@ -22,7 +18,7 @@ class Deck extends Component {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
-                'Authorization': 'Token ' + this.props.token
+                'Authorization': 'Token ' + window.localStorage.getItem('login')
             }
         }).then(response => response.status)
             .then(data => {
@@ -36,13 +32,11 @@ class Deck extends Component {
     }
 
     handleFavorite(e, cardId) {
-        //console.log(cardId);
-        //console.log("IN HANDLER");
         fetch(`http://127.0.0.1:8000/cardprogress/favorite/${cardId}`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
-                'Authorization': 'Token ' + this.props.token
+                'Authorization': 'Token ' + window.localStorage.getItem('login')
             }
         }).then(response => response.status)
             .then(data => {
@@ -58,15 +52,18 @@ class Deck extends Component {
     refresh() {
         console.log("TIME = " + this.props.time.toString());
         this.str_url = 'http://127.0.0.1:8000/cards/refresh/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
+        console.log(window.localStorage.getItem('login'));
         fetch(this.str_url, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
-                'Authorization': 'Token ' + this.props.token
+                'Authorization': 'Token ' + window.localStorage.getItem('login')
             }
         })
             .then(response => response.json())
             .then(data => {
+                console.log('REFRESH:' + JSON.stringify(data));
+                window.localStorage.setItem('cards', JSON.stringify(data));
                 this.setState({cards: data});
             });
     }
@@ -78,28 +75,33 @@ class Deck extends Component {
                 method: 'GET',
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
-                    'Authorization': 'Token ' + this.props.token
+                    'Authorization': 'Token ' + window.localStorage.getItem('login')
                 }
             })
             .then(response => response.json())
             .then(data => {
+                console.log('COMPONENT DID MOUNT:' + data);
+                window.localStorage.setItem('cards', JSON.stringify(data));
                 this.setState({cards: data});
             });
     }
 
     render() {
-        return (
-            <main>
-                <div  className="d-flex justify-content-center">
-                    <CardList
-                        cards={this.state.cards}
-                        completed={this.handleComplete.bind(this)}
-                        favorited={this.handleFavorite.bind(this)}
-                        token={this.props.token}
-                    />
-                </div>
-            </main>
-        )
+        // this.componentDidMount();
+        if (window.localStorage.getItem('login')) {
+            return (
+                <main>
+                    <div  className="d-flex justify-content-center">
+                        <CardList
+                            cards={this.state.cards}
+                            completed={this.handleComplete.bind(this)}
+                            favorited={this.handleFavorite.bind(this)}
+                            token={this.props.token}
+                        />
+                    </div>
+                </main>
+            )
+        }
     }
 }
 

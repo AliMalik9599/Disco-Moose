@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import CourseCard from  '../Card/Card'
+import CourseCard from  '../Card/Card';
+
 
 class CardList extends Component {
     constructor(props) {
         super(props);
-
     }
 
     render() {
@@ -23,13 +23,16 @@ class CardList extends Component {
                 is_favorited={card.is_favorited}
                 pressComplete={this.props.completed}
                 addToFavorites={this.props.favorited}
+                token={this.props.token}
             />
         ));
-        return (
-            <div>
-                {cards}
-            </div>
-        );
+        if (window.localStorage.getItem('login')) {
+            return (
+                <div>
+                    {cards}
+                </div>
+            );
+        }
     }
 }
 

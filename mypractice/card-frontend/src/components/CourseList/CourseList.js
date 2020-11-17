@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import Course from  '../Course/Course';
-import Deck from '../../containers/Deck/Deck';
 import {Box} from '@material-ui/core'
 
 class CourseList extends Component {
@@ -35,11 +34,13 @@ class CourseList extends Component {
                 token={this.props.token}
             />
         ));
-        return (
-            <Box>
-                {courses}
-            </Box>
-        );
+        if (window.localStorage.getItem('login')) {
+            return (
+                <Box>
+                    {courses}
+                </Box>
+            );
+        }
     }
 }
 

@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
-import classes from './Layout.module.css';
-import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
-import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import Login from "../../containers/Login/Login";
+import classes from './Layout.module.css'
 import Animation from "../../containers/Login/Animation"
 import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
 import Selection from "../../containers/Selection/Selection";
 import Registration from "../../containers/Registration/Registration";
 import SideBar from "../../containers/SideBar/SideBar";
-
 
 const viewEnum = {
     ANIMATION: 0,
@@ -19,12 +16,11 @@ const viewEnum = {
 }
 
 class Layout extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
             view: viewEnum.ANIMATION,
-            token: '',
+            token: window.localStorage.getItem('login'),
             courseReset: false,
             skillReset: false,
             courseView: 0
@@ -32,9 +28,9 @@ class Layout extends Component {
     }
 
     changeLayoutState = (token) => {
-        console.log("changeLayoutState");
-        console.log(token);
-        this.setState({token: token})
+        window.localStorage.setItem('login', token);
+        this.setState({token: token});
+        this.setState({view: viewEnum.COURSE});
         console.log("Set token: " + this.state.token)
         this.setState({view: viewEnum.COURSE})
     }
@@ -58,7 +54,8 @@ class Layout extends Component {
     resetToSkill = () => {
         this.setState({skillReset: !this.state.skillReset});
     }
-    goCalender = () => {
+
+    goCalendar = () => {
         this.setState({view: viewEnum.ANIMATION});
     }
 
@@ -67,6 +64,8 @@ class Layout extends Component {
     }
 
     goLogout = () => {
+        window.localStorage.clear();
+        this.setState({token: ''});
         this.setState({view: viewEnum.ANIMATION});
     }
 
@@ -83,45 +82,65 @@ class Layout extends Component {
     }
 
     render () {
-
         let view = null;
-        console.log(this.state.view + "viewwww");
-        switch (this.state.view) {
-            case viewEnum.ANIMATION:
-                view = <Animation stopAnimation={this.stopAnimation.bind(this)}/>
-                break;
-            case viewEnum.LOGIN:
-                console.log(this.state.token);
-                view = <Login formClick={this.changeLayoutState.bind(this)} toRegistration={this.toRegistration.bind(this)}/>
-                break;
-            case viewEnum.REGISTRATION:
-                console.log(this.state.token);
-                view = <Registration formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>
-                break;
-            case viewEnum.COURSE:
+        if (window.localStorage.getItem('login')) {
+            if (JSON.parse(window.localStorage.getItem('view'))['main'] !== 'CourseWrapper') {
+                // set local storage if it's not already set for course wrapper
+                let page_view = {
+                    'main': 'CourseWrapper',
+                    'subpage': 'CourseSelect'
+                }
+                window.localStorage.setItem('view', JSON.stringify(page_view));
+                window.localStorage.setItem('courses', JSON.stringify([]));
+                window.localStorage.setItem('skills', JSON.stringify([]));
                 view = <CourseWrapper token={this.state.token}
-                                      courseReset={this.state.courseReset}
-                                      skillReset={this.state.skillReset}
-                                      viewToCourse={this.viewToCourse.bind(this)}
-                                      viewToSkills={this.viewToSkills.bind(this)}
-                                      viewToDeck={this.viewToDeck.bind(this)}
-                                      resetToCourse={this.resetToCourse.bind(this)}
-                                      resetToSkill={this.resetToSkill.bind(this)}
+                            courseReset={this.state.courseReset}
+                            skillReset={this.state.skillReset}
+                            viewToCourse={this.viewToCourse.bind(this)}
+                            viewToSkills={this.viewToSkills.bind(this)}
+                            viewToDeck={this.viewToDeck.bind(this)}
+                            resetToCourse={this.resetToCourse.bind(this)}
+                            resetToSkill={this.resetToSkill.bind(this)}
 
-                />
-                break;
+                        />
+            } else {
+                // do not reset local storage
+                view = <CourseWrapper token={this.state.token}
+                            courseReset={this.state.courseReset}
+                            skillReset={this.state.skillReset}
+                            viewToCourse={this.viewToCourse.bind(this)}
+                            viewToSkills={this.viewToSkills.bind(this)}
+                            viewToDeck={this.viewToDeck.bind(this)}
+                            resetToCourse={this.resetToCourse.bind(this)}
+                            resetToSkill={this.resetToSkill.bind(this)}
+                        />;
+            }
+        } else {
+            switch (this.state.view) {
+                case viewEnum.ANIMATION:
+                    view = <Animation stopAnimation={this.stopAnimation.bind(this)}/>;
+                    break;
+                case viewEnum.LOGIN:
+                    view = <Login formClick={this.changeLayoutState.bind(this)}/>;
+                    const page_view = {
+                        'main': 'Login',
+                        'subpage': null
+                    }
+                    window.localStorage.setItem('view', JSON.stringify(page_view));
+                    break;
+                case viewEnum.REGISTRATION:
+                    view = <Registration formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>
+                    break;
+            }
         }
+
         return (
             <div>
-                <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler}/>
-                <SideDrawer
-                    open={this.state.showSideDrawer}
-                    closed={this.sideDrawerClosedHandler}/>
                 <main className={classes.Content}>
                     {view}
                 </main>
                 <SideBar parentCourse={this.resetToCourse.bind(this)}
-                         parentCalender={this.goCalender.bind(this)}
+                         parentCalendar={this.goCalendar.bind(this)}
                          parentSettings={this.goSettings.bind(this)}
                          parentLogout={this.goLogout.bind(this)}
                          parentView={this.state.view}

@@ -1,10 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
@@ -37,16 +36,18 @@ export default function Skill(props) {
     const { ticked } = state;
 
     const classes = useStyles();
-    return (
-        <Box className={classes.box}>
-            <FormControl className="skill task-wrapper">
-                <FormGroup>
-                    <FormControlLabel
-                        control={<Checkbox checked={ticked} onClick={(e) => props.skillUpdate(e, props.id)} onChange={handleChange} name="checked"/>}
-                        label={props.name}
-                    />
-                </FormGroup>
-            </FormControl>
-        </Box>
-    );
+    // if (window.localStorage.getItem('login')) {
+        return (
+            <Box className={classes.box}>
+                <FormControl className="skill task-wrapper">
+                    <FormGroup>
+                        <FormControlLabel
+                            control={<Checkbox checked={ticked} onClick={(e) => props.skillUpdate(e, props.id)} onChange={handleChange} name="checked"/>}
+                            label={props.name}
+                        />
+                    </FormGroup>
+                </FormControl>
+            </Box>
+        );
+    // }
 }

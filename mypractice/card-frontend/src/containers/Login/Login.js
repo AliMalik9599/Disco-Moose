@@ -1,10 +1,5 @@
 import React, {Component} from "react";
-//import classes from './Login.module.css'
-import classes from './Login2.module.css'
-//import './Login.css'
-//import { makeStyles } from '@material-ui/core/styles';
-import {Avatar, Box,withStyles, Button,TextField,Grid,Paper,AppBar,Typography,Toolbar,Link,Input,Container} from "@material-ui/core";
-import { useForm } from 'react-hook-form';
+import { Box, withStyles, Button, Grid, Typography, Input, Container} from "@material-ui/core";
 
 const styles = theme => ({
 
@@ -13,18 +8,11 @@ const styles = theme => ({
     },
 
     center: {
-        //color: '#293241',
-        //borderRadius: '5px',
-        //margin: '10px',
-        //position: 'relative',
-        //textAlign: 'center',
-        //marginTop: '10%',
         textAlign: 'center',
 
     },
 
     input: {
-        //textAlign: 'center',
         margin: '10px',
         color: '#0e1428',
         fontSize: '20px',
@@ -48,7 +36,6 @@ const styles = theme => ({
         fontFamily: 'Montserrat',
         fontSize: '40pt',
         color: '#0e1428',
-        //marginTop: '15%'
     },
 
     container: {
@@ -58,26 +45,15 @@ const styles = theme => ({
         minWidth: '100%',
         marginTop: '10%',
         borderRadius: '5px',
-        //height: '',
     },
 
     button: {
         fontSize: '17pt',
         fontFamily: 'Montserrat',
         backgroundColor: '#EE6C4D',
-        //justifySelf: 'center',
         margin: '5%',
-        //display: 'flex',
-        //justifyContent: 'center',
         textAlign: 'center',
-        //borderStyle: 'solid',
-        //borderRadius: '5px',
-        //borderColor: 'blue',
-
     },
-
-
-
 });
 
 class Login extends Component {
@@ -92,7 +68,6 @@ class Login extends Component {
         };
         this.str_url = "";
     }
-    //classes = useStyles();
 
     handleChange = event => {
         event.preventDefault();
@@ -181,95 +156,3 @@ class Login extends Component {
 }
 
 export default withStyles(styles)(Login);
-
-/*
-export default function Login(props) {
-
-    const [state, setState] = React.useState({
-        name: '',
-        username: '',
-        password: '',
-        token: ''
-    });
-
-    const [url, setUrl] = React.useState({
-        str_url: "",
-    });
-
-    const classes = useStyles();
-    /*
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            username: '',
-            password: '',
-            token: ''
-        };
-        this.str_url = "";
-    }
-
-    //classes = useStyles();
-
-    const handleChange = event => {
-        event.preventDefault();
-        url.str_url = 'http://127.0.0.1:8000/rest-auth/login/';
-        fetch(url.str_url, {
-            method: 'POST',
-            body: JSON.stringify({
-                username: state.username.toString(),
-                password: state.password.toString()
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8'
-            }
-        }).then(response => response.json())
-            .then(data => {
-                if(!data.key) {
-                    alert("Incorrect Username or Password");
-                } else {
-                    setState({token: data.key})
-                    alert("Correct Username or Password");
-                    props.formClick(state.token);
-                }
-            });
-    }
-
-    const handleNameChange = event => {
-        const value = event.target.value;
-        setState({name: value});
-    }
-
-    const handleEmailChange = event => {
-        const value = event.target.value;
-        setState({username: value});
-    }
-
-    const handlePasswordChange = event => {
-        const value = event.target.value;
-        setState({password: value});
-    }
-
-        return (
-            <main>
-                <div className={classes.Login}>
-                    <h1>My Practice</h1>
-
-                    <form onSubmit={handleChange}>
-                        <h2>Login</h2>
-                        <Input className={classes.name} placeholder="name" type="text" name="name" value={state.name} onChange={handleNameChange}/>
-
-                        <Input className={classes.username} placeholder="username or email" type="text" name="username" value={state.username}onChange={handleEmailChange}/>
-
-                        <Input className={classes.password} placeholder="password" id="password" type="text" name="password" value={state.password} onChange={handlePasswordChange}/>
-
-                        <div className={classes.button}>
-                            <button className={classes.submit} type="submit" value="Submit"/>
-                        </div>
-                    </form>
-                </div>
-            </main>
-        );
-
-}
-*/
