@@ -52,7 +52,7 @@ yarn add @material-ui/core
 
 yarn add @material-ui/icons
 
-pip install django-rest-with
+pip install django-rest-auth
 
 1) Added styling to the Login Page (Reformatted using material-ui)
 2) Converted the Card, Card List Course, CourseList and Deck Components into material ui components
@@ -62,4 +62,5 @@ pip install django-rest-with
 5) Added a favorite button for cards
 6) Started functionality for an opening and closing sidebar
 
+## Iteration 4 Summary 
 
