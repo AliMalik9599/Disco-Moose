@@ -90,7 +90,11 @@ ROOT_URLCONF = 'mypractice.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(PROJECT_DIR, 'card-frontend/build')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'card-frontend/build'),
+            '2020-fall-group-big-mOOSE/mypractice/card-frontend/build',
+            'mypractice/card-frontend/build',
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
