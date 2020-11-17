@@ -1,11 +1,12 @@
 from django.db import migrations, models
 from django.contrib.auth.models import User
+import datetime
 
 
 def add_mock_user1(apps, schema_editor):
-	mock_user1 = User.objects.create_user(first_name='john', is_superuser=True, username='lennon', password='johnpassword')
+	mock_user1 = User.objects.create_user(first_name='john', is_superuser=True, username='lennon', password='johnpassword', last_login=datetime.date.today())
 	mock_user1.save()
-	mock_user2 = User.objects.create_user(first_name='Admin', is_superuser=True, username='admin', password='admin')
+	mock_user2 = User.objects.create_user(first_name='Admin', is_superuser=True, username='admin', password='admin', last_login=datetime.date.today())
 	mock_user2.save()
 
 
