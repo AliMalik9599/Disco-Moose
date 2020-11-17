@@ -1,1 +1,1 @@
-web: gunicorn mypractice/mypractice/wsgi:app
+web: gunicorn --pythonpath mypractice mypracice.wsgi
