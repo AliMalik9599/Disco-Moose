@@ -63,7 +63,7 @@ class CardList(generics.ListCreateAPIView):
 			card_dict["is_favorited"] = card_progress.is_favorited
 			card_dict["last_completed"] = card_progress.last_completed
 			card_list.append(card_dict)
-			print(card_dict)
+			#print(card_dict)
 
 		card_list = list(card_list)
 		today = datetime.date.today()
@@ -84,7 +84,11 @@ class CardList(generics.ListCreateAPIView):
 
 		card_ids = []
 		for card in final_list:
+			if card["last_completed"] != datetime.date.today():
+				card["is_complete"] = False
+
 			card_ids.append(card["id"])
+
 
 		deck, created = Deck.objects.get_or_create(
 			user=user,
