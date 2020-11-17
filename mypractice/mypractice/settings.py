@@ -35,7 +35,7 @@ ALLOWED_HOSTS = ['disco-moose.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'app.apps.AppConfig',
+    'mypractice.apps.AppConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
