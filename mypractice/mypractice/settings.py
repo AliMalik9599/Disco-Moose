@@ -91,7 +91,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, '/card-frontend/build'),
+            os.path.join(BASE_DIR, '/mypractice/card-frontend/build'),
             # '2020-fall-group-big-mOOSE/mypractice/card-frontend/build',
             # 'mypractice/card-frontend/build',
                  ],
