@@ -90,7 +90,7 @@ ROOT_URLCONF = 'mypractice.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'card-frontend/build')],
+        'DIRS': [os.path.join(PROJECT_DIR, 'card-frontend/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -149,7 +149,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'card-frontend/build', 'static')
 
 # Extra lookup directories for collectstatic to find static files
 STATICFILES_DIRS = (
-    os.path.join('mypractice', 'card-frontend/build/static'),
+    os.path.join(PROJECT_ROOT, 'card-frontend/build/static'),
 )
 
 #  Add configuration for static files storage using whitenoise
