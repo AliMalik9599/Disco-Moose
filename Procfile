@@ -1,1 +1,1 @@
-web: gunicorn mypractice.wsgi
+web: gunicorn 2020-fall-group-big-mOOSE.wsgi
