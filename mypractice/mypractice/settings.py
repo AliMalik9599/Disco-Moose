@@ -26,7 +26,7 @@ SECRET_KEY = '1h54(uc8pq!u##)p8&f6%w^0#!=$#afj_q)4=!#o_tkti9052!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['disco-moose.herokuapp.com']
 
 
 # Application definition
@@ -130,3 +130,6 @@ STATIC_URL = '/static/'
 
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+import django_heroku
+django_heroku.settings(locals())
