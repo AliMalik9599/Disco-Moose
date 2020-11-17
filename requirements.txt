@@ -1,4 +1,4 @@
-hasgiref==3.2.10
+# hasgiref==3.2.10
 certifi==2020.11.8
 cffi==1.14.3
 chardet==3.0.4
