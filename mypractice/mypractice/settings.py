@@ -64,7 +64,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -91,9 +90,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, '/mypractice/card-frontend/build'),
-            # '2020-fall-group-big-mOOSE/mypractice/card-frontend/build',
-            # 'mypractice/card-frontend/build',
+            os.path.join(PROJECT_DIR, '/mypractice/card-frontend/build'),
+             '2020-fall-group-big-mOOSE/mypractice/card-frontend/build',
+             'card-frontend/build',
                  ],
         'APP_DIRS': True,
         'OPTIONS': {
