@@ -35,5 +35,6 @@
   "devDependencies": {
     "@material-ui/icons": "^4.9.1",
     "clsx": "^1.1.1"
-  }
+  },
+  "proxy": "http://localhost:8000"
 }
