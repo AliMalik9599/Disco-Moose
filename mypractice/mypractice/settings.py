@@ -90,11 +90,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(PROJECT_DIR, '/mypractice/card-frontend/build'),
-             '2020-fall-group-big-mOOSE/mypractice/card-frontend/build',
-             'card-frontend/build',
-             '2020-fall-group-big-mOOSE/mypractice/card-frontend/public'
-                 ],
+            os.path.join('app/mypractice/card-frontend/build'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
