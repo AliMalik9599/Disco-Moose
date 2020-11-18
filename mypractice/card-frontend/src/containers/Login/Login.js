@@ -71,7 +71,7 @@ class Login extends Component {
 
     handleChange = event => {
         event.preventDefault();
-        this.str_url = 'http://127.0.0.1:8000/rest-auth/login/';
+        this.str_url = '/rest-auth/login/';
         fetch(this.str_url, {
             method: 'POST',
             body: JSON.stringify({
