@@ -65,15 +65,13 @@ const styles = theme => ({
         fontSize: '17pt',
         fontFamily: 'Montserrat',
         backgroundColor: '#EE6C4D',
-        //justifySelf: 'center',
         margin: '5%',
-        //display: 'flex',
-        //justifyContent: 'center',
         textAlign: 'center',
-        //borderStyle: 'solid',
-        //borderRadius: '5px',
-        //borderColor: 'blue',
-
+        width: '90%',
+        "&:hover": {
+            //color: '#EE6C4D',
+            backgroundColor: '#345E83', //change this to color of nav bar
+        },
     },
 
 
@@ -127,9 +125,6 @@ class Registration extends Component {
         }
     }
 
-
-
-
     handleNameChange = event => {
         const value = event.target.value;
         this.setState({name: value});
@@ -149,7 +144,6 @@ class Registration extends Component {
         const value = event.target.value;
         this.setState({confirm: value});
     }
-
 
     render() {
         const { classes } = this.props;
@@ -179,7 +173,7 @@ class Registration extends Component {
                                     <Input className={classes.input} placeholder="Confirm password" id="Confirm password" type="text" name="Confirm password" value={this.state.value} onChange={this.handleConfirmPasswordChange}/>
 
                                     <div className={classes.center}>
-                                        <Button className={classes.button} type="submit" value="Submit">Sign Up!</Button>
+                                        <Button className={classes.button} type="submit" value="Submit">Sign Up</Button>
                                     </div>
                                 </form>
                             </Container>

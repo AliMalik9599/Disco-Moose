@@ -16,11 +16,14 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Theme from '../../theme';
+import { Container, Grid } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
         backgroundColor: '#D2E4EE',
+        //fontColor: 'red',
     },
     media: {
         height: 0,
@@ -41,10 +44,28 @@ const useStyles = makeStyles((theme) => ({
     },
     favorite: {
         textAlign: 'center',
+    },
+    body: {
+        fontFamily: 'Montserrat',
+        fontSize: '15pt',
+    },
+    title: {
+        fontFamily: 'Montserrat',
+        fontSize: '20pt',
+        textAlign: 'justified',
     }
+    /*
+    header:  {
+        fontFamily: 'Montserrat',
+        fontSize: '18pt',
+        fontColor: 'red',
+    },
+
+     */
 }));
 
 export default function CourseCard(props) {
+
     const [state, setState] = React.useState({
             showMore: false,
             favorited: props.is_favorited !== 'False',
@@ -63,28 +84,56 @@ export default function CourseCard(props) {
     
     const handleCompleteClick = (event) => {
         props.pressComplete(event, props.id);
+
+        if(props.is_complete === 'True') {
+            {/* send time completed to database */}
+            {/* update time completed */}
+        }
     }
 
     const handleFavorite = (event) => {
         props.addToFavorites(event, props.id);
         state.favorited = !state.favorited;
+
     };
 
+    function dateToString(props) {
+        //var d = (props.last_completed).toString();
+        console.log("HELLO");
+        console.log(props.last_completed);
+        //var d = props.content;
+        var d = "poo";
+        if (props.last_completed != null) {
+            d = (props.last_completed).toString();
+        }
+        else {
+            d = "Never";
+        }
+
+        //d = d.toDateString();
+        //d = d.toString();
+        return d;
+    }
+
     if (window.localStorage.getItem('login')) {
+        var d = dateToString(props);
+       // var d = 2;
         return (
+
+            <Container>
             <Card className={classes.root}>
                 <CardHeader
                     avatar={
-                        <Avatar aria-label="card" className={classes.avatar}>
-                            C
-                        </Avatar>
+                        <Avatar aria-label="card" className={classes.avatar} src={require("./guitar.png")}></Avatar>
                     }
                     action={
                         <IconButton aria-label="settings">
                             <MoreVertIcon/>
                         </IconButton>
                     }
-                    title={props.title}
+                    title={
+                        <Typography className={classes.title}> {props.title} </Typography>
+                    }
                 />
                 {/*<CardMedia*/}
                 {/*    className={classes.media}*/}
@@ -92,14 +141,19 @@ export default function CourseCard(props) {
                 {/*    title="Paella dish"*/}
                 {/*/>*/}
                 <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
                         {props.content}
                     </Typography>
                 </CardContent>
                 <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
                         Course: {props.course} <br/>
                         Level: {props.level}
+                    </Typography>
+                </CardContent>
+                <CardContent>
+                    <Typography  variant="body2" color="textSecondary" component="p">
+                        Last Completed: { d }
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
@@ -144,6 +198,7 @@ export default function CourseCard(props) {
                     </CardContent>
                 </Collapse>
             </Card>
+            </Container>
         );
     }
 }
