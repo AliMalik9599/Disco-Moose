@@ -8,7 +8,7 @@ import Deck from "../Deck/Deck";
 //     SKILLSELECT: 1,
 //     DECK: 2
 // }
-
+//realone
 const course_view = {
     'main': 'CourseWrapper',
     'subpage': 'CourseSelect'
@@ -122,6 +122,7 @@ class CourseWrapper extends Component {
                 </div>)
                 break;
             case 'SkillSelect':
+                window.localStorage.setItem('view', JSON.stringify(skill_view));
                 console.log('local storage : ' + window.localStorage.getItem('view'));
                 console.log('state view: ' + this.state.view);
                 view = <Selection skills={this.state.skills}
