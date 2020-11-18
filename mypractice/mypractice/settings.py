@@ -90,7 +90,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join('app/mypractice/card-frontend/build'),
+            os.path.join('mypractice/card-frontend/build'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
