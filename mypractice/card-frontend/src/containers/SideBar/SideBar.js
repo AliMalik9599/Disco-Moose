@@ -93,10 +93,10 @@ const useStyles = makeStyles((theme) => ({
 const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, parentView, parentCourseView, parentSkill}) => {
 
     const viewEnum = {
-        COURSE: 2,
-        CALENDER: 3,
-        SETTINGS: 4,
-        DECK: 5,
+        COURSE: '2',
+        CALENDER: '3',
+        SETTINGS: '4',
+        DECK: '5',
     }
 
 
@@ -117,16 +117,16 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
     //OnCourseList
     const OnCourseList = [
         //shouldnt add skill selection or deck
-        {
-            text: "See Calender",
-            icon: <Today/>,
-            onClick: () => parentCalendar()
-        },
-        {
-            text: "Settings",
-            icon: <Settings/>,
-            onClick: () => parentSettings()
-        },
+       // {
+       //     text: "See Calender",
+       //     icon: <Today/>,
+       //     onClick: () => parentCalendar()
+       // },
+       // {
+       //     text: "Settings",
+       //     icon: <Settings/>,
+       //     onClick: () => parentSettings()
+       // },
         {
             text: "Logout",
             icon: <Input/>,
@@ -142,16 +142,16 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             icon: <Palette/>,
             onClick: () => parentCourse()
         },
-        {
-            text: "See Calender",
-            icon: <Today/>,
-            onClick: () => parentCalendar()
-        },
-        {
-            text: "Settings",
-            icon: <Settings/>,
-            onClick: () => parentSettings()
-        },
+       // {
+       //     text: "See Calender",
+       //     icon: <Today/>,
+       //     onClick: () => parentCalendar()
+       // },
+       // {
+       //     text: "Settings",
+       //     icon: <Settings/>,
+       //     onClick: () => parentSettings()
+       // },
         {
             text: "Logout",
             icon: <Input/>,
@@ -173,18 +173,18 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             onClick: () => parentSkill()
         },
 
-        {
-            text: "See Calender",
-            icon: <Today/>,
-            onClick: () => parentCalendar()
-        },
-
-        {
-            text: "Account Settings",
-            icon: <Settings/>,
-            onClick: () => parentSettings()
-        },
-
+//        {
+//            text: "See Calender",
+//            icon: <Today/>,
+//            onClick: () => parentCalendar()
+//        },
+//
+//        {
+//            text: "Account Settings",
+//            icon: <Settings/>,
+//            onClick: () => parentSettings()
+//        },
+//
         {
             text: "Logout",
             icon: <Input/>,
@@ -238,13 +238,13 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
 
     switch (parentView) {
         case viewEnum.COURSE: //course
-            if (parentCourseView === 1) {
+            if (parentCourseView === '1') {
                 Items = OnSkillSelect;
                 drawerAction = () => handleDrawerOpen();
                 break;
 
             }
-            else if (parentCourseView === 2) {
+            else if (parentCourseView === '2') {
                 Items = OnCards;
                 drawerAction = () => handleDrawerOpen();
                 break;
