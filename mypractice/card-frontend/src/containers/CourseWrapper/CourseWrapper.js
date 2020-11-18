@@ -80,7 +80,7 @@ class CourseWrapper extends Component {
     }
 
     componentDidMount() {
-        fetch('http://127.0.0.1:8000/courses/', {
+        fetch('/courses/', {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',

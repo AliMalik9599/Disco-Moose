@@ -61,7 +61,7 @@ export default function Selection(props) {
     };
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/skills/${props.course}`, {
+        fetch(`/skills/${props.course}`, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',

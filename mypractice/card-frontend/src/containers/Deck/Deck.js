@@ -14,7 +14,7 @@ class Deck extends Component {
         //cardid -> the id of the card checked
         //need access to current user
         // something to send the card info to the backend
-        fetch(`http://127.0.0.1:8000/cardprogress/${cardId}`, {
+        fetch(`cardprogress/${cardId}`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -32,7 +32,7 @@ class Deck extends Component {
     }
 
     handleFavorite(e, cardId) {
-        fetch(`http://127.0.0.1:8000/cardprogress/favorite/${cardId}`, {
+        fetch(`/cardprogress/favorite/${cardId}`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -51,7 +51,7 @@ class Deck extends Component {
 
     refresh() {
         console.log("TIME = " + this.props.time.toString());
-        this.str_url = 'http://127.0.0.1:8000/cards/refresh/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
+        this.str_url = '/cards/refresh/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
         console.log(window.localStorage.getItem('login'));
         fetch(this.str_url, {
             method: 'GET',
@@ -70,7 +70,7 @@ class Deck extends Component {
 
     componentDidMount() {
         console.log("TIME = " + this.props.time.toString());
-        this.str_url = 'http://127.0.0.1:8000/cards/cardprogress/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
+        this.str_url = '/cards/cardprogress/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
             fetch(this.str_url, {
                 method: 'GET',
                 headers: {
