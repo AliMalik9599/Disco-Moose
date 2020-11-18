@@ -18,6 +18,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Theme from '../../theme';
 import { Container, Grid } from '@material-ui/core';
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
@@ -64,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CourseCard(props) {
+
     const [state, setState] = React.useState({
             showMore: false,
             favorited: props.is_favorited !== 'False',
@@ -92,9 +94,30 @@ export default function CourseCard(props) {
     const handleFavorite = (event) => {
         props.addToFavorites(event, props.id);
         state.favorited = !state.favorited;
+
     };
 
+    function dateToString(props) {
+        //var d = (props.last_completed).toString();
+        console.log("HELLO");
+        console.log(props.last_completed);
+        //var d = props.content;
+        var d = "poo";
+        if (props.last_completed != null) {
+            d = (props.last_completed).toString();
+        }
+        else {
+            d = "Never";
+        }
+
+        //d = d.toDateString();
+        //d = d.toString();
+        return d;
+    }
+
     if (window.localStorage.getItem('login')) {
+        var d = dateToString(props);
+       // var d = 2;
         return (
 
             <Container>
@@ -129,12 +152,8 @@ export default function CourseCard(props) {
                     </Typography>
                 </CardContent>
                 <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p">
-
-                            {/*if (props.last_completed != null) {
-                              props.last_completed.toString();
-                        */}
-
+                    <Typography  variant="body2" color="textSecondary" component="p">
+                        Last Completed: { d }
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>

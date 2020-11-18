@@ -54,6 +54,10 @@ const styles = theme => ({
         margin: '5%',
         textAlign: 'center',
         width: '90%',
+        "&:hover": {
+            //color: '#EE6C4D',
+            backgroundColor: '#345E83', //change this to color of nav bar
+        },
     },
     inline: {
         display: 'inline-block',

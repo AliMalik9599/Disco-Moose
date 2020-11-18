@@ -78,7 +78,7 @@ export default function Selection(props) {
         return (
             <main className="d-flex flex-column align-items-center">
                 <div className="d-flex flex-column align-items-center">
-                    <h1>Select which skills you would like to practice.</h1>
+                    <h1>Please select the skills you would like to practice</h1>
                     <SkillList
                         skills={skills}
                         skillUpdate={props.skillUpdate}
@@ -129,7 +129,7 @@ export default function Selection(props) {
                         </Popper>
                     </Grid>
                 </Grid>
-                <button onClick={props.doneClick}>
+                <button onClick={props.doneClick} style={{backgroundColor:"orange"}}>
                     Done
                 </button>
             </main>
