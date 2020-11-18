@@ -78,3 +78,5 @@ https://disco-moose.herokuapp.com/
 9) Increased card filtering complexity by presenting least-recently viewed cards first
 10) Migrated database from SQLite to PostgreSQL
 11) Deployed to Heroku
+12) Styling added to Login, Registration, Course List, and Card List pages (cool button effects :) )
+13) Last completed date added to card

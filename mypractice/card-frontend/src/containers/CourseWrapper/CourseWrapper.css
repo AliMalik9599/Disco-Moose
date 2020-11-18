@@ -1,8 +1,10 @@
 
 .h1 {
     font-family: Montserrat, sans-serif;
-    font-size: 20pt;
+    font-size: 30pt;
     color: #172557;
+    text-align: center;
+    margin: 7%;
 }
 
 
