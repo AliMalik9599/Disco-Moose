@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         flexDirection: 'column',
+        maxWidth: 345,
     },
     formControl: {
         margin: theme.spacing(3),
@@ -14,11 +15,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SkillList(props) {
-    const useStyles = makeStyles((theme) => ({
-        root: {
-            maxWidth: 345,
-        },
-    }));
 
     const [state, setState] = React.useState({
         title: 'SkillList'

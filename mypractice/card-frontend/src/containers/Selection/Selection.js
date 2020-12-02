@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import SkillList from "../../components/SkillList/SkillList";
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -13,11 +14,18 @@ import MenuList from '@material-ui/core/MenuList';
 
 const options = ['Select Practice Time', '5 minutes', '15 minutes', '30 minutes', '45 minutes', '1 hour'];
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+}));
+
 export default function Selection(props) {
     const [skills, setSkills] = useState([]);
     const [open, setOpen] = useState(false);
     const anchorRef = React.useRef(null);
     const [selectedIndex, setSelectedIndex] = useState(0);
+    const classes = useStyles();
 
     // Handles user input for selecting the amount of practice time
     const handleMenuItemClick = (event, index) => {
@@ -79,20 +87,21 @@ export default function Selection(props) {
     if (window.localStorage.getItem('login') === props.token) {
         // main display for "skill selection" page
         return (
-            <Grid container direction="column">
-                <div className="d-flex flex-column align-items-center">
-                    <h1>Which skills do you want to practice today?</h1>
-                    <SkillList
-                        skills={skills}
-                        skillUpdate={props.skillUpdate}
-                        token={props.token}
-                    />
-                </div>
+            /* container for selection page content */
+            <Grid container justify="center" alignItems="center" direction="column">
+                {/* page header */}
+                <h1>Which skills do you want to practice today?</h1>
+                {/* skill selection buttons, filled dynamically by available skills */}
+                <SkillList
+                    skills={skills}
+                    skillUpdate={props.skillUpdate}
+                    token={props.token}
+                />
                 {/* dropdown button for time select */}
                 <Grid container direction="column" alignItems="center">
                     <Grid item xs={12}>
                         <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
-                            <Button /*onClick={handleClick}*/>{options[selectedIndex]}</Button>
+                            <Button> {options[selectedIndex]} </Button>
                             <Button
                                 color="primary"
                                 size="small"
