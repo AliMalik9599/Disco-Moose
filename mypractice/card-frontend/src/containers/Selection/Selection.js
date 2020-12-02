@@ -19,6 +19,7 @@ export default function Selection(props) {
     const anchorRef = React.useRef(null);
     const [selectedIndex, setSelectedIndex] = useState(0);
 
+    // Handles user input for selecting the amount of practice time
     const handleMenuItemClick = (event, index) => {
         setSelectedIndex(index);
         setOpen(false);
@@ -48,15 +49,16 @@ export default function Selection(props) {
         }
     };
 
+    // toggles time selector
     const handleToggle = () => {
         setOpen((prevOpen) => !prevOpen);
     };
 
+    // handles button press for time selection
     const handleClose = (event) => {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return;
         }
-
         setOpen(false);
     };
 
@@ -75,16 +77,18 @@ export default function Selection(props) {
     }, [props]);
 
     if (window.localStorage.getItem('login') === props.token) {
+        // main display for "skill selection" page
         return (
-            <main className="d-flex flex-column align-items-center">
+            <Grid container direction="column">
                 <div className="d-flex flex-column align-items-center">
-                    <h1>Please select the skills you would like to practice</h1>
+                    <h1>Which skills do you want to practice today?</h1>
                     <SkillList
                         skills={skills}
                         skillUpdate={props.skillUpdate}
                         token={props.token}
                     />
                 </div>
+                {/* dropdown button for time select */}
                 <Grid container direction="column" alignItems="center">
                     <Grid item xs={12}>
                         <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
@@ -132,47 +136,7 @@ export default function Selection(props) {
                 <button onClick={props.doneClick} style={{backgroundColor:"orange"}}>
                     Done
                 </button>
-            </main>
+            </Grid>
         );
     }
 }
-
-// class Selection extends Component {
-//     state = {
-//         skills: []
-//     };
-//
-//     componentDidMount() {
-//         fetch(`http://127.0.0.1:8000/skills/${this.props.course}`, {
-//             method: 'GET',
-//             headers: {
-//                 'Content-type': 'application/json; charset=UTF-8',
-//                 'Authorization': 'Token ' + this.props.token
-//             }
-//         })
-//             .then(response => response.json())
-//             .then(data => {
-//                 this.setState({skills: data});
-//             });
-//     }
-//
-//     render() {
-//         return (
-//             <main className="d-flex flex-column align-items-center">
-//                 <div className="d-flex flex-column align-items-center">
-//                     <h1>Select which skills you would like to practice.</h1>
-//                     <SkillList
-//                         skills={this.state.skills}
-//                         skillUpdate={this.props.skillUpdate}
-//                         token={this.props.token}
-//                     />
-//                 </div>
-//                 <button onClick={this.props.doneClick}>
-//                     Done
-//                 </button>
-//             </main>
-//         )
-//     }
-// }
-//
-// export default Selection;
