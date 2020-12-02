@@ -6,14 +6,19 @@ class Animation extends Component {
         super(props);
     }
 
+    /**
+     * @desc Changes the view in layout from ANIMATION to LOGIN after 3200 milliseconds
+     */
     componentDidMount() {
         setTimeout(() => {
             this.props.stopAnimation();
         }, 3200)
     }
 
+    //renders the login animation
     render() {
         return (
+            //uses fadeOut to fade the animation out over time
             <div className={classes.fadeOut}>
                 <img src={require("./loginAnimation.gif")} alt="loading..."/>
             </div>
