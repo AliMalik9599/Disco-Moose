@@ -60,6 +60,7 @@ class CardList(generics.ListCreateAPIView):
 		# Parse skills string to get the list of skills selected by user
 		skills = self.kwargs.get('skills')
 		skill_list = skills.split(',')
+		skill_objects = Skill.objects.filter(id__in=skill_list)
 		# Calculate the number of cards needed via the time input by user
 		time = int(self.kwargs.get('time'))
 		num_cards = int(time / 5)
@@ -80,37 +81,12 @@ class CardList(generics.ListCreateAPIView):
 				time
 			)
 
-		# Grab the first selected still to initialize the queryset
-		skill1 = skill_list[0]
-		skill_obj1 = Skill.objects.get(id=skill1)
-		card_queryset = Card.objects.filter(course=course, skill=skill_obj1)
+		card_queryset = Card.objects.filter(course=course, skill__in=skill_objects)
 
-		# Append all other querysets for all other skills to initial card_queryset
-		for skill in skill_list:
-			skill_obj = Skill.objects.get(id=skill)
-			subset_cards = Card.objects.filter(course=course, skill=skill_obj)
-			card_queryset = card_queryset | subset_cards
-
-		# Initialize a list for all of the Card objects to be stored as dictionaries
-		card_list = []
-
-		# Each Card object has a CardProgress object for the current user. Grab the information from each Card's
-		# CardProgress object and append it to the dictionary for the Card. This disctionary should be stored in
-		# card_list
-		for card in card_queryset:
-			# If a CardProgress object doesn't exist for a user, create it.
-			card_progress, created = CardProgress.objects.get_or_create(card=card, user=user)
-			# Turn Card object into dictionary
-			card_dict = model_to_dict(card)
-			# Append values in CardProgress to this dictionary
-			card_dict["is_complete"] = card_progress.is_completed
-			card_dict["is_favorited"] = card_progress.is_favorited
-			card_dict["last_completed"] = card_progress.last_completed
-			# Append the Card object's dictionary to card_list
-			card_list.append(card_dict)
+		# Compress Card and CardProgress objects into one list of dictionaries
+		card_list = list(compress_card_cardprogress(user, card_queryset))
 
 		# We now have the correct set of Card objects with CardProgress information appended (as dictionaries)
-		card_list = list(card_list)
 		today = datetime.date.today()
 
 		# Sorts cards by last_completed.
@@ -132,7 +108,6 @@ class CardList(generics.ListCreateAPIView):
 		for card in final_list:
 			if card["last_completed"] != datetime.date.today():
 				card["is_complete"] = False
-
 			card_ids.append(card["id"])
 
 		# Create a Deck object that saves the list of Cards a user is presented with
@@ -182,7 +157,6 @@ def complete_card(request, cardid):
 	user = request.user
 	card_progress = CardProgress.objects.get(card=card, user=user)
 	current_completion_status = card_progress.is_completed
-	current_date = card_progress.last_completed
 
 	card_progress.is_completed = not current_completion_status
 	card_progress.save()
@@ -224,24 +198,9 @@ def refresh_cardlist(userid, courseid, skills, time):
 	deck = Deck.objects.get(user=user, course=course, skills=skills, date=datetime.date.today(), num_cards=num_cards)
 	# Parse the string stored inside Deck
 	card_ids = deck.cards[1:-1].split(', ')
-
-	card_list = []
-
-	# For each cardid, grab the Card object, make it a dictionary, and append the CardProgress values
-	for id in card_ids:
-		card = Card.objects.get(id=id)
-		card_progress, created = CardProgress.objects.get_or_create(
-			card=card,
-			user=user
-		)
-		card_dict = model_to_dict(card)
-		card_dict["is_complete"] = card_progress.is_completed
-		card_dict["is_favorited"] = card_progress.is_favorited
-		card_dict["last_completed"] = card_progress.last_completed
-		card_list.append(card_dict)
-		print(card_dict)
-
-	card_list = list(card_list)
+	card_queryset = Card.objects.filter(id__in=card_ids)
+	# Compress Card and CardProgress objects into one list of dictionaries
+	card_list = list(compress_card_cardprogress(user, card_queryset))
 
 	return card_list
 
@@ -259,3 +218,26 @@ class RefreshCardList(generics.ListCreateAPIView):
 			self.kwargs.get('skills'),
 			self.kwargs.get('time')
 		)
+
+
+# Function that takes Card and CardProgress objects and compressed them into one dictionary
+def compress_card_cardprogress(user, card_queryset):
+	# Initialize a list for all of the Card objects to be stored as dictionaries
+	card_list = []
+
+	# Each Card object has a CardProgress object for the current user. Grab the information from each Card's
+	# CardProgress object and append it to the dictionary for the Card. This disctionary should be stored in
+	# card_list
+	for card in card_queryset:
+		# If a CardProgress object doesn't exist for a user, create it.
+		card_progress, created = CardProgress.objects.get_or_create(card=card, user=user)
+		# Turn Card object into dictionary
+		card_dict = model_to_dict(card)
+		# Append values in CardProgress to this dictionary
+		card_dict["is_complete"] = card_progress.is_completed
+		card_dict["is_favorited"] = card_progress.is_favorited
+		card_dict["last_completed"] = card_progress.last_completed
+		# Append the Card object's dictionary to card_list
+		card_list.append(card_dict)
+
+	return card_list
