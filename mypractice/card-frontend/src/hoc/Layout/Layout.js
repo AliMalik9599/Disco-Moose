@@ -137,7 +137,7 @@ class Layout extends Component {
                 view = <Animation stopAnimation={this.stopAnimation.bind(this)}/>;
                 break;
             case viewEnum.LOGIN:
-                view = <Login formClick={this.changeLayoutState.bind(this)}/>;
+                view = <Login formClick={this.changeLayoutState.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
                 const page_view = {
                     'main': 'Login',
                     'subpage': null
@@ -145,7 +145,7 @@ class Layout extends Component {
                 window.localStorage.setItem('view', JSON.stringify(page_view));
                 break;
             case viewEnum.REGISTRATION:
-                view = <Registration formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>
+                view = <Registration formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>;
                 break;
         }
 
