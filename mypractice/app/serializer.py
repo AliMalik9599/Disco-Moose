@@ -3,12 +3,14 @@ from rest_framework import serializers
 from .models import Card, Course, User, Skill
 
 
+# Serializes Course objects
 class CourseSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Course
 		fields = ('id', 'name', 'description', 'num_skills', 'num_cards')
 
 
+# Serializes Skill objects
 class SkillSerializer(serializers.ModelSerializer):
 	course = serializers.StringRelatedField(many=False)
 
@@ -17,6 +19,7 @@ class SkillSerializer(serializers.ModelSerializer):
 		fields = ('id', 'name', 'description', 'num_levels', 'num_cards', 'course')
 
 
+# Serializes Card objects with appended CardProgress values
 class CardSerializer(serializers.ModelSerializer):
 	course = serializers.StringRelatedField(many=False)
 	skill = serializers.StringRelatedField(many=False)
@@ -26,12 +29,23 @@ class CardSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Card
-		fields = ('id', 'title', 'course', 'skill', 'level', 'duration', 'view_count', 'content', 'is_complete',
-				  'is_favorited', 'last_completed')
+		fields = (
+			'id',
+			'title',
+			'course',
+			'skill',
+			'level',
+			'duration',
+			'view_count',
+			'content',
+			'is_complete',
+			'is_favorited',
+			'last_completed'
+		)
 
 
+# Serializes User objects
 class UserSerializer(serializers.ModelSerializer):
-
 	class Meta:
 		model = User
 		fields = ('id', 'name', 'username', 'password')
