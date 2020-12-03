@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
+        image: require("./images/guitar.png"),
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -124,7 +126,7 @@ export default function CourseCard(props) {
             <Card className={classes.root}>
                 <CardHeader
                     avatar={
-                        <Avatar aria-label="card" className={classes.avatar} src={require("./guitar.png")}></Avatar>
+                        <Avatar aria-label="card" className={classes.avatar} src={require("./images/guitar.png")}></Avatar>
                     }
                     action={
                         <IconButton aria-label="settings">
@@ -144,6 +146,13 @@ export default function CourseCard(props) {
                      <Typography className={classes.body} variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{
                          __html: props.content}}>
                      </Typography>
+                </CardContent>
+                <CardContent>
+                    <CardMedia
+                        className={classes.media}
+                        style={{height: 0, paddingTop: '56.25%'}}
+                        image={require("./images/guitar.png")}
+                    />
                 </CardContent>
                 <CardContent>
                     <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
