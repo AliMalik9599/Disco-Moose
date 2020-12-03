@@ -148,6 +148,7 @@ export default function CourseCard(props) {
                      </Typography>
                 </CardContent>
                 <CardContent>
+                    /* TODO: Replace require("./images/guitar.png") with require(str(props.image)) when image is passed in */
                     <CardMedia
                         className={classes.media}
                         style={{height: 0, paddingTop: '56.25%'}}
