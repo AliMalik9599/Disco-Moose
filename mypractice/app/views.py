@@ -134,24 +134,25 @@ class CardList(generics.ListCreateAPIView):
 
 		return list(final_list)
 
-
+# Connected to user registration, authenticates user
+# credentials and creates the user based on result.
 @api_view(['POST'])
 @authentication_classes([])
 @permission_classes([])
 def create_user(request, username):
-	print("inside view")
+
+	# Testing if the user with the same username exists
 	try:
-		person = User.objects.get(username=username)
+		User.objects.get(username=username)
+
+		# If person with that username is found -> will not create user
 		return Response(status=status.HTTP_400_BAD_REQUEST)
+
+	# If that username is not in the database -> create a new user
 	except ObjectDoesNotExist:
 		data = json.loads(request.body)
-		print(data)
-		name = data['name']
-		username = data['username']
-		password = data['password']
-		add_user = User.objects.create_user(first_name=name, username=username, password=password)
+		add_user = User.objects.create_user(first_name=data['name'], username=data['username'], password=data['password'])
 		add_user.save()
-		print(add_user)
 		return Response(status=status.HTTP_201_CREATED)
 
 
@@ -180,16 +181,24 @@ def complete_card(request, cardid):
 	return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+# Edits the value that is store in "is_favorited" for
+# the given Card's CardProgress object
 @api_view(['POST'])
 @authentication_classes([TokenAuthentication,])
 @permission_classes([IsAuthenticated])
-def favorite_card(request, cardid):
-	card = Card.objects.get(id=cardid)
+def favorite_card(request, card_id):
+	card = Card.objects.get(id=card_id)
 	user = request.user
+
+	# Retrieve card progress object based on user and the card id
 	card_progress = CardProgress.objects.get(card=card, user=user)
 	current_favorite_status = card_progress.is_favorited
+
+	# Toggle the is favorite response and persist this
 	card_progress.is_favorited = not current_favorite_status
 	card_progress.save()
+
+	# Validation to check that the change has been made
 	if card_progress.is_favorited == current_favorite_status:
 		return Response(status=status.HTTP_404_NOT_FOUND)
 	return Response(status=status.HTTP_204_NO_CONTENT)
