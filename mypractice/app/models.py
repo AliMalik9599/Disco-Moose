@@ -62,7 +62,8 @@ class Card(models.Model):
 	level = models.IntegerField(default=0)
 	duration = models.IntegerField(default=0)
 	view_count = models.IntegerField(default=0)
-	content = models.CharField(max_length=500, default='', null=False)
+	content = models.CharField(max_length=1000, default='', null=False)
+	description = models.CharField(max_length=1000, default='', null=True)
 
 	def __str__(self):
 		return '%s in deck %s' % (self.title, self.deck.name)

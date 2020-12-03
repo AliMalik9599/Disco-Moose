@@ -141,9 +141,9 @@ export default function CourseCard(props) {
                 {/*    title="Paella dish"*/}
                 {/*/>*/}
                 <CardContent>
-                    <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
-                        {props.content}
-                    </Typography>
+                     <Typography className={classes.body} variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{
+                         __html: props.content}}>
+                     </Typography>
                 </CardContent>
                 <CardContent>
                     <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
