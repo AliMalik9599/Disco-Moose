@@ -32,7 +32,7 @@ class Deck extends Component {
 
     // Send message to backend when heart icon is clicked
     handleFavorite(e, cardId) {
-        fetch(`http://127.0.0.1:8000/cardprogress/favorite/${cardId}`, {
+        fetch(`/cardprogress/favorite/${cardId}`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -68,7 +68,7 @@ class Deck extends Component {
     // Collect data from backend when component mounts
     componentDidMount() {
         console.log("TIME = " + this.props.time.toString());
-        this.str_url = 'http://127.0.0.1:8000/cards/cardprogress/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
+        this.str_url = '/cards/cardprogress/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
             fetch(this.str_url, {
                 method: 'GET',
                 headers: {
