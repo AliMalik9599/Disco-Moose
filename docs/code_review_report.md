@@ -9,12 +9,24 @@ Katie - ```Deck.js```, ```Card.js```, ```CardList.js``` and ```CourseWrapper.js`
 
 Justin - Both ```Skill.js``` and ```SkillList.js``` had several unnecessary FromGroups and containers which fed into each other, but didn't add any functionality for styling and DOM arrangement. ```SkillList.js``` repeated styling within and outside of the React-UI component (duplicated code) so removed the internal and linked the class to the external
 
+Devin - ```Layout.js``` acts as the parent component to the other child components for our web page (Animation, CourseWrapper, Selection, Registration, Side Bar, Login). In order to switch between different components, parent functions in Layout are used to switch states. These functions are then bound to the children components to be called within the children components when it is appropriate. For example Layout first displays the Animation component. Also in Layout is a function called “toLogin” that changes the state ”layoutView” to Login. In the Animation in ```Animation.js``` component after 3200 milliseconds, it calls the parent function “toLogin”. This switches the layoutView state in Layout and changes the component being displayed from Animation to Login.
+
+Devin - ```SideBar.js``` The SideBar component is an arrow function. In relation to other components two basic things need to be able to function.
+
+The sidebar needs to change according to what component the user is on
+Depending on the icon clicked in the sidebar, the web page component needs to change
+In order to switch what the sidebar view is showing, the layoutView is passed into Sidebar from Layout as parentView. There is a switch statement that controls which icons are shown on the sidebar depending on the parentView value.
+
+The onClick function for each sidebar icon is bound to a function in Layout. This parent function then switches the state in Layout in order to present the desired component.
+
 ## Complexity
 Ali - The python files were relatively simple, Django provides an efficient and straightforward way of managing the backend requirements. The only change made was to remove redundant code in order to make reading the views more concise. The registration page was also relatively straight forward and separating event handlers to store state variables made this simple to work with.
 
 Mia - Most of the backend has remained decently simple. In reviewing the particular syntax used in some of the more complex functions in views.py we noticed that simplification was needed. For example, instead of creating a loop on a list of Skill objects and filtering for Card objects one by one, we discovered that we could use the following syntax: Card.objects.filter(skill__in=skill_list). This syntax enables you to filter the list of Card objects and ask that those returned have a skill attribute that exists inside of skill_list. This eliminated a lot of unnecessary for loops and complexity!
 
 Katie - The complexity of Card, CardList and Deck remained relatively simple, whereas the CourseWrapper exhibited more complexity. This is because CourseWrapper is a container that is responsible for tracking which view the user is seeing (either course selection, skill selection, or the deck). We had to include conditional rendering here to make sure that the correct view was displayed. Another added level of complexity for each of these components was making sure that local storage and the component states were in sync and updated at the correct times. This was particularly apparent when we tried to handle login persistence and refreshes on the page. By utilizing local storage, we can save a user's progress and selections to render the same content they were looking at before the refresh.
+
+Devin - The complexity of Layout, Sidebar and Animation are straighforward. Layout acts as the parent to both other files. The flow of actions comes from the parent which is Layout to the other files. Changes in Layout are triggered by child components calling Layout functions to change the displayed component.
 
 ## Tests
 Ali - We did not use automated testing for the program, however we did make sure to test the functionality of existing code and new features by printing to the terminal for the backend and using console logs or alerts for the javascript code.
