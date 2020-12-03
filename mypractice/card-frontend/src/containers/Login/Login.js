@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {Box, withStyles, Button, Grid, Typography, Input, Container} from "@material-ui/core";
 
+
+/* Styling for the Login  page */
 const styles = theme => ({
 
     main: {
@@ -55,8 +57,7 @@ const styles = theme => ({
         textAlign: 'center',
         width: '90%',
         "&:hover": {
-            //color: '#EE6C4D',
-            backgroundColor: '#345E83', //change this to color of nav bar
+            backgroundColor: '#345E83',
         },
     },
     inline: {
@@ -66,8 +67,16 @@ const styles = theme => ({
     },
 });
 
+/* This class allows the user to login to the site
+ * using a name, username and password.
+ * On success, it alerts the user that username and
+ * password were correct and directs to the course selection page.
+ * On failure, it alerts the user that the username
+ * and password were incorrect.
+ */
 class Login extends Component {
 
+    //information needed in order to login
     constructor(props) {
         super(props);
         this.state = {
@@ -79,6 +88,7 @@ class Login extends Component {
         this.str_url = "";
     }
 
+    //send post request to authenticate login, show corresponding alert
     handleChange = event => {
         event.preventDefault();
         this.str_url = '/rest-auth/login/';
@@ -103,21 +113,25 @@ class Login extends Component {
             });
     }
 
+    //set name to the user entered name
     handleNameChange = event => {
         const value = event.target.value;
         this.setState({name: value});
     }
 
+    //set username to the user entered username
     handleEmailChange = event => {
         const value = event.target.value;
         this.setState({username: value});
     }
 
+    //set password to the user entered password
     handlePasswordChange = event => {
         const value = event.target.value;
         this.setState({password: value});
     }
 
+    //direct user to signup page if the user wants to make an account
     handleRegister = event => {
         this.setState({token: '0'});
         event.preventDefault();
@@ -125,6 +139,7 @@ class Login extends Component {
         this.props.toRegistration();
     }
 
+    //render the UX for the user to enter login information and login to the site
     render() {
         const { classes } = this.props;
         return (
@@ -164,7 +179,6 @@ class Login extends Component {
                 </div>
             </Box>
         );
-
     }
 }
 
