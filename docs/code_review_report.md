@@ -26,6 +26,9 @@ The complexity of Layout, Sidebar and Animation are straighforward. Layout acts 
 ### Backend
 We did not use automated testing for the program, however we did make sure to test the functionality of existing code and new features by printing to the terminal for the backend and using console logs or alerts for the javascript code.
 
+### Genneral
+We made sure to use Pull Requests for any updates to the code base which not only ensured that the code update was safe, but also allowed other group members to review the code before it was merged. This was helpful for testing specific features on a branch while making sure that the overall functionality still worked as expected.
+
 ### Frontend 
 No automatic tests were created to test the functionality of the frontend, but output to console.log was a helpful way to ensure the code worked as expected. During development, the contents of component states and local storage were printed for inspection.
 
