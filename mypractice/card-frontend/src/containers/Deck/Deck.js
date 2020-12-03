@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import CardList from "../../components/CardList/CardList";
 
+/* Deck class handles the display and modifications
+ * to the displayed card list
+ */
 class Deck extends Component {
     constructor(props) {
         super(props);
@@ -9,12 +12,9 @@ class Deck extends Component {
         };
     }
 
+    // Send message to backend when card is completed (checkbox is clicked)
     handleComplete(e, cardId) {
-        console.log(cardId)
-        //cardid -> the id of the card checked
-        //need access to current user
-        // something to send the card info to the backend
-        fetch(`cardprogress/${cardId}`, {
+        fetch(`http://127.0.0.1:8000/cardprogress/${cardId}`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -22,7 +22,6 @@ class Deck extends Component {
             }
         }).then(response => response.status)
             .then(data => {
-                console.log("I AM HERE")
                 if (data === 404) {
                     alert("Something went wrong, try again!");
                 } else {
@@ -31,6 +30,7 @@ class Deck extends Component {
             });
     }
 
+    // Send message to backend when heart icon is clicked
     handleFavorite(e, cardId) {
         fetch(`/cardprogress/favorite/${cardId}`, {
             method: 'POST',
@@ -40,7 +40,6 @@ class Deck extends Component {
             }
         }).then(response => response.status)
             .then(data => {
-                //console.log("I AM HERE 1")
                 if (data === 404) {
                     alert("Something went wrong, try again!");
                 } else {
@@ -49,10 +48,9 @@ class Deck extends Component {
             });
     }
 
+    // if the page is refreshed, make sure the correct data is displayed
     refresh() {
-        console.log("TIME = " + this.props.time.toString());
-        this.str_url = '/cards/refresh/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
-        console.log(window.localStorage.getItem('login'));
+        this.str_url = 'http://127.0.0.1:8000/cards/refresh/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
         fetch(this.str_url, {
             method: 'GET',
             headers: {
@@ -62,12 +60,12 @@ class Deck extends Component {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('REFRESH:' + JSON.stringify(data));
                 window.localStorage.setItem('cards', JSON.stringify(data));
                 this.setState({cards: data});
             });
     }
 
+    // Collect data from backend when component mounts
     componentDidMount() {
         console.log("TIME = " + this.props.time.toString());
         this.str_url = '/cards/cardprogress/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
@@ -87,7 +85,7 @@ class Deck extends Component {
     }
 
     render() {
-        // this.componentDidMount();
+        // only display content if user is logged in
         if (window.localStorage.getItem('login')) {
             return (
                 <main>
