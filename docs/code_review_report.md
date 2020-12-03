@@ -26,7 +26,8 @@ The complexity of Layout, Sidebar and Animation are straighforward. Layout acts 
 ### Backend
 We did not use automated testing for the program, however we did make sure to test the functionality of existing code and new features by printing to the terminal for the backend and using console logs or alerts for the javascript code.
 
-### Frontend No automatic tests were created to test the functionality of the frontend, but output to console.log was a helpful way to ensure the code worked as expected. During development, the contents of component states and local storage were printed for inspection.
+### Frontend 
+No automatic tests were created to test the functionality of the frontend, but output to console.log was a helpful way to ensure the code worked as expected. During development, the contents of component states and local storage were printed for inspection.
 
 ## Naming
 Some variable names were changed to match the PEP 8 naming conventions, but otherwise the code seemed to be fine. On the frontend, we tried to use descriptive naming techniques as well as keep the same name for props passed through different components to make the code easier to follow.
