@@ -70,7 +70,7 @@ const styles = theme => ({
 /* This class allows the user to login to the site
  * using a name, username and password.
  * On success, it alerts the user that username and
- * password were correct and directs to XXX.
+ * password were correct and directs to the course selection page.
  * On failure, it alerts the user that the username
  * and password were incorrect.
  */
