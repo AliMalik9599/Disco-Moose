@@ -128,7 +128,7 @@ class CardList(generics.ListCreateAPIView):
 				self.kwargs.get('skills'),
 				self.kwargs.get('time')
 			)
-
+		print(final_list)
 		return list(final_list)
 
 
@@ -193,6 +193,7 @@ def refresh_cardlist(userid, courseid, skills, time):
 	# Grab the Course selected
 	course = Course.objects.get(id=courseid)
 	# Calculate the number of cards a user is asking for
+	print(time)
 	num_cards = int(int(time) / 5)
 	# Grab the Deck associated with that selection for today's date
 	deck = Deck.objects.get(user=user, course=course, skills=skills, date=datetime.date.today(), num_cards=num_cards)
@@ -201,7 +202,7 @@ def refresh_cardlist(userid, courseid, skills, time):
 	card_queryset = Card.objects.filter(id__in=card_ids)
 	# Compress Card and CardProgress objects into one list of dictionaries
 	card_list = list(compress_card_cardprogress(user, card_queryset))
-
+	print(card_list)
 	return card_list
 
 
