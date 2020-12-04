@@ -100,7 +100,7 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
 
     const viewEnum = {
         COURSE: '2',
-        CALENDER: '3',
+        CALENDAR: '3',
         SETTINGS: '4',
         DECK: '5',
     }
@@ -175,8 +175,8 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         }
     ];
 
-    //Side bar options on Calender
-    const OnCalender = [
+    //Side bar options on Calendar
+    const OnCalendar = [
 
         {
             text: "Course Select",
@@ -207,7 +207,7 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         },
 
         {
-            text: "See Calender",
+            text: "See Calendar",
             icon: <Today/>,
             onClick: () => parentCalendar()
         },
@@ -245,8 +245,8 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             Items = OnCards;
             drawerAction = () => handleDrawerOpen();
             break;
-        case viewEnum.CALENDER:
-            Items = OnCalender;
+        case viewEnum.CALENDAR:
+            Items = OnCalendar;
             drawerAction = () => handleDrawerOpen();
             break;
         case viewEnum.SETTINGS:
