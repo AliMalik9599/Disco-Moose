@@ -6,6 +6,7 @@ import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
 import Selection from "../../containers/Selection/Selection";
 import Registration from "../../containers/Registration/Registration";
 import SideBar from "../../containers/SideBar/SideBar";
+import Calendar from "../../containers/Calendar/Calendar"
 
 //enumeration used to switch between webpage layouts
 const viewEnum = {
@@ -13,7 +14,8 @@ const viewEnum = {
     LOGIN: '1',
     COURSE: '2',
     SELECTION: '3',
-    REGISTRATION: '4'
+    REGISTRATION: '4',
+    CALENDAR: '5'
 }
 
 
@@ -88,11 +90,8 @@ class Layout extends Component {
      * @desc Currently not in use
      */
     goCalendar = () => {
-        window.localStorage.setItem('layoutView', viewEnum.ANIMATION);
-        this.setState({layoutView: viewEnum.ANIMATION});
-        console.log(this.state.layoutView + " CALENDER");
-        console.log(window.localStorage.getItem('layoutView') + " asjhfdlkasjdhflka");
-        console.log(this.state.layoutView + " CALENDER");
+        window.localStorage.setItem('layoutView', viewEnum.CALENDAR);
+        this.setState({layoutView: viewEnum.CALENDAR});
     }
 
     /**
@@ -193,6 +192,8 @@ class Layout extends Component {
             case viewEnum.REGISTRATION:
                 view = <Registration formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>;
                 break;
+            case viewEnum.CALENDAR:
+                view = <Calendar formClick={this.changeLayoutState.bind(this)} />
         }
 
         return (

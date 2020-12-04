@@ -23,7 +23,6 @@ const useStyles = makeStyles({
         marginBottom: 12,
     },
     button: {
-        textAlign: 'center',
         color: '#0e1428',
         backgroundColor: '#EE6C4D',
         margin: '5%',
