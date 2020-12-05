@@ -30,6 +30,8 @@ urlpatterns = [
     path('cards/refresh/<str:courseid>/<str:skills>/<str:time>', views.RefreshCardList.as_view()),
     # Present list of courses
     path('courses/', views.CourseList.as_view()),
+    # Present list of user decks
+    path('decks/', views.DeckList.as_view()),
     # Present list of skills
     path('skills/<str:courseid>', views.SkillList.as_view()),
     # Toggle card completion

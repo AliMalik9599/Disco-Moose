@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from .models import Card, Course, User, Skill
+from .models import Card, Course, Skill, Deck
 
 
 # Serializes Course objects
@@ -49,3 +49,23 @@ class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
 		fields = ('id', 'name', 'username', 'password')
+
+
+# Serializers Deck objects
+class DeckSerializer(serializers.ModelSerializer):
+	course = CourseSerializer(many=False, read_only=True, allow_null=True)
+	skills = serializers.PrimaryKeyRelatedField(many=True, read_only=True, allow_null=True)
+	cards = CardSerializer(many=True, read_only=True, allow_null=True)
+	user = UserSerializer(many=False)
+
+	class Meta:
+		model = Deck
+		fields = (
+			'id',
+			'skills',
+			'course',
+			'date',
+			'cards',
+			'user',
+			'num_cards'
+		)
