@@ -86,6 +86,7 @@ const transformDate = (date) => {
 
 /* DailySchedule to display content from specific day */
 export default function DailySchedule(props) {
+    console.log("inside daily schedule");
     const classes = useStyles();
     const date = transformDate(props.date);
     const course = getCourseName(props.course_id);

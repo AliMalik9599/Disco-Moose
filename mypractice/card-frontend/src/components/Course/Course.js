@@ -46,7 +46,7 @@ export default function Course(props) {
 
     if (window.localStorage.getItem('login')) {
         return (
-            <Card raised="true" className={classes.root} variant="outlined">
+            <Card raised={true} className={classes.root} variant="outlined">
                 <CardContent>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
                         {props.name}

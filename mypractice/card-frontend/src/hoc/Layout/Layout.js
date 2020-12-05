@@ -138,6 +138,7 @@ class Layout extends Component {
         window.localStorage.setItem('courseView', '2');
     }
 
+
     /**
      * @desc Renders the appropriate web page layout
      */

@@ -12,6 +12,7 @@ class Calendar extends Component {
    }
 
    componentDidMount() {
+       console.log('trying to get old decks');
        fetch('/decks/', {
            method: 'GET',
            headers: {
@@ -26,6 +27,7 @@ class Calendar extends Component {
    }
 
    handleCourseClick(e, id, cards) {
+       console.log('COURSE WAS CLICKED');
        // TODO: Set appropriate local storage values and pass a prop back up to Layout (?) to switch the view to Deck
        // window.localStorage.setItem('selectedCourse', id);
        // need to set cards in local storage, but that is supposed to be all the card data (see Deck.js line 82)
@@ -34,6 +36,7 @@ class Calendar extends Component {
    render() {
        // only display content if user is logged in
        if (window.localStorage.getItem('login')) {
+           console.log("trying to generate schedules");
            const schedules = this.state.dailyData.map(schedule => (
                <DailySchedule
                    date={schedule.date}
