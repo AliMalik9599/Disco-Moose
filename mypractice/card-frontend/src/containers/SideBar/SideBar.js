@@ -135,6 +135,11 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             icon: <Input/>, //icon from material ui to be used in slot
             onClick: () => parentLogout() //where the slot takes you on click
         },
+        {
+            text: "Calender", //text for the icon slot
+            icon: <Today/>, //icon from material ui to be used in slot
+            onClick: () => parentCalendar() //where the slot takes you on click
+        },
     ];
 
 
@@ -150,6 +155,11 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             text: "Logout",
             icon: <Input/>,
             onClick: () => parentLogout()
+        },
+        {
+            text: "Calender", //text for the icon slot
+            icon: <Today/>, //icon from material ui to be used in slot
+            onClick: () => parentCalendar() //where the slot takes you on click
         },
     ];
 
@@ -172,7 +182,12 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             text: "Logout",
             icon: <Input/>,
             onClick: () => parentLogout()
-        }
+        },
+        {
+            text: "Calender", //text for the icon slot
+            icon: <Today/>, //icon from material ui to be used in slot
+            onClick: () => parentCalendar() //where the slot takes you on click
+        },
     ];
 
     //Side bar options on Calendar
@@ -216,7 +231,12 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             text: "Logout",
             icon: <Input/>,
             onClick: () => parentLogout()
-        }
+        },
+        {
+            text: "Calender", //text for the icon slot
+            icon: <Today/>, //icon from material ui to be used in slot
+            onClick: () => parentCalendar() //where the slot takes you on click
+        },
     ];
 
     let Items = [];
