@@ -90,10 +90,10 @@ class Layout extends Component {
      * @desc Currently not in use
      */
     goCalendar = () => {
-        //window.localStorage.setItem('layoutView', viewEnum.CALENDAR);
-        //this.setState({layoutView: viewEnum.CALENDAR});
-        window.localStorage.setItem('layoutView', viewEnum.LOGIN);
-        this.setState({layoutView: viewEnum.LOGIN});
+        window.localStorage.setItem('layoutView', viewEnum.CALENDAR);
+        this.setState({layoutView: viewEnum.CALENDAR});
+        // window.localStorage.setItem('layoutView', viewEnum.LOGIN);
+        // this.setState({layoutView: viewEnum.LOGIN});
     }
 
     /**
@@ -196,6 +196,7 @@ class Layout extends Component {
                 break;
             case viewEnum.CALENDAR:
                 view = <Calendar formClick={this.changeLayoutState.bind(this)} />
+                break;
         }
 
         return (

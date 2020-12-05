@@ -1,28 +1,28 @@
-//import React from "react";
-//import {makeStyles} from "@material-ui/core/styles";
-//import Theme from '../../theme'
-//import Button from '@material-ui/core/Button';
-//
-//const useStyles = makeStyles((theme) => ({
-//    root: {
-//        border: '1px solid Theme.palette.primary.main',
-//        backgroundColor: Theme.palette.secondary.light,
-//    },
-//    button: {
-//        color: '#0e1428',
-//        backgroundColor: '#EE6C4D',
-//        margin: '5%',
-//        textAlign: 'center',
-//        width: '50%',
-//        fontFamily: 'Montserrat',
-//        fontWeight: '700',
-//        fontSize: '12pt',
-//        "&:hover": {
-//            //color: '#EE6C4D',
-//            backgroundColor: '#345E83', //change this to color of nav bar
-//        },
-//    },
-//}));
+import React from "react";
+import {makeStyles} from "@material-ui/core/styles";
+import Theme from '../../theme'
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles((theme) => ({
+   root: {
+       border: '1px solid Theme.palette.primary.main',
+       backgroundColor: Theme.palette.secondary.light,
+   },
+   button: {
+       color: '#0e1428',
+       backgroundColor: '#EE6C4D',
+       margin: '5%',
+       textAlign: 'center',
+       width: '50%',
+       fontFamily: 'Montserrat',
+       fontWeight: '700',
+       fontSize: '12pt',
+       "&:hover": {
+           //color: '#EE6C4D',
+           backgroundColor: '#345E83', //change this to color of nav bar
+       },
+   },
+}));
 
 /*
  * TODO: need to collect the String name associated with each cardID
@@ -34,7 +34,7 @@ const getCardNames =  () => {
     const cardNames = null;
     return cardNames;
 }
-
+//
 /*
  * TODO: need to get the String name associated with the courseID
  */
@@ -97,7 +97,7 @@ export default function DailySchedule(props) {
             <div className={classes.root}>
                 <h3>{date}</h3>
                 <p>{course}</p>
-                <p>{card_names}</p>
+                <p>{cards}</p>
                 <Button className={classes.button} color="secondary" onClick={(e) => props.clickHandler(e, props.deck_id, cards)}>Go</Button>
             </div>
         );
