@@ -19,7 +19,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Theme from '../../theme';
 import { Container, Grid } from '@material-ui/core';
 
-
+/* Styling for individual cards */
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
@@ -66,14 +66,19 @@ const useStyles = makeStyles((theme) => ({
      */
 }));
 
+/* Card component built using MaterialUI framework.
+ * Card information is received through props.
+ */
 export default function CourseCard(props) {
 
+    // set states for expansion and is_favorited
     const [state, setState] = React.useState({
             showMore: false,
             favorited: props.is_favorited !== 'False',
         });
     const classes = useStyles();
 
+    // expand card to show more content
     const handleExpandClick = (event) => {
         console.log(state.showMore);
         let update = false;
@@ -83,7 +88,8 @@ export default function CourseCard(props) {
         setState({ ...state, [event.target.name]: update });
         console.log(update);
     };
-    
+
+    // handle press on completed checkbox
     const handleCompleteClick = (event) => {
         props.pressComplete(event, props.id);
 
@@ -93,18 +99,15 @@ export default function CourseCard(props) {
         }
     }
 
+    // handle click on favorite icon
     const handleFavorite = (event) => {
         props.addToFavorites(event, props.id);
         state.favorited = !state.favorited;
 
     };
 
+    // Display the date of last completion on card
     function dateToString(props) {
-        //var d = (props.last_completed).toString();
-        console.log("HELLO");
-        console.log(props.last_completed);
-        //var d = props.content;
-        var d = "poo";
         if (props.last_completed != null) {
             d = (props.last_completed).toString();
         }
@@ -112,11 +115,10 @@ export default function CourseCard(props) {
             d = "Never";
         }
 
-        //d = d.toDateString();
-        //d = d.toString();
         return d;
     }
 
+    // if the user is logged in, display the card
     if (window.localStorage.getItem('login')) {
         var d = dateToString(props);
        // var d = 2;

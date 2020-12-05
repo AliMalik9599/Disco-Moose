@@ -4,28 +4,28 @@ import Selection from "../Selection/Selection";
 import Deck from "../Deck/Deck";
 import "./CourseWrapper.css";
 
-// const courseViewEnum = {
-//     COURSESELECT: 0 | null,
-//     SKILLSELECT: 1,
-//     DECK: 2
-// }
-//realone
+// dictionary representing course selection view
 const course_view = {
     'main': 'CourseWrapper',
     'subpage': 'CourseSelect'
 }
 
+// dictionary representing skill selection view
 const skill_view = {
     'main': 'CourseWrapper',
     'subpage': 'SkillSelect'
 }
 
+// dictionary representing card (deck) view
 const deck_view = {
     'main': 'CourseWrapper',
     'subpage': 'Deck'
 }
 
-
+/* CourseWrapper components handles the display of the
+ * flow of the user's selection from course selection to
+ * skill selection to the deck.
+ */
 class CourseWrapper extends Component {
     constructor(props) {
         super(props);
@@ -33,12 +33,9 @@ class CourseWrapper extends Component {
         this.selectedTime = 0;
     }
 
+    // collect state values from locals storage so if page is refreshed
+    // all data is not lost
     state = {
-        // courses: [],
-        // skills: [],
-        // selectedCourse: 0,
-        // time: 0,
-        // view: courseViewEnum.COURSESELECT
         courses: JSON.parse(window.localStorage.getItem('courses')),
         skills: JSON.parse(window.localStorage.getItem('skills')),
         selectedCourse: JSON.parse(window.localStorage.getItem('selectedCourse')),
@@ -46,7 +43,9 @@ class CourseWrapper extends Component {
         view: JSON.parse(window.localStorage.getItem('view'))['subpage']
     }
 
+    // handler for selecting a course
     handleCourseClick(e, value) {
+        // set values for state as well as local storage
         window.localStorage.setItem('view', JSON.stringify(skill_view));
         window.localStorage.setItem('selectedCourse', value);
         this.setState({
@@ -56,6 +55,7 @@ class CourseWrapper extends Component {
         this.props.viewToSkills();
     }
 
+    // handler for skill selection (does not trigger state change)
     skillSelection(e, skill) {
         if (this.selectedSkills.indexOf(skill) !== -1) {
             this.selectedSkills.splice(this.selectedSkills.indexOf(skill), 1);
@@ -64,7 +64,9 @@ class CourseWrapper extends Component {
         }
     }
 
+    // handler for user clicked the "done" button
     handleDonePress() {
+        // set necessary local storage and state values
         window.localStorage.setItem('view', JSON.stringify(deck_view));
         window.localStorage.setItem('skills', JSON.stringify(this.selectedSkills));
         window.localStorage.setItem('time', this.selectedTime)
@@ -76,12 +78,14 @@ class CourseWrapper extends Component {
         this.props.viewToDeck();
     }
 
+    // Update selected time from drop down menu
     timeSelection(e, time) {
         this.selectedTime = time;
     }
 
+    // Retrieve data from from server
     componentDidMount() {
-        fetch('http://127.0.0.1:8000/courses/', {
+        fetch('/courses/', {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -95,6 +99,7 @@ class CourseWrapper extends Component {
             });
     }
 
+    // conditionally render correct view
     render() {
         let view = null;
         if (this.props.courseReset) {
@@ -110,7 +115,7 @@ class CourseWrapper extends Component {
             this.props.viewToSkills();
         }
         switch(this.state.view) {
-            case 'CourseSelect':
+            case 'CourseSelect': // display course selection
             window.localStorage.setItem('view', JSON.stringify(course_view));
                 view = (<div className="div">
                     <h1 className="h1">What would you like to work on today?</h1>
@@ -122,10 +127,8 @@ class CourseWrapper extends Component {
                     </div>
                 </div>)
                 break;
-            case 'SkillSelect':
+            case 'SkillSelect': // display skill selection
                 window.localStorage.setItem('view', JSON.stringify(skill_view));
-                console.log('local storage : ' + window.localStorage.getItem('view'));
-                console.log('state view: ' + this.state.view);
                 view = <Selection skills={this.state.skills}
                                   skillUpdate={this.skillSelection.bind(this)}
                                   doneClick={this.handleDonePress.bind(this)}
@@ -134,19 +137,17 @@ class CourseWrapper extends Component {
                                   time={this.timeSelection.bind(this)}
                 />
                 break;
-            case 'Deck':
+            case 'Deck': // display cards
                 if (JSON.parse(window.localStorage.getItem('cards')) === null) {
-                    console.log("SETTING CARDS");
                     window.localStorage.setItem('cards', JSON.stringify([]));
                 }
-                console.log('local storage : ' + window.localStorage.getItem('view'));
-                console.log('state view: ' + this.state.view);
                 view = <Deck courseid={this.state.selectedCourse}
                              skills={this.state.skills}
                              token={window.localStorage.getItem('login')}
                              time={this.state.time}
                 />
         }
+        // Only display content if user is logged in
         if (window.localStorage.getItem('login')) {
             return (
                 <main>
