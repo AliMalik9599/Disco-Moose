@@ -12,8 +12,8 @@ class ScheduleWrapper extends Component {
         const schedules = this.props.schedules.map(schedule => (
             <DailySchedule
                 date = {schedule.date}
-                course = {schedule.course}
-                skills = {schedule.skills}
+                course = {JSON.stringify(schedule.course)}
+                skills = {JSON.stringify(schedule.skills)}
                 cards = {JSON.stringify(schedule.cards)}
                 id = {schedule.id}
                 clickHandler = {this.props.clickHandler}
