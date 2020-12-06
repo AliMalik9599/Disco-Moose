@@ -131,6 +131,16 @@ export default function CourseCard(props) {
         }
     }
 
+    function renderLink() {
+        if (props.link !== "") {
+            return (
+                <Typography className={classes.body} variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{
+                    __html: props.link}}>
+                </Typography>
+            )
+        }
+    }
+
     // if the user is logged in, display the card
     if (window.localStorage.getItem('login')) {
         var d = dateToString(props);
@@ -208,6 +218,7 @@ export default function CourseCard(props) {
                         <Typography paragraph>
                             {props.description}
                         </Typography>
+                        {renderLink()}
                     </CardContent>
                 </Collapse>
             </Card>
