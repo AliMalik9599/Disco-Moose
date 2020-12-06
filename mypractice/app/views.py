@@ -267,6 +267,7 @@ class DeckList(generics.ListCreateAPIView):
 	def get_queryset(self):
 		userid = self.request.user.id
 		user = User.objects.get(id=userid)
+		user_dict = model_to_dict(user)
 		decks = Deck.objects.filter(user=user)
 		deck_list = []
 		for deck in decks:
@@ -277,6 +278,11 @@ class DeckList(generics.ListCreateAPIView):
 			for card in cards:
 				card_dict.append(model_to_dict(card))
 			deck = model_to_dict(deck)
+			course_id = deck["course"]
+			course = Course.objects.get(id=course_id)
+			course_dict = model_to_dict(course)
+			deck["course"] = course_dict
+			deck["user"] = user_dict
 			deck["cards"] = card_dict
 			deck_list.append(deck)
 		print(deck_list)

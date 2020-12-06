@@ -53,7 +53,9 @@ class UserSerializer(serializers.ModelSerializer):
 
 # Serializers Deck objects
 class DeckSerializer(serializers.ModelSerializer):
-	course = serializers.StringRelatedField(many=False)
+	# course = serializers.IntegerField()
+	# course = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
+	course = CourseSerializer(many=False, read_only=True, allow_null=True)
 	skills = serializers.StringRelatedField(many=False)
 	cards = CardSerializer(many=True, read_only=True, allow_null=True)
 	user = serializers.StringRelatedField(many=False)
