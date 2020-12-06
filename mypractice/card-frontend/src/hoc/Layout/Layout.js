@@ -160,10 +160,9 @@ class Layout extends Component {
             case viewEnum.REGISTRATION:
                 view = <Registration formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>;
                 break;
-
             case viewEnum.LANDING:
                 view = <Landing toLogin={this.toLogin.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
-
+                break;
             case viewEnum.CALENDAR:
                 view = <Calendar formClick={this.goToDeckFromCalendar.bind(this)} />
                 break;

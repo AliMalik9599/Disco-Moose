@@ -7,8 +7,6 @@ class Animation extends Component {
         super(props);
     }
 
-
-
     componentDidMount() {
         setTimeout(() => {
             this.props.stopAnimation();
