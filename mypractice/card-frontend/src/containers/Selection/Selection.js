@@ -87,7 +87,6 @@ export default function Selection(props) {
     if (window.localStorage.getItem('login') === props.token) {
         // main display for "skill selection" page
         return (
-            /* container for selection page content */
             <Grid container justify="center" alignItems="center" direction="column">
                 {/* page header */}
                 <h1>Which skills do you want to practice today?</h1>

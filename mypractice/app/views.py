@@ -268,19 +268,59 @@ class DeckList(generics.ListCreateAPIView):
 	def get_queryset(self):
 		userid = self.request.user.id
 		user = User.objects.get(id=userid)
+		user_dict = model_to_dict(user)
 		decks = Deck.objects.filter(user=user)
 		deck_list = []
 		for deck in decks:
 			card_ids = deck.cards
+			skill_ids = deck.skills
 			card_id_list = card_ids[1:-1].split(', ')
+			skill_id_list = skill_ids.split(',')
 			cards = Card.objects.filter(id__in=card_id_list)
+			skills = Skill.objects.filter(id__in=skill_id_list)
 			card_dict = []
 			for card in cards:
 				card_dict.append(model_to_dict(card))
-			print(card_dict)
+			skill_dict = []
+			for skill in skills:
+				skill_dict.append(model_to_dict(skill))
 			deck = model_to_dict(deck)
-			print(deck)
+			course_id = deck["course"]
+			course = Course.objects.get(id=course_id)
+			course_dict = model_to_dict(course)
+			deck["course"] = course_dict
+			deck["user"] = user_dict
 			deck["cards"] = card_dict
-			print(deck)
+			deck["skills"] = skill_dict
 			deck_list.append(deck)
-		return deck_list
+		print(deck_list)
+		return list(deck_list)
+
+# Creates a ListView for all Courses in the database
+# @api_view(['GET'])
+# @authentication_classes([TokenAuthentication,])
+# @permission_classes([IsAuthenticated])
+# def get_decks(request):
+# 	userid = request.user.id
+# 	user = User.objects.get(id=userid)
+# 	decks = Deck.objects.filter(user=user)
+# 	print(decks)
+# 	deck_list = []
+# 	for deck in decks:
+# 		card_ids = deck.cards
+# 		print(card_ids)
+# 		card_id_list = card_ids[1:-1].split(', ')
+# 		print(card_id_list)
+# 		cards = Card.objects.filter(id__in=card_id_list)
+# 		card_dict = []
+# 		for card in cards:
+# 			card_dict.append(model_to_dict(card))
+# 		print(card_dict)
+# 		deck = model_to_dict(deck)
+# 		print(deck)
+# 		deck["cards"] = card_dict
+# 		print(deck)
+# 		deck_list.append(deck)
+# 	print(deck_list)
+# 	return deck_list
+

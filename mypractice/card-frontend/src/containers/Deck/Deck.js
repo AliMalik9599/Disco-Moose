@@ -14,9 +14,6 @@ class Deck extends Component {
 
     // Send message to backend when card is completed (checkbox is clicked)
     handleComplete(e, cardId) {
-        //cardid -> the id of the card checked
-        //need access to current user
-        // something to send the card info to the backend
         fetch(`/cardprogress/${cardId}`, {
             method: 'POST',
             headers: {
@@ -54,7 +51,6 @@ class Deck extends Component {
     // if the page is refreshed, make sure the correct data is displayed
     refresh() {
         this.str_url = '/cards/refresh/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
-        console.log(window.localStorage.getItem('login'));
         fetch(this.str_url, {
             method: 'GET',
             headers: {
@@ -81,7 +77,6 @@ class Deck extends Component {
             })
             .then(response => response.json())
             .then(data => {
-                console.log('COMPONENT DID MOUNT:' + data);
                 window.localStorage.setItem('cards', JSON.stringify(data));
                 this.setState({cards: data});
             });

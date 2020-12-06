@@ -67,9 +67,6 @@ class Card(models.Model):
 	link = models.CharField(max_length=100, default='', null=True)
 	image_path = models.CharField(max_length=100, default='', null=True)
 
-	def __str__(self):
-		return '%s in deck %s' % (self.title, self.deck.name)
-
 
 # CardProgress helps us keep track of a user's relationship with a certain card. This includes whether the user has
 # marked a card as completed or if a user has favorited this card.
