@@ -58,7 +58,7 @@ class UserSerializer(serializers.ModelSerializer):
 # Serializers Deck objects
 class DeckSerializer(serializers.ModelSerializer):
 	course = CourseSerializer(many=False, read_only=True, allow_null=True)
-	skills = SkillSerializer(many=False, read_only=True, allow_null=True)
+	skills = SkillSerializer(many=True, read_only=True, allow_null=True)
 	cards = CardSerializer(many=True, read_only=True, allow_null=True)
 	user = UserSerializer(many=True, read_only=True, allow_null=True)
 

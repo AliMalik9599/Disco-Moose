@@ -76,15 +76,15 @@ const getCourseID = (course) => {
  */
 const getSkillNames = (skills) => {
     console.log(skills);
-    // const first_split = skills.split(",");
-    // for (let i = 0; i < first_split.length; i++) {
-    //     const second_split = first_split[i].split(':');
-    //     console.log(second_split[0]);
-    //     if (second_split[0] === '"name"') {
-    //         return second_split[1].substring(1, second_split[1].length - 1);
-    //     }
-    // }
-    // return null;
+    const first_split = skills.split(",");
+    for (let i = 0; i < first_split.length; i++) {
+        const second_split = first_split[i].split(':');
+        console.log(second_split[0]);
+        if (second_split[0] === '"name"') {
+            return second_split[1].substring(1, second_split[1].length - 1);
+        }
+    }
+    return null;
 }
 
 /*
