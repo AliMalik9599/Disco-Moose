@@ -44,21 +44,52 @@ const getCardNames =  (cards) => {
 }
 
 /*
- * TODO: need to get the String name associated with the courseID
+ * Parse the stringified course object to get the course  name
  */
-const getCourseName = () => {
-    const courseName = null;
-    return courseName;
+const getCourseName = (course) => {
+    const first_split = course.split(",");
+    for (let i = 0; i < first_split.length; i++) {
+        const second_split = first_split[i].split(':');
+        if (second_split[0] === '"name"') {
+            return second_split[1].substring(1, second_split[1].length - 1);
+        }
+    }
+    return null;
+}
+
+/*
+ * Parse the stringified course object to get the course ID
+ */
+const getCourseID = (course) => {
+    const first_split = course.split(",");
+    for (let i = 0; i < first_split.length; i++) {
+        const second_split = first_split[i].split(':');
+        if (second_split[0] === '{"id"') {
+            return second_split[1];
+        }
+    }
+    return null;
 }
 
 /*
  * TODO: need to get the String name associated with the courseID
  */
-const getSkillNames = () => {
-    const skillNames = null;
-    return skillNames;
+const getSkillNames = (skills) => {
+    console.log(skills);
+    // const first_split = skills.split(",");
+    // for (let i = 0; i < first_split.length; i++) {
+    //     const second_split = first_split[i].split(':');
+    //     console.log(second_split[0]);
+    //     if (second_split[0] === '"name"') {
+    //         return second_split[1].substring(1, second_split[1].length - 1);
+    //     }
+    // }
+    // return null;
 }
 
+/*
+ * Convert the month number into the String month for printing
+ */
 const getMonth = (month_num) => {
     switch (month_num) {
         case '1':
@@ -90,6 +121,9 @@ const getMonth = (month_num) => {
     }
 }
 
+/*
+ * Convert the date from a numerical representation to a string representation
+ */
 const transformDate = (date) => {
     const year = date.split('-')[0];
     const month_num = date.split('-')[1];
@@ -98,12 +132,16 @@ const transformDate = (date) => {
     return month + ' ' + day + ', ' + year;
 }
 
-/* DailySchedule to display content from specific day */
+/*
+ * DailySchedule to display content from specific day
+ */
 export default function DailySchedule(props) {
+    // Styling
     const classes = useStyles();
     const date = transformDate(props.date);
-    const course = props.course;
-    const skills = props.skills;
+    const courseName = getCourseName(props.course);
+    const courseID = getCourseID(props.course);
+    const skills = getSkillNames(props.skills);
     const cards = props.cards;
     const card_names = getCardNames(cards);
 
@@ -111,10 +149,10 @@ export default function DailySchedule(props) {
         return (
             <div className={classes.root}>
                 <h3>{date}</h3>
-                <h5>{"Course: " + course}</h5>
+                <h5>{"Course: " + courseName}</h5>
                 <p>{"Skills: " + skills}</p>
                 <p>{"Cards Practiced: " + card_names.toString()}</p>
-                <Button className={classes.button} color="secondary" onClick={(e) => props.clickHandler(e, props.id, cards)}>Go</Button>
+                <Button className={classes.button} color="secondary" onClick={(e) => props.clickHandler(e, courseID, cards)}>Go</Button>
             </div>
         );
     }
