@@ -138,6 +138,12 @@ class Layout extends Component {
         window.localStorage.setItem('courseView', '2');
     }
 
+    goToDeckFromCalendar = () => {
+        console.log("OPENING DECK");
+        this.setState({layoutView: viewEnum.COURSE});
+        window.localStorage.setItem('layoutView', viewEnum.COURSE);
+    }
+
 
     /**
      * @desc Renders the appropriate web page layout
@@ -196,7 +202,7 @@ class Layout extends Component {
                 view = <Registration formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>;
                 break;
             case viewEnum.CALENDAR:
-                view = <Calendar formClick={this.changeLayoutState.bind(this)} />
+                view = <Calendar formClick={this.goToDeckFromCalendar.bind(this)} />
                 break;
         }
 

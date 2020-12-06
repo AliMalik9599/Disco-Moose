@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import DailySchedule from '../../components/DailySchedule/DailySchedule'
+import DailyScheduleWrapper from '../../components/DailyScheduleWrapper/DailyScheduleWrapper'
 /* Deck class handles the display and modifications
 * to the displayed card list
 */
@@ -28,30 +28,29 @@ class Calendar extends Component {
 
    handleCourseClick(e, id, cards) {
        console.log('COURSE WAS CLICKED');
+       window.localStorage.setItem('selectedCourse', id);
+       window.localStorage.setItem('cards', cards);
+       const new_view = {"main": "CourseWrapper", "subpage": "Deck"}
+       window.localStorage.setItem('view', JSON.stringify(new_view));
+       this.props.formClick();
        // TODO: Set appropriate local storage values and pass a prop back up to Layout (?) to switch the view to Deck
-       // window.localStorage.setItem('selectedCourse', id);
        // need to set cards in local storage, but that is supposed to be all the card data (see Deck.js line 82)
    }
 
    render() {
        // only display content if user is logged in
        if (window.localStorage.getItem('login')) {
-           console.log("trying to generate schedules");
-           const schedules = this.state.dailyData.map(schedule => (
-               <DailySchedule
-                   date={schedule.date}
-                   course_id={schedule.course_id}
-                   card_ids={schedule.cards}
-                   deck_id={schedule.id}
-                   clickHandler={this.handleCourseClick.bind(this)}
-               />
-           ));
-
+           // for (let i = 0; i < this.state.dailyData.length; i++) {
+           //     console.log(this.state.dailyData[i]);
+           // }
            return (
                <main>
                    <div className="d-flex justify-content-center">
                        <p>Take a look at what you previously practiced</p>
-                       {schedules}
+                       < DailyScheduleWrapper
+                           schedules =  {this.state.dailyData}
+                           clickHandler = {this.handleCourseClick.bind(this)}
+                       />
                    </div>
                </main>
            )

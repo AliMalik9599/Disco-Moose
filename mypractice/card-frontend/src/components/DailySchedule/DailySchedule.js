@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
    root: {
        border: '1px solid Theme.palette.primary.main',
-       backgroundColor: Theme.palette.secondary.light,
+       backgroundColor: Theme.palette.primary.light
    },
    button: {
        color: '#0e1428',
@@ -30,11 +30,19 @@ const useStyles = makeStyles((theme) => ({
  * array or something  because we will need access to all the card data if the user
  * selects this specific schedule to repeat.
  */
-const getCardNames =  () => {
-    const cardNames = null;
+const getCardNames =  (cards) => {
+    const cardNames = [];
+    let shorten = cards.replace('[{', '');
+    shorten = shorten.replace(']}', '');
+    const first_split = shorten.split('},{');
+    for (let i = 0; i < first_split.length; i++) {
+        const second_split = first_split[i].split(',');
+        const title = second_split[1].split('":"')[1].replace('"', '');
+        cardNames.push(title);
+    }
     return cardNames;
 }
-//
+
 /*
  * TODO: need to get the String name associated with the courseID
  */
@@ -43,31 +51,39 @@ const getCourseName = () => {
     return courseName;
 }
 
+/*
+ * TODO: need to get the String name associated with the courseID
+ */
+const getSkillNames = () => {
+    const skillNames = null;
+    return skillNames;
+}
+
 const getMonth = (month_num) => {
     switch (month_num) {
-        case 1:
+        case '1':
             return 'January';
-        case 2:
+        case '2':
             return 'February';
-        case 3:
+        case '3':
             return 'March';
-        case 4:
+        case '4':
             return 'April';
-        case 5:
+        case '5':
             return 'May';
-        case 6:
+        case '6':
             return 'June';
-        case 7:
+        case '7':
             return 'July';
-        case 8:
+        case '8':
             return 'August';
-        case 9:
+        case '9':
             return 'September';
-        case 10:
+        case '10':
             return 'October';
-        case 11:
+        case '11':
             return 'November';
-        case 12:
+        case '12':
             return 'December';
         default:
             return null;
@@ -75,31 +91,30 @@ const getMonth = (month_num) => {
 }
 
 const transformDate = (date) => {
-    //format YYYY-MM-DD
     const year = date.split('-')[0];
     const month_num = date.split('-')[1];
     const month = getMonth(month_num);
     const day = date.split('-')[2];
-
     return month + ' ' + day + ', ' + year;
 }
 
 /* DailySchedule to display content from specific day */
 export default function DailySchedule(props) {
-    console.log("inside daily schedule");
     const classes = useStyles();
     const date = transformDate(props.date);
-    const course = getCourseName(props.course_id);
-    const cards = getCardNames(props.card_ids);
-    // TODO: create a list of the card names (called card_names)
+    const course = props.course;
+    const skills = props.skills;
+    const cards = props.cards;
+    const card_names = getCardNames(cards);
 
     if (window.localStorage.getItem('login')) {
         return (
             <div className={classes.root}>
                 <h3>{date}</h3>
-                <p>{course}</p>
-                <p>{cards}</p>
-                <Button className={classes.button} color="secondary" onClick={(e) => props.clickHandler(e, props.deck_id, cards)}>Go</Button>
+                <h5>{"Course: " + course}</h5>
+                <p>{"Skills: " + skills}</p>
+                <p>{"Cards Practiced: " + card_names.toString()}</p>
+                <Button className={classes.button} color="secondary" onClick={(e) => props.clickHandler(e, props.id, cards)}>Go</Button>
             </div>
         );
     }
