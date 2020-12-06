@@ -98,11 +98,14 @@ const useStyles = makeStyles((theme) => ({
  */
 const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, parentView, parentCourseView, parentSkill}) => {
 
+
     const viewEnum = {
+        ANIMATION: '0',
+        LOGIN: '1',
         COURSE: '2',
-        CALENDAR: '3',
-        SETTINGS: '4',
-        DECK: '5',
+        SELECTION: '3',
+        REGISTRATION: '4',
+        CALENDAR: '5'
     }
 
 
@@ -238,7 +241,6 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
     ];
 
     let Items = [];
-
     //Switch that controls what Side Bar view is showing
     switch (parentView) {
         case viewEnum.COURSE:
@@ -247,7 +249,6 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
                 Items = OnSkillSelect;
                 drawerAction = () => handleDrawerOpen();
                 break;
-
             }
             else if (parentCourseView === '2') {
                 Items = OnCards;
@@ -259,10 +260,6 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
                 drawerAction = () => handleDrawerOpen();
                 break;
             }
-        case viewEnum.DECK: //not in use right now
-            Items = OnCards;
-            drawerAction = () => handleDrawerOpen();
-            break;
         case viewEnum.CALENDAR:
             Items = OnCalendar;
             drawerAction = () => handleDrawerOpen();
