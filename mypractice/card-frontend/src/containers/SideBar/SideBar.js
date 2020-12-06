@@ -29,10 +29,7 @@ import Palette from '@material-ui/icons/Palette';
 const drawerWidth = 240;
 
 
-/**
- * @desc Sets the style to be used in the Side Bar
- * @param makeStyles - styles take from material ui core styles
- */
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -92,10 +89,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-/**
- * @desc Side Bar that appears on the left side of the webpage
- * @param parent functions that are passed in from layout
- */
+//export default function SideBar = ({parentSkill, parentCardsinDeck, parentCalender, parentHomePage, parentSettings, parentLogout}) => {
 const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, parentView, parentCourseView, parentSkill}) => {
 
 
@@ -105,7 +99,8 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         COURSE: '2',
         SELECTION: '3',
         REGISTRATION: '4',
-        CALENDAR: '5'
+        CALENDAR: '5',
+        LANDING: '6'
     }
 
 
@@ -113,26 +108,29 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
-
-    /**
-     * @desc Allows the drawer to be opened
-     */
     const handleDrawerOpen = () => {
         setOpen(true);
     };
 
-    /**
-     * @desc Does not allow the drawer to be opened
-     */
     const handleDrawerClose = () => {
         setOpen(false);
     };
 
-    //variable that controls ability to open the sidebar
     var drawerAction;
 
-    //Side bar options on Course List
+    //OnCourseList
     const OnCourseList = [
+        //shouldnt add skill selection or deck
+       // {
+       //     text: "See Calender",
+       //     icon: <Today/>,
+       //     onClick: () => parentCalendar()
+       // },
+       // {
+       //     text: "Settings",
+       //     icon: <Settings/>,
+       //     onClick: () => parentSettings()
+       // },
         {
             text: "Calendar", //text for the icon slot
             icon: <Today/>, //icon from material ui to be used in slot
@@ -146,7 +144,6 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
     ];
 
 
-    //Side bar options on Skill Select
     const OnSkillSelect = [
         //shouldnt add skill selection or deck
         {
@@ -154,6 +151,16 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             icon: <Palette/>,
             onClick: () => parentCourse()
         },
+       // {
+       //     text: "See Calender",
+       //     icon: <Today/>,
+       //     onClick: () => parentCalendar()
+       // },
+       // {
+       //     text: "Settings",
+       //     icon: <Settings/>,
+       //     onClick: () => parentSettings()
+       // },
         {
             text: "Calendar", //text for the icon slot
             icon: <Today/>, //icon from material ui to be used in slot
@@ -166,7 +173,6 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         },
     ];
 
-    //Side bar options on Cards
     const OnCards = [
 
         {
@@ -192,6 +198,7 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         },
     ];
 
+
     //Side bar options on Calendar
     const OnCalendar = [
 
@@ -213,8 +220,6 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             onClick: () => parentLogout()
         }
     ];
-
-    //Side bar options on Account Settings
     const AccountSettings = [
 
         {
@@ -241,10 +246,10 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
     ];
 
     let Items = [];
+
     //Switch that controls what Side Bar view is showing
     switch (parentView) {
-        case viewEnum.COURSE:
-            //Within COURSE you can be on course, skill select or deck
+        case viewEnum.COURSE: //course
             if (parentCourseView === '1') {
                 Items = OnSkillSelect;
                 drawerAction = () => handleDrawerOpen();
@@ -268,13 +273,17 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             Items = AccountSettings;
             drawerAction = () => handleDrawerOpen();
             break;
-        default:
+        case viewEnum.LOGIN:
+            Items = [];
+            drawerAction = () => handleDrawerClose();
+            break;
+        case viewEnum.REGISTRATION:
             Items = [];
             drawerAction = () => handleDrawerClose();
             break;
     }
 
-    //Used to render the final Side Bar
+
     return (
         <div className={classes.root}>
             <AppBar
