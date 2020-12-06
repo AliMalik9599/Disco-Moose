@@ -25,6 +25,9 @@ class CardList extends Component {
                 addToFavorites={this.props.favorited}
                 token={this.props.token}
                 last_completed={card.last_completed}
+                description={card.description}
+                image_path={card.image_path}
+                link={card.link}
             />
         ));
         if (window.localStorage.getItem('login')) {

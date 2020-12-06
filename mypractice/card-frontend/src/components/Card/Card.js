@@ -117,6 +117,19 @@ export default function CourseCard(props) {
         return d;
     }
 
+    function renderImage() {
+        if (props.image_path !== "") {
+            var path_str = (props.image_path).toString();
+            return (
+                <CardMedia
+                    className={classes.media}
+                    style={{height: 0, paddingTop: '56.25%'}}
+                    image={require("./images/" + path_str)}
+                />
+            )
+        }
+    }
+
     if (window.localStorage.getItem('login')) {
         var d = dateToString(props);
        // var d = 2;
@@ -148,12 +161,7 @@ export default function CourseCard(props) {
                      </Typography>
                 </CardContent>
                 <CardContent>
-                    /* TODO: Replace require("./images/guitar.png") with require(str(props.image)) when image is passed in */
-                    <CardMedia
-                        className={classes.media}
-                        style={{height: 0, paddingTop: '56.25%'}}
-                        image={require("./images/guitar.png")}
-                    />
+                    {renderImage()}
                 </CardContent>
                 <CardContent>
                     <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
@@ -196,14 +204,7 @@ export default function CourseCard(props) {
                 <Collapse in={state.showMore} timeout="auto" unmountOnExit>
                     <CardContent>
                         <Typography paragraph>
-                            Nothing here for now but eventually we will want to add this.props.description or something
-                            like that if it exists (will require a more robust dataset)
-                        </Typography>
-                        <Typography paragraph>
-                            We can add another paragraph here if we want! Even more instructions
-                        </Typography>
-                        <Typography paragraph>
-                            Room for yet ANOTHER paragraph! Material UI is really doing the most.
+                            {props.description}
                         </Typography>
                     </CardContent>
                 </Collapse>
