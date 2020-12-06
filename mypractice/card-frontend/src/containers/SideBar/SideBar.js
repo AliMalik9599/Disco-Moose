@@ -92,12 +92,14 @@ const useStyles = makeStyles((theme) => ({
 //export default function SideBar = ({parentSkill, parentCardsinDeck, parentCalender, parentHomePage, parentSettings, parentLogout}) => {
 const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, parentView, parentCourseView, parentSkill}) => {
 
+
     const viewEnum = {
         ANIMATION: '0',
         LOGIN: '1',
         COURSE: '2',
         SELECTION: '3',
         REGISTRATION: '4',
+        CALENDAR: '5',
         LANDING: '6'
     }
 
@@ -130,9 +132,14 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
        //     onClick: () => parentSettings()
        // },
         {
-            text: "Logout",
-            icon: <Input/>,
-            onClick: () => parentLogout()
+            text: "Calendar", //text for the icon slot
+            icon: <Today/>, //icon from material ui to be used in slot
+            onClick: () => parentCalendar() //where the slot takes you on click
+        },
+        {
+            text: "Logout", //text for the icon slot
+            icon: <Input/>, //icon from material ui to be used in slot
+            onClick: () => parentLogout() //where the slot takes you on click
         },
     ];
 
@@ -155,6 +162,11 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
        //     onClick: () => parentSettings()
        // },
         {
+            text: "Calendar", //text for the icon slot
+            icon: <Today/>, //icon from material ui to be used in slot
+            onClick: () => parentCalendar() //where the slot takes you on click
+        },
+        {
             text: "Logout",
             icon: <Input/>,
             onClick: () => parentLogout()
@@ -174,27 +186,21 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             icon: <SportsHandball/>,
             onClick: () => parentSkill()
         },
-
-//        {
-//            text: "See Calender",
-//            icon: <Today/>,
-//            onClick: () => parentCalendar()
-//        },
-//
-//        {
-//            text: "Account Settings",
-//            icon: <Settings/>,
-//            onClick: () => parentSettings()
-//        },
-//
+        {
+            text: "Calender", //text for the icon slot
+            icon: <Today/>, //icon from material ui to be used in slot
+            onClick: () => parentCalendar() //where the slot takes you on click
+        },
         {
             text: "Logout",
             icon: <Input/>,
             onClick: () => parentLogout()
-        }
+        },
     ];
 
-    const OnCalender = [
+
+    //Side bar options on Calendar
+    const OnCalendar = [
 
         {
             text: "Course Select",
@@ -223,28 +229,31 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         },
 
         {
-            text: "See Calender",
+            text: "See Calendar",
             icon: <Today/>,
             onClick: () => parentCalendar()
         },
-
+        {
+            text: "Calendar", //text for the icon slot
+            icon: <Today/>, //icon from material ui to be used in slot
+            onClick: () => parentCalendar() //where the slot takes you on click
+        },
         {
             text: "Logout",
             icon: <Input/>,
             onClick: () => parentLogout()
-        }
+        },
     ];
 
     let Items = [];
 
-
+    //Switch that controls what Side Bar view is showing
     switch (parentView) {
         case viewEnum.COURSE: //course
             if (parentCourseView === '1') {
                 Items = OnSkillSelect;
                 drawerAction = () => handleDrawerOpen();
                 break;
-
             }
             else if (parentCourseView === '2') {
                 Items = OnCards;
@@ -256,12 +265,8 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
                 drawerAction = () => handleDrawerOpen();
                 break;
             }
-        case viewEnum.DECK: //never gonna get this change DELETE THIS
-            Items = OnCards;
-            drawerAction = () => handleDrawerOpen();
-            break;
-        case viewEnum.CALENDER:
-            Items = OnCalender;
+        case viewEnum.CALENDAR:
+            Items = OnCalendar;
             drawerAction = () => handleDrawerOpen();
             break;
         case viewEnum.SETTINGS:

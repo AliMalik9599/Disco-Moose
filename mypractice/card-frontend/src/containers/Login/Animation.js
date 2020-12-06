@@ -20,6 +20,7 @@ class Animation extends Component {
             <div className={classes.fadeOut}>
                 <img src={Disco} alt="loading..."/>
             </div>
+            //uses fadeOut to fade the animation out over time
         )
     }
 }

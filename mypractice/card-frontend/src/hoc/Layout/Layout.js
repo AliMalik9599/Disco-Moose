@@ -3,12 +3,12 @@ import Login from "../../containers/Login/Login";
 import classes from './Layout.module.css'
 import Animation from "../../containers/Login/Animation"
 import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
-import Selection from "../../containers/Selection/Selection";
 import Registration from "../../containers/Registration/Registration";
 import SideBar from "../../containers/SideBar/SideBar";
+
 import Landing from "../../containers/Landing/Landing";
 import bulb from '../../containers/Login/bulb-logo.png';
-
+import Calendar from "../../containers/Calendar/Calendar"
 
 const viewEnum = {
     ANIMATION: '0',
@@ -16,6 +16,7 @@ const viewEnum = {
     COURSE: '2',
     SELECTION: '3',
     REGISTRATION: '4',
+    CALENDAR: '5',
     LANDING: '6'
 }
 //realone
@@ -37,7 +38,6 @@ class Layout extends Component {
         window.localStorage.setItem('login', token);
         this.setState({token: token});
         this.setState({layoutView: viewEnum.COURSE});
-        console.log("Set token: " + this.state.token)
         this.setState({layoutView: viewEnum.COURSE});
         window.localStorage.setItem('layoutView', viewEnum.COURSE);
     }
@@ -66,11 +66,10 @@ class Layout extends Component {
     }
 
     goCalendar = () => {
-        window.localStorage.setItem('layoutView', viewEnum.ANIMATION);
-        this.setState({layoutView: viewEnum.ANIMATION});
-        console.log(this.state.layoutView + " CALENDER");
-        console.log(window.localStorage.getItem('layoutView') + " asjhfdlkasjdhflka");
-        console.log(this.state.layoutView + " CALENDER");
+        window.localStorage.setItem('layoutView', viewEnum.CALENDAR);
+        this.setState({layoutView: viewEnum.CALENDAR});
+        // window.localStorage.setItem('layoutView', viewEnum.LOGIN);
+        // this.setState({layoutView: viewEnum.LOGIN});
     }
 
     goSettings = () => {
@@ -100,12 +99,21 @@ class Layout extends Component {
         window.localStorage.setItem('courseView', '2');
     }
 
+
+    goToDeckFromCalendar = () => {
+        this.setState({layoutView: viewEnum.COURSE});
+        window.localStorage.setItem('layoutView', viewEnum.COURSE);
+    }
+
+
+    /**
+     * @desc Renders the appropriate web page layout
+     */
     render() {
         let view = null;
         if (window.localStorage.getItem('login') && this.state.layoutView === viewEnum.COURSE) {
             if (JSON.parse(window.localStorage.getItem('view'))['main'] !== 'CourseWrapper') {
                 // set local storage if it's not already set for course wrapper
-                console.log("is in herr");
                 let page_view = {
                     'main': 'CourseWrapper',
                     'subpage': 'CourseSelect'
@@ -137,7 +145,6 @@ class Layout extends Component {
             }
         }
 
-
         switch (this.state.layoutView) {
             case viewEnum.ANIMATION:
                 view = <Animation stopAnimation={this.stopAnimation.bind(this)}/>;
@@ -153,8 +160,14 @@ class Layout extends Component {
             case viewEnum.REGISTRATION:
                 view = <Registration formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>;
                 break;
+
             case viewEnum.LANDING:
                 view = <Landing toLogin={this.toLogin.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
+
+            case viewEnum.CALENDAR:
+                view = <Calendar formClick={this.goToDeckFromCalendar.bind(this)} />
+                break;
+
         }
 
         return (

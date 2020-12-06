@@ -37,7 +37,7 @@ urlpatterns = [
     # Toggle card completion
     path('cardprogress/<str:cardid>', views.complete_card),
     # Toggle card favoriting
-    path('cardprogress/favorite/<str:cardid>', views.favorite_card),
+    path('cardprogress/favorite/<str:card_id>', views.favorite_card),
     # Login authentication
     path('rest-auth/', include('rest_auth.urls')),
     # User sign up
