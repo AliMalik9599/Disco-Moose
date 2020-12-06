@@ -18,10 +18,10 @@ class Animation extends Component {
     //renders the login animation
     render() {
         return (
-            //uses fadeOut to fade the animation out over time
             <div className={classes.fadeOut}>
                 <img src={require("./loginAnimation.gif")} alt="loading..."/>
             </div>
+            //uses fadeOut to fade the animation out over time
         )
     }
 }
