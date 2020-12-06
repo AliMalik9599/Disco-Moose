@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
+        image: require("./images/guitar.png"),
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -114,6 +116,29 @@ export default function CourseCard(props) {
         return d;
     }
 
+    function renderImage() {
+        if (props.image_path !== "") {
+            var path_str = (props.image_path).toString();
+            return (
+                <CardMedia
+                    className={classes.media}
+                    style={{height: 0, paddingTop: '56.25%'}}
+                    image={require("./images/" + path_str)}
+                />
+            )
+        }
+    }
+
+    function renderLink() {
+        if (props.link !== "") {
+            return (
+                <Typography className={classes.body} variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{
+                    __html: props.link}}>
+                </Typography>
+            )
+        }
+    }
+
     // if the user is logged in, display the card
     if (window.localStorage.getItem('login')) {
         var d = dateToString(props);
@@ -124,7 +149,7 @@ export default function CourseCard(props) {
             <Card className={classes.root}>
                 <CardHeader
                     avatar={
-                        <Avatar aria-label="card" className={classes.avatar} src={require("./guitar.png")}></Avatar>
+                        <Avatar aria-label="card" className={classes.avatar} src={require("./images/guitar.png")}></Avatar>
                     }
                     action={
                         <IconButton aria-label="settings">
@@ -141,9 +166,12 @@ export default function CourseCard(props) {
                 {/*    title="Paella dish"*/}
                 {/*/>*/}
                 <CardContent>
-                    <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
-                        {props.content}
-                    </Typography>
+                     <Typography className={classes.body} variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{
+                         __html: props.content}}>
+                     </Typography>
+                </CardContent>
+                <CardContent>
+                    {renderImage()}
                 </CardContent>
                 <CardContent>
                     <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
@@ -185,16 +213,10 @@ export default function CourseCard(props) {
                 </CardActions>
                 <Collapse in={state.showMore} timeout="auto" unmountOnExit>
                     <CardContent>
-                        <Typography paragraph>
-                            Nothing here for now but eventually we will want to add this.props.description or something
-                            like that if it exists (will require a more robust dataset)
+                        <Typography paragraph className={classes.body} variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{
+                            __html: props.description}}>
                         </Typography>
-                        <Typography paragraph>
-                            We can add another paragraph here if we want! Even more instructions
-                        </Typography>
-                        <Typography paragraph>
-                            Room for yet ANOTHER paragraph! Material UI is really doing the most.
-                        </Typography>
+                        {renderLink()}
                     </CardContent>
                 </Collapse>
             </Card>

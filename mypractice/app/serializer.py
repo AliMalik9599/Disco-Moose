@@ -38,6 +38,9 @@ class CardSerializer(serializers.ModelSerializer):
 			'duration',
 			'view_count',
 			'content',
+			'description',
+			'link',
+			'image_path',
 			'is_complete',
 			'is_favorited',
 			'last_completed'
