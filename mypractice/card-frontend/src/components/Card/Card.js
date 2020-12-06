@@ -78,13 +78,11 @@ export default function CourseCard(props) {
 
     // expand card to show more content
     const handleExpandClick = (event) => {
-        console.log(state.showMore);
         let update = false;
         if (!state.showMore) {
             update = true;
         }
         setState({ ...state, [event.target.name]: update });
-        console.log(update);
     };
 
     // handle press on completed checkbox

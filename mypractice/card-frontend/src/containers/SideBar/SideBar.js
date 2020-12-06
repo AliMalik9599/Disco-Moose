@@ -98,11 +98,14 @@ const useStyles = makeStyles((theme) => ({
  */
 const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, parentView, parentCourseView, parentSkill}) => {
 
+
     const viewEnum = {
+        ANIMATION: '0',
+        LOGIN: '1',
         COURSE: '2',
-        CALENDER: '3',
-        SETTINGS: '4',
-        DECK: '5',
+        SELECTION: '3',
+        REGISTRATION: '4',
+        CALENDAR: '5'
     }
 
 
@@ -131,6 +134,11 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
     //Side bar options on Course List
     const OnCourseList = [
         {
+            text: "Calendar", //text for the icon slot
+            icon: <Today/>, //icon from material ui to be used in slot
+            onClick: () => parentCalendar() //where the slot takes you on click
+        },
+        {
             text: "Logout", //text for the icon slot
             icon: <Input/>, //icon from material ui to be used in slot
             onClick: () => parentLogout() //where the slot takes you on click
@@ -145,6 +153,11 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             text: "Course Select",
             icon: <Palette/>,
             onClick: () => parentCourse()
+        },
+        {
+            text: "Calendar", //text for the icon slot
+            icon: <Today/>, //icon from material ui to be used in slot
+            onClick: () => parentCalendar() //where the slot takes you on click
         },
         {
             text: "Logout",
@@ -167,16 +180,20 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             icon: <SportsHandball/>,
             onClick: () => parentSkill()
         },
-
+        {
+            text: "Calender", //text for the icon slot
+            icon: <Today/>, //icon from material ui to be used in slot
+            onClick: () => parentCalendar() //where the slot takes you on click
+        },
         {
             text: "Logout",
             icon: <Input/>,
             onClick: () => parentLogout()
-        }
+        },
     ];
 
-    //Side bar options on Calender
-    const OnCalender = [
+    //Side bar options on Calendar
+    const OnCalendar = [
 
         {
             text: "Course Select",
@@ -207,20 +224,23 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         },
 
         {
-            text: "See Calender",
+            text: "See Calendar",
             icon: <Today/>,
             onClick: () => parentCalendar()
         },
-
+        {
+            text: "Calendar", //text for the icon slot
+            icon: <Today/>, //icon from material ui to be used in slot
+            onClick: () => parentCalendar() //where the slot takes you on click
+        },
         {
             text: "Logout",
             icon: <Input/>,
             onClick: () => parentLogout()
-        }
+        },
     ];
 
     let Items = [];
-
     //Switch that controls what Side Bar view is showing
     switch (parentView) {
         case viewEnum.COURSE:
@@ -229,7 +249,6 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
                 Items = OnSkillSelect;
                 drawerAction = () => handleDrawerOpen();
                 break;
-
             }
             else if (parentCourseView === '2') {
                 Items = OnCards;
@@ -241,12 +260,8 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
                 drawerAction = () => handleDrawerOpen();
                 break;
             }
-        case viewEnum.DECK: //not in use right now
-            Items = OnCards;
-            drawerAction = () => handleDrawerOpen();
-            break;
-        case viewEnum.CALENDER:
-            Items = OnCalender;
+        case viewEnum.CALENDAR:
+            Items = OnCalendar;
             drawerAction = () => handleDrawerOpen();
             break;
         case viewEnum.SETTINGS:

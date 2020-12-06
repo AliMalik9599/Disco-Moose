@@ -14,7 +14,7 @@ class Deck extends Component {
 
     // Send message to backend when card is completed (checkbox is clicked)
     handleComplete(e, cardId) {
-        fetch(`http://127.0.0.1:8000/cardprogress/${cardId}`, {
+        fetch(`/cardprogress/${cardId}`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -50,7 +50,7 @@ class Deck extends Component {
 
     // if the page is refreshed, make sure the correct data is displayed
     refresh() {
-        this.str_url = 'http://127.0.0.1:8000/cards/refresh/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
+        this.str_url = '/cards/refresh/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
         fetch(this.str_url, {
             method: 'GET',
             headers: {
@@ -67,7 +67,6 @@ class Deck extends Component {
 
     // Collect data from backend when component mounts
     componentDidMount() {
-        console.log("TIME = " + this.props.time.toString());
         this.str_url = '/cards/cardprogress/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
             fetch(this.str_url, {
                 method: 'GET',
@@ -78,7 +77,6 @@ class Deck extends Component {
             })
             .then(response => response.json())
             .then(data => {
-                console.log('COMPONENT DID MOUNT:' + data);
                 window.localStorage.setItem('cards', JSON.stringify(data));
                 this.setState({cards: data});
             });

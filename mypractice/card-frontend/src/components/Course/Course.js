@@ -23,7 +23,6 @@ const useStyles = makeStyles({
         marginBottom: 12,
     },
     button: {
-        textAlign: 'center',
         color: '#0e1428',
         backgroundColor: '#EE6C4D',
         margin: '5%',
@@ -47,7 +46,7 @@ export default function Course(props) {
 
     if (window.localStorage.getItem('login')) {
         return (
-            <Card raised="true" className={classes.root} variant="outlined">
+            <Card raised={true} className={classes.root} variant="outlined">
                 <CardContent>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
                         {props.name}
