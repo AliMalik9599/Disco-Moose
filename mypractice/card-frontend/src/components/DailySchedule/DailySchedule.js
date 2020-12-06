@@ -75,16 +75,16 @@ const getCourseID = (course) => {
  * TODO: need to get the String name associated with the courseID
  */
 const getSkillNames = (skills) => {
-    console.log(skills);
+    let skill_list = []
     const first_split = skills.split(",");
     for (let i = 0; i < first_split.length; i++) {
         const second_split = first_split[i].split(':');
         console.log(second_split[0]);
         if (second_split[0] === '"name"') {
-            return second_split[1].substring(1, second_split[1].length - 1);
+            skill_list.push(second_split[1].substring(1, second_split[1].length - 1));
         }
     }
-    return null;
+    return skill_list;
 }
 
 /*
@@ -150,7 +150,7 @@ export default function DailySchedule(props) {
             <div className={classes.root}>
                 <h3>{date}</h3>
                 <h5>{"Course: " + courseName}</h5>
-                <p>{"Skills: " + skills}</p>
+                <p>{"Skills: " + skills.toString()}</p>
                 <p>{"Cards Practiced: " + card_names.toString()}</p>
                 <Button className={classes.button} color="secondary" onClick={(e) => props.clickHandler(e, courseID, cards)}>Go</Button>
             </div>
