@@ -215,8 +215,8 @@ export default function CourseCard(props) {
                 </CardActions>
                 <Collapse in={state.showMore} timeout="auto" unmountOnExit>
                     <CardContent>
-                        <Typography paragraph>
-                            {props.description}
+                        <Typography paragraph className={classes.body} variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{
+                            __html: props.description}}>
                         </Typography>
                         {renderLink()}
                     </CardContent>
