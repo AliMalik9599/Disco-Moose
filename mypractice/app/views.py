@@ -272,11 +272,17 @@ class DeckList(generics.ListCreateAPIView):
 		deck_list = []
 		for deck in decks:
 			card_ids = deck.cards
+			skill_ids = deck.skills
 			card_id_list = card_ids[1:-1].split(', ')
+			skill_id_list = skill_ids.split(',')
 			cards = Card.objects.filter(id__in=card_id_list)
+			skills = Skill.objects.filter(id__in=skill_id_list)
 			card_dict = []
 			for card in cards:
 				card_dict.append(model_to_dict(card))
+			skill_dict = []
+			for skill in skills:
+				skill_dict.append(model_to_dict(skill))
 			deck = model_to_dict(deck)
 			course_id = deck["course"]
 			course = Course.objects.get(id=course_id)
@@ -284,6 +290,7 @@ class DeckList(generics.ListCreateAPIView):
 			deck["course"] = course_dict
 			deck["user"] = user_dict
 			deck["cards"] = card_dict
+			deck["skills"] = skill_dict
 			deck_list.append(deck)
 		print(deck_list)
 		return list(deck_list)

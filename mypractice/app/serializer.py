@@ -48,17 +48,19 @@ class CardSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
-		fields = ('id', 'name', 'username', 'password')
+		fields = (
+			'id',
+			'first_name',
+			'last_name'
+		)
 
 
 # Serializers Deck objects
 class DeckSerializer(serializers.ModelSerializer):
-	# course = serializers.IntegerField()
-	# course = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
 	course = CourseSerializer(many=False, read_only=True, allow_null=True)
-	skills = serializers.StringRelatedField(many=False)
+	skills = SkillSerializer(many=False, read_only=True, allow_null=True)
 	cards = CardSerializer(many=True, read_only=True, allow_null=True)
-	user = serializers.StringRelatedField(many=False)
+	user = UserSerializer(many=True, read_only=True, allow_null=True)
 
 	class Meta:
 		model = Deck
