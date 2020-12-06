@@ -25,6 +25,7 @@ export default function Skill(props) {
         ticked: false
     });
 
+    // toggles check upon button press
     const handleChange = (event) => {
         if(!ticked) {
             setState({...state, ticked: true});
@@ -36,18 +37,13 @@ export default function Skill(props) {
     const { ticked } = state;
 
     const classes = useStyles();
-    // if (window.localStorage.getItem('login')) {
-        return (
-            <Box className={classes.box}>
-                <FormControl className="skill task-wrapper">
-                    <FormGroup>
-                        <FormControlLabel
-                            control={<Checkbox checked={ticked} onClick={(e) => props.skillUpdate(e, props.id)} onChange={handleChange} name="checked"/>}
-                            label={props.name}
-                        />
-                    </FormGroup>
-                </FormControl>
-            </Box>
-        );
-    // }
+
+    return (
+        // fills form group on SkillList component
+        <FormControlLabel
+            className={classes.box}
+            control={<Checkbox checked={ticked} onClick={(e) => props.skillUpdate(e, props.id)} onChange={handleChange} name="checked"/>}
+            label={props.name}
+        />
+    );
 }

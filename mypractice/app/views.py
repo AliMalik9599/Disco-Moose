@@ -1,7 +1,7 @@
 import datetime
 
 from .models import Card, Course, Skill, CardProgress, Deck
-from .serializer import CardSerializer, CourseSerializer, SkillSerializer
+from .serializer import CardSerializer, CourseSerializer, SkillSerializer, DeckSerializer
 from rest_framework import generics
 from django.forms.models import model_to_dict
 from django.contrib.auth.models import User
@@ -131,14 +131,21 @@ class CardList(generics.ListCreateAPIView):
 		print(final_list)
 		return list(final_list)
 
-
+# Connected to user registration, authenticates user
+# credentials and creates the user based on result.
 @api_view(['POST'])
 @authentication_classes([])
 @permission_classes([])
 def create_user(request, username):
+
+	# Testing if the user with the same username exists
 	try:
-		person = User.objects.get(username=username)
+		User.objects.get(username=username)
+
+		# If person with that username is found -> will not create user
 		return Response(status=status.HTTP_400_BAD_REQUEST)
+
+	# If that username is not in the database -> create a new user
 	except ObjectDoesNotExist:
 		data = json.loads(request.body)
 		name = data['name']
@@ -170,16 +177,24 @@ def complete_card(request, cardid):
 	return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+# Edits the value that is store in "is_favorited" for
+# the given Card's CardProgress object
 @api_view(['POST'])
 @authentication_classes([TokenAuthentication,])
 @permission_classes([IsAuthenticated])
-def favorite_card(request, cardid):
-	card = Card.objects.get(id=cardid)
+def favorite_card(request, card_id):
+	card = Card.objects.get(id=card_id)
 	user = request.user
+
+	# Retrieve card progress object based on user and the card id
 	card_progress = CardProgress.objects.get(card=card, user=user)
 	current_favorite_status = card_progress.is_favorited
+
+	# Toggle the is favorite response and persist this
 	card_progress.is_favorited = not current_favorite_status
 	card_progress.save()
+
+	# Validation to check that the change has been made
 	if card_progress.is_favorited == current_favorite_status:
 		return Response(status=status.HTTP_404_NOT_FOUND)
 	return Response(status=status.HTTP_204_NO_CONTENT)
@@ -242,3 +257,30 @@ def compress_card_cardprogress(user, card_queryset):
 		card_list.append(card_dict)
 
 	return card_list
+
+
+# Creates a ListView for all Courses in the database
+class DeckList(generics.ListCreateAPIView):
+	serializer_class = DeckSerializer
+	authentication_classes = (TokenAuthentication,)
+	permission_classes = (IsAuthenticated,)
+
+	def get_queryset(self):
+		userid = self.request.user.id
+		user = User.objects.get(id=userid)
+		decks = Deck.objects.filter(user=user)
+		deck_list = []
+		for deck in decks:
+			card_ids = deck.cards
+			card_id_list = card_ids[1:-1].split(', ')
+			cards = Card.objects.filter(id__in=card_id_list)
+			card_dict = []
+			for card in cards:
+				card_dict.append(model_to_dict(card))
+			print(card_dict)
+			deck = model_to_dict(deck)
+			print(deck)
+			deck["cards"] = card_dict
+			print(deck)
+			deck_list.append(deck)
+		return deck_list

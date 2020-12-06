@@ -7,24 +7,21 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         flexDirection: 'column',
+        maxWidth: 345,
     },
     formControl: {
-        margin: theme.spacing(3),
+        margin: theme.spacing(4),
     },
 }));
 
 export default function SkillList(props) {
-    const useStyles = makeStyles((theme) => ({
-        root: {
-            maxWidth: 345,
-        },
-    }));
 
     const [state, setState] = React.useState({
         title: 'SkillList'
     });
 
     const classes = useStyles();
+
     const skills = props.skills.map(skill => (
         <Skill
             key={skill.id}
@@ -41,6 +38,7 @@ export default function SkillList(props) {
 
     if (window.localStorage.getItem('login') && JSON.parse(window.localStorage.getItem('view'))['subpage'] === 'SkillSelect') {
         return (
+            // wraps skills in FormGroup which will be displayed on Selection
             <FormGroup>
                 {skills}
             </FormGroup>

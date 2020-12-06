@@ -29,7 +29,10 @@ import Palette from '@material-ui/icons/Palette';
 const drawerWidth = 240;
 
 
-
+/**
+ * @desc Sets the style to be used in the Side Bar
+ * @param makeStyles - styles take from material ui core styles
+ */
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -89,7 +92,10 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-//export default function SideBar = ({parentSkill, parentCardsinDeck, parentCalender, parentHomePage, parentSettings, parentLogout}) => {
+/**
+ * @desc Side Bar that appears on the left side of the webpage
+ * @param parent functions that are passed in from layout
+ */
 const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, parentView, parentCourseView, parentSkill}) => {
 
     const viewEnum = {
@@ -104,37 +110,35 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
+
+    /**
+     * @desc Allows the drawer to be opened
+     */
     const handleDrawerOpen = () => {
         setOpen(true);
     };
 
+    /**
+     * @desc Does not allow the drawer to be opened
+     */
     const handleDrawerClose = () => {
         setOpen(false);
     };
 
+    //variable that controls ability to open the sidebar
     var drawerAction;
 
-    //OnCourseList
+    //Side bar options on Course List
     const OnCourseList = [
-        //shouldnt add skill selection or deck
-       // {
-       //     text: "See Calender",
-       //     icon: <Today/>,
-       //     onClick: () => parentCalendar()
-       // },
-       // {
-       //     text: "Settings",
-       //     icon: <Settings/>,
-       //     onClick: () => parentSettings()
-       // },
         {
-            text: "Logout",
-            icon: <Input/>,
-            onClick: () => parentLogout()
+            text: "Logout", //text for the icon slot
+            icon: <Input/>, //icon from material ui to be used in slot
+            onClick: () => parentLogout() //where the slot takes you on click
         },
     ];
 
 
+    //Side bar options on Skill Select
     const OnSkillSelect = [
         //shouldnt add skill selection or deck
         {
@@ -142,16 +146,6 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             icon: <Palette/>,
             onClick: () => parentCourse()
         },
-       // {
-       //     text: "See Calender",
-       //     icon: <Today/>,
-       //     onClick: () => parentCalendar()
-       // },
-       // {
-       //     text: "Settings",
-       //     icon: <Settings/>,
-       //     onClick: () => parentSettings()
-       // },
         {
             text: "Logout",
             icon: <Input/>,
@@ -159,6 +153,7 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         },
     ];
 
+    //Side bar options on Cards
     const OnCards = [
 
         {
@@ -173,18 +168,6 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             onClick: () => parentSkill()
         },
 
-//        {
-//            text: "See Calender",
-//            icon: <Today/>,
-//            onClick: () => parentCalendar()
-//        },
-//
-//        {
-//            text: "Account Settings",
-//            icon: <Settings/>,
-//            onClick: () => parentSettings()
-//        },
-//
         {
             text: "Logout",
             icon: <Input/>,
@@ -192,6 +175,7 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         }
     ];
 
+    //Side bar options on Calender
     const OnCalender = [
 
         {
@@ -212,6 +196,8 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             onClick: () => parentLogout()
         }
     ];
+
+    //Side bar options on Account Settings
     const AccountSettings = [
 
         {
@@ -235,9 +221,10 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
 
     let Items = [];
 
-
+    //Switch that controls what Side Bar view is showing
     switch (parentView) {
-        case viewEnum.COURSE: //course
+        case viewEnum.COURSE:
+            //Within COURSE you can be on course, skill select or deck
             if (parentCourseView === '1') {
                 Items = OnSkillSelect;
                 drawerAction = () => handleDrawerOpen();
@@ -254,7 +241,7 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
                 drawerAction = () => handleDrawerOpen();
                 break;
             }
-        case viewEnum.DECK: //never gonna get this change DELETE THIS
+        case viewEnum.DECK: //not in use right now
             Items = OnCards;
             drawerAction = () => handleDrawerOpen();
             break;
@@ -272,7 +259,7 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             break;
     }
 
-
+    //Used to render the final Side Bar
     return (
         <div className={classes.root}>
             <AppBar

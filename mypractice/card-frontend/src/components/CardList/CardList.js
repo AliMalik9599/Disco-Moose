@@ -1,12 +1,13 @@
 import React, {Component} from "react";
 import CourseCard from  '../Card/Card';
 
-
+/* CardList component to display cards for user */
 class CardList extends Component {
     constructor(props) {
         super(props);
     }
 
+    // creates mapping of backend data to Card components
     render() {
         const cards = this.props.cards.map(card => (
             <CourseCard
@@ -30,6 +31,7 @@ class CardList extends Component {
                 link={card.link}
             />
         ));
+        // Only display list if user is logged in
         if (window.localStorage.getItem('login')) {
             return (
                 <div>
