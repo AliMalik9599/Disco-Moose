@@ -25,11 +25,13 @@ class Calendar extends Component {
            });
    }
 
-   handleCourseClick(e, id, cards) {
+   handleCourseClick(e, id, cards, skill_id_list, time) {
        window.localStorage.setItem('selectedCourse', id);
        window.localStorage.setItem('cards', cards);
        const new_view = {"main": "CourseWrapper", "subpage": "Deck"}
        window.localStorage.setItem('view', JSON.stringify(new_view));
+       window.localStorage.setItem('skills', JSON.stringify(skill_id_list));
+       window.localStorage.setItem('time', time);
        this.props.formClick();
        // TODO: Set appropriate local storage values and pass a prop back up to Layout (?) to switch the view to Deck
        // need to set cards in local storage, but that is supposed to be all the card data (see Deck.js line 82)

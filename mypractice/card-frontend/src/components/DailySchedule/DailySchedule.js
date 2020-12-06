@@ -79,12 +79,23 @@ const getSkillNames = (skills) => {
     const first_split = skills.split(",");
     for (let i = 0; i < first_split.length; i++) {
         const second_split = first_split[i].split(':');
-        console.log(second_split[0]);
         if (second_split[0] === '"name"') {
             skill_list.push(second_split[1].substring(1, second_split[1].length - 1));
         }
     }
     return skill_list;
+}
+
+const getSkillIDs = (skills) => {
+    let skills_ids = []
+    const first_split = skills.split(",");
+    for (let i = 0; i < first_split.length; i++) {
+        const second_split = first_split[i].split(':');
+        if (second_split[0] === '{"id"') {
+            skills_ids.push(second_split[1]);
+        }
+    }
+    return skills_ids;
 }
 
 /*
@@ -142,8 +153,10 @@ export default function DailySchedule(props) {
     const courseName = getCourseName(props.course);
     const courseID = getCourseID(props.course);
     const skills = getSkillNames(props.skills);
+    const skill_ids = getSkillIDs(props.skills);
     const cards = props.cards;
     const card_names = getCardNames(cards);
+    const time = card_names.length * 5; // if the amount of time associated with each card changes, we will need to change this as well
 
     if (window.localStorage.getItem('login')) {
         return (
@@ -152,7 +165,7 @@ export default function DailySchedule(props) {
                 <h5>{"Course: " + courseName}</h5>
                 <p>{"Skills: " + skills.toString()}</p>
                 <p>{"Cards Practiced: " + card_names.toString()}</p>
-                <Button className={classes.button} color="secondary" onClick={(e) => props.clickHandler(e, courseID, cards)}>Go</Button>
+                <Button className={classes.button} color="secondary" onClick={(e) => props.clickHandler(e, courseID, cards, skill_ids, time)}>Go</Button>
             </div>
         );
     }
