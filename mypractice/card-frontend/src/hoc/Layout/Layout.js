@@ -6,37 +6,33 @@ import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
 import Selection from "../../containers/Selection/Selection";
 import Registration from "../../containers/Registration/Registration";
 import SideBar from "../../containers/SideBar/SideBar";
+import Landing from "../../containers/Landing/Landing";
+import bulb from '../../containers/Login/bulb-logo.png';
 
-//enumeration used to switch between webpage layouts
+
 const viewEnum = {
     ANIMATION: '0',
     LOGIN: '1',
     COURSE: '2',
     SELECTION: '3',
-    REGISTRATION: '4'
+    REGISTRATION: '4',
+    LANDING: '6'
 }
-
-
+//realone
 class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            //layoutView will get the value of 'layoutView' in local storage if it exists, otherwise ANIMATION
-            layoutView: window.localStorage.getItem('layoutView') || viewEnum.ANIMATION,
-            //token will get the value of 'login' in local storage
+            //layoutView: window.localStorage.getItem('layoutView') || viewEnum.LANDING
+            layoutView: viewEnum.ANIMATION,
+            //layoutView: window.localStorage.getItem('layoutView') || viewEnum.LANDING,
             token: window.localStorage.getItem('login'),
             courseReset: false,
             skillReset: false,
-            //courseView will get the value of 'courseView' in local storage if it exists, '0'
             courseView: window.localStorage.getItem('courseView') || '0'
         }
     }
 
-    /**
-     * @desc On a formClick in Login or Registration, this function changes the layout to
-     * the COURSE page.
-     * @param token - the login token for the user
-     */
     changeLayoutState = (token) => {
         window.localStorage.setItem('login', token);
         this.setState({token: token});
@@ -46,47 +42,29 @@ class Layout extends Component {
         window.localStorage.setItem('layoutView', viewEnum.COURSE);
     }
 
-    /**
-     * @desc Switches the layout from ANIMATION to LOGIN
-     */
     stopAnimation = () => {
-        this.setState({layoutView: viewEnum.LOGIN});
-        window.localStorage.setItem('layoutView', viewEnum.LOGIN);
+        this.setState({layoutView: viewEnum.LANDING});
+        window.localStorage.setItem('layoutView', viewEnum.LANDING);
     }
 
-    /**
-     * @desc Switch the layout to REGISTRATION
-     */
     toRegistration = () => {
         this.setState({layoutView: viewEnum.REGISTRATION});
         window.localStorage.setItem('layoutView', viewEnum.REGISTRATION);
     }
 
-    /**
-     * @desc Switch the layout to LOGIN
-     */
     toLogin = () => {
         this.setState({layoutView: viewEnum.LOGIN});
         window.localStorage.setItem('layoutView', viewEnum.LOGIN);
     }
 
-    /**
-     * @desc Changes courseReset from false/true to true/false. Used in CourseWrapper to change back to COURSE
-     */
     resetToCourse = () => {
         this.setState({courseReset: !this.state.courseReset});
     }
 
-    /**
-     * @desc Changes skillReset from false/true to true/false. Used in CourseWrapper to change back to SKILL
-     */
     resetToSkill = () => {
         this.setState({skillReset: !this.state.skillReset});
     }
 
-    /**
-     * @desc Currently not in use
-     */
     goCalendar = () => {
         window.localStorage.setItem('layoutView', viewEnum.ANIMATION);
         this.setState({layoutView: viewEnum.ANIMATION});
@@ -95,17 +73,11 @@ class Layout extends Component {
         console.log(this.state.layoutView + " CALENDER");
     }
 
-    /**
-     * @desc Currently not in use
-     */
     goSettings = () => {
         this.setState({layoutView: viewEnum.ANIMATION});
         window.localStorage.setItem('layoutView', viewEnum.ANIMATION);
     }
 
-    /**
-     * @desc Changes page layout back to ANIMATION upon loging out
-     */
     goLogout = () => {
         window.localStorage.clear();
         this.setState({token: ''});
@@ -113,33 +85,21 @@ class Layout extends Component {
         window.localStorage.setItem('layoutView', viewEnum.ANIMATION);
     }
 
-    /**
-     * @desc Changes the course view to '0' or course to be used in the SideBar
-     */
     viewToCourse = () => {
         this.setState({courseView: '0'});
         window.localStorage.setItem('courseView', '0');
     }
 
-    /**
-     * @desc Changes the course view to '1' or skill to be used in the SideBar
-     */
     viewToSkills = () => {
         this.setState({courseView: '1'});
         window.localStorage.setItem('courseView', '1');
     }
 
-    /**
-     * @desc Changes the course view to '2' or deck to be used in the SideBar
-     */
     viewToDeck = () => {
         this.setState({courseView: '2'});
         window.localStorage.setItem('courseView', '2');
     }
 
-    /**
-     * @desc Renders the appropriate web page layout
-     */
     render() {
         let view = null;
         if (window.localStorage.getItem('login') && this.state.layoutView === viewEnum.COURSE) {
@@ -193,6 +153,8 @@ class Layout extends Component {
             case viewEnum.REGISTRATION:
                 view = <Registration formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>;
                 break;
+            case viewEnum.LANDING:
+                view = <Landing toLogin={this.toLogin.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
         }
 
         return (
