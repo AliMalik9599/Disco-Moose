@@ -14,7 +14,7 @@ class Deck extends Component {
 
     // Send message to backend when card is completed (checkbox is clicked)
     handleComplete(e, cardId) {
-        fetch(`http://127.0.0.1:8000/cardprogress/${cardId}`, {
+        fetch(`/cardprogress/${cardId}`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -50,7 +50,7 @@ class Deck extends Component {
 
     // if the page is refreshed, make sure the correct data is displayed
     refresh() {
-        this.str_url = 'http://127.0.0.1:8000/cards/refresh/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
+        this.str_url = '/cards/refresh/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
         fetch(this.str_url, {
             method: 'GET',
             headers: {

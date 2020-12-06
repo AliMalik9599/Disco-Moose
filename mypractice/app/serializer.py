@@ -53,10 +53,10 @@ class UserSerializer(serializers.ModelSerializer):
 
 # Serializers Deck objects
 class DeckSerializer(serializers.ModelSerializer):
-	course = CourseSerializer(many=False, read_only=True, allow_null=True)
-	skills = serializers.PrimaryKeyRelatedField(many=True, read_only=True, allow_null=True)
+	course = serializers.StringRelatedField(many=False)
+	skills = serializers.StringRelatedField(many=False)
 	cards = CardSerializer(many=True, read_only=True, allow_null=True)
-	user = UserSerializer(many=False)
+	user = serializers.StringRelatedField(many=False)
 
 	class Meta:
 		model = Deck

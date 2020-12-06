@@ -12,7 +12,6 @@ class Calendar extends Component {
    }
 
    componentDidMount() {
-       console.log('trying to get old decks');
        fetch('/decks/', {
            method: 'GET',
            headers: {
@@ -22,6 +21,7 @@ class Calendar extends Component {
        })
            .then(response => response.json())
            .then(data => {
+               console.log(data);
                this.setState({dailyData: data});
            });
    }
