@@ -67,7 +67,6 @@ class Deck extends Component {
 
     // Collect data from backend when component mounts
     componentDidMount() {
-        console.log("TIME = " + this.props.time.toString());
         this.str_url = '/cards/cardprogress/' + this.props.courseid.toString() + '/' + this.props.skills.toString() + '/' + this.props.time.toString();
             fetch(this.str_url, {
                 method: 'GET',
@@ -78,7 +77,6 @@ class Deck extends Component {
             })
             .then(response => response.json())
             .then(data => {
-                console.log('COMPONENT DID MOUNT:' + data);
                 window.localStorage.setItem('cards', JSON.stringify(data));
                 this.setState({cards: data});
             });

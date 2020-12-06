@@ -21,13 +21,11 @@ class Calendar extends Component {
        })
            .then(response => response.json())
            .then(data => {
-               console.log(data);
                this.setState({dailyData: data});
            });
    }
 
    handleCourseClick(e, id, cards) {
-       console.log('COURSE WAS CLICKED');
        window.localStorage.setItem('selectedCourse', id);
        window.localStorage.setItem('cards', cards);
        const new_view = {"main": "CourseWrapper", "subpage": "Deck"}
@@ -40,9 +38,6 @@ class Calendar extends Component {
    render() {
        // only display content if user is logged in
        if (window.localStorage.getItem('login')) {
-           // for (let i = 0; i < this.state.dailyData.length; i++) {
-           //     console.log(this.state.dailyData[i]);
-           // }
            return (
                <main>
                    <div className="d-flex justify-content-center">

@@ -3,7 +3,6 @@ import Login from "../../containers/Login/Login";
 import classes from './Layout.module.css'
 import Animation from "../../containers/Login/Animation"
 import CourseWrapper from "../../containers/CourseWrapper/CourseWrapper";
-import Selection from "../../containers/Selection/Selection";
 import Registration from "../../containers/Registration/Registration";
 import SideBar from "../../containers/SideBar/SideBar";
 import Calendar from "../../containers/Calendar/Calendar"
@@ -43,7 +42,6 @@ class Layout extends Component {
         window.localStorage.setItem('login', token);
         this.setState({token: token});
         this.setState({layoutView: viewEnum.COURSE});
-        console.log("Set token: " + this.state.token)
         this.setState({layoutView: viewEnum.COURSE});
         window.localStorage.setItem('layoutView', viewEnum.COURSE);
     }
@@ -139,7 +137,6 @@ class Layout extends Component {
     }
 
     goToDeckFromCalendar = () => {
-        console.log("OPENING DECK");
         this.setState({layoutView: viewEnum.COURSE});
         window.localStorage.setItem('layoutView', viewEnum.COURSE);
     }
@@ -153,7 +150,6 @@ class Layout extends Component {
         if (window.localStorage.getItem('login') && this.state.layoutView === viewEnum.COURSE) {
             if (JSON.parse(window.localStorage.getItem('view'))['main'] !== 'CourseWrapper') {
                 // set local storage if it's not already set for course wrapper
-                console.log("is in herr");
                 let page_view = {
                     'main': 'CourseWrapper',
                     'subpage': 'CourseSelect'
@@ -184,7 +180,6 @@ class Layout extends Component {
                 />;
             }
         }
-
 
         switch (this.state.layoutView) {
             case viewEnum.ANIMATION:
