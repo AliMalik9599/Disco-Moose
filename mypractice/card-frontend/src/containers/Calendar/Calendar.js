@@ -25,6 +25,11 @@ class Calendar extends Component {
            });
    }
 
+   /*
+    * Store variables in local storage needed to render the correct deck
+    * Switch the view from Calendar to Deck
+    * Call the method in Layout.js to handle the view change
+    */
    handleCourseClick(e, id, cards, skill_id_list, time) {
        window.localStorage.setItem('selectedCourse', id);
        window.localStorage.setItem('cards', cards);
@@ -33,8 +38,6 @@ class Calendar extends Component {
        window.localStorage.setItem('skills', JSON.stringify(skill_id_list));
        window.localStorage.setItem('time', time);
        this.props.formClick();
-       // TODO: Set appropriate local storage values and pass a prop back up to Layout (?) to switch the view to Deck
-       // need to set cards in local storage, but that is supposed to be all the card data (see Deck.js line 82)
    }
 
    render() {
