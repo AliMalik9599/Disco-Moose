@@ -126,7 +126,7 @@ const WelcomePage = ({username, parentCalendar, parentCourse, goLogout}) => {
                     </Button>
                 </Toolbar>
             </AppBar>
-            {/* Hero unit */}
+
             <Container maxWidth="sm" component="main" className={classes.heroContent}>
                 <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
                     Welcome {username}!
@@ -135,11 +135,11 @@ const WelcomePage = ({username, parentCalendar, parentCourse, goLogout}) => {
                     Quote of the Day: The master has failed more times than the beginner has even tried
                 </Typography>
             </Container>
-            {/* End hero unit */}
+
             <Container maxWidth="md" component="main">
                 <Grid container spacing={5} direction="column" alignItems="center" justify="center" >
                     {tiers.map((tier) => (
-                        // Enterprise card is full width at sm breakpoint
+
                         <Grid item key={tier.title} xs={12} sm={tier.title === 'Courses' ? 12 : 6} md={4}>
                             <Card>
                                 <CardHeader
@@ -169,9 +169,7 @@ const WelcomePage = ({username, parentCalendar, parentCourse, goLogout}) => {
                     ))}
                 </Grid>
             </Container>
-            {/* Footer */}
             <Footer />
-            {/* End footer */}
         </React.Fragment>
     );
 }
