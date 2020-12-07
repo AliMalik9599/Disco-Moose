@@ -154,7 +154,7 @@ class Registration extends Component {
                     <div className={classes.center}>
                         <img className={classes.logo} src={require("./bulb-logo.png")} alt="disco logo"/>
                     </div>
-                    <Typography className={classes.title} align="center">Sign up for Disco</Typography>
+                    <Typography className={classes.title} align="center">Sign in to Disco</Typography>
                     <Grid container spacing={0}
                           direction="column"
                           alignItems="center"
@@ -168,9 +168,9 @@ class Registration extends Component {
 
                                     <Input className={classes.input} placeholder="username or email" type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
 
-                                    <Input className={classes.input} placeholder="password" id="password" type="password" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
+                                    <Input className={classes.input} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
 
-                                    <Input className={classes.input} placeholder="Confirm password" id="Confirm password" type="password" name="Confirm password" value={this.state.value} onChange={this.handleConfirmPasswordChange}/>
+                                    <Input className={classes.input} placeholder="Confirm password" id="Confirm password" type="text" name="Confirm password" value={this.state.value} onChange={this.handleConfirmPasswordChange}/>
 
                                     <div className={classes.center}>
                                         <Button className={classes.button} type="submit" value="Submit">Sign Up</Button>
