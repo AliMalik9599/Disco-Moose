@@ -69,8 +69,6 @@ const styles = theme => ({
 
 /* This class allows the user to login to the site
  * using a name, username and password.
- * On success, it alerts the user that username and
- * password were correct and directs to the course selection page.
  * On failure, it alerts the user that the username
  * and password were incorrect.
  */
@@ -106,8 +104,7 @@ class Login extends Component {
                 if(!data.key) {
                     alert("Incorrect Username or Password");
                 } else {
-                    this.setState({token: data.key})
-                    alert("Correct Username or Password");
+                    this.setState({token: data.key});
                     this.props.formClick(this.state.token);
                 }
             });
@@ -162,7 +159,7 @@ class Login extends Component {
 
                                     <Input className={classes.input} placeholder="username or email" type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
 
-                                    <Input className={classes.input} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
+                                    <Input className={classes.input} placeholder="password" id="password" type="password" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
 
                                     <div className={classes.center}>
                                         <Button className={classes.button} type="submit" value="Submit">Sign in</Button>
