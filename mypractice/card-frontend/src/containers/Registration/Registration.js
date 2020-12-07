@@ -102,7 +102,7 @@ class Registration extends Component {
         } else {
             console.log("position 1");
             console.log(this.state.username);
-            this.str_url = 'http://127.0.0.1:8000/register/' + this.state.username;
+            this.str_url = '/register/' + this.state.username;
             fetch(this.str_url, {
                 method: 'POST',
                 body: JSON.stringify({
