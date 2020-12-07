@@ -130,13 +130,31 @@ class CourseWrapper extends Component {
                 break;
             case 'SkillSelect': // display skill selection
                 window.localStorage.setItem('view', JSON.stringify(skill_view));
-                view = <Selection skills={this.state.skills}
-                                  skillUpdate={this.skillSelection.bind(this)}
-                                  doneClick={this.handleDonePress.bind(this)}
-                                  course={this.state.selectedCourse}
-                                  token={this.props.token}
-                                  time={this.timeSelection.bind(this)}
-                />
+                view =
+                    (<div
+                        style={{
+                            textAlign: 'center',
+                        }}
+                    >
+                        <Typography
+                            style={{
+                                fontSize: '30pt',
+                                color: '#0e1428',
+                                marginTop: "7%",
+                                marginBottom: "2%",
+
+                            }}
+                        >
+                            Which skills would you like to practice today?
+                        </Typography>
+                        <Selection skills={this.state.skills}
+                                      skillUpdate={this.skillSelection.bind(this)}
+                                      doneClick={this.handleDonePress.bind(this)}
+                                      course={this.state.selectedCourse}
+                                      token={this.props.token}
+                                      time={this.timeSelection.bind(this)}
+                        />
+                    </div>)
                 break;
             case 'Deck': // display cards
                 if (JSON.parse(window.localStorage.getItem('cards')) === null) {
