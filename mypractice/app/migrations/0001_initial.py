@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('view_count', models.IntegerField(default=0)),
                 ('content', models.CharField(default='', max_length=1000)),
                 ('description', models.CharField(default='', max_length=1000, null=True)),
-                ('link', models.CharField(default='', max_length=100, null=True)),
+                ('link', models.CharField(default='', max_length=1000, null=True)),
                 ('image_path', models.CharField(default='', max_length=100, null=True)),
             ],
         ),
