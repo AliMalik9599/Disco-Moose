@@ -64,7 +64,7 @@ class Card(models.Model):
 	view_count = models.IntegerField(default=0)
 	content = models.CharField(max_length=1000, default='', null=False)
 	description = models.CharField(max_length=1000, default='', null=True)
-	link = models.CharField(max_length=100, default='', null=True)
+	link = models.CharField(max_length=1000, default='', null=True)
 	image_path = models.CharField(max_length=100, default='', null=True)
 
 

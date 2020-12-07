@@ -21,9 +21,6 @@ def add_mock_databases_course(apps, schema_editor):
 	sql, created = Skill.objects.get_or_create(name="SQL", course=d)
 	sql.save()
 
-	database_design, created = Skill.objects.get_or_create(name="Database Design", course=d)
-	database_design.save()
-
 	theory, created = Skill.objects.get_or_create(name="Theory", course=d)
 	theory.save()
 
@@ -121,7 +118,7 @@ def add_mock_databases_course(apps, schema_editor):
 class Migration(migrations.Migration):
 
 	dependencies = [
-		('app', '0010_auto_20201203_2111'),
+		('app', '0002_mock_users'),
 	]
 
 	operations = [
