@@ -112,7 +112,6 @@ class Login extends Component {
                     alert("Incorrect Username or Password");
                 } else {
                     this.setState({token: data.key})
-                    alert("Correct Username or Password");
                     this.props.setUser(this.state.username);
                     this.props.formClick(this.state.token);
                 }
