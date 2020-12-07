@@ -9,6 +9,7 @@ import SideBar from "../../containers/SideBar/SideBar";
 import Landing from "../../containers/Landing/Landing";
 import bulb from '../../containers/Login/bulb-logo.png';
 import Calendar from "../../containers/Calendar/Calendar"
+import WelcomePage from "../../containers/Welcome/WelcomPage";
 
 const viewEnum = {
     ANIMATION: '0',
@@ -17,7 +18,8 @@ const viewEnum = {
     SELECTION: '3',
     REGISTRATION: '4',
     CALENDAR: '5',
-    LANDING: '6'
+    LANDING: '6',
+    WELCOME: '7'
 }
 //realone
 class Layout extends Component {
@@ -30,16 +32,17 @@ class Layout extends Component {
             token: window.localStorage.getItem('login'),
             courseReset: false,
             skillReset: false,
-            courseView: window.localStorage.getItem('courseView') || '0'
+            courseView: window.localStorage.getItem('courseView') || '0',
+            username: ''
         }
     }
 
     changeLayoutState = (token) => {
         window.localStorage.setItem('login', token);
         this.setState({token: token});
-        this.setState({layoutView: viewEnum.COURSE});
-        this.setState({layoutView: viewEnum.COURSE});
-        window.localStorage.setItem('layoutView', viewEnum.COURSE);
+        this.setState({layoutView: viewEnum.WELCOME});
+        this.setState({layoutView: viewEnum.WELCOME});
+        window.localStorage.setItem('layoutView', viewEnum.WELCOME);
     }
 
     stopAnimation = () => {
@@ -59,10 +62,18 @@ class Layout extends Component {
 
     resetToCourse = () => {
         this.setState({courseReset: !this.state.courseReset});
+        this.setState({layoutView: viewEnum.COURSE});
+        window.localStorage.setItem('layoutView', viewEnum.COURSE);
+        this.setState({courseView: '0'});
+        window.localStorage.setItem('courseView', '0');
     }
 
     resetToSkill = () => {
         this.setState({skillReset: !this.state.skillReset});
+        this.setState({layoutView: viewEnum.COURSE});
+        window.localStorage.setItem('layoutView', viewEnum.COURSE);
+        this.setState({courseView: '1'});
+        window.localStorage.setItem('courseView', '1');
     }
 
     goCalendar = () => {
@@ -103,6 +114,11 @@ class Layout extends Component {
     goToDeckFromCalendar = () => {
         this.setState({layoutView: viewEnum.COURSE});
         window.localStorage.setItem('layoutView', viewEnum.COURSE);
+    }
+
+    setUser = (userName) => {
+        this.setState({username: userName});
+        window.localStorage.setItem('username', userName);
     }
 
 
@@ -150,7 +166,7 @@ class Layout extends Component {
                 view = <Animation stopAnimation={this.stopAnimation.bind(this)}/>;
                 break;
             case viewEnum.LOGIN:
-                view = <Login formClick={this.changeLayoutState.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
+                view = <Login setUser={this.setUser.bind(this)} formClick={this.changeLayoutState.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
                 const page_view = {
                     'main': 'Login',
                     'subpage': null
@@ -165,6 +181,9 @@ class Layout extends Component {
                 break;
             case viewEnum.CALENDAR:
                 view = <Calendar formClick={this.goToDeckFromCalendar.bind(this)} />
+                break;
+            case viewEnum.WELCOME:
+                view = <WelcomePage parentCalendar={this.goCalendar.bind(this)} parentCourse={this.resetToCourse.bind(this)} />
                 break;
 
         }

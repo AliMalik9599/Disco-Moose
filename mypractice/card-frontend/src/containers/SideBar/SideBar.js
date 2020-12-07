@@ -100,7 +100,9 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         SELECTION: '3',
         REGISTRATION: '4',
         CALENDAR: '5',
-        LANDING: '6'
+        LANDING: '6',
+        WELCOME: '7'
+
     }
 
 
@@ -273,11 +275,7 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             Items = AccountSettings;
             drawerAction = () => handleDrawerOpen();
             break;
-        case viewEnum.LOGIN:
-            Items = [];
-            drawerAction = () => handleDrawerClose();
-            break;
-        case viewEnum.REGISTRATION:
+        default:
             Items = [];
             drawerAction = () => handleDrawerClose();
             break;
