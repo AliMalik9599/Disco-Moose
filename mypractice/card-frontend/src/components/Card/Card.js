@@ -1,6 +1,9 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
+import { Button } from '@material-ui/core';
 import clsx from 'clsx';
+
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
 // import CardMedia from "@material-ui/core/CardMedia";
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -55,7 +58,9 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'Montserrat',
         fontSize: '20pt',
         textAlign: 'justified',
-    }
+    },
+
+
     /*
     header:  {
         fontFamily: 'Montserrat',
@@ -77,6 +82,28 @@ export default function CourseCard(props) {
             favorited: props.is_favorited !== 'False',
         });
     const classes = useStyles();
+
+    const heartTheme = createMuiTheme({
+        props: {
+            // Name of the component
+            MuiButtonBase: {
+                // The properties to apply
+                disableRipple: true // No more ripple, on the whole application!
+            },
+        },
+    });
+
+    const toggleTheme = createMuiTheme({
+        overrides: {
+            MuiIconButton: {
+                label: {
+                    pointerEvents: 'none',
+                }
+            }
+        }
+    });
+
+
 
     // expand card to show more content
     const handleExpandClick = (event) => {
@@ -185,31 +212,34 @@ export default function CourseCard(props) {
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
-                    <IconButton className={classes.favorite}>
-                        <FormControlLabel
-                            control={<FavoriteIcon
-                                // className={classes.favorite}
-                                checked={props.is_favorited === 'True'}
-                                onClick={handleFavorite}
-                                name="favorited"
-                                color={state.favorited ? 'secondary' : 'disabled' } />}
-                        />
-                    </IconButton>
+                    <MuiThemeProvider theme={heartTheme}>
+                        <IconButton className={classes.favorite}>
+                            <FavoriteIcon
+                                    // className={classes.favorite}
+                                    checked={props.is_favorited === 'True'}
+                                    onClick={handleFavorite}
+                                    name="favorited"
+                                    color={state.favorited ? 'secondary' : 'disabled' }
+                            />
+                        </IconButton>
+                    </MuiThemeProvider>
                     <FormControlLabel
                         control={<Checkbox checked={props.is_complete === 'True'} onChange={handleCompleteClick} name="completed" />}
                         label="Completed"
                     />
-                    <IconButton
-                        className={clsx(classes.expand, {
-                            [classes.expandOpen]: state.showMore,
-                        })}
-                        onClick={handleExpandClick}
-                        aria-expanded={state.showMore}
-                        aria-label="show more"
-                        name="showMore"
-                    >
-                        <ExpandMoreIcon/>
-                    </IconButton>
+                    <MuiThemeProvider theme={toggleTheme}>
+                        <IconButton
+                            className={clsx(classes.expand, {
+                                [classes.expandOpen]: state.showMore,
+                            })}
+                            onClick={handleExpandClick}
+                            aria-expanded={state.showMore}
+                            aria-label="show more"
+                            name="showMore"
+                        >
+                            <ExpandMoreIcon />
+                        </IconButton>
+                    </MuiThemeProvider>
                 </CardActions>
                 <Collapse in={state.showMore} timeout="auto" unmountOnExit>
                     <CardContent>
