@@ -193,6 +193,12 @@ export default function CourseCard(props) {
                 {/*    title="Paella dish"*/}
                 {/*/>*/}
                 <CardContent>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        <b>Course: </b> {props.course} <br/>
+                        <b>Skill: </b> {props.skill}
+                    </Typography>
+                </CardContent>
+                <CardContent>
                      <Typography className={classes.body} variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{
                          __html: props.content}}>
                      </Typography>
@@ -201,14 +207,8 @@ export default function CourseCard(props) {
                     {renderImage()}
                 </CardContent>
                 <CardContent>
-                    <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
-                        Course: {props.course} <br/>
-                        Level: {props.level}
-                    </Typography>
-                </CardContent>
-                <CardContent>
                     <Typography  variant="body2" color="textSecondary" component="p">
-                        Last Completed: { d }
+                        <b>Last Completed: </b> { d }
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>

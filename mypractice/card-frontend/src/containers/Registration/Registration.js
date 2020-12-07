@@ -5,6 +5,8 @@ import React, {Component} from "react";
 //import { makeStyles } from '@material-ui/core/styles';
 import {Avatar, Box,withStyles, Button,TextField,Grid,Paper,AppBar,Typography,Toolbar,Link,Input,Container} from "@material-ui/core";
 import { useForm } from 'react-hook-form';
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Logo from "../Landing/discoball.jpeg";
 
 const styles = theme => ({
 
@@ -148,8 +150,16 @@ class Registration extends Component {
     render() {
         const { classes } = this.props;
         return (
-
-            <Box className={classes.main}>
+        <Box className={classes.main}>
+            <CssBaseline />
+            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+                <Toolbar className={classes.toolbar}>
+                    <Avatar src = {Logo} className={classes.large} />
+                    <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={this.props.goLogout}>
+                        Home
+                    </Button>
+                </Toolbar>
+            </AppBar>
                 <div className={classes.Login}>
                     <div className={classes.center}>
                         <img className={classes.logo} src={require("./bulb-logo.png")} alt="disco logo"/>

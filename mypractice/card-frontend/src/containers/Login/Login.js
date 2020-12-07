@@ -1,5 +1,10 @@
 import React, {Component} from "react";
 import {Box, withStyles, Button, Grid, Typography, Input, Container} from "@material-ui/core";
+import Toolbar from "@material-ui/core/Toolbar";
+import Avatar from "@material-ui/core/Avatar";
+import Logo from "../Landing/discoball.jpeg";
+import AppBar from "@material-ui/core/AppBar";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 
 /* Styling for the Login  page */
@@ -107,6 +112,7 @@ class Login extends Component {
                     alert("Incorrect Username or Password");
                 } else {
                     this.setState({token: data.key})
+                    this.props.setUser(this.state.username);
                     this.props.formClick(this.state.token);
                 }
             });
@@ -142,7 +148,16 @@ class Login extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <Box className={classes.main}>
+        <Box className={classes.main}>
+            <CssBaseline />
+            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+                <Toolbar className={classes.toolbar}>
+                    <Avatar src = {Logo} className={classes.large} />
+                    <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={this.props.goLogout}>
+                        Home
+                    </Button>
+                </Toolbar>
+            </AppBar>
                 <div className={classes.Login}>
                     <div className={classes.center}>
                         <img className={classes.logo} src={require("./bulb-logo.png")} alt="disco logo"/>
