@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fb5ca4608d48e04f30fcf905c4fa7ff6",
+    "revision": "e4196322020e92912ff309d19963c6b4",
     "url": "/index.html"
   },
   {
-    "revision": "1c757df77adc6200ed1e",
-    "url": "/static/css/main.f6e642c0.chunk.css"
+    "revision": "390add50b23a8040be81",
+    "url": "/static/css/main.559b343a.chunk.css"
   },
   {
-    "revision": "b9c802646053a36b740c",
-    "url": "/static/js/2.2e161b38.chunk.js"
+    "revision": "e358c62eea8d2b4c0afc",
+    "url": "/static/js/2.827c0e25.chunk.js"
   },
   {
     "revision": "89b0379e7bcda1a468d8b0343aeb4e53",
-    "url": "/static/js/2.2e161b38.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.827c0e25.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1c757df77adc6200ed1e",
-    "url": "/static/js/main.9ca609bc.chunk.js"
+    "revision": "390add50b23a8040be81",
+    "url": "/static/js/main.075eb07a.chunk.js"
   },
   {
     "revision": "bd7feb6b09923e298f75",
@@ -36,8 +36,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/discoAnimation.bfb4563d.gif"
   },
   {
-    "revision": "7df874e915514705bff95930218c6d3b",
-    "url": "/static/media/discoPeeps.7df874e9.jpeg"
+    "revision": "cce71b419ebac4525139c0df1e313393",
+    "url": "/static/media/discoPeeps.cce71b41.jpeg"
   },
   {
     "revision": "706a9900b6b5ec0cb5c01c1849b04eaf",
