@@ -176,6 +176,7 @@ export default function CourseCard(props) {
                 <CardContent>
                     <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
                         Course: {props.course} <br/>
+                        Level: {props.level}
                     </Typography>
                 </CardContent>
                 <CardContent>
