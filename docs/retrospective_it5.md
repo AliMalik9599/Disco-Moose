@@ -14,3 +14,5 @@ Heroku link: https://disco-moose.herokuapp.com/
 11. Fixed bugs in Side bar to have correct button functionality
 
 ## What's left
+- Add a user profile that displays courses they've previously practice and maybe the last deck they practiced
+- Add more course data so there are more options
