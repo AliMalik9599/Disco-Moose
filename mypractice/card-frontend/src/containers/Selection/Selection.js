@@ -55,7 +55,9 @@ export default function Selection(props) {
             default:
                 break;
         }
+        console.log(index);
     };
+
 
     // toggles time selector
     const handleToggle = () => {

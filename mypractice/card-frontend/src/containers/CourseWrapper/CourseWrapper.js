@@ -66,6 +66,15 @@ class CourseWrapper extends Component {
 
     // handler for user clicked the "done" button
     handleDonePress() {
+        if (this.selectedSkills.length == 0) {
+            alert("You must pick at least one skill to practice");
+            return;
+        }
+
+        if (this.selectedTime == 0) {
+            alert("You must pick a time to practice");
+            return;
+        }
         // set necessary local storage and state values
         window.localStorage.setItem('view', JSON.stringify(deck_view));
         window.localStorage.setItem('skills', JSON.stringify(this.selectedSkills));
