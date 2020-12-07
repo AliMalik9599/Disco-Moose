@@ -249,6 +249,12 @@ def compress_card_cardprogress(user, card_queryset):
 		card_progress, created = CardProgress.objects.get_or_create(card=card, user=user)
 		# Turn Card object into dictionary
 		card_dict = model_to_dict(card)
+		courseid = card_dict["course"]
+		course_name = Course.objects.get(id=courseid).name
+		card_dict["course"] = course_name
+		skillid = card_dict["skill"]
+		skill_name = Skill.objects.get(id=skillid).name
+		card_dict["skill"] = skill_name
 		# Append values in CardProgress to this dictionary
 		card_dict["is_complete"] = card_progress.is_completed
 		card_dict["is_favorited"] = card_progress.is_favorited
