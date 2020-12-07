@@ -1,3 +1,5 @@
+Heroku link: https://disco-moose.herokuapp.com/
+
 ## What we did
 1. Added extra course data so there is more content for the app
 2. Added a calendar so the user can view their old schedules
