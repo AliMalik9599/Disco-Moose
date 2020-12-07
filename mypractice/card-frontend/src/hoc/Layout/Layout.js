@@ -24,8 +24,8 @@ class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            //layoutView: window.localStorage.getItem('layoutView') || viewEnum.LANDING
-            layoutView: viewEnum.ANIMATION,
+            layoutView: window.localStorage.getItem('layoutView') || viewEnum.ANIMATION,
+            // layoutView: viewEnum.ANIMATION,
             //layoutView: window.localStorage.getItem('layoutView') || viewEnum.LANDING,
             token: window.localStorage.getItem('login'),
             courseReset: false,
