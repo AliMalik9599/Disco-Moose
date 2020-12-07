@@ -79,16 +79,18 @@ const useStyles = makeStyles((theme) => ({
 const tiers = [
     {
         title: 'Calendar',
-        description: ['Check what tasks you can do today',],
-        buttonText: 'Go To The Calendar',
+        description: [
+            'Check out your past practice schedules!',
+        ],
+        buttonText: 'Let\'s Go',
         buttonVariant: 'outlined',
     },
     {
-        title: 'Courses',
+        title: 'Today\'s Schedule',
         description: [
-            'Select the course you want to practice',
+            'Select your preferences to create a custom practice schedule!',
         ],
-        buttonText: 'Go To Courses',
+        buttonText: 'Let\'s Go',
         buttonVariant: 'outlined',
     },
 ];
