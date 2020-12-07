@@ -80,3 +80,13 @@ https://disco-moose.herokuapp.com/
 11) Deployed to Heroku
 12) Styling added to Login, Registration, Course List, and Card List pages (cool button effects :) )
 13) Last completed date added to card
+
+## Iteration 5 Summary
+
+1) Added extra course data so there is more content for the app
+2) Added a calendar so the user can view their old schedules
+3) Added a landing page with more information about the app
+4) Fixed deployment issue on Heroku (previously getting 404 error)
+5) Commented all code
+6) Started bug fixing (will do more before Tuesday) to fix issues listed on GitHub
+7) Restyled various components (on separate branch, not yet merged to Heroku)
