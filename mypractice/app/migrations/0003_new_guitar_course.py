@@ -6,7 +6,7 @@ from app.models import Course, Card, Skill
 
 def add_mock_guitar_course(apps, schema_editor):
 
-	d, created = Course.objects.get_or_create(name='Guitar')
+	d, created = Course.objects.get_or_create(name='Guitar', description="An introduction to Guitar and Music Theory.")
 	d.save()
 
 	transcribing, created = Skill.objects.get_or_create(name="Transcribing", course=d)
