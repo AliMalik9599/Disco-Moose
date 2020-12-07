@@ -59,10 +59,15 @@ class Layout extends Component {
 
     resetToCourse = () => {
         this.setState({courseReset: !this.state.courseReset});
+        this.setState({layoutView: viewEnum.COURSE});
+        window.localStorage.setItem('layoutView', viewEnum.COURSE);
     }
+
 
     resetToSkill = () => {
         this.setState({skillReset: !this.state.skillReset});
+        this.setState({layoutView: viewEnum.COURSE});
+        window.localStorage.setItem('layoutView', viewEnum.COURSE);
     }
 
     goCalendar = () => {
