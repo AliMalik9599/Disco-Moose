@@ -87,13 +87,14 @@ const getSkillNames = (skills) => {
 }
 
 const getSkillIDs = (skills) => {
-    let skills_ids = []
-    const first_split = skills.split(",");
+    let shorten = skills.replace('[{', '');
+    let shorter = shorten.replace('}]', '');
+    const first_split = shorter.split('},{');
+    let skills_ids = [];
     for (let i = 0; i < first_split.length; i++) {
-        const second_split = first_split[i].split(':');
-        if (second_split[0] === '{"id"') {
-            skills_ids.push(second_split[1]);
-        }
+        const second_split = first_split[i].split(',');
+        const third_split = second_split[0].split(':');
+        skills_ids.push(parseInt(third_split[1]));
     }
     return skills_ids;
 }
