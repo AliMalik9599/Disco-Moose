@@ -54,12 +54,6 @@ export default function Course(props) {
                     <Typography variant="body2" component="p">
                         {props.description}
                     </Typography>
-                    <Typography className={classes.pos} color="textSecondary">
-                        Number of skills in course: {props.num_skills}
-                    </Typography>
-                    <Typography className={classes.pos} color="textSecondary">
-                        Number of cards in course: {props.num_cards}
-                    </Typography>
                 </CardContent>
                 <div className={classes.actions}>
 
