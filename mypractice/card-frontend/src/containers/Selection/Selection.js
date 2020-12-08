@@ -49,6 +49,9 @@ const useStyles = makeStyles((theme) => ({
     },
     selection: {
         marginTop: "2%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
     },
 }));
 

@@ -165,9 +165,8 @@ class Login extends Component {
                                     <Input className={classes.input} placeholder="name" type="text" name="name" value={this.state.value} onChange={this.handleNameChange}/>
 
                                     <Input className={classes.input} placeholder="username or email" type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
-                                    <FormControl>
-                                        <Input className={classes.input} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
-                                    </FormControl>
+
+                                    <Input className={classes.input} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
                                     <div className={classes.center}>
                                         <Button className={classes.button} type="submit" value="Submit">Sign in</Button>
                                     </div>
