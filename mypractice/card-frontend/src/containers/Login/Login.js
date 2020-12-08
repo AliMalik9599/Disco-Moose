@@ -1,9 +1,18 @@
 import React, {Component} from "react";
 import {Box, withStyles, Button, Grid, Typography, Input, Container} from "@material-ui/core";
+
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import FormControl from '@material-ui/core/FormControl';
 import {FormatAlignCenter} from "@material-ui/icons";
+
+import Toolbar from "@material-ui/core/Toolbar";
+import Avatar from "@material-ui/core/Avatar";
+import Logo from "../Landing/discoball.jpeg";
+import AppBar from "@material-ui/core/AppBar";
+import CssBaseline from "@material-ui/core/CssBaseline";
+
+
 
 /* Styling for the Login  page */
 const styles = theme => ({
@@ -110,7 +119,7 @@ class Login extends Component {
                     alert("Incorrect Username or Password");
                 } else {
                     this.setState({token: data.key})
-                    alert("Correct Username or Password");
+                    this.props.setUser(this.state.username);
                     this.props.formClick(this.state.token);
                 }
             });
@@ -146,8 +155,16 @@ class Login extends Component {
     render() {
         const { classes } = this.props;
         return (
-
-            <Box className={classes.main}>
+        <Box className={classes.main}>
+            <CssBaseline />
+            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+                <Toolbar className={classes.toolbar}>
+                    <Avatar src = {Logo} className={classes.large} />
+                    <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={this.props.goLogout}>
+                        Home
+                    </Button>
+                </Toolbar>
+            </AppBar>
                 <div className={classes.Login}>
                     <div className={classes.center}>
                         <img className={classes.logo} src={require("./bulb-logo.png")} alt="disco logo"/>
@@ -166,7 +183,8 @@ class Login extends Component {
 
                                     <Input className={classes.input} placeholder="username or email" type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
 
-                                    <Input className={classes.input} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
+                                    <Input className={classes.input} placeholder="password" id="password" type="password" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
+
                                     <div className={classes.center}>
                                         <Button className={classes.button} type="submit" value="Submit">Sign in</Button>
                                     </div>

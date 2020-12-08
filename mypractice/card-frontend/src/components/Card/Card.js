@@ -1,10 +1,14 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
+import { Button } from '@material-ui/core';
 import clsx from 'clsx';
+
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
 // import CardMedia from "@material-ui/core/CardMedia";
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
@@ -28,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
+        image: require("./images/guitar.png"),
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -53,7 +58,9 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'Montserrat',
         fontSize: '20pt',
         textAlign: 'justified',
-    }
+    },
+
+
     /*
     header:  {
         fontFamily: 'Montserrat',
@@ -76,15 +83,35 @@ export default function CourseCard(props) {
         });
     const classes = useStyles();
 
+    const heartTheme = createMuiTheme({
+        props: {
+            // Name of the component
+            MuiButtonBase: {
+                // The properties to apply
+                disableRipple: true // No more ripple, on the whole application!
+            },
+        },
+    });
+
+    const toggleTheme = createMuiTheme({
+        overrides: {
+            MuiIconButton: {
+                label: {
+                    pointerEvents: 'none',
+                }
+            }
+        }
+    });
+
+
+
     // expand card to show more content
     const handleExpandClick = (event) => {
-        console.log(state.showMore);
         let update = false;
         if (!state.showMore) {
             update = true;
         }
         setState({ ...state, [event.target.name]: update });
-        console.log(update);
     };
 
     // handle press on completed checkbox
@@ -116,6 +143,29 @@ export default function CourseCard(props) {
         return d;
     }
 
+    function renderImage() {
+        if (props.image_path !== "") {
+            var path_str = (props.image_path).toString();
+            return (
+                <CardMedia
+                    className={classes.media}
+                    style={{height: 0, paddingTop: '56.25%'}}
+                    image={require("./images/" + path_str)}
+                />
+            )
+        }
+    }
+
+    function renderLink() {
+        if (props.link !== "") {
+            return (
+                <Typography className={classes.body} variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{
+                    __html: props.link}}>
+                </Typography>
+            )
+        }
+    }
+
     // if the user is logged in, display the card
     if (window.localStorage.getItem('login')) {
         var d = dateToString(props);
@@ -126,7 +176,7 @@ export default function CourseCard(props) {
             <Card className={classes.root}>
                 <CardHeader
                     avatar={
-                        <Avatar aria-label="card" className={classes.avatar} src={require("./guitar.png")}></Avatar>
+                        <Avatar aria-label="card" className={classes.avatar} src={require("./images/guitar.png")}></Avatar>
                     }
                     action={
                         <IconButton aria-label="settings">
@@ -143,60 +193,60 @@ export default function CourseCard(props) {
                 {/*    title="Paella dish"*/}
                 {/*/>*/}
                 <CardContent>
-                    <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
-                        {props.content}
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        <b>Course: </b> {props.course} <br/>
+                        <b>Skill: </b> {props.skill}
                     </Typography>
                 </CardContent>
                 <CardContent>
-                    <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
-                        Course: {props.course} <br/>
-                        Level: {props.level}
-                    </Typography>
+                     <Typography className={classes.body} variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{
+                         __html: props.content}}>
+                     </Typography>
+                </CardContent>
+                <CardContent>
+                    {renderImage()}
                 </CardContent>
                 <CardContent>
                     <Typography  variant="body2" color="textSecondary" component="p">
-                        Last Completed: { d }
+                        <b>Last Completed: </b> { d }
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
-                    <IconButton className={classes.favorite}>
-                        <FormControlLabel
-                            control={<FavoriteIcon
-                                // className={classes.favorite}
-                                checked={props.is_favorited === 'True'}
-                                onClick={handleFavorite}
-                                name="favorited"
-                                color={state.favorited ? 'secondary' : 'disabled' } />}
-                        />
-                    </IconButton>
+                    <MuiThemeProvider theme={heartTheme}>
+                        <IconButton className={classes.favorite}>
+                            <FavoriteIcon
+                                    // className={classes.favorite}
+                                    checked={props.is_favorited === 'True'}
+                                    onClick={handleFavorite}
+                                    name="favorited"
+                                    color={state.favorited ? 'secondary' : 'disabled' }
+                            />
+                        </IconButton>
+                    </MuiThemeProvider>
                     <FormControlLabel
                         control={<Checkbox checked={props.is_complete === 'True'} onChange={handleCompleteClick} name="completed" />}
                         label="Completed"
                     />
-                    <IconButton
-                        className={clsx(classes.expand, {
-                            [classes.expandOpen]: state.showMore,
-                        })}
-                        onClick={handleExpandClick}
-                        aria-expanded={state.showMore}
-                        aria-label="show more"
-                        name="showMore"
-                    >
-                        <ExpandMoreIcon/>
-                    </IconButton>
+                    <MuiThemeProvider theme={toggleTheme}>
+                        <IconButton
+                            className={clsx(classes.expand, {
+                                [classes.expandOpen]: state.showMore,
+                            })}
+                            onClick={handleExpandClick}
+                            aria-expanded={state.showMore}
+                            aria-label="show more"
+                            name="showMore"
+                        >
+                            <ExpandMoreIcon />
+                        </IconButton>
+                    </MuiThemeProvider>
                 </CardActions>
                 <Collapse in={state.showMore} timeout="auto" unmountOnExit>
                     <CardContent>
-                        <Typography paragraph>
-                            Nothing here for now but eventually we will want to add this.props.description or something
-                            like that if it exists (will require a more robust dataset)
+                        <Typography paragraph className={classes.body} variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{
+                            __html: props.description}}>
                         </Typography>
-                        <Typography paragraph>
-                            We can add another paragraph here if we want! Even more instructions
-                        </Typography>
-                        <Typography paragraph>
-                            Room for yet ANOTHER paragraph! Material UI is really doing the most.
-                        </Typography>
+                        {renderLink()}
                     </CardContent>
                 </Collapse>
             </Card>

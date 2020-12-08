@@ -128,7 +128,7 @@ class CardList(generics.ListCreateAPIView):
 				self.kwargs.get('skills'),
 				self.kwargs.get('time')
 			)
-
+		print(final_list)
 		return list(final_list)
 
 # Connected to user registration, authenticates user
@@ -208,6 +208,7 @@ def refresh_cardlist(userid, courseid, skills, time):
 	# Grab the Course selected
 	course = Course.objects.get(id=courseid)
 	# Calculate the number of cards a user is asking for
+	print(time)
 	num_cards = int(int(time) / 5)
 	# Grab the Deck associated with that selection for today's date
 	deck = Deck.objects.get(user=user, course=course, skills=skills, date=datetime.date.today(), num_cards=num_cards)
@@ -216,7 +217,7 @@ def refresh_cardlist(userid, courseid, skills, time):
 	card_queryset = Card.objects.filter(id__in=card_ids)
 	# Compress Card and CardProgress objects into one list of dictionaries
 	card_list = list(compress_card_cardprogress(user, card_queryset))
-
+	print(card_list)
 	return card_list
 
 
@@ -248,6 +249,12 @@ def compress_card_cardprogress(user, card_queryset):
 		card_progress, created = CardProgress.objects.get_or_create(card=card, user=user)
 		# Turn Card object into dictionary
 		card_dict = model_to_dict(card)
+		courseid = card_dict["course"]
+		course_name = Course.objects.get(id=courseid).name
+		card_dict["course"] = course_name
+		skillid = card_dict["skill"]
+		skill_name = Skill.objects.get(id=skillid).name
+		card_dict["skill"] = skill_name
 		# Append values in CardProgress to this dictionary
 		card_dict["is_complete"] = card_progress.is_completed
 		card_dict["is_favorited"] = card_progress.is_favorited
@@ -267,19 +274,59 @@ class DeckList(generics.ListCreateAPIView):
 	def get_queryset(self):
 		userid = self.request.user.id
 		user = User.objects.get(id=userid)
+		user_dict = model_to_dict(user)
 		decks = Deck.objects.filter(user=user)
 		deck_list = []
 		for deck in decks:
 			card_ids = deck.cards
+			skill_ids = deck.skills
 			card_id_list = card_ids[1:-1].split(', ')
+			skill_id_list = skill_ids.split(',')
 			cards = Card.objects.filter(id__in=card_id_list)
+			skills = Skill.objects.filter(id__in=skill_id_list)
 			card_dict = []
 			for card in cards:
 				card_dict.append(model_to_dict(card))
-			print(card_dict)
+			skill_dict = []
+			for skill in skills:
+				skill_dict.append(model_to_dict(skill))
 			deck = model_to_dict(deck)
-			print(deck)
+			course_id = deck["course"]
+			course = Course.objects.get(id=course_id)
+			course_dict = model_to_dict(course)
+			deck["course"] = course_dict
+			deck["user"] = user_dict
 			deck["cards"] = card_dict
-			print(deck)
+			deck["skills"] = skill_dict
 			deck_list.append(deck)
-		return deck_list
+		print(deck_list)
+		return list(deck_list)
+
+# Creates a ListView for all Courses in the database
+# @api_view(['GET'])
+# @authentication_classes([TokenAuthentication,])
+# @permission_classes([IsAuthenticated])
+# def get_decks(request):
+# 	userid = request.user.id
+# 	user = User.objects.get(id=userid)
+# 	decks = Deck.objects.filter(user=user)
+# 	print(decks)
+# 	deck_list = []
+# 	for deck in decks:
+# 		card_ids = deck.cards
+# 		print(card_ids)
+# 		card_id_list = card_ids[1:-1].split(', ')
+# 		print(card_id_list)
+# 		cards = Card.objects.filter(id__in=card_id_list)
+# 		card_dict = []
+# 		for card in cards:
+# 			card_dict.append(model_to_dict(card))
+# 		print(card_dict)
+# 		deck = model_to_dict(deck)
+# 		print(deck)
+# 		deck["cards"] = card_dict
+# 		print(deck)
+# 		deck_list.append(deck)
+# 	print(deck_list)
+# 	return deck_list
+

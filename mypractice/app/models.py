@@ -62,10 +62,10 @@ class Card(models.Model):
 	level = models.IntegerField(default=0)
 	duration = models.IntegerField(default=0)
 	view_count = models.IntegerField(default=0)
-	content = models.CharField(max_length=500, default='', null=False)
-
-	def __str__(self):
-		return '%s in deck %s' % (self.title, self.deck.name)
+	content = models.CharField(max_length=1000, default='', null=False)
+	description = models.CharField(max_length=1000, default='', null=True)
+	link = models.CharField(max_length=1000, default='', null=True)
+	image_path = models.CharField(max_length=100, default='', null=True)
 
 
 # CardProgress helps us keep track of a user's relationship with a certain card. This includes whether the user has
@@ -93,7 +93,7 @@ class Deck(models.Model):
 	course = models.ForeignKey(Course, on_delete=models.CASCADE)
 	date = models.DateField(blank=True, null=False)
 	num_cards = models.IntegerField(default=0)
-	cards = models.CharField(max_length=50, default='', null=False)
+	cards = models.CharField(max_length=500, default='', null=False)
 
 
 # The models below are not being used yet / aren't developed well enough yet.

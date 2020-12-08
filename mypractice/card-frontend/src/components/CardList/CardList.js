@@ -26,25 +26,29 @@ class CardList extends Component {
     render() {
         const { classes } = this.props;
         const cards = this.props.cards.map(card => (
-            <Grid className={classes.main}>
-                <CourseCard
-                    key={card.id}
-                    id={card.id}
-                    title={card.title}
-                    course={card.course}
-                    skill={card.skill}
-                    level={card.level}
-                    duration={card.duration}
-                    view_count={card.view_count}
-                    content={card.content}
-                    is_complete={card.is_complete}
-                    is_favorited={card.is_favorited}
-                    pressComplete={this.props.completed}
-                    addToFavorites={this.props.favorited}
-                    token={this.props.token}
-                    last_completed={card.last_completed}
-                />
-            </Grid>
+
+        <Grid className={classes.main}>
+            <CourseCard
+                key={card.id}
+                id={card.id}
+                title={card.title}
+                course={card.course}
+                skill={card.skill}
+                level={card.level}
+                duration={card.duration}
+                view_count={card.view_count}
+                content={card.content}
+                is_complete={card.is_complete}
+                is_favorited={card.is_favorited}
+                pressComplete={this.props.completed}
+                addToFavorites={this.props.favorited}
+                token={this.props.token}
+                last_completed={card.last_completed}
+                description={card.description}
+                image_path={card.image_path}
+                link={card.link}
+            />
+          </Grid>
         ));
         // Only display list if user is logged in
         if (window.localStorage.getItem('login')) {

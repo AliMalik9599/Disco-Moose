@@ -38,6 +38,9 @@ class CardSerializer(serializers.ModelSerializer):
 			'duration',
 			'view_count',
 			'content',
+			'description',
+			'link',
+			'image_path',
 			'is_complete',
 			'is_favorited',
 			'last_completed'
@@ -48,15 +51,19 @@ class CardSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
-		fields = ('id', 'name', 'username', 'password')
+		fields = (
+			'id',
+			'first_name',
+			'last_name'
+		)
 
 
 # Serializers Deck objects
 class DeckSerializer(serializers.ModelSerializer):
 	course = CourseSerializer(many=False, read_only=True, allow_null=True)
-	skills = serializers.PrimaryKeyRelatedField(many=True, read_only=True, allow_null=True)
+	skills = SkillSerializer(many=True, read_only=True, allow_null=True)
 	cards = CardSerializer(many=True, read_only=True, allow_null=True)
-	user = UserSerializer(many=False)
+	user = UserSerializer(many=True, read_only=True, allow_null=True)
 
 	class Meta:
 		model = Deck

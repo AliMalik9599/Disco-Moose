@@ -55,7 +55,5 @@ export default function Skill(props) {
                     </Typography>
                 }
             />
-
-
     );
 }

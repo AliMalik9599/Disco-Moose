@@ -1,0 +1,76 @@
+Index: mypractice/card-frontend/build/asset-manifest.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"files\": {\r\n    \"main.css\": \"/static/css/main.f6e642c0.chunk.css\",\r\n    \"main.js\": \"/static/js/main.89df8e00.chunk.js\",\r\n    \"main.js.map\": \"/static/js/main.89df8e00.chunk.js.map\",\r\n    \"runtime-main.js\": \"/static/js/runtime-main.14f6456e.js\",\r\n    \"runtime-main.js.map\": \"/static/js/runtime-main.14f6456e.js.map\",\r\n    \"static/js/2.e7874d15.chunk.js\": \"/static/js/2.e7874d15.chunk.js\",\r\n    \"static/js/2.e7874d15.chunk.js.map\": \"/static/js/2.e7874d15.chunk.js.map\",\r\n    \"index.html\": \"/index.html\",\r\n    \"precache-manifest.cc8157de0f384aec31486c956fbc8085.js\": \"/precache-manifest.cc8157de0f384aec31486c956fbc8085.js\",\r\n    \"service-worker.js\": \"/service-worker.js\",\r\n    \"static/css/main.f6e642c0.chunk.css.map\": \"/static/css/main.f6e642c0.chunk.css.map\",\r\n    \"static/js/2.e7874d15.chunk.js.LICENSE.txt\": \"/static/js/2.e7874d15.chunk.js.LICENSE.txt\",\r\n    \"static/media/bulb-logo.png\": \"/static/media/bulb-logo.bd730b9d.png\",\r\n    \"static/media/guitar.png\": \"/static/media/guitar.663344b1.png\",\r\n    \"static/media/loginAnimation.gif\": \"/static/media/loginAnimation.0fd658ff.gif\"\r\n  },\r\n  \"entrypoints\": [\r\n    \"static/js/runtime-main.14f6456e.js\",\r\n    \"static/js/2.e7874d15.chunk.js\",\r\n    \"static/css/main.f6e642c0.chunk.css\",\r\n    \"static/js/main.89df8e00.chunk.js\"\r\n  ]\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mypractice/card-frontend/build/asset-manifest.json	(revision 27f131f0af982d2a1cf5611110052866c6e10e1f)
++++ mypractice/card-frontend/build/asset-manifest.json	(date 1607283410150)
+@@ -1,25 +1,25 @@
+ {
+   "files": {
+     "main.css": "/static/css/main.f6e642c0.chunk.css",
+-    "main.js": "/static/js/main.89df8e00.chunk.js",
+-    "main.js.map": "/static/js/main.89df8e00.chunk.js.map",
++    "main.js": "/static/js/main.b7a5c474.chunk.js",
++    "main.js.map": "/static/js/main.b7a5c474.chunk.js.map",
+     "runtime-main.js": "/static/js/runtime-main.14f6456e.js",
+     "runtime-main.js.map": "/static/js/runtime-main.14f6456e.js.map",
+-    "static/js/2.e7874d15.chunk.js": "/static/js/2.e7874d15.chunk.js",
+-    "static/js/2.e7874d15.chunk.js.map": "/static/js/2.e7874d15.chunk.js.map",
++    "static/js/2.355b15a1.chunk.js": "/static/js/2.355b15a1.chunk.js",
++    "static/js/2.355b15a1.chunk.js.map": "/static/js/2.355b15a1.chunk.js.map",
+     "index.html": "/index.html",
+-    "precache-manifest.cc8157de0f384aec31486c956fbc8085.js": "/precache-manifest.cc8157de0f384aec31486c956fbc8085.js",
++    "precache-manifest.d4b365fb1c91f2a37e4f23edd35d5e63.js": "/precache-manifest.d4b365fb1c91f2a37e4f23edd35d5e63.js",
+     "service-worker.js": "/service-worker.js",
+     "static/css/main.f6e642c0.chunk.css.map": "/static/css/main.f6e642c0.chunk.css.map",
+-    "static/js/2.e7874d15.chunk.js.LICENSE.txt": "/static/js/2.e7874d15.chunk.js.LICENSE.txt",
++    "static/js/2.355b15a1.chunk.js.LICENSE.txt": "/static/js/2.355b15a1.chunk.js.LICENSE.txt",
+     "static/media/bulb-logo.png": "/static/media/bulb-logo.bd730b9d.png",
+     "static/media/guitar.png": "/static/media/guitar.663344b1.png",
+     "static/media/loginAnimation.gif": "/static/media/loginAnimation.0fd658ff.gif"
+   },
+   "entrypoints": [
+     "static/js/runtime-main.14f6456e.js",
+-    "static/js/2.e7874d15.chunk.js",
++    "static/js/2.355b15a1.chunk.js",
+     "static/css/main.f6e642c0.chunk.css",
+-    "static/js/main.89df8e00.chunk.js"
++    "static/js/main.b7a5c474.chunk.js"
+   ]
+ }
+\ No newline at end of file
+Index: mypractice/card-frontend/build/service-worker.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/**\r\n * Welcome to your Workbox-powered service worker!\r\n *\r\n * You'll need to register this file in your web app and you should\r\n * disable HTTP caching for this file too.\r\n * See https://goo.gl/nhQhGp\r\n *\r\n * The rest of the code is auto-generated. Please don't update this file\r\n * directly; instead, make changes to your Workbox build configuration\r\n * and re-run your build process.\r\n * See https://goo.gl/2aRDsh\r\n */\r\n\r\nimportScripts(\"https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js\");\r\n\r\nimportScripts(\r\n  \"/precache-manifest.cc8157de0f384aec31486c956fbc8085.js\"\r\n);\r\n\r\nself.addEventListener('message', (event) => {\r\n  if (event.data && event.data.type === 'SKIP_WAITING') {\r\n    self.skipWaiting();\r\n  }\r\n});\r\n\r\nworkbox.core.clientsClaim();\r\n\r\n/**\r\n * The workboxSW.precacheAndRoute() method efficiently caches and responds to\r\n * requests for URLs in the manifest.\r\n * See https://goo.gl/S9QRab\r\n */\r\nself.__precacheManifest = [].concat(self.__precacheManifest || []);\r\nworkbox.precaching.precacheAndRoute(self.__precacheManifest, {});\r\n\r\nworkbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL(\"/index.html\"), {\r\n  \r\n  blacklist: [/^\\/_/,/\\/[^/?]+\\.[^/]+$/],\r\n});\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mypractice/card-frontend/build/service-worker.js	(revision 27f131f0af982d2a1cf5611110052866c6e10e1f)
++++ mypractice/card-frontend/build/service-worker.js	(date 1607283410145)
+@@ -14,7 +14,7 @@
+ importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+ 
+ importScripts(
+-  "/precache-manifest.cc8157de0f384aec31486c956fbc8085.js"
++  "/precache-manifest.d4b365fb1c91f2a37e4f23edd35d5e63.js"
+ );
+ 
+ self.addEventListener('message', (event) => {
+Index: mypractice/card-frontend/build/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"/><link rel=\"icon\" href=\"/static/favicon.ico\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"description\" content=\"Web site created using create-react-app\"/><link rel=\"apple-touch-icon\" href=\"/logo192.png\"/><link rel=\"manifest\" href=\"/static/manifest.json\"/><link rel=\"stylesheet\" href=\"https://bootswatch.com/4/lux/bootstrap.min.css\"><link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\"><title>My Practice App</title><link href=\"/static/css/main.f6e642c0.chunk.css\" rel=\"stylesheet\"></head><body><div id=\"root\"></div><script>!function(e){function r(r){for(var n,f,l=r[0],a=r[1],i=r[2],p=0,s=[];p<l.length;p++)f=l[p],Object.prototype.hasOwnProperty.call(o,f)&&o[f]&&s.push(o[f][0]),o[f]=0;for(n in a)Object.prototype.hasOwnProperty.call(a,n)&&(e[n]=a[n]);for(c&&c(r);s.length;)s.shift()();return u.push.apply(u,i||[]),t()}function t(){for(var e,r=0;r<u.length;r++){for(var t=u[r],n=!0,l=1;l<t.length;l++){var a=t[l];0!==o[a]&&(n=!1)}n&&(u.splice(r--,1),e=f(f.s=t[0]))}return e}var n={},o={1:0},u=[];function f(r){if(n[r])return n[r].exports;var t=n[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,f),t.l=!0,t.exports}f.m=e,f.c=n,f.d=function(e,r,t){f.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},f.r=function(e){\"undefined\"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\"Module\"}),Object.defineProperty(e,\"__esModule\",{value:!0})},f.t=function(e,r){if(1&r&&(e=f(e)),8&r)return e;if(4&r&&\"object\"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(f.r(t),Object.defineProperty(t,\"default\",{enumerable:!0,value:e}),2&r&&\"string\"!=typeof e)for(var n in e)f.d(t,n,function(r){return e[r]}.bind(null,n));return t},f.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return f.d(r,\"a\",r),r},f.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},f.p=\"/\";var l=this[\"webpackJsonpcard-frontend\"]=this[\"webpackJsonpcard-frontend\"]||[],a=l.push.bind(l);l.push=r,l=l.slice();for(var i=0;i<l.length;i++)r(l[i]);var c=a;t()}([])</script><script src=\"/static/js/2.e7874d15.chunk.js\"></script><script src=\"/static/js/main.89df8e00.chunk.js\"></script></body></html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mypractice/card-frontend/build/index.html	(revision 27f131f0af982d2a1cf5611110052866c6e10e1f)
++++ mypractice/card-frontend/build/index.html	(date 1607283410144)
+@@ -1,1 +1,1 @@
+-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/static/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/logo192.png"/><link rel="manifest" href="/static/manifest.json"/><link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><title>My Practice App</title><link href="/static/css/main.f6e642c0.chunk.css" rel="stylesheet"></head><body><div id="root"></div><script>!function(e){function r(r){for(var n,f,l=r[0],a=r[1],i=r[2],p=0,s=[];p<l.length;p++)f=l[p],Object.prototype.hasOwnProperty.call(o,f)&&o[f]&&s.push(o[f][0]),o[f]=0;for(n in a)Object.prototype.hasOwnProperty.call(a,n)&&(e[n]=a[n]);for(c&&c(r);s.length;)s.shift()();return u.push.apply(u,i||[]),t()}function t(){for(var e,r=0;r<u.length;r++){for(var t=u[r],n=!0,l=1;l<t.length;l++){var a=t[l];0!==o[a]&&(n=!1)}n&&(u.splice(r--,1),e=f(f.s=t[0]))}return e}var n={},o={1:0},u=[];function f(r){if(n[r])return n[r].exports;var t=n[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,f),t.l=!0,t.exports}f.m=e,f.c=n,f.d=function(e,r,t){f.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},f.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},f.t=function(e,r){if(1&r&&(e=f(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(f.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var n in e)f.d(t,n,function(r){return e[r]}.bind(null,n));return t},f.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return f.d(r,"a",r),r},f.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},f.p="/";var l=this["webpackJsonpcard-frontend"]=this["webpackJsonpcard-frontend"]||[],a=l.push.bind(l);l.push=r,l=l.slice();for(var i=0;i<l.length;i++)r(l[i]);var c=a;t()}([])</script><script src="/static/js/2.e7874d15.chunk.js"></script><script src="/static/js/main.89df8e00.chunk.js"></script></body></html>
+\ No newline at end of file
++<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/static/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/logo192.png"/><link rel="manifest" href="/static/manifest.json"/><link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><title>My Practice App</title><link href="/static/css/main.f6e642c0.chunk.css" rel="stylesheet"></head><body><div id="root"></div><script>!function(e){function r(r){for(var n,f,l=r[0],a=r[1],i=r[2],p=0,s=[];p<l.length;p++)f=l[p],Object.prototype.hasOwnProperty.call(o,f)&&o[f]&&s.push(o[f][0]),o[f]=0;for(n in a)Object.prototype.hasOwnProperty.call(a,n)&&(e[n]=a[n]);for(c&&c(r);s.length;)s.shift()();return u.push.apply(u,i||[]),t()}function t(){for(var e,r=0;r<u.length;r++){for(var t=u[r],n=!0,l=1;l<t.length;l++){var a=t[l];0!==o[a]&&(n=!1)}n&&(u.splice(r--,1),e=f(f.s=t[0]))}return e}var n={},o={1:0},u=[];function f(r){if(n[r])return n[r].exports;var t=n[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,f),t.l=!0,t.exports}f.m=e,f.c=n,f.d=function(e,r,t){f.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},f.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},f.t=function(e,r){if(1&r&&(e=f(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(f.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var n in e)f.d(t,n,function(r){return e[r]}.bind(null,n));return t},f.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return f.d(r,"a",r),r},f.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},f.p="/";var l=this["webpackJsonpcard-frontend"]=this["webpackJsonpcard-frontend"]||[],a=l.push.bind(l);l.push=r,l=l.slice();for(var i=0;i<l.length;i++)r(l[i]);var c=a;t()}([])</script><script src="/static/js/2.355b15a1.chunk.js"></script><script src="/static/js/main.b7a5c474.chunk.js"></script></body></html>
+\ No newline at end of file

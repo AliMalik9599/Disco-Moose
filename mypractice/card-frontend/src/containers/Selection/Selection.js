@@ -90,7 +90,9 @@ export default function Selection(props) {
             default:
                 break;
         }
+        console.log(index);
     };
+
 
     // toggles time selector
     const handleToggle = () => {
@@ -123,8 +125,9 @@ export default function Selection(props) {
         // main display for "skill selection" page
         return (
             /* container for selection page content */
-
+          
             <Grid container className={classes.wrap}>
+          
                 {/* skill selection buttons, filled dynamically by available skills */}
                 <Grid container item className={classes.skillContainer}>
                     <SkillList
@@ -134,6 +137,7 @@ export default function Selection(props) {
                         token={props.token}
                     />
                 </Grid>
+          
                 {/* dropdown button for time select */}
 
                 <Grid container item direction="row">

@@ -55,7 +55,6 @@ export default function SkillList(props) {
             <FormGroup className={classes.root}>
                 {skills}
             </FormGroup>
-
         );
     }
 }
