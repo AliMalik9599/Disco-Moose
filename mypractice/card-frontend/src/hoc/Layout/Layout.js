@@ -79,8 +79,6 @@ class Layout extends Component {
     goCalendar = () => {
         window.localStorage.setItem('layoutView', viewEnum.CALENDAR);
         this.setState({layoutView: viewEnum.CALENDAR});
-        // window.localStorage.setItem('layoutView', viewEnum.LOGIN);
-        // this.setState({layoutView: viewEnum.LOGIN});
     }
 
     goSettings = () => {
@@ -128,6 +126,7 @@ class Layout extends Component {
     render() {
         let view = null;
         let sidebar = null;
+        console.log("asdfdsaf " + this.state.layoutView);
         if (window.localStorage.getItem('login') && this.state.layoutView === viewEnum.COURSE) {
             if (JSON.parse(window.localStorage.getItem('view'))['main'] !== 'CourseWrapper') {
                 // set local storage if it's not already set for course wrapper
@@ -197,6 +196,7 @@ class Layout extends Component {
                 view = <Landing toLogin={this.toLogin.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
                 break;
             case viewEnum.CALENDAR:
+                console.log("IN DEERRRR");
                 view = <Calendar formClick={this.goToDeckFromCalendar.bind(this)} />
                 sidebar = <SideBar parentCourse={this.resetToCourse.bind(this)}
                                    parentCalendar={this.goCalendar.bind(this)}

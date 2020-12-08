@@ -42,6 +42,7 @@ class Calendar extends Component {
 
    render() {
        // only display content if user is logged in
+       console.log("asdfasfdasdfLLLLLLLLL");
        if (window.localStorage.getItem('login')) {
            return (
                <main>
