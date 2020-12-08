@@ -124,7 +124,6 @@ export default function Selection(props) {
     if (window.localStorage.getItem('login') === props.token) {
         // main display for "skill selection" page
         return (
-            /* container for selection page content */
           
             <Grid container className={classes.wrap}>
           
