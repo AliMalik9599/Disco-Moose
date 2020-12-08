@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import {Box, withStyles, Button, Grid, Typography, Input, Container} from "@material-ui/core";
-
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import FormControl from '@material-ui/core/FormControl';
+import {FormatAlignCenter} from "@material-ui/icons";
 
 /* Styling for the Login  page */
 const styles = theme => ({
@@ -162,9 +165,9 @@ class Login extends Component {
                                     <Input className={classes.input} placeholder="name" type="text" name="name" value={this.state.value} onChange={this.handleNameChange}/>
 
                                     <Input className={classes.input} placeholder="username or email" type="text" name="username" value={this.state.value} onChange={this.handleEmailChange}/>
-
-                                    <Input className={classes.input} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
-
+                                    <FormControl>
+                                        <Input className={classes.input} placeholder="password" id="password" type="text" name="password" value={this.state.value} onChange={this.handlePasswordChange}/>
+                                    </FormControl>
                                     <div className={classes.center}>
                                         <Button className={classes.button} type="submit" value="Submit">Sign in</Button>
                                     </div>

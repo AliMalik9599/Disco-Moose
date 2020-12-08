@@ -3,30 +3,21 @@ import Skill from './Skill/Skill';
 import { makeStyles, } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
+import {Container, Box}from '@material-ui/core';
+import {ConfirmationNumber} from "@material-ui/icons";
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex',
-        flexDirection: 'row',
-        maxWidth: 345,
+        //flexDirection: "row",
     },
-    formControl: {
-        margin: theme.spacing(4),
-    },
-
     main: {
-        //display: "inline-flex",
-        //justifyContent: 'evenly-spaced',
-        //alignItems: "center",
-        //alignContent: 'center',
-        //flexFlow: "row wrap",
-        margin: "1%",
-        width: "20%",
-       // textAlign: "left",
-       // width: "200%",
+        display: "inline-flex",
+        flexDirection: "row",
+
     },
-    interior: {
-        //fontSize: '100pt',
+    box: {
+
     }
 }));
 
@@ -39,9 +30,9 @@ export default function SkillList(props) {
     const classes = useStyles();
 
     const skills = props.skills.map(skill => (
-        <Grid container className={classes.main}>
+       <Box className={classes.box}>
+        <Container className={classes.main}>
             <Skill
-                className={classes.interior}
                 key={skill.id}
                 id={skill.id}
                 name={skill.name}
@@ -52,15 +43,19 @@ export default function SkillList(props) {
                 skillUpdate={props.skillUpdate}
                 token={props.token}
             />
-        </Grid>
+        </Container>
+       </Box>
+
     ));
 
     if (window.localStorage.getItem('login') && JSON.parse(window.localStorage.getItem('view'))['subpage'] === 'SkillSelect') {
         return (
             // wraps skills in FormGroup which will be displayed on Selection
-            <FormGroup>
+
+            <FormGroup className={classes.root}>
                 {skills}
             </FormGroup>
+
         );
     }
 }

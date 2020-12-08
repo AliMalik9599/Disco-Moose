@@ -164,6 +164,8 @@ class CourseWrapper extends Component {
                     (<div
                         style={{
                             textAlign: "center",
+                            //alignContent: "center",
+                            //alignItems: "center",
                         }}
                     >
                         <Typography

@@ -10,26 +10,18 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-       // maxWidth: 345,
-        //maxWidth: "200%",
+        width: "100%",
+        marginLeft: "auto",
+        marginRight: "auto",
     },
     box: {
         border: 1,
         backgroundColor: '#D2E4EE',
         padding: '5% 25%',
-        //textAlign: 'center',
-        margin: 5,
         borderRadius: '10px',
-       //maxWidth: "20000%",
         width: "150%",
-        textAlign: 'left',
-        //height: "1000%",
-
-        boxSizing: "borderBox",
-
     },
     font: {
-        //textAlign: 'left',
         fontSize: '20pt',
     }
 }));
@@ -53,17 +45,17 @@ export default function Skill(props) {
 
     return (
         // fills form group on SkillList component
-        <Container>
-        <FormControlLabel
-            className={classes.box}
-            control={<Checkbox checked={ticked} onClick={(e) => props.skillUpdate(e, props.id)} onChange={handleChange} name="checked"/>}
-            label={
-                <Typography className={classes.font}>
-                    {props.name}
-                </Typography>
-            }
-        />
-        </Container>
+
+            <FormControlLabel
+                className={classes.box}
+                control={<Checkbox checked={ticked} onClick={(e) => props.skillUpdate(e, props.id)} onChange={handleChange} name="checked"/>}
+                label={
+                    <Typography className={classes.font}>
+                        {props.name}
+                    </Typography>
+                }
+            />
+
 
     );
 }
