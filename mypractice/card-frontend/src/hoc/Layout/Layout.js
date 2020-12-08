@@ -183,7 +183,7 @@ class Layout extends Component {
                 view = <Calendar formClick={this.goToDeckFromCalendar.bind(this)} />
                 break;
             case viewEnum.WELCOME:
-                view = <WelcomePage parentCalendar={this.goCalendar.bind(this)} parentCourse={this.resetToCourse.bind(this)} />
+                view = <WelcomePage username={this.state.username} parentCalendar={this.goCalendar.bind(this)} parentCourse={this.resetToCourse.bind(this)} />
                 break;
 
         }
