@@ -111,7 +111,7 @@ const footers = [
     },
 ];
 
-const WelcomePage = ({username, parentCalendar, parentCourse, goLogout}) => {
+const WelcomePage = ({username, parentCalendar, parentCourse, goLanding}) => {
     const classes = useStyles();
     return (
         <React.Fragment>
@@ -119,8 +119,8 @@ const WelcomePage = ({username, parentCalendar, parentCourse, goLogout}) => {
             <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
                 <Toolbar className={classes.toolbar}>
                     <Avatar src = {Logo} className={classes.large} />
-                    <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={goLogout}>
-                        Logout
+                    <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={goLanding}>
+                        Back
                     </Button>
                 </Toolbar>
             </AppBar>

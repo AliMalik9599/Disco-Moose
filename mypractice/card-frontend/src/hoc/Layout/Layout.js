@@ -90,6 +90,13 @@ class Layout extends Component {
     goLogout = () => {
         window.localStorage.clear();
         this.setState({token: ''});
+        this.setState({layoutView: viewEnum.WELCOME});
+        window.localStorage.setItem('layoutView', viewEnum.WELCOME);
+    }
+
+    goLanding = () => {
+        window.localStorage.clear();
+        this.setState({token: ''});
         this.setState({layoutView: viewEnum.LANDING});
         window.localStorage.setItem('layoutView', viewEnum.LANDING);
     }
@@ -183,7 +190,7 @@ class Layout extends Component {
                 view = <Animation stopAnimation={this.stopAnimation.bind(this)}/>;
                 break;
             case viewEnum.LOGIN:
-                view = <Login goLogout={this.goLogout.bind(this)} setUser={this.setUser.bind(this)} formClick={this.changeLayoutState.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
+                view = <Login goLanding={this.goLanding.bind(this)} setUser={this.setUser.bind(this)} formClick={this.changeLayoutState.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
                 const page_view = {
                     'main': 'Login',
                     'subpage': null
@@ -191,7 +198,7 @@ class Layout extends Component {
                 window.localStorage.setItem('view', JSON.stringify(page_view));
                 break;
             case viewEnum.REGISTRATION:
-                view = <Registration goLogout={this.goLogout.bind(this)} formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>;
+                view = <Registration goLanding={this.goLanding.bind(this)} formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>;
                 break;
             case viewEnum.LANDING:
                 view = <Landing toLogin={this.toLogin.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
@@ -209,7 +216,7 @@ class Layout extends Component {
                 />
                 break;
             case viewEnum.WELCOME:
-                view = <WelcomePage goLogout={this.goLogout.bind(this)} username={this.state.username} parentCalendar={this.goCalendar.bind(this)} parentCourse={this.resetToCourse.bind(this)} />
+                view = <WelcomePage goLanding={this.goLanding.bind(this)} username={this.state.username} parentCalendar={this.goCalendar.bind(this)} parentCourse={this.resetToCourse.bind(this)} />
                 break;
         }
 
