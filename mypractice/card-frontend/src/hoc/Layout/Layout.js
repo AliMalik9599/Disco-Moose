@@ -134,7 +134,6 @@ class Layout extends Component {
     render() {
         let view = null;
         let sidebar = null;
-        console.log("asdfdsaf " + this.state.layoutView);
         if (window.localStorage.getItem('login') && this.state.layoutView === viewEnum.COURSE) {
             if (JSON.parse(window.localStorage.getItem('view'))['main'] !== 'CourseWrapper') {
                 // set local storage if it's not already set for course wrapper
