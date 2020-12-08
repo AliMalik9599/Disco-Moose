@@ -51,7 +51,6 @@ export default function SkillList(props) {
 
     if (window.localStorage.getItem('login') && JSON.parse(window.localStorage.getItem('view'))['subpage'] === 'SkillSelect') {
         return (
-            // wraps skills in FormGroup which will be displayed on Selection
             <FormGroup className={classes.root}>
                 {skills}
             </FormGroup>
