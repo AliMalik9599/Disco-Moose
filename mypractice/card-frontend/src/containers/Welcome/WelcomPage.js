@@ -78,19 +78,17 @@ const useStyles = makeStyles((theme) => ({
 
 const tiers = [
     {
-        title: 'Calendar',
+        title: 'Courses',
         description: [
-            'Check out your past practice schedules!',
+            'Select your preferences to create a custom practice schedule!',
         ],
         buttonText: 'Let\'s Go',
         buttonVariant: 'outlined',
     },
     {
-        title: 'Today\'s Schedule',
-        description: [
-            'Select your preferences to create a custom practice schedule!',
-        ],
-        buttonText: 'Let\'s Go',
+        title: 'Calendar',
+        description: ['Check what tasks you can do today',],
+        buttonText: 'Go To The Calendar',
         buttonVariant: 'outlined',
     },
 ];
@@ -113,7 +111,7 @@ const footers = [
     },
 ];
 
-const WelcomePage = ({username, parentCalendar, parentCourse, goLogout}) => {
+const WelcomePage = ({username, parentCalendar, parentCourse, goLanding}) => {
     const classes = useStyles();
     return (
         <React.Fragment>
@@ -121,7 +119,7 @@ const WelcomePage = ({username, parentCalendar, parentCourse, goLogout}) => {
             <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
                 <Toolbar className={classes.toolbar}>
                     <Avatar src = {Logo} className={classes.large} />
-                    <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={goLogout}>
+                    <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={goLanding}>
                         Logout
                     </Button>
                 </Toolbar>

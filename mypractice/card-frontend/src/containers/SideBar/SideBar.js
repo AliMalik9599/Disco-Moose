@@ -23,6 +23,7 @@ import Today from '@material-ui/icons/Today';
 import Settings from '@material-ui/icons/Settings';
 import Input from '@material-ui/icons/Input';
 import Palette from '@material-ui/icons/Palette';
+import HomeIcon from '@material-ui/icons/Home';
 
 
 
@@ -89,8 +90,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-//export default function SideBar = ({parentSkill, parentCardsinDeck, parentCalender, parentHomePage, parentSettings, parentLogout}) => {
-const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, parentView, parentCourseView, parentSkill}) => {
+//export default function SideBar = ({parentSkill, parentCardsinDeck, parentCalender, parentHomePage, parentSettings, parentHome}) => {
+const SideBar = ({parentCourse, parentCalendar, parentSettings, parentHome, parentView, parentCourseView, parentSkill, parentLanding}) => {
 
 
     const viewEnum = {
@@ -122,27 +123,23 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
 
     //OnCourseList
     const OnCourseList = [
-        //shouldnt add skill selection or deck
-       // {
-       //     text: "See Calender",
-       //     icon: <Today/>,
-       //     onClick: () => parentCalendar()
-       // },
-       // {
-       //     text: "Settings",
-       //     icon: <Settings/>,
-       //     onClick: () => parentSettings()
-       // },
+
         {
             text: "Calendar", //text for the icon slot
             icon: <Today/>, //icon from material ui to be used in slot
             onClick: () => parentCalendar() //where the slot takes you on click
         },
         {
+            text: "Home", //text for the icon slot
+            icon: <HomeIcon/>, //icon from material ui to be used in slot
+            onClick: () => parentHome() //where the slot takes you on click
+        },
+        {
             text: "Logout", //text for the icon slot
             icon: <Input/>, //icon from material ui to be used in slot
-            onClick: () => parentLogout() //where the slot takes you on click
+            onClick: () => parentLanding() //where the slot takes you on click
         },
+
     ];
 
 
@@ -153,25 +150,21 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             icon: <Palette/>,
             onClick: () => parentCourse()
         },
-       // {
-       //     text: "See Calender",
-       //     icon: <Today/>,
-       //     onClick: () => parentCalendar()
-       // },
-       // {
-       //     text: "Settings",
-       //     icon: <Settings/>,
-       //     onClick: () => parentSettings()
-       // },
+
         {
             text: "Calendar", //text for the icon slot
             icon: <Today/>, //icon from material ui to be used in slot
             onClick: () => parentCalendar() //where the slot takes you on click
         },
         {
-            text: "Logout",
-            icon: <Input/>,
-            onClick: () => parentLogout()
+            text: "Home",
+            icon: <HomeIcon/>,
+            onClick: () => parentHome()
+        },
+        {
+            text: "Logout", //text for the icon slot
+            icon: <Input/>, //icon from material ui to be used in slot
+            onClick: () => parentLanding() //where the slot takes you on click
         },
     ];
 
@@ -189,14 +182,19 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             onClick: () => parentSkill()
         },
         {
-            text: "Calender", //text for the icon slot
+            text: "Calendar", //text for the icon slot
             icon: <Today/>, //icon from material ui to be used in slot
             onClick: () => parentCalendar() //where the slot takes you on click
         },
         {
-            text: "Logout",
-            icon: <Input/>,
-            onClick: () => parentLogout()
+            text: "Home",
+            icon: <HomeIcon/>,
+            onClick: () => parentHome()
+        },
+        {
+            text: "Logout", //text for the icon slot
+            icon: <Input/>, //icon from material ui to be used in slot
+            onClick: () => parentLanding() //where the slot takes you on click
         },
     ];
 
@@ -211,16 +209,15 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         },
 
         {
-            text: "Account Settings",
-            icon: <Settings/>,
-            onClick: () => parentSettings()
+            text: "Home",
+            icon: <HomeIcon/>,
+            onClick: () => parentHome()
         },
-
         {
-            text: "Logout",
-            icon: <Input/>,
-            onClick: () => parentLogout()
-        }
+            text: "Logout", //text for the icon slot
+            icon: <Input/>, //icon from material ui to be used in slot
+            onClick: () => parentLanding() //where the slot takes you on click
+        },
     ];
 
 
@@ -245,7 +242,7 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         {
             text: "Logout",
             icon: <Input/>,
-            onClick: () => parentLogout()
+            onClick: () => parentHome()
         },
     ];
 

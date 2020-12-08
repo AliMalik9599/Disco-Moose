@@ -155,8 +155,8 @@ class Registration extends Component {
             <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
                 <Toolbar className={classes.toolbar}>
                     <Avatar src = {Logo} className={classes.large} />
-                    <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={this.props.goLogout}>
-                        Home
+                    <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={this.props.goLanding}>
+                        Back
                     </Button>
                 </Toolbar>
             </AppBar>

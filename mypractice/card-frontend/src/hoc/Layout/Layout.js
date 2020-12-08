@@ -80,8 +80,6 @@ class Layout extends Component {
     goCalendar = () => {
         window.localStorage.setItem('layoutView', viewEnum.CALENDAR);
         this.setState({layoutView: viewEnum.CALENDAR});
-        // window.localStorage.setItem('layoutView', viewEnum.LOGIN);
-        // this.setState({layoutView: viewEnum.LOGIN});
     }
 
     goSettings = () => {
@@ -89,7 +87,14 @@ class Layout extends Component {
         window.localStorage.setItem('layoutView', viewEnum.ANIMATION);
     }
 
-    goLogout = () => {
+    goHome = () => {
+        //window.localStorage.clear();
+        //this.setState({token: ''});
+        this.setState({layoutView: viewEnum.WELCOME});
+        window.localStorage.setItem('layoutView', viewEnum.WELCOME);
+    }
+
+    goLanding = () => {
         window.localStorage.clear();
         this.setState({token: ''});
         this.setState({layoutView: viewEnum.LANDING});
@@ -129,6 +134,7 @@ class Layout extends Component {
     render() {
         let view = null;
         let sidebar = null;
+        console.log("asdfdsaf " + this.state.layoutView);
         if (window.localStorage.getItem('login') && this.state.layoutView === viewEnum.COURSE) {
             if (JSON.parse(window.localStorage.getItem('view'))['main'] !== 'CourseWrapper') {
                 // set local storage if it's not already set for course wrapper
@@ -150,12 +156,13 @@ class Layout extends Component {
 
                 />
                 sidebar = <SideBar parentCourse={this.resetToCourse.bind(this)}
-                         parentCalendar={this.goCalendar.bind(this)}
-                         parentSettings={this.goSettings.bind(this)}
-                         parentLogout={this.goLogout.bind(this)}
-                         parentView={this.state.layoutView}
-                         parentSkill={this.resetToSkill.bind(this)}
-                         parentCourseView={this.state.courseView}
+                                   parentCalendar={this.goCalendar.bind(this)}
+                                   parentSettings={this.goSettings.bind(this)}
+                                   parentHome={this.goHome.bind(this)}
+                                   parentView={this.state.layoutView}
+                                   parentSkill={this.resetToSkill.bind(this)}
+                                   parentCourseView={this.state.courseView}
+                                   parentLanding={this.goLanding.bind(this)}
                 />
             } else {
                 // do not reset local storage
@@ -171,10 +178,11 @@ class Layout extends Component {
                 sidebar = <SideBar parentCourse={this.resetToCourse.bind(this)}
                                    parentCalendar={this.goCalendar.bind(this)}
                                    parentSettings={this.goSettings.bind(this)}
-                                   parentLogout={this.goLogout.bind(this)}
+                                   parentHome={this.goHome.bind(this)}
                                    parentView={this.state.layoutView}
                                    parentSkill={this.resetToSkill.bind(this)}
                                    parentCourseView={this.state.courseView}
+                                   parentLanding={this.goLanding.bind(this)}
                 />
             }
         }
@@ -184,7 +192,7 @@ class Layout extends Component {
                 view = <Animation stopAnimation={this.stopAnimation.bind(this)}/>;
                 break;
             case viewEnum.LOGIN:
-                view = <Login goLogout={this.goLogout.bind(this)} setUser={this.setUser.bind(this)} formClick={this.changeLayoutState.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
+                view = <Login goLanding={this.goLanding.bind(this)} setUser={this.setUser.bind(this)} formClick={this.changeLayoutState.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
                 const page_view = {
                     'main': 'Login',
                     'subpage': null
@@ -192,7 +200,7 @@ class Layout extends Component {
                 window.localStorage.setItem('view', JSON.stringify(page_view));
                 break;
             case viewEnum.REGISTRATION:
-                view = <Registration goLogout={this.goLogout.bind(this)} formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>;
+                view = <Registration goLanding={this.goLanding.bind(this)} formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>;
                 break;
             case viewEnum.LANDING:
                 view = <Landing toLogin={this.toLogin.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
@@ -202,14 +210,15 @@ class Layout extends Component {
                 sidebar = <SideBar parentCourse={this.resetToCourse.bind(this)}
                                    parentCalendar={this.goCalendar.bind(this)}
                                    parentSettings={this.goSettings.bind(this)}
-                                   parentLogout={this.goLogout.bind(this)}
+                                   parentHome={this.goHome.bind(this)}
                                    parentView={this.state.layoutView}
                                    parentSkill={this.resetToSkill.bind(this)}
                                    parentCourseView={this.state.courseView}
+                                   parentLanding={this.goLanding.bind(this)}
                 />
                 break;
             case viewEnum.WELCOME:
-                view = <WelcomePage goLogout={this.goLogout.bind(this)} username={this.state.username} parentCalendar={this.goCalendar.bind(this)} parentCourse={this.resetToCourse.bind(this)} />
+                view = <WelcomePage goLanding={this.goLanding.bind(this)} username={this.state.username} parentCalendar={this.goCalendar.bind(this)} parentCourse={this.resetToCourse.bind(this)} />
                 break;
         }
 
