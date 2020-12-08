@@ -9,7 +9,7 @@ schema = 'Answer the following question based on this schema: </br> branch(branc
 
 def add_mock_databases_course(apps, schema_editor):
 
-	d, created = Course.objects.get_or_create(name='Databases')
+	d, created = Course.objects.get_or_create(name='Databases', description="An introduction to Databases in SQL.")
 	d.save()
 
 	relational_algebra, created = Skill.objects.get_or_create(name="Relational Algebra", course=d)
