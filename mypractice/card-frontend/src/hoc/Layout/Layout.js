@@ -87,9 +87,9 @@ class Layout extends Component {
         window.localStorage.setItem('layoutView', viewEnum.ANIMATION);
     }
 
-    goLogout = () => {
-        window.localStorage.clear();
-        this.setState({token: ''});
+    goHome = () => {
+        //window.localStorage.clear();
+        //this.setState({token: ''});
         this.setState({layoutView: viewEnum.WELCOME});
         window.localStorage.setItem('layoutView', viewEnum.WELCOME);
     }
@@ -156,12 +156,13 @@ class Layout extends Component {
 
                 />
                 sidebar = <SideBar parentCourse={this.resetToCourse.bind(this)}
-                         parentCalendar={this.goCalendar.bind(this)}
-                         parentSettings={this.goSettings.bind(this)}
-                         parentLogout={this.goLogout.bind(this)}
-                         parentView={this.state.layoutView}
-                         parentSkill={this.resetToSkill.bind(this)}
-                         parentCourseView={this.state.courseView}
+                                   parentCalendar={this.goCalendar.bind(this)}
+                                   parentSettings={this.goSettings.bind(this)}
+                                   parentHome={this.goHome.bind(this)}
+                                   parentView={this.state.layoutView}
+                                   parentSkill={this.resetToSkill.bind(this)}
+                                   parentCourseView={this.state.courseView}
+                                   parentLanding={this.goLanding.bind(this)}
                 />
             } else {
                 // do not reset local storage
@@ -177,10 +178,11 @@ class Layout extends Component {
                 sidebar = <SideBar parentCourse={this.resetToCourse.bind(this)}
                                    parentCalendar={this.goCalendar.bind(this)}
                                    parentSettings={this.goSettings.bind(this)}
-                                   parentLogout={this.goLogout.bind(this)}
+                                   parentHome={this.goHome.bind(this)}
                                    parentView={this.state.layoutView}
                                    parentSkill={this.resetToSkill.bind(this)}
                                    parentCourseView={this.state.courseView}
+                                   parentLanding={this.goLanding.bind(this)}
                 />
             }
         }
@@ -204,15 +206,15 @@ class Layout extends Component {
                 view = <Landing toLogin={this.toLogin.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
                 break;
             case viewEnum.CALENDAR:
-                console.log("IN DEERRRR");
                 view = <Calendar formClick={this.goToDeckFromCalendar.bind(this)} />
                 sidebar = <SideBar parentCourse={this.resetToCourse.bind(this)}
                                    parentCalendar={this.goCalendar.bind(this)}
                                    parentSettings={this.goSettings.bind(this)}
-                                   parentLogout={this.goLogout.bind(this)}
+                                   parentHome={this.goHome.bind(this)}
                                    parentView={this.state.layoutView}
                                    parentSkill={this.resetToSkill.bind(this)}
                                    parentCourseView={this.state.courseView}
+                                   parentLanding={this.goLanding.bind(this)}
                 />
                 break;
             case viewEnum.WELCOME:

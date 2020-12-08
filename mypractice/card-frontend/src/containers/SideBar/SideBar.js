@@ -23,6 +23,7 @@ import Today from '@material-ui/icons/Today';
 import Settings from '@material-ui/icons/Settings';
 import Input from '@material-ui/icons/Input';
 import Palette from '@material-ui/icons/Palette';
+import HomeIcon from '@material-ui/icons/Home';
 
 
 
@@ -89,8 +90,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-//export default function SideBar = ({parentSkill, parentCardsinDeck, parentCalender, parentHomePage, parentSettings, parentLogout}) => {
-const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, parentView, parentCourseView, parentSkill}) => {
+//export default function SideBar = ({parentSkill, parentCardsinDeck, parentCalender, parentHomePage, parentSettings, parentHome}) => {
+const SideBar = ({parentCourse, parentCalendar, parentSettings, parentHome, parentView, parentCourseView, parentSkill, parentLanding}) => {
 
 
     const viewEnum = {
@@ -130,8 +131,13 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         },
         {
             text: "Home", //text for the icon slot
+            icon: <HomeIcon/>, //icon from material ui to be used in slot
+            onClick: () => parentHome() //where the slot takes you on click
+        },
+        {
+            text: "Logout", //text for the icon slot
             icon: <Input/>, //icon from material ui to be used in slot
-            onClick: () => parentLogout() //where the slot takes you on click
+            onClick: () => parentLanding() //where the slot takes you on click
         },
 
     ];
@@ -152,8 +158,13 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         },
         {
             text: "Home",
-            icon: <Input/>,
-            onClick: () => parentLogout()
+            icon: <HomeIcon/>,
+            onClick: () => parentHome()
+        },
+        {
+            text: "Logout", //text for the icon slot
+            icon: <Input/>, //icon from material ui to be used in slot
+            onClick: () => parentLanding() //where the slot takes you on click
         },
     ];
 
@@ -177,8 +188,13 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         },
         {
             text: "Home",
-            icon: <Input/>,
-            onClick: () => parentLogout()
+            icon: <HomeIcon/>,
+            onClick: () => parentHome()
+        },
+        {
+            text: "Logout", //text for the icon slot
+            icon: <Input/>, //icon from material ui to be used in slot
+            onClick: () => parentLanding() //where the slot takes you on click
         },
     ];
 
@@ -194,9 +210,14 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
 
         {
             text: "Home",
-            icon: <Input/>,
-            onClick: () => parentLogout()
-        }
+            icon: <HomeIcon/>,
+            onClick: () => parentHome()
+        },
+        {
+            text: "Logout", //text for the icon slot
+            icon: <Input/>, //icon from material ui to be used in slot
+            onClick: () => parentLanding() //where the slot takes you on click
+        },
     ];
 
 
@@ -221,7 +242,7 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         {
             text: "Logout",
             icon: <Input/>,
-            onClick: () => parentLogout()
+            onClick: () => parentHome()
         },
     ];
 

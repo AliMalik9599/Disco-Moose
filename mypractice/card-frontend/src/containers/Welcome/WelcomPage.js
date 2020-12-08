@@ -120,7 +120,7 @@ const WelcomePage = ({username, parentCalendar, parentCourse, goLanding}) => {
                 <Toolbar className={classes.toolbar}>
                     <Avatar src = {Logo} className={classes.large} />
                     <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={goLanding}>
-                        Back
+                        Logout
                     </Button>
                 </Toolbar>
             </AppBar>
