@@ -91,8 +91,8 @@ class Layout extends Component {
     goLogout = () => {
         window.localStorage.clear();
         this.setState({token: ''});
-        this.setState({layoutView: viewEnum.ANIMATION});
-        window.localStorage.setItem('layoutView', viewEnum.ANIMATION);
+        this.setState({layoutView: viewEnum.LANDING});
+        window.localStorage.setItem('layoutView', viewEnum.LANDING);
     }
 
     viewToCourse = () => {
@@ -127,6 +127,7 @@ class Layout extends Component {
      */
     render() {
         let view = null;
+        let sidebar = null;
         if (window.localStorage.getItem('login') && this.state.layoutView === viewEnum.COURSE) {
             if (JSON.parse(window.localStorage.getItem('view'))['main'] !== 'CourseWrapper') {
                 // set local storage if it's not already set for course wrapper
@@ -147,6 +148,14 @@ class Layout extends Component {
                                       resetToSkill={this.resetToSkill.bind(this)}
 
                 />
+                sidebar = <SideBar parentCourse={this.resetToCourse.bind(this)}
+                         parentCalendar={this.goCalendar.bind(this)}
+                         parentSettings={this.goSettings.bind(this)}
+                         parentLogout={this.goLogout.bind(this)}
+                         parentView={this.state.layoutView}
+                         parentSkill={this.resetToSkill.bind(this)}
+                         parentCourseView={this.state.courseView}
+                />
             } else {
                 // do not reset local storage
                 view = <CourseWrapper token={this.state.token}
@@ -158,6 +167,14 @@ class Layout extends Component {
                                       resetToCourse={this.resetToCourse.bind(this)}
                                       resetToSkill={this.resetToSkill.bind(this)}
                 />;
+                sidebar = <SideBar parentCourse={this.resetToCourse.bind(this)}
+                                   parentCalendar={this.goCalendar.bind(this)}
+                                   parentSettings={this.goSettings.bind(this)}
+                                   parentLogout={this.goLogout.bind(this)}
+                                   parentView={this.state.layoutView}
+                                   parentSkill={this.resetToSkill.bind(this)}
+                                   parentCourseView={this.state.courseView}
+                />
             }
         }
 
@@ -181,26 +198,26 @@ class Layout extends Component {
                 break;
             case viewEnum.CALENDAR:
                 view = <Calendar formClick={this.goToDeckFromCalendar.bind(this)} />
+                sidebar = <SideBar parentCourse={this.resetToCourse.bind(this)}
+                                   parentCalendar={this.goCalendar.bind(this)}
+                                   parentSettings={this.goSettings.bind(this)}
+                                   parentLogout={this.goLogout.bind(this)}
+                                   parentView={this.state.layoutView}
+                                   parentSkill={this.resetToSkill.bind(this)}
+                                   parentCourseView={this.state.courseView}
+                />
                 break;
             case viewEnum.WELCOME:
-                view = <WelcomePage username={this.state.username} parentCalendar={this.goCalendar.bind(this)} parentCourse={this.resetToCourse.bind(this)} />
+                view = <WelcomePage goLogout={this.goLogout.bind(this)} username={this.state.username} parentCalendar={this.goCalendar.bind(this)} parentCourse={this.resetToCourse.bind(this)} />
                 break;
-
         }
 
         return (
             <div>
-                <main className={classes.Content}>
+                <main>
                     {view}
                 </main>
-                <SideBar parentCourse={this.resetToCourse.bind(this)}
-                         parentCalendar={this.goCalendar.bind(this)}
-                         parentSettings={this.goSettings.bind(this)}
-                         parentLogout={this.goLogout.bind(this)}
-                         parentView={this.state.layoutView}
-                         parentSkill={this.resetToSkill.bind(this)}
-                         parentCourseView={this.state.courseView}
-                />
+                {sidebar}
             </div>
         );
     }

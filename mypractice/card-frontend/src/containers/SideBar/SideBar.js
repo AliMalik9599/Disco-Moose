@@ -222,6 +222,8 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             onClick: () => parentLogout()
         }
     ];
+
+
     const AccountSettings = [
 
         {
