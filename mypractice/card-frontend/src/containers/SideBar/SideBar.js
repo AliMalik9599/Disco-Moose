@@ -171,7 +171,7 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             onClick: () => parentSkill()
         },
         {
-            text: "Calender", //text for the icon slot
+            text: "Calendar", //text for the icon slot
             icon: <Today/>, //icon from material ui to be used in slot
             onClick: () => parentCalendar() //where the slot takes you on click
         },

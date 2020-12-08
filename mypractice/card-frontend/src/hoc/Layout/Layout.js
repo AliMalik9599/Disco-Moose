@@ -88,8 +88,8 @@ class Layout extends Component {
     }
 
     goLogout = () => {
-        window.localStorage.clear();
-        this.setState({token: ''});
+        // window.localStorage.clear();
+        // this.setState({token: ''});
         this.setState({layoutView: viewEnum.WELCOME});
         window.localStorage.setItem('layoutView', viewEnum.WELCOME);
     }
