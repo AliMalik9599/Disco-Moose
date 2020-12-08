@@ -3,6 +3,7 @@ import CourseList from "../../components/CourseList/CourseList";
 import Selection from "../Selection/Selection";
 import Deck from "../Deck/Deck";
 import "./CourseWrapper.css";
+import {Box, withStyles, Button, Grid, Typography, Input, Container} from "@material-ui/core";
 
 // dictionary representing course selection view
 const course_view = {
@@ -138,23 +139,61 @@ class CourseWrapper extends Component {
                 break;
             case 'SkillSelect': // display skill selection
                 window.localStorage.setItem('view', JSON.stringify(skill_view));
-                view = <Selection skills={this.state.skills}
-                                  skillUpdate={this.skillSelection.bind(this)}
-                                  doneClick={this.handleDonePress.bind(this)}
-                                  course={this.state.selectedCourse}
-                                  token={this.props.token}
-                                  time={this.timeSelection.bind(this)}
-                />
+                view =
+                    (<div
+                        style={{
+                            textAlign: 'center',
+                        }}
+                    >
+                        <Typography
+                            style={{
+                                fontSize: '30pt',
+                                color: '#0e1428',
+                                marginTop: "7%",
+                                marginBottom: "2%",
+
+                            }}
+                        >
+                            Which skills would you like to practice today?
+                        </Typography>
+                        <Selection skills={this.state.skills}
+                                      skillUpdate={this.skillSelection.bind(this)}
+                                      doneClick={this.handleDonePress.bind(this)}
+                                      course={this.state.selectedCourse}
+                                      token={this.props.token}
+                                      time={this.timeSelection.bind(this)}
+                        />
+                    </div>)
                 break;
             case 'Deck': // display cards
                 if (JSON.parse(window.localStorage.getItem('cards')) === null) {
                     window.localStorage.setItem('cards', JSON.stringify([]));
                 }
-                view = <Deck courseid={this.state.selectedCourse}
-                             skills={this.state.skills}
-                             token={window.localStorage.getItem('login')}
-                             time={this.state.time}
-                />
+                view =
+                    (<div
+                        style={{
+                            textAlign: "center",
+                            //alignContent: "center",
+                            //alignItems: "center",
+                        }}
+                    >
+                        <Typography
+                            style={{
+                                fontSize: "40pt",
+                                textAlign: 'center',
+                                color: '#0e1428',
+                                marginTop: '7%',
+                                marginBottom: '1%',
+                            }}
+                        >
+                            Today's Practice
+                        </Typography>
+                        <Deck courseid={this.state.selectedCourse}
+                                 skills={this.state.skills}
+                                 token={window.localStorage.getItem('login')}
+                                 time={this.state.time}
+                        />
+                    </div>)
         }
         // Only display content if user is logged in
         if (window.localStorage.getItem('login')) {

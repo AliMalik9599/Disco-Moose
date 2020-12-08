@@ -11,12 +11,47 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 
 const options = ['Select Practice Time', '5 minutes', '15 minutes', '30 minutes', '45 minutes', '1 hour'];
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
+    wrap: {
+        textAlign: "center",
+        flexDirection: "row",
+        margin: "1%",
+    },
+    skillList: {
+
+    },
+    skillContainer: {
+        alignItems: "center",
+        alignContent: "center",
+        width: "60%",
+        marginLeft: 'auto',
+        marginRight: 'auto',
+    },
+    buttonGroup: {
+        height: "100%",
+    },
+    done: {
+        fontSize: '17pt',
+        fontFamily: 'Montserrat',
+        backgroundColor: '#EE6C4D',
+        textAlign: 'center',
+        width: '20%',
+        height: '100%',
+        marginLeft: '2%',
+        "&:hover": {
+            backgroundColor: '#345E83',
+        }
+    },
+    selection: {
+        marginTop: "2%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
     },
 }));
 
@@ -89,19 +124,25 @@ export default function Selection(props) {
     if (window.localStorage.getItem('login') === props.token) {
         // main display for "skill selection" page
         return (
-            <Grid container justify="center" alignItems="center" direction="column">
-                {/* page header */}
-                <h1>Which skills do you want to practice today?</h1>
+            /* container for selection page content */
+          
+            <Grid container className={classes.wrap}>
+          
                 {/* skill selection buttons, filled dynamically by available skills */}
-                <SkillList
-                    skills={skills}
-                    skillUpdate={props.skillUpdate}
-                    token={props.token}
-                />
+                <Grid container item className={classes.skillContainer}>
+                    <SkillList
+                        className={classes.skillList}
+                        skills={skills}
+                        skillUpdate={props.skillUpdate}
+                        token={props.token}
+                    />
+                </Grid>
+          
                 {/* dropdown button for time select */}
-                <Grid container direction="column" alignItems="center">
-                    <Grid item xs={12}>
-                        <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
+
+                <Grid container item direction="row">
+                    <Container className={classes.selection}>
+                        <ButtonGroup className={classes.buttonGroup} variant="contained" color="primary" ref={anchorRef} aria-label="split button" >
                             <Button> {options[selectedIndex]} </Button>
                             <Button
                                 color="primary"
@@ -141,12 +182,13 @@ export default function Selection(props) {
                                 </Grow>
                             )}
                         </Popper>
-                    </Grid>
+                        <Button className={classes.done} onClick={props.doneClick} >
+                            Start
+                        </Button>
+                    </Container>
                 </Grid>
-                <button onClick={props.doneClick} style={{backgroundColor:"orange"}}>
-                    Done
-                </button>
             </Grid>
+
         );
     }
 }

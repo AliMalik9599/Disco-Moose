@@ -1,10 +1,17 @@
 import React, {Component} from "react";
 import {Box, withStyles, Button, Grid, Typography, Input, Container} from "@material-ui/core";
+
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import FormControl from '@material-ui/core/FormControl';
+import {FormatAlignCenter} from "@material-ui/icons";
+
 import Toolbar from "@material-ui/core/Toolbar";
 import Avatar from "@material-ui/core/Avatar";
 import Logo from "../Landing/discoball.jpeg";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
+
 
 
 /* Styling for the Login  page */
@@ -153,8 +160,8 @@ class Login extends Component {
             <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
                 <Toolbar className={classes.toolbar}>
                     <Avatar src = {Logo} className={classes.large} />
-                    <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={this.props.goLogout}>
-                        Home
+                    <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={this.props.goLanding}>
+                        Back
                     </Button>
                 </Toolbar>
             </AppBar>
