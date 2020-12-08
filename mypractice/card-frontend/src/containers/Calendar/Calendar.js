@@ -12,6 +12,7 @@ class Calendar extends Component {
    }
 
    componentDidMount() {
+       console.log("mounttttt")
        fetch('/decks/', {
            method: 'GET',
            headers: {
@@ -44,6 +45,7 @@ class Calendar extends Component {
        // only display content if user is logged in
        console.log("asdfasfdasdfLLLLLLLLL");
        if (window.localStorage.getItem('login')) {
+           console.log("andaisCool");
            return (
                <main>
                    <div className="d-flex justify-content-center">
@@ -56,6 +58,7 @@ class Calendar extends Component {
                </main>
            )
        }
+       console.log("andaisLame");
    }
 }
 

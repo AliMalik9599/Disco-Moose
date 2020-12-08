@@ -122,27 +122,18 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
 
     //OnCourseList
     const OnCourseList = [
-        //shouldnt add skill selection or deck
-       // {
-       //     text: "See Calender",
-       //     icon: <Today/>,
-       //     onClick: () => parentCalendar()
-       // },
-       // {
-       //     text: "Settings",
-       //     icon: <Settings/>,
-       //     onClick: () => parentSettings()
-       // },
+
         {
             text: "Calendar", //text for the icon slot
             icon: <Today/>, //icon from material ui to be used in slot
             onClick: () => parentCalendar() //where the slot takes you on click
         },
         {
-            text: "Logout", //text for the icon slot
+            text: "Home", //text for the icon slot
             icon: <Input/>, //icon from material ui to be used in slot
             onClick: () => parentLogout() //where the slot takes you on click
         },
+
     ];
 
 
@@ -153,23 +144,14 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             icon: <Palette/>,
             onClick: () => parentCourse()
         },
-       // {
-       //     text: "See Calender",
-       //     icon: <Today/>,
-       //     onClick: () => parentCalendar()
-       // },
-       // {
-       //     text: "Settings",
-       //     icon: <Settings/>,
-       //     onClick: () => parentSettings()
-       // },
+
         {
             text: "Calendar", //text for the icon slot
             icon: <Today/>, //icon from material ui to be used in slot
             onClick: () => parentCalendar() //where the slot takes you on click
         },
         {
-            text: "Logout",
+            text: "Home",
             icon: <Input/>,
             onClick: () => parentLogout()
         },
@@ -194,7 +176,7 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
             onClick: () => parentCalendar() //where the slot takes you on click
         },
         {
-            text: "Logout",
+            text: "Home",
             icon: <Input/>,
             onClick: () => parentLogout()
         },
@@ -211,13 +193,7 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentLogout, pa
         },
 
         {
-            text: "Account Settings",
-            icon: <Settings/>,
-            onClick: () => parentSettings()
-        },
-
-        {
-            text: "Logout",
+            text: "Home",
             icon: <Input/>,
             onClick: () => parentLogout()
         }
