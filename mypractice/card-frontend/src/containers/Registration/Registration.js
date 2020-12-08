@@ -164,7 +164,7 @@ class Registration extends Component {
                     <div className={classes.center}>
                         <img className={classes.logo} src={require("./bulb-logo.png")} alt="disco logo"/>
                     </div>
-                    <Typography className={classes.title} align="center">Sign in to Disco</Typography>
+                    <Typography className={classes.title} align="center">Sign up for Disco</Typography>
                     <Grid container spacing={0}
                           direction="column"
                           alignItems="center"
