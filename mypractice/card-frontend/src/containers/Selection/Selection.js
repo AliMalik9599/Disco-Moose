@@ -122,12 +122,9 @@ export default function Selection(props) {
     }, [props]);
 
     if (window.localStorage.getItem('login') === props.token) {
-        // main display for "skill selection" page
         return (
-          
             <Grid container className={classes.wrap}>
-          
-                {/* skill selection buttons, filled dynamically by available skills */}
+
                 <Grid container item className={classes.skillContainer}>
                     <SkillList
                         className={classes.skillList}
@@ -136,9 +133,6 @@ export default function Selection(props) {
                         token={props.token}
                     />
                 </Grid>
-          
-                {/* dropdown button for time select */}
-
                 <Grid container item direction="row">
                     <Container className={classes.selection}>
                         <ButtonGroup className={classes.buttonGroup} variant="contained" color="primary" ref={anchorRef} aria-label="split button" >
