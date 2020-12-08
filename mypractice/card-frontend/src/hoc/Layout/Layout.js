@@ -191,7 +191,7 @@ class Layout extends Component {
                 window.localStorage.setItem('view', JSON.stringify(page_view));
                 break;
             case viewEnum.REGISTRATION:
-                view = <Registration formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>;
+                view = <Registration goLogout={this.goLogout.bind(this)} formClick={this.changeLayoutState.bind(this)} toLogin={this.toLogin.bind(this)}/>;
                 break;
             case viewEnum.LANDING:
                 view = <Landing toLogin={this.toLogin.bind(this)} toRegistration={this.toRegistration.bind(this)}/>;
