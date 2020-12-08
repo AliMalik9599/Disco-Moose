@@ -155,7 +155,7 @@ class Login extends Component {
                 <Toolbar className={classes.toolbar}>
                     <Avatar src = {Logo} className={classes.large} />
                     <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={this.props.goLogout}>
-                        Logout
+                        Home
                     </Button>
                 </Toolbar>
             </AppBar>
