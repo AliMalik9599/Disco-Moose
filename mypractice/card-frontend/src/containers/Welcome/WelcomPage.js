@@ -80,9 +80,9 @@ const tiers = [
     {
         title: 'Courses',
         description: [
-            'Select the course you want to practice',
+            'Select your preferences to create a custom practice schedule!',
         ],
-        buttonText: 'Go To Courses',
+        buttonText: 'Let\'s Go',
         buttonVariant: 'outlined',
     },
     {

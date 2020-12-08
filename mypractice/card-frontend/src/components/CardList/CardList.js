@@ -1,6 +1,21 @@
 import React, {Component} from "react";
 import CourseCard from  '../Card/Card';
+import {withStyles, Button, Grid, Typography} from "@material-ui/core";
 
+const styles = theme => ({
+    main: {
+        display: "inline-flex",
+        fontFamily: 'Montserrat',
+        justifyContent: 'evenly-spaced',
+        alignItems: "center",
+        alignContent: 'center',
+        flexFlow: "row wrap",
+        margin: "1%",
+        textAlign: "left",
+        width: "24%",
+
+    },
+});
 /* CardList component to display cards for user */
 class CardList extends Component {
     constructor(props) {
@@ -9,7 +24,10 @@ class CardList extends Component {
 
     // creates mapping of backend data to Card components
     render() {
+        const { classes } = this.props;
         const cards = this.props.cards.map(card => (
+
+        <Grid className={classes.main}>
             <CourseCard
                 key={card.id}
                 id={card.id}
@@ -30,6 +48,7 @@ class CardList extends Component {
                 image_path={card.image_path}
                 link={card.link}
             />
+          </Grid>
         ));
         // Only display list if user is logged in
         if (window.localStorage.getItem('login')) {
@@ -42,4 +61,4 @@ class CardList extends Component {
     }
 }
 
-export default CardList;
+export default withStyles(styles)(CardList);
