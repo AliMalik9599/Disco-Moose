@@ -9,11 +9,13 @@ import {ConfirmationNumber} from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        //flexDirection: "row",
+        flexDirection: "row",
+        justifyContent: "center",
     },
     main: {
         display: "inline-flex",
         flexDirection: "row",
+        padding: 0,
     },
     box: {
 
@@ -51,11 +53,7 @@ export default function SkillList(props) {
         return (
             // wraps skills in FormGroup which will be displayed on Selection
 
-            <FormGroup className={classes.root}
-                       style={{
-                           flexDirection: "row",
-                        }}
-            >
+            <FormGroup className={classes.root}>
                 {skills}
             </FormGroup>
 
