@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
     main: {
         display: "inline-flex",
         flexDirection: "row",
-
     },
     box: {
 
@@ -52,7 +51,11 @@ export default function SkillList(props) {
         return (
             // wraps skills in FormGroup which will be displayed on Selection
 
-            <FormGroup className={classes.root}>
+            <FormGroup className={classes.root}
+                       style={{
+                           flexDirection: "row",
+                        }}
+            >
                 {skills}
             </FormGroup>
 

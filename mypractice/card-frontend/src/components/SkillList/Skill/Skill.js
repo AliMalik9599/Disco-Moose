@@ -17,9 +17,9 @@ const useStyles = makeStyles((theme) => ({
     box: {
         border: 1,
         backgroundColor: '#D2E4EE',
-        padding: '5% 25%',
+        padding: '20px',
         borderRadius: '10px',
-        width: "150%",
+        width: "100%",
     },
     font: {
         fontSize: '20pt',
