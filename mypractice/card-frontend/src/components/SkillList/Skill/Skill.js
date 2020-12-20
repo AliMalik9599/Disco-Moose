@@ -44,8 +44,6 @@ export default function Skill(props) {
     const classes = useStyles();
 
     return (
-        // fills form group on SkillList component
-
             <FormControlLabel
                 className={classes.box}
                 control={<Checkbox checked={ticked} onClick={(e) => props.skillUpdate(e, props.id)} onChange={handleChange} name="checked"/>}

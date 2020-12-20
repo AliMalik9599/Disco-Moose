@@ -16,17 +16,19 @@ We propose a card-based app which creates a regimented, deliberate practice sche
 
 
 ### Must have
-- As a user of the app, I want to be able to store my “decks” and “cards” for later use so that I can come back to them in future sessions.
-- As a user of the app, I want to be able to view all of my created “decks” and all of my created “cards” so I know what “decks” and “cards” are available to practice with.
-- As a user of the app, I want to be able to create a daily practice schedule with a specific “deck” so that I can learn a new skill.
-- As a user of the app, I want to be able to view “card” metadata, such as difficulty, topic, and time commitment so that I can better choose what to practice.
-
+- As a user of the app, I want to be able to revisit a previously practiced deck to practice the skills again.
+- As a user of the app, I want to be able to be able to view all course offerings and make a selection about what to practice.
+- As a user of the app, I want to be able to create a daily practice schedule for a specific course and select skills to work on so I can learn something new.
+- As a user of the app, I want to be able to view “card” metadata, such as topic and skill so I understand what I am working on when I practice a card.
+- As a user of the app, I want to be able to select a practice time and have an appropriate number of cards displayed to practice.
+- As a user of the app, I want to be able to mark cards as completed and favorite cards.
 
 ### Nice to have
 - As a user of the app, I want to be able to keep track of my previous, current, and future daily practice schedules so that I can map my learning.
 - As a user of the app, I want to be able to make notes on “cards” so I can refer back to previous challenges and thoughts.
 - As a user of the app, I want to be able to view and download other peoples “decks” so that I can learn from others.
-- As a user of the app, I want to be able to create new practice “decks” so that I can learn new skills
+- As a user of the app, I want to be able to be able to create my course to learn something not already offered on the app.
+- As a user of the app, I want to be able to "favorite" a course and view it on my user profile.
 
 
 ## Software Architecture
@@ -36,7 +38,7 @@ The software would be a web application. It would conform to the Client-Server s
 
 **Back end:** Django, Django REST framework
 
-**Database:** Sqlite3
+**Database:** PostgreSQL
 
 **Build-tools:** Yarn
 
