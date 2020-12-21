@@ -64,56 +64,28 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const sections = [
-    { title: 'Technology', url: '#' },
-    { title: 'Design', url: '#' },
-    { title: 'Culture', url: '#' },
-    { title: 'Business', url: '#' },
-    { title: 'Politics', url: '#' },
-    { title: 'Opinion', url: '#' },
-    { title: 'Science', url: '#' },
-    { title: 'Health', url: '#' },
-    { title: 'Style', url: '#' },
-    { title: 'Travel', url: '#' },
-];
-
 const mainFeaturedPost = {
     image: Image,
 };
 
 const featuredPosts = [
     {
-        title: 'Courses You\'ve practiced',
+        id: 1,
+        title: 'Courses You\'ve Practiced',
     },
     {
-        title: 'Cards You\'ve favorited',
+        id: 2,
+        title: 'Cards You\'ve Favorited',
     },
 ];
 
-//
-// function getCourses() {
-//     let courses = fetch('/courses/', {
-//         method: 'GET',
-//         headers: {
-//             'Content-type': 'application/json; charset=UTF-8',
-//             'Authorization': 'Token ' + window.localStorage.getItem('login')
-//         }
-//     })
-//         .then(response => response.json())
-//         .then(data => {
-//             console.log(data);
-//             // courses = data;
-//             return data;
-//         })
-//     // console.log('GOT COURSES ' + courses);
-//     return courses;
-// }
-
 export default function Profile(props) {
     const classes = useStyles();
-    const courses = props.courses;
-    console.log(courses[0]["name"]);
-    const post = [post1];
+    let courses = [];
+    for (let i = 0; i < props.courses.length; i++) {
+        courses.push(props.courses[i]["name"]);
+    }
+    const cards = []; //ultimately will get card list from props
 
     return (
         <React.Fragment>
@@ -130,8 +102,8 @@ export default function Profile(props) {
                         </Typography>
                     </div>
                     <Grid container spacing={5} direction="column" alignItems="center" justify="center" className={classes.buttonRoot}>
-                        {featuredPosts.map((post) => (
-                            <FeaturedPost key={post.title} post={post} courses={courses}/>
+                        {featuredPosts.map(post => (
+                            <FeaturedPost id={post.id} title={post.title} courses={courses} cards={cards}/>
                         ))}
                     </Grid>
                 </main>
