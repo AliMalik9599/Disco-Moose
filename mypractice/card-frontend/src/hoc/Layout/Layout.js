@@ -29,8 +29,8 @@ class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // layoutView: window.localStorage.getItem('layoutView') || viewEnum.ANIMATION,
-            layoutView: window.localStorage.getItem('layoutView') || viewEnum.PROFILE,
+            layoutView: window.localStorage.getItem('layoutView') || viewEnum.ANIMATION,
+            //layoutView: window.localStorage.getItem('layoutView') || viewEnum.PROFILE,
             // layoutView: viewEnum.ANIMATION,
             //layoutView: window.localStorage.getItem('layoutView') || viewEnum.LANDING,
             token: window.localStorage.getItem('login'),
@@ -103,6 +103,13 @@ class Layout extends Component {
         this.setState({token: ''});
         this.setState({layoutView: viewEnum.LANDING});
         window.localStorage.setItem('layoutView', viewEnum.LANDING);
+    }
+
+    goProfile = () => {
+        window.localStorage.clear();
+        this.setState({token: ''});
+        this.setState({layoutView: viewEnum.PROFILE});
+        window.localStorage.setItem('layoutView', viewEnum.PROFILE);
     }
 
     viewToCourse = () => {
@@ -221,7 +228,9 @@ class Layout extends Component {
                 />
                 break;
             case viewEnum.WELCOME:
-                view = <WelcomePage goLanding={this.goLanding.bind(this)} username={this.state.username} parentCalendar={this.goCalendar.bind(this)} parentCourse={this.resetToCourse.bind(this)} />
+                view = <WelcomePage goLanding={this.goLanding.bind(this)} username={this.state.username} parentCalendar={this.goCalendar.bind(this)} parentCourse={this.resetToCourse.bind(this)}
+                        parentProfile={this.goProfile.bind(this)}
+                />
                 break;
             case viewEnum.PROFILE:
                 view = <Profile/>

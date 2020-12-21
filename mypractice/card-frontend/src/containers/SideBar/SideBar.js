@@ -102,8 +102,8 @@ const SideBar = ({parentCourse, parentCalendar, parentSettings, parentHome, pare
         REGISTRATION: '4',
         CALENDAR: '5',
         LANDING: '6',
-        WELCOME: '7'
-
+        WELCOME: '7',
+        PROFILE: '8'
     }
 
 
