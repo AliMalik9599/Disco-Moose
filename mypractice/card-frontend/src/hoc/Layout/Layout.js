@@ -10,6 +10,8 @@ import Landing from "../../containers/Landing/Landing";
 import bulb from '../../containers/Login/bulb-logo.png';
 import Calendar from "../../containers/Calendar/Calendar"
 import WelcomePage from "../../containers/Welcome/WelcomPage";
+import Profile from "../../containers/UserProfile/Profile";
+import {PregnantWoman} from "@material-ui/icons";
 
 const viewEnum = {
     ANIMATION: '0',
@@ -19,14 +21,16 @@ const viewEnum = {
     REGISTRATION: '4',
     CALENDAR: '5',
     LANDING: '6',
-    WELCOME: '7'
+    WELCOME: '7',
+    PROFILE: '8'
 }
 //realone
 class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            layoutView: window.localStorage.getItem('layoutView') || viewEnum.ANIMATION,
+            //layoutView: window.localStorage.getItem('layoutView') || viewEnum.ANIMATION,
+            layoutView: window.localStorage.getItem('layoutView') || viewEnum.PROFILE,
             // layoutView: viewEnum.ANIMATION,
             //layoutView: window.localStorage.getItem('layoutView') || viewEnum.LANDING,
             token: window.localStorage.getItem('login'),
@@ -218,6 +222,9 @@ class Layout extends Component {
                 break;
             case viewEnum.WELCOME:
                 view = <WelcomePage goLanding={this.goLanding.bind(this)} username={this.state.username} parentCalendar={this.goCalendar.bind(this)} parentCourse={this.resetToCourse.bind(this)} />
+                break;
+            case viewEnum.PROFILE:
+                view = <Profile/>
                 break;
         }
 
