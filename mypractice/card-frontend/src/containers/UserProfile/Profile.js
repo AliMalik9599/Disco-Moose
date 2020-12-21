@@ -49,8 +49,7 @@ const useStyles = makeStyles((theme) => ({
     buttonRoot: {
         display: 'flex',
         '& > *': {
-            marginLeft: theme.spacing(10),
-            marginBottom: theme.spacing(5)
+            marginBottom: theme.spacing(2)
         },
     },
     cardDetails: {
@@ -113,7 +112,7 @@ const featuredPosts = [
 export default function Profile(props) {
     const classes = useStyles();
     const courses = props.courses;
-    console.log(courses);
+    console.log(courses[0]["name"]);
     const post = [post1];
 
     return (
@@ -121,24 +120,24 @@ export default function Profile(props) {
             <CssBaseline />
             <Container maxWidth="lg">
                 <Header title="Let's Disco"/>
-                <main>
+                <main >
                     <div className={classes.root}>
-                        <Avatar alt="Remy Sharp" src={require('./sickPick.jpeg')} className={classes.large} />
-                        </div>
-                    <div className={classes.name}>
+                        <Avatar alt="Remy Sharp" src={require('./sickPick.jpeg')} className={classes.large} alignItems="center" justify="center"/>
+                    </div>
+                    <div className={classes.name} >
                         <Typography component="h2" variant="h5">
                             Devin Ramsden
                         </Typography>
                     </div>
-                        <Grid container spacing={4}>
-                            {featuredPosts.map((post) => (
-                                <FeaturedPost key={post.title} post={post} />
-                            ))}
-                        </Grid>
+                    <Grid container spacing={5} direction="column" alignItems="center" justify="center" className={classes.buttonRoot}>
+                        {featuredPosts.map((post) => (
+                            <FeaturedPost key={post.title} post={post} courses={courses}/>
+                        ))}
+                    </Grid>
                 </main>
             </Container>
             <Footer />
         </React.Fragment>
-);
+    );
 }
 
