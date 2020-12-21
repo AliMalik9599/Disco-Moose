@@ -15,6 +15,13 @@ import post1 from './blog-post.1.md';
 import Logo from './discoball.jpeg';
 import Simone from './simone.png';
 import Avatar from '@material-ui/core/Avatar';
+import Button from "@material-ui/core/Button";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from '@material-ui/core/Typography';
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Hidden from "@material-ui/core/Hidden";
+import CardMedia from "@material-ui/core/CardMedia";
 
 const useStyles = makeStyles((theme) => ({
     mainGrid: {
@@ -23,17 +30,38 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         '& > *': {
-            marginLeft: theme.spacing(80),
+            marginLeft: theme.spacing(61),
             marginBottom: theme.spacing(5)
         },
     },
     small: {
-        width: theme.spacing(3),
-        height: theme.spacing(3),
+        width: theme.spacing(30),
+        height: theme.spacing(30),
     },
     large: {
         width: theme.spacing(35),
         height: theme.spacing(35),
+    },
+    buttonSize: {
+        width: theme.spacing(15),
+        height: theme.spacing(5),
+    },
+    buttonRoot: {
+        display: 'flex',
+        '& > *': {
+            marginLeft: theme.spacing(10),
+            marginBottom: theme.spacing(5)
+        },
+    },
+    cardDetails: {
+        flex: 1,
+    },
+    name: {
+        display: 'flex',
+        '& > *': {
+            marginLeft: theme.spacing(66),
+            marginBottom: theme.spacing(5),
+        },
     },
 }));
 
@@ -66,13 +94,9 @@ const featuredPosts = [
     {
         title: 'Cards You\'ve favorited',
     },
-    {
-        title: 'Guitar',
-    },
-    {
-        title: 'Card 2',
-    },
 ];
+
+
 
 const posts = [post1];
 
@@ -84,21 +108,26 @@ const Profile = ({}) => {
         <React.Fragment>
             <CssBaseline />
             <Container maxWidth="lg">
-                <Header title="User Profile"/>
+                <Header title="Let's Disco"/>
                 <main>
                     <div className={classes.root}>
                         <Avatar alt="Remy Sharp" src={require('./sickPick.jpeg')} className={classes.large} />
+                        </div>
+                    <div className={classes.name}>
+                        <Typography component="h2" variant="h5">
+                            Devin Ramsden
+                        </Typography>
                     </div>
-                    <Grid container spacing={4}>
-                        {featuredPosts.map((post) => (
-                            <FeaturedPost key={post.title} post={post} />
-                        ))}
-                    </Grid>
+                        <Grid container spacing={4}>
+                            {featuredPosts.map((post) => (
+                                <FeaturedPost key={post.title} post={post} />
+                            ))}
+                        </Grid>
                 </main>
             </Container>
             <Footer />
         </React.Fragment>
-    );
+);
 }
 
 export default Profile;

@@ -35,9 +35,6 @@ const Header = ({title}) => {
         <React.Fragment>
             <Toolbar className={classes.toolbar}>
                 <Avatar src = {Logo} className={classes.large} />
-                <Button variant="outlined" size="small">
-                    Login
-                </Button>
                 <Typography
                     component="h2"
                     variant="h5"
@@ -48,9 +45,6 @@ const Header = ({title}) => {
                 >
                     {title}
                 </Typography>
-                <Button variant="outlined" size="small">
-                    Start Disco Today
-                </Button>
             </Toolbar>
             <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
             </Toolbar>

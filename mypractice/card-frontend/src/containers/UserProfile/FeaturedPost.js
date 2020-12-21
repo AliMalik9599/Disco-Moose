@@ -28,7 +28,7 @@ export default function FeaturedPost(props) {
     const { post } = props;
 
     return (
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} onClick={post.button}>
                 <Card className={classes.card}>
                     <div className={classes.cardDetails}>
                         <CardContent>
