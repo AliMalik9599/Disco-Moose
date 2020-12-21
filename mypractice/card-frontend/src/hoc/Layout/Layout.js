@@ -29,7 +29,7 @@ class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            //layoutView: window.localStorage.getItem('layoutView') || viewEnum.ANIMATION,
+            // layoutView: window.localStorage.getItem('layoutView') || viewEnum.ANIMATION,
             layoutView: window.localStorage.getItem('layoutView') || viewEnum.PROFILE,
             // layoutView: viewEnum.ANIMATION,
             //layoutView: window.localStorage.getItem('layoutView') || viewEnum.LANDING,

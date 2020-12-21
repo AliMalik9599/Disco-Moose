@@ -79,12 +79,7 @@ const sections = [
 ];
 
 const mainFeaturedPost = {
-    //title: 'Disco Inferno',
-    //description:
-    //"Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
     image: Image,
-    //imgText: 'main image description',
-    //linkText: 'Continue reading…',
 };
 
 const featuredPosts = [
@@ -97,12 +92,29 @@ const featuredPosts = [
 ];
 
 
+function getCourses() {
+    let courses = '';
+    fetch('/courses/', {
+        method: 'GET',
+        // headers: {
+        //     'Content-type': 'application/json; charset=UTF-8',
+        //     'Authorization': 'Token ' + window.localStorage.getItem('login')
+        // }
+    })
+        .then(response => response.json())
+        .then(data => {
+            courses = JSON.stringify(data);
+        });
+    console.log('GOT COURSES ' + courses);
+    return courses;
+}
 
-const posts = [post1];
 
 
 const Profile = ({}) => {
     const classes = useStyles();
+    const courses = getCourses();
+    const post = [courses, post1];
 
     return (
         <React.Fragment>
