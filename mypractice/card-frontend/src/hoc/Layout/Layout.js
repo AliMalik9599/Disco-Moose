@@ -10,7 +10,7 @@ import Landing from "../../containers/Landing/Landing";
 import bulb from '../../containers/Login/bulb-logo.png';
 import Calendar from "../../containers/Calendar/Calendar"
 import WelcomePage from "../../containers/Welcome/WelcomPage";
-import Profile from "../../containers/UserProfile/Profile";
+import ProfileInfo from "../../containers/ProfileInfo/ProfileInfo";
 import {PregnantWoman} from "@material-ui/icons";
 
 const viewEnum = {
@@ -232,7 +232,7 @@ class Layout extends Component {
                 />
                 break;
             case viewEnum.PROFILE:
-                view = <Profile/>
+                view = <ProfileInfo />
                 break;
         }
 

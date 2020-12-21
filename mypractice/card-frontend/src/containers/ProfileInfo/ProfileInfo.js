@@ -1,7 +1,5 @@
 import React, {Component} from "react";
-import Profile from '/UserProfile/Profile'
-import CourseList from "../../components/CourseList/CourseList";
-import "./CourseWrapper.css";
+import Profile from '../UserProfile/Profile'
 import {Box, withStyles, Button, Grid, Typography, Input, Container} from "@material-ui/core";
 
 /* ProfileInfo components handles the display of the
