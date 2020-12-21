@@ -26,6 +26,8 @@ urlpatterns = [
     path('', index, name='index'),
     # Present list of cards
     path('cards/cardprogress/<str:courseid>/<str:skills>/<str:time>', views.CardList.as_view()),
+    # Present favorited cards to user profile
+    path('favorites/', views.CardFavorite.as_view()),
     # Refresh list of cards after completed
     path('cards/refresh/<str:courseid>/<str:skills>/<str:time>', views.RefreshCardList.as_view()),
     # Present list of courses

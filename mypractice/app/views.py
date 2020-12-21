@@ -302,6 +302,35 @@ class DeckList(generics.ListCreateAPIView):
 		print(deck_list)
 		return list(deck_list)
 
+
+class CardFavorite(generics.ListCreateAPIView):
+
+	serializer_class = CardSerializer
+	authentication_classes = (TokenAuthentication,)
+	permission_classes = (IsAuthenticated,)
+
+	def get_queryset(self):
+		print("reached")
+		# Grab current user
+		userid = self.request.user.id
+		user = User.objects.get(id=userid)
+
+		cards_progs = CardProgress.objects.filter(user_id=userid)
+
+		card_ids = []
+		for progress in cards_progs:
+			if progress.is_favorited:
+				print("in")
+				card_ids.append(progress.card_id)
+
+		card_list = []
+		for id in card_ids:
+			card = Card.objects.get(id=id)
+			card_list.append(card)
+
+		print(card_list)
+		return list(card_list)
+
 # Creates a ListView for all Courses in the database
 # @api_view(['GET'])
 # @authentication_classes([TokenAuthentication,])

@@ -15,7 +15,8 @@ class ProfileInfo extends Component {
     // all data is not lost
     state = {
         courses: JSON.parse(window.localStorage.getItem('courses')),
-        view: JSON.parse(window.localStorage.getItem('view'))['subpage']
+        view: JSON.parse(window.localStorage.getItem('view'))['subpage'],
+        favorites: JSON.parse(window.localStorage.getItem('favorites'))
     }
 
     // Retrieve data from from server
@@ -31,6 +32,19 @@ class ProfileInfo extends Component {
             .then(data => {
                 window.localStorage.setItem('courses', JSON.stringify(data));
                 this.setState({courses: data});
+            });
+
+        fetch(`favorites/`, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+                'Authorization': 'Token ' + window.localStorage.getItem('login')
+            }
+        }).then(response => response.json())
+            .then(data => {
+                window.localStorage.setItem('favorites', JSON.stringify(data));
+                this.setState({favorites: data});
+                console.log(JSON.stringify(data));
             });
     }
 
