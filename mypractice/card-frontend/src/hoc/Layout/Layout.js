@@ -106,7 +106,6 @@ class Layout extends Component {
     }
 
     goProfile = () => {
-        window.localStorage.clear();
         this.setState({token: ''});
         this.setState({layoutView: viewEnum.PROFILE});
         window.localStorage.setItem('layoutView', viewEnum.PROFILE);

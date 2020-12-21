@@ -91,30 +91,30 @@ const featuredPosts = [
     },
 ];
 
+//
+// function getCourses() {
+//     let courses = fetch('/courses/', {
+//         method: 'GET',
+//         headers: {
+//             'Content-type': 'application/json; charset=UTF-8',
+//             'Authorization': 'Token ' + window.localStorage.getItem('login')
+//         }
+//     })
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log(data);
+//             // courses = data;
+//             return data;
+//         })
+//     // console.log('GOT COURSES ' + courses);
+//     return courses;
+// }
 
-function getCourses() {
-    let courses = '';
-    fetch('/courses/', {
-        method: 'GET',
-        // headers: {
-        //     'Content-type': 'application/json; charset=UTF-8',
-        //     'Authorization': 'Token ' + window.localStorage.getItem('login')
-        // }
-    })
-        .then(response => response.json())
-        .then(data => {
-            courses = JSON.stringify(data);
-        });
-    console.log('GOT COURSES ' + courses);
-    return courses;
-}
-
-
-
-const Profile = ({}) => {
+export default function Profile(props) {
     const classes = useStyles();
-    const courses = getCourses();
-    const post = [courses, post1];
+    const courses = props.courses;
+    console.log(courses);
+    const post = [post1];
 
     return (
         <React.Fragment>
@@ -142,4 +142,3 @@ const Profile = ({}) => {
 );
 }
 
-export default Profile;
